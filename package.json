@@ -1,0 +1,14 @@
+{
+  "name": "cse210-fa24-group-11",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "madr": "^4.0.0"
+  }
+}
