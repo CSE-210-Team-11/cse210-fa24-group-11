@@ -10,5 +10,9 @@
   "description": "",
   "dependencies": {
     "madr": "^4.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "jest": "^29.7.0"
   }
 }
