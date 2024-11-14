@@ -10,17 +10,21 @@ informed: Atishay, Shaobo, Leonard, Delaware
 
 ## Context and Problem Statement
 
-We need a modern, efficient code quality solution for JavaScript, HTML, and CSS that combines linting and formatting in one tool. While tool maturity is important, we prioritize performance, unified configuration, and modern development experience.
+Our JavaScript codebase needs standardized, maintainable documentation that integrates with our development workflow. We face several challenges:
+- Inconsistent documentation practices across teams
+- Lack of automated documentation generation
+- Need for better IDE integration and developer tooling support
+- Difficulty maintaining documentation alongside code changes
+- Requirements for both API documentation and internal code documentation
 
 ## Decision Drivers
 
-* Ensure the tool supports the primary coding language
-* Look for a tool that is easy to set up and configure
-* Tools that integrate well with IDEs or version control systems make documentation updates easier and faster
-* Ensure the tool is efficient in terms of CPU and memory usage
-* Provides immediate feedback or supports live reloading
-* Developer experience
-* Look for tools that allow styling, layout, and content flexibility
+* **Developer Workflow Integration** - Documentation should be written close to the code and be part of the regular development process
+* **IDE Support** - Tool should provide good editor integration with features like autocomplete and inline documentation
+* **Maintenance** - Documentation should be easy to maintain and automatically validate
+* **JavaScript Ecosystem Fit** - Native support for modern JavaScript features and common patterns
+* **Learning Curve** - Tool should be easy to adopt and have good community resources
+* **Generation Features** - Ability to generate readable HTML documentation for team use
 
 ## Considered Options
 
@@ -43,7 +47,6 @@ Chosen option: "JSDoc", because it makes JavaScript documentation simple and wor
 * Bad, it has limited Language Support
 * Bad, it has Limited Customization
 
-
 ### Docco
 * Good, it has literate programming style: Docco generates side-by-side documentation, makes it easy to understand code context and explanations together.
 * Good, it is simple and fast, it generates documentation directly from code comments without complex configurations.
@@ -51,7 +54,6 @@ Chosen option: "JSDoc", because it makes JavaScript documentation simple and wor
 * Bad, it only has basic output style
 * Bad, it has limited customization options
 * Bad, it is less suitable for large projects
-
 
 ### Sphinx
 * Good, it is highly customizable
