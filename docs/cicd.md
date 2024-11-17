@@ -27,10 +27,6 @@ This document provides the current status of the CI pipeline, detailing its func
 - **Error Tracking**:
   - Separates Biome checks and test execution for improved error isolation and faster debugging.
 
----
-
-### Workflow Diagram
-The following flowchart illustrates the current CI pipeline structure:
 
 ## Planned Improvements
 
@@ -49,6 +45,11 @@ The following flowchart illustrates the current CI pipeline structure:
 
 - **Slack Integration**:
   - Notify developers of CI results via Slack or email for immediate feedback.
+
+
+
+### Workflow Diagram
+The following flowchart illustrates the current CI pipeline structure:
 
 
 ```mermaid
