@@ -231,8 +231,39 @@
 
 		<div id="main-content">
 			<div id="main-content__container">
-				<p>This is the page content</p>
-			</div>
+				<div class="task-container">
+					<h2>Tasks Inventory</h2>
+					
+					<div class="task-controls">
+						<button onclick="showNewTaskForm()" id="addTaskButton">+ New Task</button>
+						
+						<div id="taskForm" style="display: none;">
+							<input type="text" id="taskInput" placeholder="Enter task...">
+							<div class="button-group">
+								<button onclick="saveTask()" id="saveButton">Save</button>
+								<button onclick="cancelTask()" id="cancelButton">Cancel</button>
+							</div>
+						</div>
+						
+						<!-- Add this new div -->
+						<div id="tasksList">
+							<!-- Tasks will be displayed here -->
+						</div>
+						
+						<div id="taskForm" style="display: none;">
+    <input type="text" id="taskInput" placeholder="Enter task...">
+    <div class="button-group">
+        <button onclick="saveTask()" id="saveButton">Save</button>
+        <button onclick="cancelTask()" id="cancelButton">Cancel</button>
+    </div>
+</div>
+
+<!-- Add this new div -->
+<div id="tasksList">
+    <!-- Tasks will be displayed here -->
+</div>
+
+					</div>
 		</div> <!-- main-content -->
 	</section> <!-- main -->
 
