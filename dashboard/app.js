@@ -94,6 +94,31 @@ function updateProgress(taskId, increment) {
     }
 }
 
+function editTask(taskId) {
+
+    const task = tasks.find(task => task.id === taskId);
+    if (!task) return;
+
+    const taskInput = document.getElementById('taskInput');
+    if (!taskInput) return;
+
+
+    taskInput.value = task.text;
+    document.getElementById('taskForm').style.display = 'block';
+
+    // Remove the task from the list
+    tasks = tasks.filter(task => task.id !== taskId);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    renderTasks();
+}
+
+function deleteTask(taskId) {
+    tasks = tasks.filter(task => task.id !== taskId);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    renderTasks();
+}
+
+
 function renderTasks() {
     const taskList = document.getElementById('tasksList');
     if (!taskList) return;
@@ -122,6 +147,8 @@ function renderTasks() {
         taskList.appendChild(taskElement);
     });
 }
+
+
 
 
 
