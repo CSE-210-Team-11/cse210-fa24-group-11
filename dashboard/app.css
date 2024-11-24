@@ -504,6 +504,16 @@ svg {
     transition: all 0.3s ease;
 }
 
+#checkin-button {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: none;
+}
+#checkin-button:hover {
+    color: #0056b3;
+}
+
+
 
 /* ================================================= */
 /* Main content */

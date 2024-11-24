@@ -165,17 +165,19 @@ document.querySelectorAll('#sidebar__nav a').forEach(link => {
     });
 });
 
-const strikesIcon = document.getElementById('strikes-icon');
-const checkinButton = document.getElementById('checkin-button');
+// 1. 获取 DOM 元素
+const strikesLink = document.querySelector('#strikes-link svg use');
+const checkInButton = document.querySelector('#checkin-button');
 
-checkinButton.addEventListener('click', function (e) {
-    // e.preventDefault(); 
+// 2. 添加点击事件监听器
+checkInButton.addEventListener('click', function (e) {
+    e.preventDefault(); // 阻止默认行为
 
-    const isUnstrike = strikesIcon.getAttribute('xlink:href') === '#icon-unStrike';
-    if (isUnstrike) {
-        strikesIcon.setAttribute('xlink:href', '#icon-strike');
+    // 3. 修改 xlink:href 的值
+    if (strikesLink.getAttribute('xlink:href') === '#icon-unStrike') {
+        strikesLink.setAttribute('xlink:href', '#icon-strike');
     } else {
-        strikesIcon.setAttribute('xlink:href', '#icon-unStrike');
+        strikesLink.setAttribute('xlink:href', '#icon-unStrike'); // 可选：实现切换
     }
 });
 
