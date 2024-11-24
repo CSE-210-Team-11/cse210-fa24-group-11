@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 date: 2024-11-12
 decision-makers: Kanaad, Leonard
 consulted: Dylan
