@@ -493,6 +493,14 @@ body.sidebar-open #sidebar {
     opacity: 0.9;
 }
 
+.content {
+    display: none;
+}
+.content.active {
+    display: block;
+}
+
+
 
 /* ================================================= */
 /* Main content */

@@ -183,7 +183,8 @@
 				<ul>
 					<li class="menu-heading"><span>Manage</span></li>
 					<li>
-						<a href="#" class="active">
+						<!-- <a href="#dashboard" class="active"> -->
+						<a href="#dashboard">
 							<svg>
 								<use xlink:href="#icon-dashboard"></use>
 							</svg>
@@ -191,7 +192,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="#skills">
 							<svg>
 								<use xlink:href="#icon-plugins"></use>
 							</svg>
@@ -200,7 +201,7 @@
 					</li>
 					<li class="menu-heading"><span>Tasks</span></li>
 					<li>
-						<a href="#">
+						<a href="#progress">
 							<svg>
 								<use xlink:href="#icon-media"></use>
 							</svg>
@@ -208,7 +209,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="#tasks">
 							<svg>
 								<use xlink:href="#icon-pages"></use>
 							</svg>
@@ -251,20 +252,39 @@
 						</div>
 						
 						<div id="taskForm" style="display: none;">
-    <input type="text" id="taskInput" placeholder="Enter task...">
-    <div class="button-group">
-        <button onclick="saveTask()" id="saveButton">Save</button>
-        <button onclick="cancelTask()" id="cancelButton">Cancel</button>
-    </div>
-</div>
-
-<!-- Add this new div -->
-<div id="tasksList">
-    <!-- Tasks will be displayed here -->
-</div>
-
+						<input type="text" id="taskInput" placeholder="Enter task...">
+						<div class="button-group">
+							<button onclick="saveTask()" id="saveButton">Save</button>
+							<button onclick="cancelTask()" id="cancelButton">Cancel</button>
+						</div>
 					</div>
+
+					<!-- Add this new div -->
+					<div id="tasksList">
+					</div>
+
+				</div>
 		</div> <!-- main-content -->
+
+
+		<div id="dashboard-content" class="content active">
+			<h1>Dashboard</h1>
+			<p>Welcome to the Dashboard!</p>
+		</div>
+		<div id="skills-content" class="content">
+			<h1>Skills</h1>
+			<p>Manage your skills here.</p>
+		</div>
+		<div id="progress-content" class="content">
+			<h1>Progress Visualization</h1>
+			<p>Track your progress here.</p>
+		</div>
+		<div id="tasks-content" class="content">
+			<h1>Task Management</h1>
+			<p>Manage your tasks here.</p>
+		</div>
+
+
 	</section> <!-- main -->
 
 	<script src="app.js"></script>

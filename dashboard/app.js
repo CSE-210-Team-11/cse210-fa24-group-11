@@ -150,6 +150,20 @@ function renderTasks() {
 
 
 
+document.querySelectorAll('#sidebar__nav a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+
+        const targetId = this.getAttribute('href').substring(1) + '-content';
+
+        document.getElementById(targetId).classList.add('active');
+
+        document.querySelectorAll('#sidebar__nav a').forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
 
 
 // Initial render of tasks
@@ -161,3 +175,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Add the event listener for the theme switcher
 document.querySelector('#sidebar__theme-switcher').addEventListener('click', switchTheme)
+
