@@ -1,53 +1,36 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext("2d");
-canvas.height = 600;
-canvas.width = 1000;
+import getSeededRandom from './seededRandom.js'
 
-var leaf_image = new Image();
-leaf_image.src = "tree/leaf.svg";
+// Make an instance of two and place it on the page.
+var params = {
+  fullscreen: true,
+  autostart: true
+};
+var elem = document.body;
+var two = new Two(params).appendTo(elem);
 
-canvas.addEventListener("click", () => {
-    treeSeed = Math.random() * 10000 | 0;
-    treeGrow = 0.1;
-});
-
-/* Seeded random functions
-   randSeed(int)  int is a seed value
-   randSI()  random integer 0 or 1
-   randSI(max) random integer from  0 <= random < max
-   randSI(min, max) random integer from min <= random < max
-   randS()  like Math.random
-   randS(max) random float 0 <= random < max
-   randS(min, max) random float min <= random < max
-   */
-const seededRandom = (() => {
-    var seed = 1;
-    return { 
-        max: 2576436549074795, 
-        reseed(s) { seed = s }, 
-        random() { return seed = ((8765432352450986 * seed) + 8507698654323524) % this.max }
-    }
-})();
-const randSeed = (seed) => seededRandom.reseed(seed|0);
-const randSI = (min = 2, max = min + (min = 0)) => (seededRandom.random() % (max - min)) + min;
-const randS = (min = 1, max = min + (min = 0)) => (seededRandom.random() / seededRandom.max) * (max - min) + min;
+var rand = getSeededRandom('acba');
+const randSI = (min = 0, max = 1) => Math.floor(rand() * (max - min + 1)) + min;
+const randS = (min = 0, max = 1) => rand() * (max - min) + min;
 
 const angMin = 0.01;
-const angMax = 0.6;
-const lengMin = 0.8;
-const lengMax = 0.9;
+const angMax = 0.7;
+const lengMin = 0.6;
+const lengMax = 0.8;
 const widthMin = 0.6;
 const widthMax = 0.8;
-const trunkMin = 8;
-const trunkMax = 10;
+const trunkMin = two.width / 40;
+const trunkMax = trunkMin + 20;
 const maxBranches = 200;
-const leafSize = 20; // Much larger leaf size
+const leafSize = 0.1; // Much larger leaf size
 const leafVariation = 0.3; // Adds some size variation to leaves
+
+const lenTwig = 6;
+const widthTwig = 3;
 
 const windX = -1;
 const windY = 0;
 const bendability = 8;
-const windStrength = 0.01 * bendability * ((200 ** 2) / (canvas.height ** 2));
+const windStrength = 0.01 * bendability * ((200 ** 2) / (two.height ** 2));
 const windBendRectSpeed = 0.01;
 const windBranchSpring = 0.98;
 const gustProbability = 1/100;
@@ -61,25 +44,23 @@ var windActual = 0;
 var treeSeed = Math.random() * 10000 | 0;
 var branchCount = 0;
 var maxTrunk = 0;
-var treeGrow = 0.01;
+var treeGrow = 0.1;
 
 function drawLeaf(x, y, dir, size) {
     const actualSize = size * (1 + randS(-leafVariation, leafVariation));
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(dir + Math.PI / 2 + randS(-1, 1)); // Add slight random rotation
-    ctx.scale(actualSize / 20, actualSize / 20);
-    ctx.drawImage(leaf_image, -15, -20, 30, 40)
-    ctx.restore();
+    var leaf = two.makeSprite("./tree/leaf.png", x, y);
+    leaf.rotation = (dir + Math.PI / 2 + randS(-1, 1)); // Add slight random rotation
+    leaf.scale = actualSize / 20
 }
 
 function drawTree(seed) {
     branchCount = 0;
     treeGrow += 0.02;
-    randSeed(seed);
+    rand = getSeededRandom(seed.toString());
     maxTrunk = randSI(trunkMin, trunkMax);
-    drawBranch(canvas.width / 2, canvas.height, -Math.PI / 2, canvas.height / 5, maxTrunk);
+    drawBranch(two.width / 2, two.height, -Math.PI / 2, two.height / 4, maxTrunk);
 }
+
 
 function drawBranch(x, y, dir, leng, width) {
     branchCount++;
@@ -91,21 +72,19 @@ function drawBranch(x, y, dir, leng, width) {
     
     dir += (windStrength * windActual) * ((1 - width / maxTrunk) ** bendability) * windSideWayForce;
     
-    ctx.strokeStyle = '#4B3621';
-    ctx.lineWidth = width;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
     const endX = x + Math.cos(dir) * leng * treeGrowVal;
     const endY = y + Math.sin(dir) * leng * treeGrowVal;
-    ctx.lineTo(endX, endY);
-    ctx.stroke();
+    var branch = two.makeLine(x, y, endX, endY)
+    branch.linewidth = width;
+    branch.fill = 'brown';
+    branch.stroke = '#4B3621';
 
     // Draw leaves on thinner branches
-    if (width < 3) { // Increased threshold for more leaves
-        drawLeaf(endX, endY, dir, leafSize);
-    }
+    // if (width < 5) { // Increased threshold for more leaves
+    //     drawLeaf(endX, endY, dir, leafSize);
+    // }
     
-    if (branchCount < maxBranches && leng > 5 && width > 1) {
+    if (leng > lenTwig && width > widthTwig) {
         const rDir = randSI() ? -1 : 1;
         treeGrow -= 0.2;
         
@@ -122,6 +101,14 @@ function drawBranch(x, y, dir, leng, width) {
             leng * randS(lengMin, lengMax),
             width * randS(widthMin, widthMax)
         );
+
+        if (randSI()) {
+            drawBranch(
+                endX, endY,
+                 leng * randS(lengMin, lengMax),
+                width * randS(widthMin, widthMax)
+            );
+        }
         
         treeGrow += 0.2;
     }
@@ -145,13 +132,21 @@ function updateWind() {
     windActual += windFollow;
 }
 
+// Don’t forget to tell two to draw everything to the screen
+two.bind('update', update)
+two.play();
+
 function update() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    updateWind();
+    two.clear();
+    // updateWind();
     drawTree(treeSeed);
-    requestAnimationFrame(update);
 }
 
-leaf_image.onload = () => {
-    requestAnimationFrame(update);
-};
+window.addEventListener("click", () => {
+    console.log('click!');
+    console.log("branchCount: ", branchCount)
+    console.log(randSI())
+    treeSeed = Math.random() * 10000 | 0;
+    treeGrow = 2;
+    console.log("new seed: ", treeSeed);
+});
