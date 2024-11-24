@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 date: 2024-11-11
 decision-makers: Delaware, Kanaad
 consulted: Dylan
