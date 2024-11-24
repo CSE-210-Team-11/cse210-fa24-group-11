@@ -165,6 +165,21 @@ document.querySelectorAll('#sidebar__nav a').forEach(link => {
     });
 });
 
+const strikesIcon = document.getElementById('strikes-icon');
+const checkinButton = document.getElementById('checkin-button');
+
+checkinButton.addEventListener('click', function (e) {
+    // e.preventDefault(); 
+
+    const isUnstrike = strikesIcon.getAttribute('xlink:href') === '#icon-unStrike';
+    if (isUnstrike) {
+        strikesIcon.setAttribute('xlink:href', '#icon-strike');
+    } else {
+        strikesIcon.setAttribute('xlink:href', '#icon-unStrike');
+    }
+});
+
+
 
 // Initial render of tasks
 document.addEventListener('DOMContentLoaded', function() {
