@@ -38,6 +38,7 @@ Chosen option: "Two.js", because it is straightforward to use and doesn't have a
 * Good, because it has been around for a long time and has plenty of documentation
 * Bad, because it doesn't have as many useful functions and capabilities
 * Bad, because scripting for canvas is difficult
+* Bad, because tests demonstrated blurry images on some occasions
 
 ### Three.js
 * Good, because it is jam-packed with graphics features
@@ -50,6 +51,6 @@ Chosen option: "Two.js", because it is straightforward to use and doesn't have a
 ### Two.js
 * Good, because it is oriented toward two-dimensional graphics and animations, which is aligned with our goals
 * Good, because it has code examples and documentation
-* Good, because it has the ability to render svg images
 * Neutral, because it has plenty of documentation, but sometimes lacks clarity of examples
+* Bad, because it struggles to render svg images in canvas mode
 * Bad, because it has a small community of users
