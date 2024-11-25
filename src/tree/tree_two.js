@@ -84,7 +84,7 @@ function drawBranch(x, y, dir, leng, width) {
     //     drawLeaf(endX, endY, dir, leafSize);
     // }
     
-    if (leng > lenTwig && width > widthTwig) {
+    if (branchCount < maxBranches && leng > lenTwig && width > widthTwig) {
         const rDir = randSI() ? -1 : 1;
         treeGrow -= 0.2;
         
