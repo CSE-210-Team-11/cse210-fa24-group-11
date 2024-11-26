@@ -51,6 +51,8 @@ Chosen option: "Two.js", because it is straightforward to use and doesn't have a
 ### Two.js
 * Good, because it is oriented toward two-dimensional graphics and animations, which is aligned with our goals
 * Good, because it has code examples and documentation
+* Good, because it can render to HTML Canvas using the Canvas API
 * Neutral, because it has plenty of documentation, but sometimes lacks clarity of examples
+* Neutral, because performance on complex tasks is less than ideal. Our task is not necessarily complex.
 * Bad, because it struggles to render svg images in canvas mode
 * Bad, because it has a small community of users
