@@ -32,7 +32,7 @@ function Mulberry32(string) {
 }
 
 /**
- * 
+ * Reseeds the random generator
  * @param {String} seed - The seed for the random function
  */
 export function reseed(seed) {
@@ -40,16 +40,20 @@ export function reseed(seed) {
 }
 
 /**
- * 
- * @returns {Function(int?, int?): int} - A function that returns a random integer
+ * Returns a random integer between min and max, inclusive
+ * @param {number} min - The lower bound, must be an Integer
+ * @param {number} max - The upper bound, must be an Integer
+ * @returns {number} - A random integer
  */
 export function randInt(min = 0, max = 1) {
 	return Math.floor(rand() * (max - min + 1)) + min;
 }
 
 /**
- * 
- * @returns {Function(float?, float?): float} - A function that returns a random float
+ * Returns a random float between min and max, inclusive
+ * @param {number} min - The lower bound, must be a Float
+ * @param {number} max - The upper bound, must be a Float
+ * @returns {number} - A random float
  */
 export function randFloat(min = 0, max = 1) {
 	return rand() * (max - min) + min;
