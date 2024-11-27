@@ -1,3 +1,5 @@
+let rand;
+
 // Define the Murmur3Hash function
 function MurmurHash3(string) {
 	let i = 0;
@@ -30,21 +32,29 @@ function Mulberry32(string) {
 }
 
 /**
- * 
- * @param {String} seed - The seed to initialize the random function
- * @returns {Function(int?, int?): int} - A function that returns a random integer
+ * Reseeds the random generator
+ * @param {String} seed - The seed for the random function
  */
-export function getSeededRandomInt(seed) {
-	return (min = 0, max = 1) =>
-		Math.floor(Mulberry32(MurmurHash3(seed)()) * (max - min + 1)) + min;
+export function reseed(seed) {
+  rand = Mulberry32(MurmurHash3(seed)());
 }
 
 /**
- * 
- * @param {String} seed - The seed to initialize the random function
- * @returns {Function(float?, float?): float} - A function that returns a random float
+ * Returns a random integer between min and max, inclusive
+ * @param {number} min - The lower bound, must be an Integer
+ * @param {number} max - The upper bound, must be an Integer
+ * @returns {number} - A random integer
  */
-export function getSeededRandomFloat(seed) {
-	return (min = 0, max = 1) =>
-		Mulberry32(MurmurHash3(seed)()) * (max - min) + min;
+export function randInt(min = 0, max = 1) {
+	return Math.floor(rand() * (max - min + 1)) + min;
+}
+
+/**
+ * Returns a random float between min and max, inclusive
+ * @param {number} min - The lower bound, must be a Float
+ * @param {number} max - The upper bound, must be a Float
+ * @returns {number} - A random float
+ */
+export function randFloat(min = 0, max = 1) {
+	return rand() * (max - min) + min;
 }
