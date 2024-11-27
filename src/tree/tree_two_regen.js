@@ -1,4 +1,4 @@
-import getSeededRandom from "./seededRandom.js";
+import {randInt, randFloat, reseed} from "./seededRandom.js";
 
 // Make an instance of two and place it on the page.
 const params = {
@@ -9,14 +9,9 @@ const params = {
 const elem = document.body;
 const two = new Two(params).appendTo(elem);
 
-let rand = getSeededRandom("acba");
-const randInt = (min = 0, max = 1) =>
-	Math.floor(rand() * (max - min + 1)) + min;
-const randFloat = (min = 0, max = 1) => rand() * (max - min) + min;
-
 const leafTexture = two.makeTexture("./tree/leaf.png");
 
-const angMin = 0.2;
+const angMin = 0.01;
 const angMax = 0.7;
 const lengMin = 0.7;
 const lengMax = 0.8;
@@ -45,7 +40,7 @@ let windCycleGustTime = 0;
 let currentWind = 0;
 let windFollow = 0;
 let windActual = 0;
-const treeSeed = (Math.random() * 10000) | 0;
+let treeSeed = ((Math.random() * 10000) | 0).toString();
 let branchCount = 0;
 let maxTrunk = 0;
 let treeGrow = 0.1;
@@ -69,7 +64,7 @@ function makeLeaf(x, y, dir, size) {
 function drawTree(seed) {
 	branchCount = 0;
 	treeGrow += 0.02;
-	rand = getSeededRandom(seed.toString());
+    reseed(seed);
 	maxTrunk = randInt(trunkMin, trunkMax);
 	// if (done) {
 
@@ -196,11 +191,15 @@ function scatterLeaves() {
 // setTimeout(function() { debugger; }, 5000)
 
 window.addEventListener("click", () => {
-	// console.log('click!');
-	// console.log("branchCount: ", branchCount)
-	// console.log(randInt())
-	// treeSeed = Math.random() * 10000 | 0;
-	treeGrow += 0.2;
-	// console.log("new seed: ", treeSeed);
-	// console.log("num branches group: ", branches.children.length)
+	console.log('click!');
+	console.log("branchCount: ", branchCount);
+	console.log(randInt());
+    console.log(randFloat());
+    console.log(randFloat());
+	console.log(randInt(2, 7));
+    console.log(randFloat(2.5, 7.9));
+	treeSeed = (Math.random() * 10000 | 0).toString();
+	treeGrow = 0.1;
+	console.log("new seed: ", treeSeed);
+	console.log("num branches group: ", branches.children.length);
 });

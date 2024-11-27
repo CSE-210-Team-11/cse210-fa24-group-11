@@ -1,3 +1,5 @@
+let rand;
+
 // Define the Murmur3Hash function
 function MurmurHash3(string) {
 	let i = 0;
@@ -31,20 +33,24 @@ function Mulberry32(string) {
 
 /**
  * 
- * @param {String} seed - The seed to initialize the random function
- * @returns {Function(int?, int?): int} - A function that returns a random integer
+ * @param {String} seed - The seed for the random function
  */
-export function getSeededRandomInt(seed) {
-	return (min = 0, max = 1) =>
-		Math.floor(Mulberry32(MurmurHash3(seed)()) * (max - min + 1)) + min;
+export function reseed(seed) {
+  rand = Mulberry32(MurmurHash3(seed)());
 }
 
 /**
  * 
- * @param {String} seed - The seed to initialize the random function
+ * @returns {Function(int?, int?): int} - A function that returns a random integer
+ */
+export function randInt(min = 0, max = 1) {
+	return Math.floor(rand() * (max - min + 1)) + min;
+}
+
+/**
+ * 
  * @returns {Function(float?, float?): float} - A function that returns a random float
  */
-export function getSeededRandomFloat(seed) {
-	return (min = 0, max = 1) =>
-		Mulberry32(MurmurHash3(seed)()) * (max - min) + min;
+export function randFloat(min = 0, max = 1) {
+	return rand() * (max - min) + min;
 }
