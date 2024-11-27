@@ -519,16 +519,20 @@ svg {
 /* Main content */
 /* ================================================= */
 #main-content {
-	padding: 1.5rem;
+    padding: 1.5rem;
 }
 
 #main-content__container {
-	border: var(--gray-tint-50) 1px dashed;
-	border-radius: 8px;
-	height: calc(100vh + 10rem);
-	display: grid;
-	place-content: center;
+    border: var(--gray-tint-50) 1px dashed;
+    border-radius: 8px;
+    height: calc(100vh + 10rem); 
+    display: grid;
+    align-items: flex-start; 
+    justify-content: center; 
+    padding-top: 3rem; 
 }
+
+
 
 
 

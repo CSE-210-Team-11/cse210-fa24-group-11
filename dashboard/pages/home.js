@@ -1,6 +1,6 @@
 class HomePage {
     constructor() {
-        this.container = document.getElementById('root');
+        this.container = document.getElementById('dashboard');
     }
 
     render() {
@@ -15,6 +15,22 @@ class HomePage {
                     <div class="quote-box">
                         <p class="quote-text" id="quote-text"></p>
                         <p class="quote-author" id="quote-author"></p>
+                    </div>
+
+                    <!-- New section below quote-box -->
+                    <div class="stats-box">
+                        <div class="stat-item">
+                            <h3>Tasks Completed</h3>
+                            <p id="tasks-completed">25</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Tasks In Progress</h3>
+                            <p id="tasks-in-progress">5</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Days Streak</h3>
+                            <p id="days-streak">10</p>
+                        </div>
                     </div>
                 </main>
             </div>
@@ -68,7 +84,7 @@ class HomePage {
         const actionButtons = document.getElementById('action-buttons');
         const addProjectBtn = new Button('Add Project', 'plus', () => console.log('Add Project clicked'));
         const goToProjectsBtn = new Button('Go to Projects', 'arrow', () => console.log('Go to Projects clicked'));
-        
+
         actionButtons.appendChild(addProjectBtn.render());
         actionButtons.appendChild(goToProjectsBtn.render());
 
