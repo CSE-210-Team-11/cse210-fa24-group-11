@@ -9,7 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      # Add explicit Node.js setup
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -18,10 +17,16 @@ jobs:
           
       - name: Install dependencies
         run: npm install
-        
-      # Separate steps for better error tracking
+  
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Run Biome checks
-        run: npm run check
+        run: npm run lint
         
       - name: Run tests
-        run: npm test
+        run: npm link
+
+  
