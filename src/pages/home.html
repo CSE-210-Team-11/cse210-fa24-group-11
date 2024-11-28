@@ -9,13 +9,16 @@
 <body>
     <div class="greeting-div">
         <h1 class="greeting">Welcome, Angry Atishay!</h1>
-        <div>
-            <p><em>The harder I work, the luckier I get...</em></p>
-            <span class="author">
-                <em>~LeBron James</em>
-            </span>
-            
+        
+        <div id="quote-container">
+            <h2><em>Quote of the day:</em></h2>    
+            <p><em id="quote-text"></em></p>
+                <span class="author">
+                    <em id="quote-author"></em>
+                </span>
         </div>
+            
+        
         <div>
             <button>
                 <strong>0 Tasks Pending</strong>
@@ -29,5 +32,9 @@
         </div>
     </div>
     <img src="../media/images/tree_art.svg" alt="Forest scene" class="tree-art">
+    <script type="module">
+        import { updateQuote } from '../scripts/quotesmanager.js';
+        updateQuote();
+    </script>
 </body>
 </html>
