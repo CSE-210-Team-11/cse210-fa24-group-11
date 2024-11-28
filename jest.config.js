@@ -1,7 +1,7 @@
 // jest.config.js
 module.exports = {
   // The test environment to use
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
 
   // Files to collect code coverage from
   collectCoverageFrom: [
@@ -25,4 +25,12 @@ module.exports = {
     '<rootDir>/src/**/__tests__/**/*.{js,jsx}',
     '<rootDir>/src/**/*.{spec,test}.{js,jsx}',
   ],
+
+  // Transform files with babel-jest
+  transform: {
+    '^.+\\.(js|jsx)$': 'babel-jest',
+  },
+
+  // Setup files
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 };
