@@ -36,7 +36,7 @@ function Mulberry32(string) {
  * @param {String} seed - The seed for the random function
  */
 export function reseed(seed) {
-  rand = Mulberry32(MurmurHash3(seed)());
+	rand = Mulberry32(MurmurHash3(seed)());
 }
 
 /**
