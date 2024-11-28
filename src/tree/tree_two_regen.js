@@ -1,4 +1,4 @@
-import {randInt, randFloat, reseed} from "./seededRandom.js";
+import { randFloat, randInt, reseed } from "./seededRandom.js";
 
 // Make an instance of two and place it on the page.
 const params = {
@@ -17,8 +17,8 @@ const lengMin = 0.6;
 const lengMax = 0.7;
 const widthMin = 0.6;
 const widthMax = 0.8;
-const maxDepth = 3;
-const trunkMin = two.width / 40;
+const maxDepth = 6;
+const trunkMin = two.width / 50;
 const trunkMax = trunkMin + 20;
 const maxBranches = 300;
 const leafSize = 0.1; // Much larger leaf size
@@ -54,12 +54,13 @@ const baseLeaf = two.makeSprite(leafTexture, 0, 0);
 function makeLeaf(x, y, dir, size) {
 	const actualSize = size * (1 + randFloat(-leafVariation, leafVariation));
 	// let leaf = new Two.Sprite(leafTexture, x, y);
-	const leaf = Object.assign({}, baseLeaf);
-	leaf.x = x;
-	leaf.y = y;
+	// let leaf = two.makeSprite(leafTexture, x, y);
+	const leaf = two.makeCircle(x, y, 5);
 	// leaves.add(leaf);
+	leaf.fill = "green";
+	leaf.noStroke();
 	leaf.rotation = dir + Math.PI / 2 + randFloat(-1, 1); // Add slight random rotation
-	leaf.scale = actualSize / 20;
+	// leaf.scale = actualSize / 20;
 }
 
 /**
@@ -69,7 +70,7 @@ function makeLeaf(x, y, dir, size) {
 function drawTree(seed) {
 	branchCount = 0;
 	treeGrow += 0.02;
-    reseed(seed);
+	reseed(seed);
 	maxTrunk = randInt(trunkMin, trunkMax);
 
 	makeBranches(
@@ -79,7 +80,7 @@ function drawTree(seed) {
 		// adjust the length of the trunk according to max depth
 		two.height / (maxDepth + 2),
 		maxTrunk,
-		0
+		0,
 	);
 }
 
@@ -124,17 +125,10 @@ function makeBranches(x, y, dir, leng, width, depth) {
 
 	const endX = x + Math.cos(dir) * leng * treeGrowVal;
 	const endY = y + Math.sin(dir) * leng * treeGrowVal;
-	
+
 	renderBranch(x, y, endX, endY, width);
 
-	// Draw leaves on thinner branches
-	if (width < 5) {
-		// Increased threshold for more leaves
-		makeLeaf(endX, endY, dir, leafSize);
-	}
-
 	const lengFactor = depth < 2 ? 1 : randFloat(lengMin, lengMax);
-
 
 	// here we use depth instead of branchCount to make sure it is a balanced tree
 	if (depth < maxDepth && leng > lenTwig && width > widthTwig) {
@@ -147,7 +141,7 @@ function makeBranches(x, y, dir, leng, width, depth) {
 			dir + randFloat(angMin, angMax),
 			leng * lengFactor,
 			width * randFloat(widthMin, widthMax),
-			depth + 1
+			depth + 1,
 		);
 
 		makeBranches(
@@ -156,21 +150,26 @@ function makeBranches(x, y, dir, leng, width, depth) {
 			dir - randFloat(angMin, angMax),
 			leng * lengFactor,
 			width * randFloat(widthMin, widthMax),
-			depth + 1
+			depth + 1,
 		);
 
-		if (randInt()){
+		if (randInt()) {
 			makeBranches(
 				endX,
 				endY,
 				dir,
 				leng * lengFactor,
 				width * randFloat(widthMin, widthMax),
-				depth + 1
+				depth + 1,
 			);
 		}
 
 		treeGrow += 0.2;
+	}
+
+	// Draw leaves on thinner branches
+	if (width < 6) {
+		makeLeaf(endX, endY, dir, leafSize);
 	}
 }
 
@@ -224,14 +223,14 @@ function scatterLeaves() {
 // setTimeout(function() { debugger; }, 5000)
 
 window.addEventListener("click", () => {
-	console.log('click!');
+	console.log("click!");
 	console.log("branchCount: ", branchCount);
 	console.log(randInt());
-    console.log(randFloat());
-    console.log(randFloat());
+	console.log(randFloat());
+	console.log(randFloat());
 	console.log(randInt(2, 7));
-    console.log(randFloat(2.5, 7.9));
-	treeSeed = (Math.random() * 10000 | 0).toString();
+	console.log(randFloat(2.5, 7.9));
+	treeSeed = ((Math.random() * 10000) | 0).toString();
 	treeGrow = 0.1;
 	console.log("new seed: ", treeSeed);
 	console.log("num branches group: ", branches.children.length);
