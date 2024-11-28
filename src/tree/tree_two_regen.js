@@ -55,7 +55,7 @@ function makeLeaf(x, y, dir, size) {
 	const actualSize = size * (1 + randFloat(-leafVariation, leafVariation));
 	// let leaf = new Two.Sprite(leafTexture, x, y);
 	// let leaf = two.makeSprite(leafTexture, x, y);
-	const leaf = two.makeCircle(x, y, 5);
+	const leaf = two.makeCircle(x, y, 10);
 	// leaves.add(leaf);
 	leaf.fill = "green";
 	leaf.noStroke();
@@ -168,7 +168,7 @@ function makeBranches(x, y, dir, leng, width, depth) {
 	}
 
 	// Draw leaves on thinner branches
-	if (width < 6) {
+	if (depth > maxDepth - 3) {
 		makeLeaf(endX, endY, dir, leafSize);
 	}
 }
