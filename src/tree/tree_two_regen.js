@@ -11,12 +11,13 @@ const two = new Two(params).appendTo(elem);
 
 const leafTexture = two.makeTexture("./tree/leaf.png");
 
-const angMin = 0.01;
-const angMax = 0.7;
-const lengMin = 0.7;
-const lengMax = 0.8;
+const angMin = 0.3;
+const angMax = 0.8;
+const lengMin = 0.6;
+const lengMax = 0.7;
 const widthMin = 0.6;
 const widthMax = 0.8;
+const maxDepth = 5;
 const trunkMin = two.width / 40;
 const trunkMax = trunkMin + 20;
 const maxBranches = 300;
@@ -73,13 +74,23 @@ function drawTree(seed) {
 		two.width / 2,
 		two.height,
 		-Math.PI / 2,
-		two.height / 4,
+		// adjust the length of the trunk according to the depth
+		two.height / (maxDepth + 2),
 		maxTrunk,
+		0
 	);
 }
 
-function makeBranches(x, y, dir, leng, width) {
+function renderBranch(x, y, endX, endY, width) {
+	const branch = two.makeLine(x, y, endX, endY);
+	branch.linewidth = width;
+	branch.fill = "brown";
+	branch.stroke = "#4B3621";
+}
+
+function makeBranches(x, y, dir, leng, width, depth) {
 	branchCount++;
+
 	const treeGrowVal = (treeGrow > 1 ? 1 : treeGrow < 0.1 ? 0.1 : treeGrow) ** 2;
 
 	const xx = Math.cos(dir) * leng * treeGrowVal;
@@ -94,12 +105,8 @@ function makeBranches(x, y, dir, leng, width) {
 
 	const endX = x + Math.cos(dir) * leng * treeGrowVal;
 	const endY = y + Math.sin(dir) * leng * treeGrowVal;
-	// let branch = new Two.Line(x, y, endX, endY)
-	const branch = two.makeLine(x, y, endX, endY);
-	branch.linewidth = width;
-	branch.fill = "brown";
-	branch.stroke = "#4B3621";
-	// branches.add(branch);
+	
+	renderBranch(x, y, endX, endY, width);
 
 	// Draw leaves on thinner branches
 	if (width < 5) {
@@ -107,33 +114,40 @@ function makeBranches(x, y, dir, leng, width) {
 		makeLeaf(endX, endY, dir, leafSize);
 	}
 
-	if (branchCount < maxBranches && leng > lenTwig && width > widthTwig) {
+	const lengFactor = depth < 2 ? 1 : randFloat(lengMin, lengMax);
+
+
+	// here we use depth instead of branchCount to make sure it is a balanced tree
+	if (depth < maxDepth && leng > lenTwig && width > widthTwig) {
 		const rDir = randInt() ? -1 : 1;
 		treeGrow -= 0.2;
 
 		makeBranches(
 			endX,
 			endY,
-			dir + randFloat(angMin, angMax) * rDir,
-			leng * randFloat(lengMin, lengMax),
+			dir + randFloat(angMin, angMax),
+			leng * lengFactor,
 			width * randFloat(widthMin, widthMax),
+			depth + 1
 		);
 
 		makeBranches(
 			endX,
 			endY,
-			dir + randFloat(angMin, angMax) * -rDir,
-			leng * randFloat(lengMin, lengMax),
+			dir - randFloat(angMin, angMax),
+			leng * lengFactor,
 			width * randFloat(widthMin, widthMax),
+			depth + 1
 		);
 
-		if (randInt()) {
+		if (randInt()){
 			makeBranches(
 				endX,
 				endY,
 				dir,
-				leng * randFloat(lengMin, lengMax),
+				leng * lengFactor,
 				width * randFloat(widthMin, widthMax),
+				depth + 1
 			);
 		}
 
