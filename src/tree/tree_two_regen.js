@@ -17,7 +17,7 @@ const lengMin = 0.6;
 const lengMax = 0.7;
 const widthMin = 0.6;
 const widthMax = 0.8;
-const maxDepth = 5;
+const maxDepth = 3;
 const trunkMin = two.width / 40;
 const trunkMax = trunkMin + 20;
 const maxBranches = 300;
@@ -62,25 +62,35 @@ function makeLeaf(x, y, dir, size) {
 	leaf.scale = actualSize / 20;
 }
 
+/**
+ * Draws the tree on the canvas
+ * @param {string} seed - The seed for the random function
+ */
 function drawTree(seed) {
 	branchCount = 0;
 	treeGrow += 0.02;
     reseed(seed);
 	maxTrunk = randInt(trunkMin, trunkMax);
-	// if (done) {
 
-	// }
 	makeBranches(
 		two.width / 2,
 		two.height,
 		-Math.PI / 2,
-		// adjust the length of the trunk according to the depth
+		// adjust the length of the trunk according to max depth
 		two.height / (maxDepth + 2),
 		maxTrunk,
 		0
 	);
 }
 
+/**
+ * Renders one branch of the tree
+ * @param {number} x - The x coordinate of the starting point
+ * @param {number} y - The y coordinate of the starting point
+ * @param {number} endX - The x coordinate of the ending point
+ * @param {number} endY - The y coordinate of the ending point
+ * @param {number} width - The width of the branch
+ */
 function renderBranch(x, y, endX, endY, width) {
 	const branch = two.makeLine(x, y, endX, endY);
 	branch.linewidth = width;
@@ -88,6 +98,15 @@ function renderBranch(x, y, endX, endY, width) {
 	branch.stroke = "#4B3621";
 }
 
+/**
+ * Recursively generates branches of the tree
+ * @param {number} x - The x coordinate of the starting point
+ * @param {number} y - The y coordinate of the starting point
+ * @param {number} dir - The direction of the branch
+ * @param {number} leng - The length of the branch
+ * @param {number} width - The width of the branch
+ * @param {number} depth - The depth of the branch
+ */
 function makeBranches(x, y, dir, leng, width, depth) {
 	branchCount++;
 
