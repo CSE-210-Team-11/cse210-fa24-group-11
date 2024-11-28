@@ -6,6 +6,7 @@ export function getDailyQuote() {
     const index = seed % motivationalQuotes.length;
     return motivationalQuotes[index];
 }
+
 export function updateQuote() {
     const { text, author } = getDailyQuote();
     document.getElementById('quote-text').textContent = text;
