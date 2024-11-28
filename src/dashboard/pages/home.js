@@ -1,10 +1,10 @@
 class HomePage {
-    constructor() {
-        this.container = document.getElementById('dashboard');
-    }
+	constructor() {
+		this.container = document.getElementById("dashboard");
+	}
 
-    render() {
-        this.container.innerHTML = `
+	render() {
+		this.container.innerHTML = `
             <div class="container">
                 <header class="header">
                     <h1 class="welcome">Welcome Angry Atishay!</h1>
@@ -80,21 +80,25 @@ class HomePage {
             </div>
         `;
 
-        // Add buttons
-        const actionButtons = document.getElementById('action-buttons');
-        const addProjectBtn = new Button('Add Project', 'plus', () => console.log('Add Project clicked'));
-        const goToProjectsBtn = new Button('Go to Projects', 'arrow', () => console.log('Go to Projects clicked'));
+		// Add buttons
+		const actionButtons = document.getElementById("action-buttons");
+		const addProjectBtn = new Button("Add Project", "plus", () =>
+			console.log("Add Project clicked"),
+		);
+		const goToProjectsBtn = new Button("Go to Projects", "arrow", () =>
+			console.log("Go to Projects clicked"),
+		);
 
-        actionButtons.appendChild(addProjectBtn.render());
-        actionButtons.appendChild(goToProjectsBtn.render());
+		actionButtons.appendChild(addProjectBtn.render());
+		actionButtons.appendChild(goToProjectsBtn.render());
 
-        // Initialize quotes
-        QuoteManager.init();
-    }
+		// Initialize quotes
+		QuoteManager.init();
+	}
 }
 
 // Initialize the homepage when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const homePage = new HomePage();
-    homePage.render();
+document.addEventListener("DOMContentLoaded", () => {
+	const homePage = new HomePage();
+	homePage.render();
 });
