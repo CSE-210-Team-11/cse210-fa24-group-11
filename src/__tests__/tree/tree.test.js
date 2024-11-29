@@ -1,6 +1,6 @@
 import { jest } from "@jest/globals";
 import Two from "../../node_modules/two.js/build/two.module.js";
-import * as treeModule from "../../tree/tree_two_regen.js";
+import * as treeModule from "../../tree/tree.js";
 
 // Mock seededRandom.js
 jest.mock("../../tree/seededRandom.js", () => ({
