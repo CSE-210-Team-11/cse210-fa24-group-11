@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 describe("home.css", () => {
 	let styleSheet;
@@ -19,7 +19,7 @@ describe("home.css", () => {
 	});
 
 	test("body should have no margin and padding", () => {
-		document.body.innerHTML = `<div></div>`;
+		document.body.innerHTML = "<div></div>";
 		const styles = window.getComputedStyle(document.body);
 		expect(styles.margin).toBe("0px");
 		expect(styles.padding).toBe("0px");
@@ -41,7 +41,7 @@ describe("home.css", () => {
 	});
 
 	test("button should have correct styles", () => {
-		document.body.innerHTML = `<button></button>`;
+		document.body.innerHTML = "<button></button>";
 		const button = document.querySelector("button");
 		const styles = window.getComputedStyle(button);
 
