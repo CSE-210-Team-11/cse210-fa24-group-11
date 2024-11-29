@@ -1,33 +1,36 @@
 let rand;
 
-// Define the Murmur3Hash function
-function MurmurHash3(string) {
-	let i = 0;
-	let hash = 0;
-	for (i, hash = 1779033703 ^ string.length; i < string.length; i++) {
-		const bitwise_xor_from_character = hash ^ string.charCodeAt(i);
-		hash = Math.imul(bitwise_xor_from_character, 3432918353);
-		hash = (hash << 13) | (hash >>> 19);
-	}
+/**
+ * A hash function based on MurmurHash3's mixing function, developed by bryc
+ * @param {string} str - The string to be hashed
+ * @returns {() => number} - A function that returns a 32 bit hash value
+ */
+function xmur3(str) {
+	let h = 1779033703 ^ str.length;
+	for (let i = 0; i < str.length; i++)
+		(h = Math.imul(h ^ str.charCodeAt(i), 3432918353));
+			(h = (h << 13) | (h >>> 19));
 	return () => {
-		// Return the hash that you can use as a seed
-		hash = Math.imul(hash ^ (hash >>> 16), 2246822507);
-		hash = Math.imul(hash ^ (hash >>> 13), 3266489909);
-		return (hash ^= hash >>> 16) >>> 0;
+		(h = Math.imul(h ^ (h >>> 16), 2246822507));
+			(h = Math.imul(h ^ (h >>> 13), 3266489909));
+		return (h ^= h >>> 16) >>> 0;
 	};
 }
 
-// Define the Mulberry32 function
-function Mulberry32(string) {
+/**
+ * A transformation of the fmix32 finalizer from MurmurHash3 into a PRNG
+ * @param {number} a - A 32 bit value used as the initial state of the PRNG
+ * @returns {() => number} - The random number generator function
+ */
+function splitmix32(a) {
 	return () => {
-		let for_bit32_mul = (string += 0x6d2b79f5);
-		const cast32_one = for_bit32_mul ^ (for_bit32_mul >>> 15);
-		const cast32_two = for_bit32_mul | 1;
-		for_bit32_mul = Math.imul(cast32_one, cast32_two);
-		for_bit32_mul ^=
-			for_bit32_mul +
-			Math.imul(for_bit32_mul ^ (for_bit32_mul >>> 7), for_bit32_mul | 61);
-		return ((for_bit32_mul ^ (for_bit32_mul >>> 14)) >>> 0) / 4294967296;
+		a |= 0;
+		a = (a + 0x9e3779b9) | 0;
+		let t = a ^ (a >>> 16);
+		t = Math.imul(t, 0x21f0aaad);
+		t = t ^ (t >>> 15);
+		t = Math.imul(t, 0x735a2d97);
+		return ((t = t ^ (t >>> 15)) >>> 0) / 4294967296;
 	};
 }
 
@@ -36,7 +39,7 @@ function Mulberry32(string) {
  * @param {String} seed - The seed for the random function
  */
 export function reseed(seed) {
-  rand = Mulberry32(MurmurHash3(seed)());
+	rand = splitmix32(xmur3(seed)());
 }
 
 /**
