@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.project-list {
+    width: 50%;
+    overflow-y: scroll;
+}
+
+.project-card {
+    height: 5rem;
+    margin: 1rem 5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: blanchedalmond;
+    color: black;
+}
+
+.project-card-buttons-list {
+    margin: 1rem 0 0 0;
+}
+
+.project-card-button{
+    background-color: black;
+    color: blanchedalmond;
+    border-radius: 5px;
+    border: 1px solid blanchedalmond;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.streak-wrapper {
+    text-align: center;
+}
+
+.streak-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.streak-btn.default {
+    background-color: #2196f3;
+    color: blanchedalmond;
+}
+
+.streak-btn.clicked {
+    background-color: #4caf50;
+    color: white;
+}
+
+.streak-btn:hover {
+    transform: scale(1.05);
+}
+
+.streak-btn:active {
+    transform: scale(0.95);
+}
+
+.last-checkin {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0;
+}
