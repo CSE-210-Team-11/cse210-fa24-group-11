@@ -7,7 +7,7 @@
         "test": "jest --coverage",
         "test:watch": "jest --watch",
         "docs": "jsdoc -c jsdoc.json",
-        "start": "npx http-server -o src/index.html -c-1",
+        "start": "npx http-server -o src/index.html",
         "format": "npx @biomejs/biome format --write src",
         "lint": "npx @biomejs/biome lint src --skip=style/noParameterAssign --skip=suspicious/noAssignInExpressions",
         "unsafe-fix": "npx @biomejs/biome lint --write --unsafe src",

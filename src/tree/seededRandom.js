@@ -1,7 +1,7 @@
 let rand;
 
 // Define the Murmur3Hash function
-function MurmurHash3(string) {
+export function MurmurHash3(string) {
 	let i = 0;
 	let hash = 0;
 	for (i, hash = 1779033703 ^ string.length; i < string.length; i++) {
@@ -18,7 +18,7 @@ function MurmurHash3(string) {
 }
 
 // Define the Mulberry32 function
-function Mulberry32(string) {
+export function Mulberry32(string) {
 	return () => {
 		let for_bit32_mul = (string += 0x6d2b79f5);
 		const cast32_one = for_bit32_mul ^ (for_bit32_mul >>> 15);
