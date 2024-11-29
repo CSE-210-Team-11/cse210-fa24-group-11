@@ -432,4 +432,3 @@ export const motivationalQuotes = [
         author: "Muhammad Ali"
     }
 ];
-
