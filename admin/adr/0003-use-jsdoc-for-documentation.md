@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 date: 2024-11-13
 decision-makers: Kanaad, Yuyang, Yuke
 consulted: Dylan
