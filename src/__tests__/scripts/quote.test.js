@@ -6,12 +6,12 @@ describe("motivationalQuotes", () => {
 	});
 
 	it("should contain objects with text and author properties", () => {
-		motivationalQuotes.forEach((quote) => {
+		for (const quote of motivationalQuotes) {
 			expect(quote).toHaveProperty("text");
 			expect(quote).toHaveProperty("author");
 			expect(typeof quote.text).toBe("string");
 			expect(typeof quote.author).toBe("string");
-		});
+		}
 	});
 
 	it("should have at least one quote", () => {
