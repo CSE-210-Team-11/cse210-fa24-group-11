@@ -1,4 +1,4 @@
-import { reseed, randInt, randFloat } from '../utils/seededRandom.js';
+import { reseed, randInt, randFloat } from '../../utils/seededRandom.js';
 
 describe('Random Library', () => {
   // Reset the random seed before each test to ensure predictability
