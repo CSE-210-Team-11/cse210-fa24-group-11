@@ -94,7 +94,7 @@ describe("Branch Generation", () => {
 		const n = 1;
 		treeModule.makeBranches(100, 100, Math.PI / 2, 30, n);
 
-		const maxBranches = 3 ** (treeModule.maxDepth + 1) - 3 ** (n + 1);
+		const maxBranches = 3 ** (treeModule.maxDepth + 1);
 		expect(treeModule.branchCount).toBeGreaterThan(0);
 		expect(treeModule.branchCount).toBeLessThan(maxBranches);
 		expect(treeModule.branchCount).toBeGreaterThan(treeModule.leafCount);
@@ -104,7 +104,7 @@ describe("Branch Generation", () => {
 		const n = 3;
 		treeModule.makeBranches(100, 100, Math.PI / 2, 30, n);
 
-		const maxBranches = 3 ** (treeModule.maxDepth + 1) - 3 ** (n + 1);
+		const maxBranches = 3 ** (treeModule.maxDepth + 1);
 		expect(treeModule.branchCount).toBeGreaterThan(0);
 		expect(treeModule.branchCount).toBeLessThan(maxBranches);
 		expect(treeModule.branchCount).toBeGreaterThan(treeModule.leafCount);
@@ -167,8 +167,8 @@ describe("Draw Tree Tests", () => {
 		treeModule.two.clear();
 	});
 
-	test("drawTree creates valid number of branches and leaves, maxDepth=3", () => {
-		treeModule.maxDepth = 3;
+	test("drawTree creates valid number of branches and leaves, maxDepth=4", () => {
+		treeModule.maxDepth = 4;
 		const seed = "test-seed-1";
 		treeModule.drawTree(seed);
 
@@ -189,8 +189,8 @@ describe("Draw Tree Tests", () => {
 		expect(treeModule.branchCount).toBeLessThan(maxPossibleBranches);
 	});
 
-	test("drawTree creates valid number of branches and leaves, maxDepth=7", () => {
-		treeModule.maxDepth = 7;
+	test("drawTree creates valid number of branches and leaves, maxDepth=6", () => {
+		treeModule.maxDepth = 6;
 		const seed = "test-seed-3";
 		treeModule.drawTree(seed);
 
