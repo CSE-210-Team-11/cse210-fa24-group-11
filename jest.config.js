@@ -33,4 +33,10 @@ module.exports = {
 
   // Setup files
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+
+  // Transform node_modules/two.js
+  transformIgnorePatterns: [
+    '/node_modules/(?!(two.js)/)'
+  ],
+  setupFiles: ["jest-canvas-mock"]
 };
