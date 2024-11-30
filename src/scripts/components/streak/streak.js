@@ -1,6 +1,5 @@
 const streakBtn = document.getElementById('streak-btn');
 const lastCheckinEl = document.getElementById('last-checkin');
-const resetBtn = document.getElementById('reset-btn');
 
 const STREAK_KEY = 'streak';
 const LAST_CHECKIN_KEY = 'lastCheckin';
@@ -24,7 +23,7 @@ function updateUI() {
 }
 
 streakBtn.addEventListener('click', () => {
-  const today = new Date().setHours(0, 0, 0, 0); 
+  const today = new Date().setHours(0, 0, 0, 0);
 
   if (!lastCheckin) {
     streak = 1;
@@ -46,13 +45,4 @@ streakBtn.addEventListener('click', () => {
   updateUI();
 });
 
-resetBtn.addEventListener('click', () => {
-  streak = 0;
-  lastCheckin = null;
-  localStorage.removeItem(STREAK_KEY);
-  localStorage.removeItem(LAST_CHECKIN_KEY);
-  updateUI();
-});
-
-// Initial UI Update
 updateUI();
