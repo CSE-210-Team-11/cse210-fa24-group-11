@@ -1,0 +1,324 @@
+{
+    "name": "Python Beginner's Learning Path",
+    "modules": [
+      {
+        "id": 1,
+        "name": "Getting Started",
+        "tasks": [
+          {
+            "name": "Python Installation & Setup",
+            "subtasks": [
+              "Install Python",
+              "Setup IDE (PyCharm/VS Code)",
+              "Install pip package manager",
+              "Create virtual environments",
+              "Basic command line usage",
+              "Running Python scripts"
+            ]
+          },
+          {
+            "name": "First Steps",
+            "subtasks": [
+              "Hello World program",
+              "Python interactive shell",
+              "Basic syntax rules",
+              "Indentation importance",
+              "Comments and documentation",
+              "Print statements"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Python Basics",
+        "tasks": [
+          {
+            "name": "Variables & Data Types",
+            "subtasks": [
+              "Numbers (int, float)",
+              "Strings and string methods",
+              "Booleans",
+              "Lists and list operations",
+              "Tuples",
+              "Dictionaries",
+              "Sets",
+              "Type conversion",
+              "Variable naming rules"
+            ]
+          },
+          {
+            "name": "Basic Operations",
+            "subtasks": [
+              "Arithmetic operators",
+              "Assignment operators",
+              "Comparison operators",
+              "Logical operators",
+              "Identity operators (is, is not)",
+              "Membership operators (in, not in)",
+              "Bitwise operators"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Control Flow",
+        "tasks": [
+          {
+            "name": "Conditional Statements",
+            "subtasks": [
+              "if statements",
+              "if-else statements",
+              "elif statements",
+              "Nested conditionals",
+              "Conditional expressions (ternary)",
+              "Truth value testing"
+            ]
+          },
+          {
+            "name": "Loops",
+            "subtasks": [
+              "for loops",
+              "while loops",
+              "Nested loops",
+              "Loop control (break, continue)",
+              "range() function",
+              "enumerate() function",
+              "List comprehensions",
+              "Dictionary comprehensions"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Functions",
+        "tasks": [
+          {
+            "name": "Function Basics",
+            "subtasks": [
+              "Function definition",
+              "Function parameters",
+              "Return statements",
+              "Default parameters",
+              "Keyword arguments",
+              "Variable-length arguments (*args)",
+              "Keyword variable-length arguments (**kwargs)",
+              "Lambda functions",
+              "Function documentation"
+            ]
+          },
+          {
+            "name": "Built-in Functions",
+            "subtasks": [
+              "map()",
+              "filter()",
+              "reduce()",
+              "zip()",
+              "sorted()",
+              "any() and all()",
+              "sum(), min(), max()"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Data Structures",
+        "tasks": [
+          {
+            "name": "Lists in Depth",
+            "subtasks": [
+              "List creation and access",
+              "List methods",
+              "Slicing operations",
+              "Copying lists",
+              "Nested lists",
+              "List sorting",
+              "List as stack/queue"
+            ]
+          },
+          {
+            "name": "Dictionaries in Depth",
+            "subtasks": [
+              "Dictionary creation",
+              "Accessing/modifying elements",
+              "Dictionary methods",
+              "Nested dictionaries",
+              "Dictionary comprehensions",
+              "Default dictionaries"
+            ]
+          },
+          {
+            "name": "Advanced Collections",
+            "subtasks": [
+              "Counter",
+              "DefaultDict",
+              "OrderedDict",
+              "NamedTuple",
+              "Deque",
+              "ChainMap"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Object-Oriented Programming",
+        "tasks": [
+          {
+            "name": "Classes and Objects",
+            "subtasks": [
+              "Class definition",
+              "Object creation",
+              "Constructors (__init__)",
+              "Instance attributes",
+              "Class attributes",
+              "Instance methods",
+              "Class methods",
+              "Static methods",
+              "Property decorators"
+            ]
+          },
+          {
+            "name": "OOP Concepts",
+            "subtasks": [
+              "Inheritance",
+              "Multiple inheritance",
+              "Method overriding",
+              "Super() function",
+              "Encapsulation",
+              "Polymorphism",
+              "Abstract classes",
+              "Interface implementation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "File Handling & Exceptions",
+        "tasks": [
+          {
+            "name": "File Operations",
+            "subtasks": [
+              "Opening/closing files",
+              "Reading files",
+              "Writing to files",
+              "File modes",
+              "With statement",
+              "File object methods",
+              "Working with CSV files",
+              "JSON file handling"
+            ]
+          },
+          {
+            "name": "Exception Handling",
+            "subtasks": [
+              "Try-except blocks",
+              "Multiple except blocks",
+              "else clause",
+              "finally clause",
+              "Raising exceptions",
+              "Custom exceptions",
+              "Exception hierarchy",
+              "Context managers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Modules & Packages",
+        "tasks": [
+          {
+            "name": "Module Basics",
+            "subtasks": [
+              "Import statements",
+              "Module creation",
+              "Module search path",
+              "Reload modules",
+              "Package creation",
+              "Package initialization",
+              "__name__ variable"
+            ]
+          },
+          {
+            "name": "Essential Libraries",
+            "subtasks": [
+              "datetime",
+              "math",
+              "random",
+              "os",
+              "sys",
+              "re (regex)",
+              "pathlib",
+              "collections"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Python Standard Library",
+        "tasks": [
+          {
+            "name": "String Processing",
+            "subtasks": [
+              "String methods",
+              "Regular expressions",
+              "Text processing",
+              "String formatting",
+              "Template strings"
+            ]
+          },
+          {
+            "name": "Data Processing",
+            "subtasks": [
+              "CSV module",
+              "JSON module",
+              "XML processing",
+              "Database connections",
+              "Data serialization"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Advanced Topics",
+        "tasks": [
+          {
+            "name": "Decorators",
+            "subtasks": [
+              "Function decorators",
+              "Class decorators",
+              "Multiple decorators",
+              "Decorator with arguments",
+              "Wrapping functions"
+            ]
+          },
+          {
+            "name": "Generators",
+            "subtasks": [
+              "Generator functions",
+              "Generator expressions",
+              "yield statement",
+              "Generator delegation",
+              "Infinite sequences"
+            ]
+          },
+          {
+            "name": "Context Managers",
+            "subtasks": [
+              "with statement",
+              "Context manager protocol",
+              "contextlib module",
+              "Nested context managers"
+            ]
+          }
+        ]
+      }
+    ]
+  }

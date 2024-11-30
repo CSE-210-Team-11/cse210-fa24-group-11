@@ -5,58 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
     <link rel="stylesheet" href="../styles/pages/project-list.css">
-    
 </head>
 <body>
     <div class="project-list">
-        <div class="project-card">
-            <span>C++ Beginner's Learning Path</span>
-            <div class="project-card-buttons-list">
-                <button class="project-card-button">Modules: 88</button>
-                <button class="project-card-button">Projects: 18</button>
-                <button class="project-card-button">Start Project <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
-        <div class="project-card">
-            <span>Python Beginner's Learning Path</span>
-            <div class="project-card-buttons-list">
-                <button class="project-card-button">Modules: 149</button>
-                <button class="project-card-button">Projects: 22</button>
-                <button class="project-card-button">Start Project <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
-        <div class="project-card">
-            <span>Java Beginner's Learning Path</span>
-            <div class="project-card-buttons-list">
-                <button class="project-card-button">Modules: 150</button>
-                <button class="project-card-button">Projects: 23</button>
-                <button class="project-card-button">Start Project <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
-        <div class="project-card">
-            <span>Front-End Development Learning Path</span>
-            <div class="project-card-buttons-list">
-                <button class="project-card-button">Modules: 159</button>
-                <button class="project-card-button">Projects: 21</button>
-                <button class="project-card-button">Start Project <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
-        <div class="project-card">
-            <span>Generative AI Learning Path</span>
-            <div class="project-card-buttons-list">
-                <button class="project-card-button">Modules: 140</button>
-                <button class="project-card-button">Projects: 20</button>
-                <button class="project-card-button">Start Project <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
+        <!-- Dynamic project cards will be inserted here -->
     </div>
+    
     <div class="project-list">
         <div class="streak-wrapper">
             <button id="streak-btn" class="streak-btn">Streak: 0</button>
             <div id="last-checkin" class="last-checkin">Last check-in: Never</div>
         </div>
-        <script src="../scripts/components/streak/streak.js"></script>
     </div>
+
+    <script src="../scripts/components/streak/streak.js"></script>
     <script src="https://kit.fontawesome.com/a94787b9e0.js" crossorigin="anonymous"></script>
+    <script type="module" src="../scripts/projectLoader.js"></script>
 </body>
 </html>

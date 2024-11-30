@@ -1,0 +1,231 @@
+{
+    "name": "C++ Beginner's Learning Path",
+    "modules": [
+      {
+        "id": 1,
+        "name": "Getting Started",
+        "tasks": [
+          {
+            "name": "Development Environment Setup",
+            "subtasks": [
+              "Install C++ compiler (GCC/G++)",
+              "Setup IDE (VS Code/Dev-C++)",
+              "Configure build tools",
+              "Create first project folder"
+            ]
+          },
+          {
+            "name": "First Program",
+            "subtasks": [
+              "Write Hello World program",
+              "Understanding main() function",
+              "Basic program structure",
+              "Compile and run process"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Basic Syntax",
+        "tasks": [
+          {
+            "name": "Variables and Data Types",
+            "subtasks": [
+              "Integer types (int, short, long)",
+              "Floating-point types (float, double)",
+              "Character types (char)",
+              "Boolean type (bool)",
+              "Variable declaration and initialization",
+              "Type conversion"
+            ]
+          },
+          {
+            "name": "Operators",
+            "subtasks": [
+              "Arithmetic operators (+, -, *, /, %)",
+              "Assignment operators (=, +=, -=)",
+              "Comparison operators (==, !=, >, <)",
+              "Logical operators (&&, ||, !)",
+              "Increment/Decrement (++, --)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Control Flow",
+        "tasks": [
+          {
+            "name": "Conditional Statements",
+            "subtasks": [
+              "if statements",
+              "if-else statements",
+              "else-if ladder",
+              "switch statements",
+              "Conditional operator (?:)"
+            ]
+          },
+          {
+            "name": "Loops",
+            "subtasks": [
+              "for loop",
+              "while loop",
+              "do-while loop",
+              "nested loops",
+              "break and continue",
+              "infinite loops"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Functions",
+        "tasks": [
+          {
+            "name": "Function Basics",
+            "subtasks": [
+              "Function declaration",
+              "Function definition",
+              "Return types",
+              "Parameters and arguments",
+              "Function overloading",
+              "Default parameters"
+            ]
+          },
+          {
+            "name": "Parameter Passing",
+            "subtasks": [
+              "Pass by value",
+              "Pass by reference",
+              "Pass by address",
+              "Const parameters"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Arrays and Strings",
+        "tasks": [
+          {
+            "name": "Arrays",
+            "subtasks": [
+              "Array declaration",
+              "Array initialization",
+              "Multi-dimensional arrays",
+              "Array bounds",
+              "Array as function arguments"
+            ]
+          },
+          {
+            "name": "Strings",
+            "subtasks": [
+              "C-style strings",
+              "String class",
+              "String operations",
+              "String functions",
+              "String manipulation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Pointers & References",
+        "tasks": [
+          {
+            "name": "Pointers",
+            "subtasks": [
+              "Pointer declaration",
+              "Address operator",
+              "Dereferencing",
+              "Null pointers",
+              "Pointer arithmetic",
+              "Dynamic memory allocation"
+            ]
+          },
+          {
+            "name": "References",
+            "subtasks": [
+              "Reference declaration",
+              "References vs pointers",
+              "Reference as parameters",
+              "Const references"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Object-Oriented Programming",
+        "tasks": [
+          {
+            "name": "Classes and Objects",
+            "subtasks": [
+              "Class definition",
+              "Object creation",
+              "Access specifiers",
+              "Constructors and destructors",
+              "Member functions",
+              "Static members"
+            ]
+          },
+          {
+            "name": "Inheritance",
+            "subtasks": [
+              "Base and derived classes",
+              "Types of inheritance",
+              "Virtual functions",
+              "Abstract classes",
+              "Method overriding"
+            ]
+          },
+          {
+            "name": "Polymorphism",
+            "subtasks": [
+              "Function overloading",
+              "Operator overloading",
+              "Virtual functions",
+              "Runtime polymorphism"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Standard Template Library (STL)",
+        "tasks": [
+          {
+            "name": "Containers",
+            "subtasks": [
+              "Vector",
+              "List",
+              "Map",
+              "Set",
+              "Stack",
+              "Queue"
+            ]
+          },
+          {
+            "name": "Iterators",
+            "subtasks": [
+              "Iterator types",
+              "Iterator operations",
+              "Range-based loops"
+            ]
+          },
+          {
+            "name": "Algorithms",
+            "subtasks": [
+              "Sorting algorithms",
+              "Searching algorithms",
+              "Numeric algorithms",
+              "Lambda expressions"
+            ]
+          }
+        ]
+      }
+    ]
+  }
