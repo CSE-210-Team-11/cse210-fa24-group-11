@@ -1,5 +1,5 @@
 import Two from "../../node_modules/two.js/build/two.module.js";
-import { randFloat, randInt, reseed } from "./seededRandom.js";
+import { randFloat, randInt, reseed } from "../utils/seededRandom.js";
 
 // Make an instance of Two and place it on the page.
 const two = new Two({

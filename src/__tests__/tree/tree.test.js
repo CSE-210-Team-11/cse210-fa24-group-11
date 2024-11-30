@@ -3,7 +3,7 @@ import Two from "../../node_modules/two.js/build/two.module.js";
 import * as treeModule from "../../tree/tree.js";
 
 // Mock seededRandom.js
-jest.mock("../../tree/seededRandom.js", () => ({
+jest.mock("../../utils/seededRandom.js", () => ({
 	randInt: jest.fn((min, max) => {
 		if (typeof max === "undefined") return min || 0;
 		return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -219,5 +219,4 @@ describe("update Tests", () => {
 		expect(treeModule.branchCount).toBeGreaterThan(0);
 		expect(treeModule.branchCount).toBeLessThan(maxPossibleBranches);
 	});
-
 });
