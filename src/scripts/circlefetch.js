@@ -7,7 +7,7 @@ const taskColors = [
 ];
 
 function initializeTaskFlow() {
-    fetch('/src/data/tracks/beginfront.json')
+    fetch('../data/tracks/beginfront.json')
         .then(response => response.json())
         .then(data => {
             moduleData = data;
