@@ -33,4 +33,14 @@ module.exports = {
 
   // Setup files
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+
+  // Handle Two.js module
+  moduleNameMapper: {
+    'two.js': '<rootDir>/node_modules/two.js/build/two.module.js'
+  },
+
+  // Transform node_modules/two.js
+  transformIgnorePatterns: [
+    '/node_modules/(?!(two.js)/)'
+  ],
 };
