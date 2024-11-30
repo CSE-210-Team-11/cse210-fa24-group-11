@@ -6,16 +6,17 @@
 </head>
 <body>
     <div class="container">
-        <div class="flowchart" id="taskFlow"></div>
-        
+        <div class="flowchart" id="taskFlow">
+        </div>
         <div class="progress-view" id="progressView">
             <svg class="progress-rings" viewBox="0 0 200 200">
-                <!-- Circles will be dynamically added here -->
             </svg>
+            <canvas id="treeCanvas" width="500" height="500"></canvas>
         </div>
     </div>
     <script src="../scripts/circlevisualisation.js"></script>    
     <script src="../scripts/taskflow.js"></script>
+    <script src="../scripts/treeCanvas.js"></script>
 
 </body>
 </html>
