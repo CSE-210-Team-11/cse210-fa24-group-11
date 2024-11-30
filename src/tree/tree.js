@@ -16,11 +16,11 @@ const lengMin = 0.6;
 const lengMax = 0.7;
 const widthMin = 0.6;
 const widthMax = 0.8;
-const maxDepth = 7;
+const maxDepth = 6;
 const trunkMin = two.width / 50;
 const trunkMax = trunkMin + 20;
-const maxBranches = 300;
-const leafSize = 0.1; // Much larger leaf size
+// const maxBranches = 300;
+const leafSize = 6; // Much larger leaf size
 const leafVariation = 0.3; // Adds some size variation to leaves
 
 const lenTwig = 9;
@@ -39,7 +39,7 @@ let treeGrow = 0.1;
 
 export function makeLeaf(x, y, dir, size) {
 	const actualSize = size * (1 + randFloat(-leafVariation, leafVariation));
-	const leaf = two.makeCircle(x, y, 10);
+	const leaf = two.makeCircle(x, y, actualSize);
 	leaf.fill = "green";
 	leaf.noStroke();
 	leaf.rotation = dir + Math.PI / 2 + randFloat(-1, 1); // Add slight random rotation
@@ -104,7 +104,7 @@ export function makeBranches(x, y, dir, leng, width, depth) {
 
 	const lengFactor = depth < 2 ? 1 : randFloat(lengMin, lengMax);
 
-	if (depth < maxDepth && leng > lenTwig && width > widthTwig) {
+	if (depth < maxDepth) {
 		treeGrow -= 0.2;
 
 		makeBranches(
@@ -170,7 +170,6 @@ window.addEventListener("click", () => {
 	treeSeed = ((Math.random() * 10000) | 0).toString();
 	treeGrow = 0.1;
 	console.log("new seed: ", treeSeed);
-	console.log("num branches group: ", branches.children.length);
 });
 
 // Export branchCount to access it in tests
