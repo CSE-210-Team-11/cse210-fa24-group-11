@@ -1,8 +1,7 @@
-// projectLoader.js
-
 let moduleData = null;
 let currentModuleSubtasks = [];
 
+// Function to initialize and fetch task data
 function initializeTaskFlow() {
     fetch('../data/tracks/beginfront.json')
         .then(response => response.json())
@@ -14,6 +13,7 @@ function initializeTaskFlow() {
             trackTitle.textContent = data.name;
             taskFlow.appendChild(trackTitle);
 
+            // Render modules and tasks
             data.modules.forEach(module => {
                 const moduleDiv = document.createElement('div');
                 moduleDiv.innerHTML = `
@@ -40,28 +40,27 @@ function initializeTaskFlow() {
         });
 }
 
+// Function to show progress of a selected module
 function showProgress(moduleId) {
     document.querySelectorAll('.project-heading').forEach(btn => {
         btn.classList.remove('active');
     });
-
+    
     event.currentTarget.classList.add('active');
     
     const module = moduleData.modules.find(m => m.id === parseInt(moduleId));
     currentModuleSubtasks = module.tasks.reduce((acc, task) => {
         return acc.concat(task.subtasks);
     }, []);
-    
-    // Trigger custom event to update progress circles
-    const event = new CustomEvent('updateProgressCircles', {
-        detail: {
-            subtasks: currentModuleSubtasks
-        }
-    });
-    document.dispatchEvent(event);
 
-    const progressView = document.getElementById('progressView');
-    progressView.style.display = 'block';
+    // Notify circlevisualisation.js to update progress circles
+    updateCircleProgress();
 }
 
+// Function to update the progress circles (communicates with circlevisualisation.js)
+function updateCircleProgress() {
+    renderProgressCircles(currentModuleSubtasks); // Passing data to circlevisualisation.js
+}
+
+// Event listener to initialize task flow when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeTaskFlow);
