@@ -12,17 +12,35 @@
     </div>
     
     <div class="project-list">
-        <div class="streak-wrapper">
-            <button>
-                Create Project
-            </button>
+        <div class="project-list">
+            <div class="streak-wrapper">
+                <button id="create-project-btn">
+                    <strong>
+                        Create Project
+                    </strong>
+                </button>
+            </div>
+        </div>
+    
+        <!-- Project Creation Pop-up -->
+        <div id="popup-container" class="popup-container hidden">
+            <div class="popup">
+                <h2>Create New Project</h2>
+                <form id="project-form">
+                    <label for="project-name">Project Name:</label>
+                    <select id="project-name">
+                        <!-- Project options will be dynamically loaded -->
+                    </select>
+                    <button type="submit">Create Project</button>
+                    <button type="button" id="popup-close">Cancel</button>
+                </form>
+            </div>
         </div>
         <div class="streak-wrapper">
             <button id="streak-btn" class="streak-btn">Streak: 0</button>
             <div id="last-checkin" class="last-checkin">Last check-in: Never</div>
         </div>
     </div>
-
     <script src="../scripts/components/streak/streak.js"></script>
     <script src="https://kit.fontawesome.com/a94787b9e0.js" crossorigin="anonymous"></script>
     <script type="module" src="../scripts/projectLoader.js"></script>
