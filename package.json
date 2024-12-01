@@ -19,9 +19,11 @@
         "@biomejs/biome": "1.9.4",
         "babel-jest": "^29.7.0",
         "jest": "^29.7.0",
+        "jest-canvas-mock": "^2.5.2",
         "jest-environment-jsdom": "^29.7.0"
     },
     "dependencies": {
-        "madr": "^4.0.0"
+        "madr": "^4.0.0",
+        "two.js": "^0.8.14"
     }
 }
