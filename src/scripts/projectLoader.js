@@ -30,13 +30,17 @@ export async function loadProjects() {
             0
         );
 
+        // curFile = project.file;
+        // console.log(project);
+
         const projectCard = `
             <div class="project-card">
                 <span>${project.name}</span>
                 <div class="project-card-buttons-list">
                     <button class="project-card-button">Modules: ${completedModules}/${totalModules}</button>
                     <button class="project-card-button">Tasks: ${completedTasks}/${totalTasks}</button>
-                    <button class="project-card-button" onclick="window.location.href='task-page.html'">
+                    <button class="project-card-button" 
+                            onclick="window.location.href='task-page.html?fil=${encodeURIComponent(project.file)}'">
                         Start Project <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
@@ -99,6 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await fetch(`../data/tracks/${selectedFile}`);
                 const projectData = await response.json();
+                // insert selectedFile into projectData
+                projectData.file = selectedFile;
 
                 // Initialize "completed" field for each module in the project
                 projectData.modules.forEach((module) => {
@@ -110,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 storedProjects.push({
                     name: projectData.name,
                     modules: projectData.modules,
+                    file: projectData.file,
                 });
                 localStorage.setItem('projects', JSON.stringify(storedProjects));
 
