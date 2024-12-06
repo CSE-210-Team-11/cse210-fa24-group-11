@@ -49,7 +49,7 @@ function initializeTaskFlow(jsonFilePath = '../data/tracks/beginfront.json') {
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const fileParam = params.get('file') || 'beginfront'; // Default to 'beginfront' if 'file' is not provided
-    const filePath = `../data/tracks/${fileParam}.json`; // Build file path
+    const filePath = `../data/tracks/${fileParam}`; // Build file path
 
     initializeTaskFlow(filePath); // Initialize with the built file path
 });
