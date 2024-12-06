@@ -40,7 +40,7 @@ export async function loadProjects() {
                     <button class="project-card-button">Modules: ${completedModules}/${totalModules}</button>
                     <button class="project-card-button">Tasks: ${completedTasks}/${totalTasks}</button>
                     <button class="project-card-button" 
-                            onclick="window.location.href='task-page.html?fil=${encodeURIComponent(project.file)}'">
+                            onclick="window.location.href='task-page.html?file=${encodeURIComponent(project.file)}'">
                         Start Project <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
