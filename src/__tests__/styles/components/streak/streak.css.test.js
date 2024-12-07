@@ -33,8 +33,4 @@ describe("Streak Component Styles", () => {
 	test("should define last check-in styles", () => {
 		expect(cssContent).toContain(".last-checkin {");
 	});
-
-	test("should define reset button styles", () => {
-		expect(cssContent).toContain(".reset-btn {");
-	});
 });

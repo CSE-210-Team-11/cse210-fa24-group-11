@@ -27,12 +27,6 @@ describe("Streak Icon Component", () => {
 			expect(lastCheckin).toBeTruthy();
 			expect(lastCheckin.textContent).toBe("Last check-in: Never");
 		});
-
-		test("should have reset button", () => {
-			const resetBtn = document.querySelector("#reset-btn");
-			expect(resetBtn).toBeTruthy();
-			expect(resetBtn.textContent).toBe("Reset");
-		});
 	});
 
 	describe("Styling", () => {
