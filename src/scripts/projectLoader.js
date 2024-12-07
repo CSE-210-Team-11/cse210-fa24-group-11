@@ -110,13 +110,9 @@ function calculateTaskCompletion(project) {
     };
 }
 
-export function storeProject(projectData) {
+export function storeProject(project) {
     const storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
-    storedProjects.push({
-        name: projectData.name,
-        modules: projectData.modules,
-        file: projectData.file,
-    });
+    storedProjects.push(project);
     localStorage.setItem('projects', JSON.stringify(storedProjects));
 }
 
@@ -181,9 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // Save the project in local storage
-                storeProject(projectData);
-
-                // // Refactor this to use the storeProject function
                 // const storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
                 // storedProjects.push({
                 //     name: projectData.name,
@@ -191,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //     file: projectData.file,
                 // });
                 // localStorage.setItem('projects', JSON.stringify(storedProjects));
+                storeProject(projectData);
 
                 alert(`Project "${projectData.name}" created successfully!`);
 
