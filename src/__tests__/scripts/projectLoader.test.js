@@ -49,7 +49,10 @@ describe('ProjectLoader', () => {
                         name: 'Test Project',
                         modules: [{
                             name: 'Module 1',
-                            tasks: [{ name: 'Task 1', completed: false }]
+                            tasks: [{ 
+                                name: 'Task 1',
+                                subtasks: [false, false]
+                            }]
                         }]
                     })
                 });
@@ -70,36 +73,35 @@ describe('ProjectLoader', () => {
 
     describe('loadProjects', () => {
         it('should load projects from localStorage and render them', async () => {
-            // Setup test data
+            // Setup test data with updated structure
             const testProjects = [{
                 name: 'Test Project',
+                file: 'test.json',
                 modules: [
                     { 
-                        completed: true,
-                        tasks: [{ completed: true }]
+                        tasks: [{
+                            subtasks: [true, true] // All subtasks completed
+                        }]
                     },
                     {
-                        completed: false,
-                        tasks: [{ completed: false }]
+                        tasks: [{
+                            subtasks: [false, true] // Not all subtasks completed
+                        }]
                     }
                 ]
             }];
 
-            // Set test data in localStorage
             localStorageMock.setItem('projects', JSON.stringify(testProjects));
-
-            // Load projects
             await loadProjects();
 
-            // Check if projects are rendered
             const projectCards = document.querySelectorAll('.project-card');
             expect(projectCards.length).toBe(1);
 
-            // Check project card content
             const projectCard = projectCards[0];
             expect(projectCard.querySelector('span').textContent).toBe('Test Project');
             expect(projectCard.textContent).toContain('Modules: 1/2');
             expect(projectCard.textContent).toContain('Tasks: 1/2');
+            expect(projectCard.textContent).toContain('Subtasks: 3/4');
         });
 
         it('should handle empty localStorage', async () => {
@@ -110,6 +112,33 @@ describe('ProjectLoader', () => {
     });
 
     describe('Project Creation', () => {
+        beforeEach(() => {
+            // Update mock fetch for project data
+            global.fetch = jest.fn((url) => {
+                if (url === '../data/tracks/index.json') {
+                    return Promise.resolve({
+                        json: () => Promise.resolve({
+                            files: ['beginfront.json']
+                        })
+                    });
+                } else if (url === '../data/tracks/beginfront.json') {
+                    return Promise.resolve({
+                        json: () => Promise.resolve({
+                            name: 'Test Project',
+                            modules: [{
+                                name: 'Module 1',
+                                tasks: [{ 
+                                    name: 'Task 1',
+                                    subtasks: [false, false]
+                                }]
+                            }]
+                        })
+                    });
+                }
+                return Promise.reject(new Error('Unknown URL'));
+            });
+        });
+
         it('should handle project creation button click', async () => {
             const createButton = document.getElementById('create-project-btn');
             const popup = document.getElementById('popup-container');
@@ -241,27 +270,22 @@ describe('ProjectLoader', () => {
     });
 
     describe('Project Stats Calculation', () => {
-        it('should correctly calculate module and task completion stats', async () => {
+        it('should correctly calculate module, task, and subtask completion stats', async () => {
             const testProject = {
                 name: 'Test Project',
+                file: 'test.json',
                 modules: [
                     {
-                        completed: true,
                         tasks: [
-                            { completed: true },
-                            { completed: true }
+                            { subtasks: [true, true] },
+                            { subtasks: [true, true] }
                         ]
                     },
                     {
-                        completed: false,
                         tasks: [
-                            { completed: false },
-                            { completed: true }
+                            { subtasks: [false, true] },
+                            { subtasks: [true, true] }
                         ]
-                    },
-                    {
-                        completed: false,
-                        tasks: [] // Empty tasks array
                     }
                 ]
             };
@@ -270,16 +294,19 @@ describe('ProjectLoader', () => {
             await loadProjects();
 
             const projectCard = document.querySelector('.project-card');
-            expect(projectCard.textContent).toContain('Modules: 1/3');
+            expect(projectCard.textContent).toContain('Modules: 1/2');
             expect(projectCard.textContent).toContain('Tasks: 3/4');
+            expect(projectCard.textContent).toContain('Subtasks: 7/8');
         });
 
-        it('should handle modules without tasks property', async () => {
+        it('should handle modules without tasks or subtasks', async () => {
             const testProject = {
                 name: 'Test Project',
+                file: 'test.json',
                 modules: [
-                    { completed: true }, // No tasks property
-                    { completed: false, tasks: [{ completed: true }] }
+                    { tasks: [] }, // Empty tasks array
+                    { tasks: [{ subtasks: [] }] }, // Empty subtasks array
+                    { tasks: [{ subtasks: [true, false] }] } // Normal case
                 ]
             };
 
@@ -287,8 +314,9 @@ describe('ProjectLoader', () => {
             await loadProjects();
 
             const projectCard = document.querySelector('.project-card');
-            expect(projectCard.textContent).toContain('Modules: 1/2');
-            expect(projectCard.textContent).toContain('Tasks: 1/1');
+            expect(projectCard.textContent).toContain('Modules: 2/3');
+            expect(projectCard.textContent).toContain('Tasks: 1/2');
+            expect(projectCard.textContent).toContain('Subtasks: 1/2');
         });
     });
 });
