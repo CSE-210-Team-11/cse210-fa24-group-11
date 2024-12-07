@@ -32,7 +32,7 @@ let treeSeed = ((Math.random() * 10000) | 0).toString();
 let branchCount = 0;
 let leafCount = 0;
 let maxTrunk = 0;
-let treeGrow = 0.1;
+let growthFactor;
 // const done = 0;
 // const leaves = two.makeGroup();
 // const branches = two.makeGroup();
@@ -53,9 +53,8 @@ export function makeLeaf(x, y, dir, size) {
  * Draws the tree on the canvas
  * @param {string} seed - The seed for the random function
  */
-export function drawTree(seed) {
+export function drawTree(seed, growthFactor) {
 	branchCount = 0;
-	treeGrow += 0.02;
 	reseed(seed);
 	maxTrunk = randInt(trunkMin, trunkMax);
 	let square = two.makeRectangle(two.width / 2, two.height / 2, two.width, two.height)
@@ -94,28 +93,29 @@ export function renderBranch(x, y, endX, endY, width) {
  * @param {number} width - The width of the branch
  * @param {number} depth - The depth of the branch
  */
-export function makeBranches(x, y, dir, leng, width, depth) {
+export function makeBranches(x, y, dir, leng, width, depth, growth) {
 	branchCount++;
 
 	// Limit bounds of treeGrowVal to 0.1 and 1, square the result
-	const treeGrowVal = (treeGrow > 1 ? 1 : treeGrow < 0.1 ? 0.1 : treeGrow) ** 2;
+	const treeGrowVal = (growthFactor > 1 ? 1 : growthFactor < 0.1 ? 0.1 : growthFactor) ** 2;
 
 	const endX = x + Math.cos(dir) * leng * treeGrowVal;
 	const endY = y + Math.sin(dir) * leng * treeGrowVal;
 
-	renderBranch(x, y, endX, endY, width * treeGrowVal);
+	renderBranch(x, y, endX, endY, width);
 
 	const lengFactor = depth < 2 ? 1 : randFloat(lengMin, lengMax);
+	const widthFactor = randFloat(widthMin, widthMax) * treeGrowVal;
 
 	if (depth < maxDepth) {
-		treeGrow -= 0.2;
+		growthFactor -= 0.2;
 
 		makeBranches(
 			endX,
 			endY,
 			dir + randFloat(angMin, angMax),
 			leng * lengFactor,
-			width * randFloat(widthMin, widthMax),
+			width * widthFactor,
 			depth + 1,
 		);
 
@@ -124,7 +124,7 @@ export function makeBranches(x, y, dir, leng, width, depth) {
 			endY,
 			dir - randFloat(angMin, angMax),
 			leng * lengFactor,
-			width * randFloat(widthMin, widthMax),
+			width * widthFactor,
 			depth + 1,
 		);
 
@@ -134,12 +134,12 @@ export function makeBranches(x, y, dir, leng, width, depth) {
 				endY,
 				dir,
 				leng * lengFactor,
-				width * randFloat(widthMin, widthMax),
+				width * widthFactor,
 				depth + 1,
 			);
 		}
 
-		treeGrow += 0.2;
+		growthFactor += 0.2;
 	}
 
 	if (depth > maxDepth - 3) {
@@ -153,7 +153,7 @@ two.play();
 
 export function update() {
 	two.clear();
-	drawTree(treeSeed);
+	drawTree(treeSeed, growthFactor);
 }
 
 // Optional: Uncomment if you want to use this function
@@ -165,13 +165,8 @@ export function update() {
 window.addEventListener("click", () => {
 	console.log("click!");
 	console.log("branchCount: ", branchCount);
-	console.log(randInt());
-	console.log(randFloat());
-	console.log(randFloat());
-	console.log(randInt(2, 7));
-	console.log(randFloat(2.5, 7.9));
 	treeSeed = ((Math.random() * 10000) | 0).toString();
-	treeGrow = 0.1;
+	growthFactor = 0.1;
 	console.log("new seed: ", treeSeed);
 });
 
