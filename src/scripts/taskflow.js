@@ -9,44 +9,75 @@ function initializeTaskFlow(jsonFilePath = '../data/tracks/beginfront.json') {
             trackTitle.textContent = data.name;
             taskFlow.appendChild(trackTitle);
 
-            // Render modules and tasks
-            data.modules.forEach(module => {
-                const moduleDiv = document.createElement('div');
-                moduleDiv.innerHTML = `
-                    <button class="project-heading" onclick="showProgress('${module.id}')">
-                        Module ${module.id}: ${module.name}
-                    </button>
-                    ${module.tasks.map((task, taskIndex) => `
-                        <div class="task" id="task-${module.id}-${taskIndex}">
-                            <h3>
-                                ${task.name}
-                                <span class="task-status" style="display: none; color: green;">✅</span>
-                            </h3>
-                            <ul class="subtask-list">
-                                ${task.subtasks.map((subtask, subtaskIndex) => `
-                                    <li class="subtask">
-                                        <input type="checkbox" 
-                                            class="subtask-checkbox" 
-                                            id="subtask-${module.id}-${taskIndex}-${subtaskIndex}" 
-                                            ${getSubtaskState(module.id, taskIndex, subtaskIndex) ? 'checked' : ''} 
-                                        > 
-                                        <label for="subtask-${module.id}-${taskIndex}-${subtaskIndex}">${subtask}</label>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                    `).join('')}`;
-                taskFlow.appendChild(moduleDiv);
+            // Retrieve progress for this specific project from localStorage
+            const projectsProgress = JSON.parse(localStorage.getItem('projects') || '[]');
+            const projectProgress = projectsProgress.find(p => p.name === data.name);
 
-                // Add event listeners to update checkbox states in localStorage
+            // Render modules and tasks
+            data.modules.forEach((module, moduleIndex) => {
+                const moduleDiv = document.createElement('div');
+                
+                // Create module button
+                const moduleButton = document.createElement('button');
+                moduleButton.className = 'project-heading';
+                moduleButton.setAttribute('onclick', `showProgress('${module.id}')`);
+                moduleButton.textContent = `Module ${module.id}: ${module.name}`;
+                moduleDiv.appendChild(moduleButton);
+
+                // Render tasks
                 module.tasks.forEach((task, taskIndex) => {
-                    task.subtasks.forEach((_, subtaskIndex) => {
-                        const checkbox = document.getElementById(`subtask-${module.id}-${taskIndex}-${subtaskIndex}`);
+                    const taskDiv = document.createElement('div');
+                    taskDiv.className = 'task';
+                    taskDiv.id = `task-${module.id}-${taskIndex}`;
+
+                    // Task title
+                    const taskTitle = document.createElement('h3');
+                    taskTitle.innerHTML = `${task.name} <span class="task-status" style="display: none; color: green;">✅</span>`;
+                    taskDiv.appendChild(taskTitle);
+
+                    // Subtask list
+                    const subtaskList = document.createElement('ul');
+                    subtaskList.className = 'subtask-list';
+
+                    task.subtasks.forEach((subtask, subtaskIndex) => {
+                        const subtaskItem = document.createElement('li');
+                        subtaskItem.className = 'subtask';
+
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.className = 'subtask-checkbox';
+                        const checkboxId = `subtask-${module.id}-${taskIndex}-${subtaskIndex}`;
+                        checkbox.id = checkboxId;
+
+                        // Explicitly check if this subtask was previously completed in localStorage
+                        if (projectProgress) {
+                            const moduleProgress = projectProgress.modules[moduleIndex];
+                            if (moduleProgress && moduleProgress.tasks[taskIndex]) {
+                                const subtaskProgress = moduleProgress.tasks[taskIndex].subtasks[subtaskIndex];
+                                // Only set to checked if explicitly true in localStorage
+                                checkbox.checked = subtaskProgress === true;
+                            }
+                        }
+
+                        // Add event listener to save progress
                         checkbox.addEventListener('change', () => {
-                            saveSubtaskState(module.id, taskIndex, subtaskIndex, checkbox.checked);
+                            saveSubtaskProgress(data.name, module.id, moduleIndex, taskIndex, subtaskIndex, checkbox.checked);
                         });
+
+                        const label = document.createElement('label');
+                        label.htmlFor = checkboxId;
+                        label.textContent = subtask;
+
+                        subtaskItem.appendChild(checkbox);
+                        subtaskItem.appendChild(label);
+                        subtaskList.appendChild(subtaskItem);
                     });
+
+                    taskDiv.appendChild(subtaskList);
+                    moduleDiv.appendChild(taskDiv);
                 });
+
+                taskFlow.appendChild(moduleDiv);
             });
         })
         .catch(error => {
@@ -55,59 +86,57 @@ function initializeTaskFlow(jsonFilePath = '../data/tracks/beginfront.json') {
         });
 }
 
-// Get the state of a subtask from localStorage
-function getSubtaskState(moduleId, taskIndex, subtaskIndex) {
-    const projects = JSON.parse(localStorage.getItem('projects')) || [];
-    const project = projects.find(p => p.modules && p.modules.some(m => m.id === moduleId));
-    if (project) {
-        const module = project.modules.find(m => m.id === moduleId);
-        if (module) {
-            const task = module.tasks[taskIndex];
-            if (task) {
-                return task.subtasksState && task.subtasksState[subtaskIndex] || false;
-            }
-        }
+function saveSubtaskProgress(projectName, moduleId, moduleIndex, taskIndex, subtaskIndex, isChecked) {
+    // Retrieve existing projects progress
+    const projectsProgress = JSON.parse(localStorage.getItem('projects') || '[]');
+
+    // Find or create project progress
+    let projectProgress = projectsProgress.find(p => p.name === projectName);
+    if (!projectProgress) {
+        projectProgress = {
+            name: projectName,
+            modules: []
+        };
+        projectsProgress.push(projectProgress);
     }
-    return false; 
+
+    // Ensure modules array exists
+    if (!projectProgress.modules[moduleIndex]) {
+        projectProgress.modules[moduleIndex] = {
+            id: moduleId,
+            tasks: []
+        };
+    }
+
+    // Ensure tasks array exists
+    if (!projectProgress.modules[moduleIndex].tasks[taskIndex]) {
+        projectProgress.modules[moduleIndex].tasks[taskIndex] = {
+            subtasks: []
+        };
+    }
+
+    // Save subtask progress
+    projectProgress.modules[moduleIndex].tasks[taskIndex].subtasks[subtaskIndex] = isChecked;
+
+    // Save back to localStorage
+    localStorage.setItem('projects', JSON.stringify(projectsProgress));
 }
 
-// Save the state of a subtask to localStorage
-function saveSubtaskState(moduleId, taskIndex, subtaskIndex, checked) {
-    const projects = JSON.parse(localStorage.getItem('projects')) || [];
-    let project = projects.find(p => p.modules && p.modules.some(m => m.id === moduleId));
+// Optional: Function to check if all subtasks in a task are completed
+function updateTaskStatus(moduleId, taskIndex) {
+    const taskElement = document.getElementById(`task-${moduleId}-${taskIndex}`);
+    const checkboxes = taskElement.querySelectorAll('.subtask-checkbox');
+    const taskStatusSpan = taskElement.querySelector('.task-status');
 
-    if (!project) {
-        project = { name: 'Default Project', modules: [] };
-        projects.push(project);
-    }
-
-    let module = project.modules.find(m => m.id === moduleId);
-    if (!module) {
-        module = { id: moduleId, name: `Module ${moduleId}`, tasks: [] };
-        project.modules.push(module);
-    }
-
-    let task = module.tasks[taskIndex];
-    if (!task) {
-        task = { name: `Task ${taskIndex + 1}`, subtasks: [], subtasksState: [] };
-        module.tasks[taskIndex] = task;
-    }
-
-    if (!task.subtasksState) {
-        task.subtasksState = new Array(task.subtasks.length).fill(false);
-    }
-
-    task.subtasksState[subtaskIndex] = checked;
-
-    localStorage.setItem('projects', JSON.stringify(projects));
+    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    taskStatusSpan.style.display = allChecked ? 'inline' : 'none';
 }
-
 
 // Event listener to initialize task flow based on URL parameter
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
-    const fileParam = params.get('file') || 'beginfront'; 
-    const filePath = `../data/tracks/${fileParam}`; 
+    const fileParam = params.get('file') || 'beginfront';
+    const filePath = `../data/tracks/${fileParam}`;
 
-    initializeTaskFlow(filePath); 
+    initializeTaskFlow(filePath);
 });
