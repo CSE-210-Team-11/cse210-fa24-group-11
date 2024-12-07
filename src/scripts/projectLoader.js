@@ -22,7 +22,12 @@ export async function loadProjects() {
         const completedModules = calculateCompletedModules(project);
 
         // Calculate task and subtask completion
-        const { totalTasks, completedTasks } = calculateTaskCompletion(project);
+        const { 
+            totalTasks, 
+            completedTasks, 
+            totalSubtasks, 
+            completedSubtasks 
+        } = calculateTaskCompletion(project);
 
         const projectCard = `
             <div class="project-card">
@@ -30,6 +35,7 @@ export async function loadProjects() {
                 <div class="project-card-buttons-list">
                     <button class="project-card-button">Modules: ${completedModules}/${totalModules}</button>
                     <button class="project-card-button">Tasks: ${completedTasks}/${totalTasks}</button>
+                    <button class="project-card-button">Subtasks: ${completedSubtasks}/${totalSubtasks}</button>
                     <button class="project-card-button" 
                             onclick="window.location.href='task-page.html?file=${encodeURIComponent(project.file)}'">
                         Start Project <i class="fa-solid fa-arrow-right"></i>
@@ -62,8 +68,15 @@ function calculateCompletedModules(project) {
 function calculateTaskCompletion(project) {
     let totalTasks = 0;
     let completedTasks = 0;
+    let totalSubtasks = 0;
+    let completedSubtasks = 0;
 
-    if (!project.modules) return { totalTasks: 0, completedTasks: 0 };
+    if (!project.modules) return { 
+        totalTasks: 0, 
+        completedTasks: 0,
+        totalSubtasks: 0,
+        completedSubtasks: 0 
+    };
 
     project.modules.forEach(module => {
         if (!module.tasks) return;
@@ -72,14 +85,29 @@ function calculateTaskCompletion(project) {
             if (!task.subtasks) return;
 
             totalTasks++;
-            // A task is considered complete if ALL of its subtasks are completed
-            if (task.subtasks.every(subtask => subtask === true)) {
+            let taskCompleted = true;
+
+            task.subtasks.forEach(subtask => {
+                totalSubtasks++;
+                if (subtask === true) {
+                    completedSubtasks++;
+                } else {
+                    taskCompleted = false;
+                }
+            });
+
+            if (taskCompleted) {
                 completedTasks++;
             }
         });
     });
 
-    return { totalTasks, completedTasks };
+    return { 
+        totalTasks, 
+        completedTasks, 
+        totalSubtasks, 
+        completedSubtasks 
+    };
 }
 
 document.addEventListener('DOMContentLoaded', () => {
