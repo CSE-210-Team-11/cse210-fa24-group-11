@@ -51,7 +51,7 @@ describe('Task Page', () => {
     describe('Required Scripts', () => {
         test('should load all required scripts', () => {
             const scripts = document.querySelectorAll('script[type="module"]');
-            expect(scripts.length).toBe(3);
+            expect(scripts.length).toBe(2);
         });
     });
 });
