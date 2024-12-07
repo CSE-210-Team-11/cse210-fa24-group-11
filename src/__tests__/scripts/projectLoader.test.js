@@ -1,4 +1,4 @@
-import { loadProjects } from '../../scripts/projectLoader';
+import { loadProjects, storeProject } from '../../scripts/projectLoader';
 
 describe('ProjectLoader', () => {
     // Mock localStorage
@@ -183,6 +183,32 @@ describe('ProjectLoader', () => {
             // Check if popup is hidden
             expect(popup.classList.contains('hidden')).toBeTruthy();
         });
+
+        it('should handle popup close button click', async () => {
+            const closeButton = document.getElementById('popup-close');
+            const popup = document.getElementById('popup-container');
+            
+            popup.classList.remove('hidden');
+            closeButton.click();
+            
+            expect(popup.classList.contains('hidden')).toBeTruthy();
+        });
+
+        it('should successfully create a new project', async () => {
+            const form = document.getElementById('project-form');
+            const select = document.getElementById('project-name');
+            const popup = document.getElementById('popup-container');
+            
+            select.value = 'beginfront.json';
+            
+            const submitEvent = new Event('submit', { cancelable: true });
+            form.dispatchEvent(submitEvent);
+            
+            await new Promise(resolve => setTimeout(resolve, 0));
+            
+            expect(popup.classList.contains('hidden')).toBeTruthy();
+        });
+
     });
 
     describe('Error Handling', () => {
@@ -317,6 +343,37 @@ describe('ProjectLoader', () => {
             expect(projectCard.textContent).toContain('Modules: 2/3');
             expect(projectCard.textContent).toContain('Tasks: 1/2');
             expect(projectCard.textContent).toContain('Subtasks: 1/2');
+        });
+    });
+
+    describe('Project Storage', () => {
+        beforeEach(() => {
+            // Clear localStorage mock
+            localStorageMock.clear();
+        });
+
+        it('should store project in localStorage', () => {
+            // Setup
+            const project = {
+                name: 'Test Project',
+                file: 'test.json',
+                modules: []
+            };
+            
+            // Test empty localStorage
+            storeProject(project);
+            expect(localStorage.setItem).toHaveBeenCalledWith(
+                'projects', 
+                JSON.stringify([project])
+            );
+
+            // Test with existing projects
+            jest.spyOn(localStorage, 'getItem').mockReturnValue(JSON.stringify([project]));
+            storeProject(project);
+            expect(localStorage.setItem).toHaveBeenCalledWith(
+                'projects', 
+                JSON.stringify([project, project])
+            );
         });
     });
 });
