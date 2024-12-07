@@ -1,329 +1,329 @@
 {
-  "name": "Front-End Development Learning Path",
-  "modules": [
-    {
-      "id": 1,
-      "name": "Web Development Fundamentals",
-      "tasks": [
-        {
-          "name": "Development Environment Setup",
-          "subtasks": [
-            "Code editor setup (VS Code)",
-            "Browser developer tools",
-            "Basic command line usage",
-            "Version control with Git",
-            "GitHub basics",
-            "Live server setup"
-          ]
-        },
-        {
-          "name": "Web Fundamentals",
-          "subtasks": [
-            "How the internet works",
-            "Client-server architecture",
-            "Web browsers",
-            "HTTP basics",
-            "Domain names and hosting",
-            "Web standards and W3C"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "HTML",
-      "tasks": [
-        {
-          "name": "HTML Basics",
-          "subtasks": [
-            "HTML document structure",
-            "HTML5 semantic elements",
-            "Text elements and formatting",
-            "Lists (ordered and unordered)",
-            "Links and navigation",
-            "Images and multimedia",
-            "Tables",
-            "Forms and input elements"
-          ]
-        },
-        {
-          "name": "HTML Advanced",
-          "subtasks": [
-            "Meta tags",
-            "SEO basics",
-            "Accessibility (ARIA)",
-            "HTML validation",
-            "Responsive images",
-            "iframe and embeds",
-            "SVG basics",
-            "HTML best practices"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "CSS",
-      "tasks": [
-        {
-          "name": "CSS Fundamentals",
-          "subtasks": [
-            "CSS selectors",
-            "Box model",
-            "Colors and typography",
-            "Display properties",
-            "Position properties",
-            "Margin and padding",
-            "Border and background",
-            "Units (px, em, rem, %)"
-          ]
-        },
-        {
-          "name": "CSS Layout",
-          "subtasks": [
-            "Flexbox",
-            "CSS Grid",
-            "Responsive design",
-            "Media queries",
-            "Float and clear",
-            "CSS positioning",
-            "Layout patterns",
-            "Mobile-first approach"
-          ]
-        },
-        {
-          "name": "CSS Advanced",
-          "subtasks": [
-            "CSS animations",
-            "Transitions",
-            "Transforms",
-            "Pseudo-classes",
-            "Pseudo-elements",
-            "CSS variables",
-            "CSS preprocessors (Sass)",
-            "CSS frameworks (Bootstrap/Tailwind)"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "JavaScript Basics",
-      "tasks": [
-        {
-          "name": "JavaScript Fundamentals",
-          "subtasks": [
-            "Variables and data types",
-            "Operators and control flow",
-            "Functions and scope",
-            "Arrays and objects",
-            "Loops and iterations",
-            "Error handling",
-            "ES6+ features",
-            "JavaScript best practices"
-          ]
-        },
-        {
-          "name": "DOM Manipulation",
-          "subtasks": [
-            "DOM tree structure",
-            "Selecting elements",
-            "Modifying elements",
-            "Event handling",
-            "Event bubbling",
-            "Creating elements",
-            "Form validation",
-            "Local storage"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "JavaScript Advanced",
-      "tasks": [
-        {
-          "name": "Advanced Concepts",
-          "subtasks": [
-            "Closures",
-            "Promises",
-            "Async/Await",
-            "Fetch API",
-            "JSON handling",
-            "Object-oriented JS",
-            "Modules",
-            "Regular expressions"
-          ]
-        },
-        {
-          "name": "Browser APIs",
-          "subtasks": [
-            "LocalStorage/SessionStorage",
-            "Geolocation",
-            "Canvas",
-            "Web Workers",
-            "Service Workers",
-            "WebSocket",
-            "History API",
-            "Intersection Observer"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Frontend Tools",
-      "tasks": [
-        {
-          "name": "Build Tools",
-          "subtasks": [
-            "Package managers (npm/yarn)",
-            "Module bundlers (Webpack)",
-            "Task runners",
-            "Babel",
-            "ESLint",
-            "Prettier",
-            "Development servers",
-            "Build process"
-          ]
-        },
-        {
-          "name": "Version Control",
-          "subtasks": [
-            "Git basics",
-            "Branching and merging",
-            "Remote repositories",
-            "Pull requests",
-            "Collaboration workflows",
-            "Git best practices",
-            "GitHub/GitLab usage"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "name": "Frontend Frameworks",
-      "tasks": [
-        {
-          "name": "React Basics",
-          "subtasks": [
-            "Components",
-            "JSX",
-            "Props",
-            "State",
-            "Lifecycle methods",
-            "Hooks",
-            "Event handling",
-            "Conditional rendering"
-          ]
-        },
-        {
-          "name": "State Management",
-          "subtasks": [
-            "Context API",
-            "Redux basics",
-            "State organization",
-            "Actions and reducers",
-            "Middleware",
-            "State persistence",
-            "Performance optimization"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "name": "API Integration",
-      "tasks": [
-        {
-          "name": "REST APIs",
-          "subtasks": [
-            "HTTP methods",
-            "API endpoints",
-            "Request/Response cycle",
-            "Data fetching",
-            "Error handling",
-            "Authentication",
-            "API security",
-            "CORS"
-          ]
-        },
-        {
-          "name": "Data Handling",
-          "subtasks": [
-            "JSON parsing",
-            "API integration",
-            "Data caching",
-            "Loading states",
-            "Error states",
-            "Pagination",
-            "Data transformation",
-            "Real-time updates"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "name": "Testing",
-      "tasks": [
-        {
-          "name": "Testing Basics",
-          "subtasks": [
-            "Unit testing",
-            "Integration testing",
-            "Test frameworks (Jest)",
-            "React Testing Library",
-            "Test driven development",
-            "Mocking",
-            "Code coverage",
-            "Debug testing"
-          ]
-        },
-        {
-          "name": "Performance Testing",
-          "subtasks": [
-            "Lighthouse",
-            "Performance metrics",
-            "Load testing",
-            "Browser dev tools",
-            "Performance optimization",
-            "Bundle analysis",
-            "Memory leaks"
-          ]
-        }
-      ]
-    },
-    {
-      "id": 10,
-      "name": "Deployment & Performance",
-      "tasks": [
-        {
-          "name": "Deployment",
-          "subtasks": [
-            "Build optimization",
-            "Hosting platforms",
-            "Continuous Integration",
-            "Continuous Deployment",
-            "Environment variables",
-            "SSL certificates",
-            "Domain setup"
-          ]
-        },
-        {
-          "name": "Performance Optimization",
-          "subtasks": [
-            "Code splitting",
-            "Lazy loading",
-            "Image optimization",
-            "Caching strategies",
-            "Bundle optimization",
-            "Resource preloading",
-            "Performance monitoring"
-          ]
-        }
-      ]
-    }
-  ]
+	"name": "Front-End Development Learning Path",
+	"modules": [
+		{
+			"id": 1,
+			"name": "Web Development Fundamentals",
+			"tasks": [
+				{
+					"name": "Development Environment Setup",
+					"subtasks": [
+						"Code editor setup (VS Code)",
+						"Browser developer tools",
+						"Basic command line usage",
+						"Version control with Git",
+						"GitHub basics",
+						"Live server setup"
+					]
+				},
+				{
+					"name": "Web Fundamentals",
+					"subtasks": [
+						"How the internet works",
+						"Client-server architecture",
+						"Web browsers",
+						"HTTP basics",
+						"Domain names and hosting",
+						"Web standards and W3C"
+					]
+				}
+			]
+		},
+		{
+			"id": 2,
+			"name": "HTML",
+			"tasks": [
+				{
+					"name": "HTML Basics",
+					"subtasks": [
+						"HTML document structure",
+						"HTML5 semantic elements",
+						"Text elements and formatting",
+						"Lists (ordered and unordered)",
+						"Links and navigation",
+						"Images and multimedia",
+						"Tables",
+						"Forms and input elements"
+					]
+				},
+				{
+					"name": "HTML Advanced",
+					"subtasks": [
+						"Meta tags",
+						"SEO basics",
+						"Accessibility (ARIA)",
+						"HTML validation",
+						"Responsive images",
+						"iframe and embeds",
+						"SVG basics",
+						"HTML best practices"
+					]
+				}
+			]
+		},
+		{
+			"id": 3,
+			"name": "CSS",
+			"tasks": [
+				{
+					"name": "CSS Fundamentals",
+					"subtasks": [
+						"CSS selectors",
+						"Box model",
+						"Colors and typography",
+						"Display properties",
+						"Position properties",
+						"Margin and padding",
+						"Border and background",
+						"Units (px, em, rem, %)"
+					]
+				},
+				{
+					"name": "CSS Layout",
+					"subtasks": [
+						"Flexbox",
+						"CSS Grid",
+						"Responsive design",
+						"Media queries",
+						"Float and clear",
+						"CSS positioning",
+						"Layout patterns",
+						"Mobile-first approach"
+					]
+				},
+				{
+					"name": "CSS Advanced",
+					"subtasks": [
+						"CSS animations",
+						"Transitions",
+						"Transforms",
+						"Pseudo-classes",
+						"Pseudo-elements",
+						"CSS variables",
+						"CSS preprocessors (Sass)",
+						"CSS frameworks (Bootstrap/Tailwind)"
+					]
+				}
+			]
+		},
+		{
+			"id": 4,
+			"name": "JavaScript Basics",
+			"tasks": [
+				{
+					"name": "JavaScript Fundamentals",
+					"subtasks": [
+						"Variables and data types",
+						"Operators and control flow",
+						"Functions and scope",
+						"Arrays and objects",
+						"Loops and iterations",
+						"Error handling",
+						"ES6+ features",
+						"JavaScript best practices"
+					]
+				},
+				{
+					"name": "DOM Manipulation",
+					"subtasks": [
+						"DOM tree structure",
+						"Selecting elements",
+						"Modifying elements",
+						"Event handling",
+						"Event bubbling",
+						"Creating elements",
+						"Form validation",
+						"Local storage"
+					]
+				}
+			]
+		},
+		{
+			"id": 5,
+			"name": "JavaScript Advanced",
+			"tasks": [
+				{
+					"name": "Advanced Concepts",
+					"subtasks": [
+						"Closures",
+						"Promises",
+						"Async/Await",
+						"Fetch API",
+						"JSON handling",
+						"Object-oriented JS",
+						"Modules",
+						"Regular expressions"
+					]
+				},
+				{
+					"name": "Browser APIs",
+					"subtasks": [
+						"LocalStorage/SessionStorage",
+						"Geolocation",
+						"Canvas",
+						"Web Workers",
+						"Service Workers",
+						"WebSocket",
+						"History API",
+						"Intersection Observer"
+					]
+				}
+			]
+		},
+		{
+			"id": 6,
+			"name": "Frontend Tools",
+			"tasks": [
+				{
+					"name": "Build Tools",
+					"subtasks": [
+						"Package managers (npm/yarn)",
+						"Module bundlers (Webpack)",
+						"Task runners",
+						"Babel",
+						"ESLint",
+						"Prettier",
+						"Development servers",
+						"Build process"
+					]
+				},
+				{
+					"name": "Version Control",
+					"subtasks": [
+						"Git basics",
+						"Branching and merging",
+						"Remote repositories",
+						"Pull requests",
+						"Collaboration workflows",
+						"Git best practices",
+						"GitHub/GitLab usage"
+					]
+				}
+			]
+		},
+		{
+			"id": 7,
+			"name": "Frontend Frameworks",
+			"tasks": [
+				{
+					"name": "React Basics",
+					"subtasks": [
+						"Components",
+						"JSX",
+						"Props",
+						"State",
+						"Lifecycle methods",
+						"Hooks",
+						"Event handling",
+						"Conditional rendering"
+					]
+				},
+				{
+					"name": "State Management",
+					"subtasks": [
+						"Context API",
+						"Redux basics",
+						"State organization",
+						"Actions and reducers",
+						"Middleware",
+						"State persistence",
+						"Performance optimization"
+					]
+				}
+			]
+		},
+		{
+			"id": 8,
+			"name": "API Integration",
+			"tasks": [
+				{
+					"name": "REST APIs",
+					"subtasks": [
+						"HTTP methods",
+						"API endpoints",
+						"Request/Response cycle",
+						"Data fetching",
+						"Error handling",
+						"Authentication",
+						"API security",
+						"CORS"
+					]
+				},
+				{
+					"name": "Data Handling",
+					"subtasks": [
+						"JSON parsing",
+						"API integration",
+						"Data caching",
+						"Loading states",
+						"Error states",
+						"Pagination",
+						"Data transformation",
+						"Real-time updates"
+					]
+				}
+			]
+		},
+		{
+			"id": 9,
+			"name": "Testing",
+			"tasks": [
+				{
+					"name": "Testing Basics",
+					"subtasks": [
+						"Unit testing",
+						"Integration testing",
+						"Test frameworks (Jest)",
+						"React Testing Library",
+						"Test driven development",
+						"Mocking",
+						"Code coverage",
+						"Debug testing"
+					]
+				},
+				{
+					"name": "Performance Testing",
+					"subtasks": [
+						"Lighthouse",
+						"Performance metrics",
+						"Load testing",
+						"Browser dev tools",
+						"Performance optimization",
+						"Bundle analysis",
+						"Memory leaks"
+					]
+				}
+			]
+		},
+		{
+			"id": 10,
+			"name": "Deployment & Performance",
+			"tasks": [
+				{
+					"name": "Deployment",
+					"subtasks": [
+						"Build optimization",
+						"Hosting platforms",
+						"Continuous Integration",
+						"Continuous Deployment",
+						"Environment variables",
+						"SSL certificates",
+						"Domain setup"
+					]
+				},
+				{
+					"name": "Performance Optimization",
+					"subtasks": [
+						"Code splitting",
+						"Lazy loading",
+						"Image optimization",
+						"Caching strategies",
+						"Bundle optimization",
+						"Resource preloading",
+						"Performance monitoring"
+					]
+				}
+			]
+		}
+	]
 }

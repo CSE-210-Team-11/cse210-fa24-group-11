@@ -10,6 +10,7 @@
         "start": "npx http-server -o src/index.html",
         "format": "npx @biomejs/biome format --write src",
         "lint": "npx @biomejs/biome lint src --skip=style/noParameterAssign --skip=suspicious/noAssignInExpressions",
+        "fix": "npx @biomejs/biome lint src --write --skip=style/noParameterAssign --skip=suspicious/noAssignInExpressions",
         "unsafe-fix": "npx @biomejs/biome lint --write --unsafe src",
         "check": "npx @biomejs/biome check --write src"
     },
