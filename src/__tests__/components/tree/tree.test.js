@@ -1,8 +1,8 @@
 import { jest } from "@jest/globals";
-import * as treeModule from "../../tree/tree.js";
+import * as treeModule from "../../../scripts/components/tree/tree.js";
 
 // Mock seededRandom.js
-jest.mock("../../utils/seededRandom.js", () => ({
+jest.mock("../../../utils/seededRandom.js", () => ({
 	randInt: jest.fn((min, max) => {
 		if (typeof max === "undefined") return min || 0;
 		return Math.floor(Math.random() * (max - min + 1)) + min;
