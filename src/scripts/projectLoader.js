@@ -110,6 +110,16 @@ function calculateTaskCompletion(project) {
     };
 }
 
+export function storeProject(projectData) {
+    const storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
+    storedProjects.push({
+        name: projectData.name,
+        modules: projectData.modules,
+        file: projectData.file,
+    });
+    localStorage.setItem('projects', JSON.stringify(storedProjects));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const createProjectButton = document.getElementById('create-project-btn');
     const popupContainer = document.getElementById('popup-container');
@@ -171,13 +181,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // Save the project in local storage
-                const storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
-                storedProjects.push({
-                    name: projectData.name,
-                    modules: projectData.modules,
-                    file: projectData.file,
-                });
-                localStorage.setItem('projects', JSON.stringify(storedProjects));
+                storeProject(projectData);
+
+                // // Refactor this to use the storeProject function
+                // const storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
+                // storedProjects.push({
+                //     name: projectData.name,
+                //     modules: projectData.modules,
+                //     file: projectData.file,
+                // });
+                // localStorage.setItem('projects', JSON.stringify(storedProjects));
 
                 alert(`Project "${projectData.name}" created successfully!`);
 
