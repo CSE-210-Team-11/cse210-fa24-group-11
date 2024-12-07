@@ -4,7 +4,7 @@ const lastCheckinEl = document.getElementById('last-checkin');
 const STREAK_KEY = 'streak';
 const LAST_CHECKIN_KEY = 'lastCheckin';
 
-let streak = parseInt(localStorage.getItem(STREAK_KEY)) || 0;
+let streak = Number.parseInt(localStorage.getItem(STREAK_KEY)) || 0;
 let lastCheckin = localStorage.getItem(LAST_CHECKIN_KEY);
 
 function updateUI() {
