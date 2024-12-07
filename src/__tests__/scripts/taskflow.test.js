@@ -4,13 +4,16 @@ jest.mock('../../scripts/circlevisualisation.js', () => ({
 }));
 
 import { renderProgressCircles } from '../../scripts/circlevisualisation.js'
-import { initializeTaskFlow, showProgress, checkSubtaskStatus, updateCircleProgress } from '../../scripts/taskflow.js';
+import { initializeTaskFlow, saveSubtaskProgress, updateTaskStatus } from '../../scripts/taskflow.js';
 
 describe('TaskFlow', () => {
-    // Setup mock DOM elements before each test
+    // Setup mock DOM elements and localStorage before each test
     beforeEach(() => {
         // Clear mock calls
         renderProgressCircles.mockClear();
+        
+        // Clear localStorage
+        localStorage.clear();
         
         document.body.innerHTML = `
             <div id="taskFlow"></div>
@@ -38,22 +41,32 @@ describe('TaskFlow', () => {
     afterEach(() => {
         jest.clearAllMocks();
         document.body.innerHTML = '';
-        global.event = undefined;
+        localStorage.clear();
     });
 
     describe('initializeTaskFlow', () => {
-        it('should fetch and render task data', async () => {
+        it('should fetch and render task data with localStorage state', async () => {
+            // Set up initial localStorage state
+            const initialProgress = [{
+                name: "Test Track",
+                modules: [{
+                    id: 1,
+                    tasks: [{
+                        subtasks: [true, false]
+                    }]
+                }]
+            }];
+            localStorage.setItem('projects', JSON.stringify(initialProgress));
+
             await initializeTaskFlow();
             await new Promise(resolve => setTimeout(resolve, 0));
             
             expect(fetch).toHaveBeenCalledWith('../data/tracks/beginfront.json');
-            const h1 = document.querySelector('h1');
-            expect(h1).not.toBeNull();
-            expect(h1.textContent).toBe('Test Track');
             
-            const projectHeading = document.querySelector('.project-heading');
-            expect(projectHeading).not.toBeNull();
-            expect(projectHeading.textContent.trim()).toContain('Module 1: Test Module');
+            // Check if checkbox states match localStorage
+            const checkboxes = document.querySelectorAll('.subtask-checkbox');
+            expect(checkboxes[0].checked).toBe(true);
+            expect(checkboxes[1].checked).toBe(false);
         });
 
         it('should handle fetch errors gracefully', async () => {
@@ -71,77 +84,55 @@ describe('TaskFlow', () => {
         });
     });
 
-    describe('showProgress', () => {
-        it('should update active module and trigger circle progress update', async () => {
-            await initializeTaskFlow();
-            await new Promise(resolve => setTimeout(resolve, 0));
+    describe('saveSubtaskProgress', () => {
+        it('should save subtask progress to localStorage', () => {
+            saveSubtaskProgress('Test Track', 1, 0, 0, 0, true);
+            
+            const stored = JSON.parse(localStorage.getItem('projects'));
+            expect(stored).toHaveLength(1);
+            expect(stored[0].modules[0].tasks[0].subtasks[0]).toBe(true);
+        });
 
-            const projectHeading = document.querySelector('.project-heading');
-            expect(projectHeading).not.toBeNull();
-
-            global.event = {
-                currentTarget: projectHeading
-            };
-
-            showProgress('1');
-
-            expect(projectHeading.classList.contains('active')).toBeTruthy();
-            expect(renderProgressCircles).toHaveBeenCalled();
+        it('should update existing progress in localStorage', () => {
+            // Set initial state
+            saveSubtaskProgress('Test Track', 1, 0, 0, 0, true);
+            
+            // Update state
+            saveSubtaskProgress('Test Track', 1, 0, 0, 0, false);
+            
+            const stored = JSON.parse(localStorage.getItem('projects'));
+            expect(stored[0].modules[0].tasks[0].subtasks[0]).toBe(false);
         });
     });
 
-    describe('checkSubtaskStatus', () => {
-        it('should update task status when all subtasks are checked', async () => {
+    describe('updateTaskStatus', () => {
+        it('should show completion status when all subtasks are checked', async () => {
             await initializeTaskFlow();
             await new Promise(resolve => setTimeout(resolve, 0));
 
             const checkboxes = document.querySelectorAll('.subtask-checkbox');
-            expect(checkboxes.length).toBeGreaterThan(0);
-
             checkboxes.forEach(checkbox => {
                 checkbox.checked = true;
             });
 
-            checkSubtaskStatus(1, 0, 0);
+            updateTaskStatus(1, 0);
 
             const taskStatus = document.querySelector('.task-status');
-            expect(taskStatus).not.toBeNull();
             expect(taskStatus.style.display).toBe('inline');
         });
 
-        it('should hide task status when not all subtasks are checked', async () => {
+        it('should hide completion status when not all subtasks are checked', async () => {
             await initializeTaskFlow();
             await new Promise(resolve => setTimeout(resolve, 0));
 
             const checkboxes = Array.from(document.querySelectorAll('.subtask-checkbox'));
-            expect(checkboxes.length).toBeGreaterThan(0);
+            checkboxes[0].checked = true;
+            checkboxes[1].checked = false;
 
-            if (checkboxes[0]) checkboxes[0].checked = true;
-            if (checkboxes[1]) checkboxes[1].checked = false;
-
-            checkSubtaskStatus(1, 0, 0);
+            updateTaskStatus(1, 0);
 
             const taskStatus = document.querySelector('.task-status');
-            expect(taskStatus).not.toBeNull();
             expect(taskStatus.style.display).toBe('none');
-        });
-    });
-
-    describe('updateCircleProgress', () => {
-        it('should call renderProgressCircles with current module subtasks', async () => {
-            await initializeTaskFlow();
-            await new Promise(resolve => setTimeout(resolve, 0));
-
-            global.event = {
-                currentTarget: document.querySelector('.project-heading')
-            };
-            
-            showProgress('1');
-            updateCircleProgress();
-
-            expect(renderProgressCircles).toHaveBeenCalledWith(
-                expect.arrayContaining(['Subtask 1', 'Subtask 2'])
-            );
         });
     });
 });
