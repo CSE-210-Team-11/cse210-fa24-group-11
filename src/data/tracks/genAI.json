@@ -1,305 +1,305 @@
 {
-    "name": "Generative AI Learning Path",
-    "modules": [
-      {
-        "id": 1,
-        "name": "AI and ML Fundamentals",
-        "tasks": [
-          {
-            "name": "Mathematical Foundations",
-            "subtasks": [
-              "Linear algebra basics",
-              "Probability and statistics",
-              "Calculus fundamentals",
-              "Optimization theory",
-              "Information theory",
-              "Matrix operations",
-              "Vector spaces"
-            ]
-          },
-          {
-            "name": "Machine Learning Basics",
-            "subtasks": [
-              "Supervised learning",
-              "Unsupervised learning",
-              "Neural network basics",
-              "Deep learning fundamentals",
-              "Training and testing",
-              "Model evaluation metrics",
-              "Overfitting and underfitting"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "name": "Neural Networks Deep Dive",
-        "tasks": [
-          {
-            "name": "Architecture Fundamentals",
-            "subtasks": [
-              "Neurons and layers",
-              "Activation functions",
-              "Forward propagation",
-              "Backpropagation",
-              "Loss functions",
-              "Gradient descent",
-              "Optimization algorithms"
-            ]
-          },
-          {
-            "name": "Advanced Architectures",
-            "subtasks": [
-              "Convolutional Neural Networks (CNN)",
-              "Recurrent Neural Networks (RNN)",
-              "Long Short-Term Memory (LSTM)",
-              "Transformers",
-              "Attention mechanisms",
-              "Encoder-decoder architectures",
-              "Transfer learning"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Generative Models",
-        "tasks": [
-          {
-            "name": "Basic Generative Models",
-            "subtasks": [
-              "Autoencoders",
-              "Variational Autoencoders (VAE)",
-              "Generative Adversarial Networks (GAN)",
-              "Flow-based models",
-              "Energy-based models",
-              "Probabilistic models",
-              "Latent space understanding"
-            ]
-          },
-          {
-            "name": "Advanced Generative Architectures",
-            "subtasks": [
-              "StyleGAN",
-              "Diffusion models",
-              "Transformer-based generators",
-              "Conditional generation",
-              "Cross-domain generation",
-              "Hybrid architectures",
-              "Progressive growing"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "name": "Natural Language Processing",
-        "tasks": [
-          {
-            "name": "NLP Fundamentals",
-            "subtasks": [
-              "Text preprocessing",
-              "Tokenization",
-              "Word embeddings",
-              "Language modeling",
-              "Sequence-to-sequence models",
-              "Attention in NLP",
-              "BERT and transformers"
-            ]
-          },
-          {
-            "name": "Text Generation",
-            "subtasks": [
-              "Large Language Models (LLMs)",
-              "GPT architecture",
-              "Prompt engineering",
-              "Few-shot learning",
-              "Fine-tuning techniques",
-              "Temperature and sampling",
-              "Evaluation metrics"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 5,
-        "name": "Computer Vision Generation",
-        "tasks": [
-          {
-            "name": "Image Generation",
-            "subtasks": [
-              "GANs for images",
-              "Diffusion models (DALL-E, Stable Diffusion)",
-              "Style transfer",
-              "Image-to-image translation",
-              "Super-resolution",
-              "Inpainting",
-              "Visual prompting"
-            ]
-          },
-          {
-            "name": "Video Generation",
-            "subtasks": [
-              "Video frame prediction",
-              "Motion synthesis",
-              "Text-to-video models",
-              "Video style transfer",
-              "Temporal consistency",
-              "3D-aware generation",
-              "Animation generation"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 6,
-        "name": "Audio Generation",
-        "tasks": [
-          {
-            "name": "Speech Synthesis",
-            "subtasks": [
-              "Text-to-speech (TTS)",
-              "Voice cloning",
-              "Speech enhancement",
-              "Prosody control",
-              "Multilingual synthesis",
-              "Real-time generation",
-              "Voice conversion"
-            ]
-          },
-          {
-            "name": "Music Generation",
-            "subtasks": [
-              "MIDI generation",
-              "Audio waveform synthesis",
-              "Style transfer in music",
-              "Music transcription",
-              "Accompaniment generation",
-              "Drum pattern generation",
-              "Multi-instrumental generation"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 7,
-        "name": "Multimodal Generation",
-        "tasks": [
-          {
-            "name": "Cross-Modal Generation",
-            "subtasks": [
-              "Text-to-image generation",
-              "Image-to-text generation",
-              "Audio-to-visual generation",
-              "Visual-to-audio generation",
-              "Cross-modal embeddings",
-              "Joint representation learning",
-              "Multimodal transformers"
-            ]
-          },
-          {
-            "name": "Interactive Generation",
-            "subtasks": [
-              "User-guided generation",
-              "Interactive editing",
-              "Real-time feedback",
-              "Control mechanisms",
-              "Attribute manipulation",
-              "Style control",
-              "Layout control"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 8,
-        "name": "Practical Implementation",
-        "tasks": [
-          {
-            "name": "Development Tools",
-            "subtasks": [
-              "PyTorch fundamentals",
-              "TensorFlow basics",
-              "GPU programming",
-              "Model deployment",
-              "Version control for ML",
-              "Docker containers",
-              "Cloud platforms (AWS, GCP)"
-            ]
-          },
-          {
-            "name": "Model Optimization",
-            "subtasks": [
-              "Model compression",
-              "Quantization",
-              "Knowledge distillation",
-              "Memory optimization",
-              "Inference optimization",
-              "Distributed training",
-              "Pipeline optimization"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 9,
-        "name": "Ethical Considerations",
-        "tasks": [
-          {
-            "name": "AI Ethics",
-            "subtasks": [
-              "Bias in generative models",
-              "Privacy concerns",
-              "Copyright issues",
-              "Deepfake detection",
-              "Content filtering",
-              "Ethical guidelines",
-              "Responsible AI practices"
-            ]
-          },
-          {
-            "name": "Safety Measures",
-            "subtasks": [
-              "Content moderation",
-              "Output verification",
-              "Safety alignment",
-              "Model robustness",
-              "Security measures",
-              "Abuse prevention",
-              "User guidelines"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 10,
-        "name": "Advanced Applications",
-        "tasks": [
-          {
-            "name": "Industry Applications",
-            "subtasks": [
-              "Creative industries",
-              "Healthcare applications",
-              "Scientific research",
-              "Content creation",
-              "Virtual environments",
-              "Product design",
-              "Entertainment"
-            ]
-          },
-          {
-            "name": "Research Directions",
-            "subtasks": [
-              "Latest architectures",
-              "Emerging techniques",
-              "Research papers",
-              "Benchmarking",
-              "Model evaluation",
-              "Future trends",
-              "Open challenges"
-            ]
-          }
-        ]
-      }
-    ]
-  }
+	"name": "Generative AI Learning Path",
+	"modules": [
+		{
+			"id": 1,
+			"name": "AI and ML Fundamentals",
+			"tasks": [
+				{
+					"name": "Mathematical Foundations",
+					"subtasks": [
+						"Linear algebra basics",
+						"Probability and statistics",
+						"Calculus fundamentals",
+						"Optimization theory",
+						"Information theory",
+						"Matrix operations",
+						"Vector spaces"
+					]
+				},
+				{
+					"name": "Machine Learning Basics",
+					"subtasks": [
+						"Supervised learning",
+						"Unsupervised learning",
+						"Neural network basics",
+						"Deep learning fundamentals",
+						"Training and testing",
+						"Model evaluation metrics",
+						"Overfitting and underfitting"
+					]
+				}
+			]
+		},
+		{
+			"id": 2,
+			"name": "Neural Networks Deep Dive",
+			"tasks": [
+				{
+					"name": "Architecture Fundamentals",
+					"subtasks": [
+						"Neurons and layers",
+						"Activation functions",
+						"Forward propagation",
+						"Backpropagation",
+						"Loss functions",
+						"Gradient descent",
+						"Optimization algorithms"
+					]
+				},
+				{
+					"name": "Advanced Architectures",
+					"subtasks": [
+						"Convolutional Neural Networks (CNN)",
+						"Recurrent Neural Networks (RNN)",
+						"Long Short-Term Memory (LSTM)",
+						"Transformers",
+						"Attention mechanisms",
+						"Encoder-decoder architectures",
+						"Transfer learning"
+					]
+				}
+			]
+		},
+		{
+			"id": 3,
+			"name": "Generative Models",
+			"tasks": [
+				{
+					"name": "Basic Generative Models",
+					"subtasks": [
+						"Autoencoders",
+						"Variational Autoencoders (VAE)",
+						"Generative Adversarial Networks (GAN)",
+						"Flow-based models",
+						"Energy-based models",
+						"Probabilistic models",
+						"Latent space understanding"
+					]
+				},
+				{
+					"name": "Advanced Generative Architectures",
+					"subtasks": [
+						"StyleGAN",
+						"Diffusion models",
+						"Transformer-based generators",
+						"Conditional generation",
+						"Cross-domain generation",
+						"Hybrid architectures",
+						"Progressive growing"
+					]
+				}
+			]
+		},
+		{
+			"id": 4,
+			"name": "Natural Language Processing",
+			"tasks": [
+				{
+					"name": "NLP Fundamentals",
+					"subtasks": [
+						"Text preprocessing",
+						"Tokenization",
+						"Word embeddings",
+						"Language modeling",
+						"Sequence-to-sequence models",
+						"Attention in NLP",
+						"BERT and transformers"
+					]
+				},
+				{
+					"name": "Text Generation",
+					"subtasks": [
+						"Large Language Models (LLMs)",
+						"GPT architecture",
+						"Prompt engineering",
+						"Few-shot learning",
+						"Fine-tuning techniques",
+						"Temperature and sampling",
+						"Evaluation metrics"
+					]
+				}
+			]
+		},
+		{
+			"id": 5,
+			"name": "Computer Vision Generation",
+			"tasks": [
+				{
+					"name": "Image Generation",
+					"subtasks": [
+						"GANs for images",
+						"Diffusion models (DALL-E, Stable Diffusion)",
+						"Style transfer",
+						"Image-to-image translation",
+						"Super-resolution",
+						"Inpainting",
+						"Visual prompting"
+					]
+				},
+				{
+					"name": "Video Generation",
+					"subtasks": [
+						"Video frame prediction",
+						"Motion synthesis",
+						"Text-to-video models",
+						"Video style transfer",
+						"Temporal consistency",
+						"3D-aware generation",
+						"Animation generation"
+					]
+				}
+			]
+		},
+		{
+			"id": 6,
+			"name": "Audio Generation",
+			"tasks": [
+				{
+					"name": "Speech Synthesis",
+					"subtasks": [
+						"Text-to-speech (TTS)",
+						"Voice cloning",
+						"Speech enhancement",
+						"Prosody control",
+						"Multilingual synthesis",
+						"Real-time generation",
+						"Voice conversion"
+					]
+				},
+				{
+					"name": "Music Generation",
+					"subtasks": [
+						"MIDI generation",
+						"Audio waveform synthesis",
+						"Style transfer in music",
+						"Music transcription",
+						"Accompaniment generation",
+						"Drum pattern generation",
+						"Multi-instrumental generation"
+					]
+				}
+			]
+		},
+		{
+			"id": 7,
+			"name": "Multimodal Generation",
+			"tasks": [
+				{
+					"name": "Cross-Modal Generation",
+					"subtasks": [
+						"Text-to-image generation",
+						"Image-to-text generation",
+						"Audio-to-visual generation",
+						"Visual-to-audio generation",
+						"Cross-modal embeddings",
+						"Joint representation learning",
+						"Multimodal transformers"
+					]
+				},
+				{
+					"name": "Interactive Generation",
+					"subtasks": [
+						"User-guided generation",
+						"Interactive editing",
+						"Real-time feedback",
+						"Control mechanisms",
+						"Attribute manipulation",
+						"Style control",
+						"Layout control"
+					]
+				}
+			]
+		},
+		{
+			"id": 8,
+			"name": "Practical Implementation",
+			"tasks": [
+				{
+					"name": "Development Tools",
+					"subtasks": [
+						"PyTorch fundamentals",
+						"TensorFlow basics",
+						"GPU programming",
+						"Model deployment",
+						"Version control for ML",
+						"Docker containers",
+						"Cloud platforms (AWS, GCP)"
+					]
+				},
+				{
+					"name": "Model Optimization",
+					"subtasks": [
+						"Model compression",
+						"Quantization",
+						"Knowledge distillation",
+						"Memory optimization",
+						"Inference optimization",
+						"Distributed training",
+						"Pipeline optimization"
+					]
+				}
+			]
+		},
+		{
+			"id": 9,
+			"name": "Ethical Considerations",
+			"tasks": [
+				{
+					"name": "AI Ethics",
+					"subtasks": [
+						"Bias in generative models",
+						"Privacy concerns",
+						"Copyright issues",
+						"Deepfake detection",
+						"Content filtering",
+						"Ethical guidelines",
+						"Responsible AI practices"
+					]
+				},
+				{
+					"name": "Safety Measures",
+					"subtasks": [
+						"Content moderation",
+						"Output verification",
+						"Safety alignment",
+						"Model robustness",
+						"Security measures",
+						"Abuse prevention",
+						"User guidelines"
+					]
+				}
+			]
+		},
+		{
+			"id": 10,
+			"name": "Advanced Applications",
+			"tasks": [
+				{
+					"name": "Industry Applications",
+					"subtasks": [
+						"Creative industries",
+						"Healthcare applications",
+						"Scientific research",
+						"Content creation",
+						"Virtual environments",
+						"Product design",
+						"Entertainment"
+					]
+				},
+				{
+					"name": "Research Directions",
+					"subtasks": [
+						"Latest architectures",
+						"Emerging techniques",
+						"Research papers",
+						"Benchmarking",
+						"Model evaluation",
+						"Future trends",
+						"Open challenges"
+					]
+				}
+			]
+		}
+	]
+}

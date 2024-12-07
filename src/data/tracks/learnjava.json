@@ -1,331 +1,330 @@
 {
-    "name": "Java Beginner's Learning Path",
-    "modules": [
-      {
-        "id": 1,
-        "name": "Getting Started with Java",
-        "tasks": [
-          {
-            "name": "Development Environment Setup",
-            "subtasks": [
-              "Install JDK (Java Development Kit)",
-              "Setup IDE (Eclipse/IntelliJ IDEA)",
-              "Configure Java environment variables",
-              "Understanding JDK, JRE, and JVM",
-              "Creating first Java project",
-              "Understanding project structure"
-            ]
-          },
-          {
-            "name": "First Java Program",
-            "subtasks": [
-              "Writing Hello World program",
-              "Understanding public class structure",
-              "Main method syntax",
-              "Basic program compilation",
-              "Running Java applications",
-              "Understanding bytecode"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "name": "Java Fundamentals",
-        "tasks": [
-          {
-            "name": "Variables & Data Types",
-            "subtasks": [
-              "Primitive data types (int, double, boolean, etc.)",
-              "Reference data types",
-              "Variable declaration and initialization",
-              "Type casting",
-              "Constants (final keyword)",
-              "Scope of variables",
-              "Wrapper classes"
-            ]
-          },
-          {
-            "name": "Operators",
-            "subtasks": [
-              "Arithmetic operators",
-              "Assignment operators",
-              "Comparison operators",
-              "Logical operators",
-              "Bitwise operators",
-              "Operator precedence",
-              "String concatenation"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Control Flow",
-        "tasks": [
-          {
-            "name": "Conditional Statements",
-            "subtasks": [
-              "if statements",
-              "if-else statements",
-              "else-if ladder",
-              "switch statements",
-              "Ternary operator",
-              "Nested conditions"
-            ]
-          },
-          {
-            "name": "Loops",
-            "subtasks": [
-              "for loop",
-              "while loop",
-              "do-while loop",
-              "enhanced for loop (for-each)",
-              "break and continue",
-              "nested loops",
-              "Infinite loops"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "name": "Arrays & Strings",
-        "tasks": [
-          {
-            "name": "Arrays",
-            "subtasks": [
-              "Array declaration",
-              "Array initialization",
-              "Multi-dimensional arrays",
-              "Array operations",
-              "Array methods",
-              "Arrays class utilities",
-              "Array lists"
-            ]
-          },
-          {
-            "name": "String Handling",
-            "subtasks": [
-              "String creation",
-              "String methods",
-              "StringBuilder",
-              "StringBuffer",
-              "String comparison",
-              "String formatting",
-              "Regular expressions"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 5,
-        "name": "Object-Oriented Programming",
-        "tasks": [
-          {
-            "name": "Classes and Objects",
-            "subtasks": [
-              "Class definition",
-              "Object creation",
-              "Constructors",
-              "Instance variables",
-              "Class variables",
-              "Methods",
-              "Access modifiers",
-              "this keyword",
-              "Static members"
-            ]
-          },
-          {
-            "name": "Inheritance",
-            "subtasks": [
-              "Extending classes",
-              "super keyword",
-              "Method overriding",
-              "Types of inheritance",
-              "Abstract classes",
-              "final keyword",
-              "Object class"
-            ]
-          },
-          {
-            "name": "Polymorphism",
-            "subtasks": [
-              "Method overloading",
-              "Method overriding",
-              "Dynamic method dispatch",
-              "Interface implementation",
-              "Multiple interfaces",
-              "Type casting objects"
-            ]
-          },
-          {
-            "name": "Encapsulation",
-            "subtasks": [
-              "Access modifiers",
-              "Getters and setters",
-              "Package structure",
-              "Java beans",
-              "Data hiding"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 6,
-        "name": "Exception Handling",
-        "tasks": [
-          {
-            "name": "Exception Basics",
-            "subtasks": [
-              "try-catch blocks",
-              "multiple catch blocks",
-              "finally block",
-              "throw keyword",
-              "throws clause",
-              "Exception hierarchy",
-              "Custom exceptions"
-            ]
-          },
-          {
-            "name": "Exception Types",
-            "subtasks": [
-              "Checked exceptions",
-              "Unchecked exceptions",
-              "Error class",
-              "Runtime exceptions",
-              "Common exceptions"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 7,
-        "name": "Collections Framework",
-        "tasks": [
-          {
-            "name": "Collection Interfaces",
-            "subtasks": [
-              "List interface",
-              "Set interface",
-              "Queue interface",
-              "Map interface",
-              "Iterator interface",
-              "Collection hierarchy"
-            ]
-          },
-          {
-            "name": "Collection Classes",
-            "subtasks": [
-              "ArrayList",
-              "LinkedList",
-              "HashSet",
-              "TreeSet",
-              "HashMap",
-              "TreeMap",
-              "PriorityQueue"
-            ]
-          },
-          {
-            "name": "Generics",
-            "subtasks": [
-              "Generic classes",
-              "Generic methods",
-              "Type parameters",
-              "Bounded types",
-              "Wildcard types",
-              "Type erasure"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 8,
-        "name": "File Handling & I/O",
-        "tasks": [
-          {
-            "name": "File Operations",
-            "subtasks": [
-              "File class",
-              "FileInputStream",
-              "FileOutputStream",
-              "FileReader",
-              "FileWriter",
-              "BufferedReader",
-              "BufferedWriter"
-            ]
-          },
-          {
-            "name": "Advanced I/O",
-            "subtasks": [
-              "Scanner class",
-              "PrintWriter",
-              "Serialization",
-              "Deserialization",
-              "Properties files",
-              "NIO package"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 9,
-        "name": "Essential APIs",
-        "tasks": [
-          {
-            "name": "Date and Time API",
-            "subtasks": [
-              "LocalDate",
-              "LocalTime",
-              "LocalDateTime",
-              "ZonedDateTime",
-              "Period",
-              "Duration",
-              "Date formatting"
-            ]
-          },
-          {
-            "name": "Utility Classes",
-            "subtasks": [
-              "Arrays",
-              "Collections",
-              "Objects",
-              "Math",
-              "Random",
-              "System",
-              "Runtime"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 10,
-        "name": "Multithreading",
-        "tasks": [
-          {
-            "name": "Thread Basics",
-            "subtasks": [
-              "Creating threads",
-              "Thread lifecycle",
-              "Thread priorities",
-              "Thread synchronization",
-              "Thread states",
-              "Thread groups"
-            ]
-          },
-          {
-            "name": "Concurrency",
-            "subtasks": [
-              "Runnable interface",
-              "synchronized keyword",
-              "volatile keyword",
-              "wait and notify",
-              "Thread pools",
-              "Executor framework"
-            ]
-          }
-        ]
-      }
-    ]
-  }
-  
+	"name": "Java Beginner's Learning Path",
+	"modules": [
+		{
+			"id": 1,
+			"name": "Getting Started with Java",
+			"tasks": [
+				{
+					"name": "Development Environment Setup",
+					"subtasks": [
+						"Install JDK (Java Development Kit)",
+						"Setup IDE (Eclipse/IntelliJ IDEA)",
+						"Configure Java environment variables",
+						"Understanding JDK, JRE, and JVM",
+						"Creating first Java project",
+						"Understanding project structure"
+					]
+				},
+				{
+					"name": "First Java Program",
+					"subtasks": [
+						"Writing Hello World program",
+						"Understanding public class structure",
+						"Main method syntax",
+						"Basic program compilation",
+						"Running Java applications",
+						"Understanding bytecode"
+					]
+				}
+			]
+		},
+		{
+			"id": 2,
+			"name": "Java Fundamentals",
+			"tasks": [
+				{
+					"name": "Variables & Data Types",
+					"subtasks": [
+						"Primitive data types (int, double, boolean, etc.)",
+						"Reference data types",
+						"Variable declaration and initialization",
+						"Type casting",
+						"Constants (final keyword)",
+						"Scope of variables",
+						"Wrapper classes"
+					]
+				},
+				{
+					"name": "Operators",
+					"subtasks": [
+						"Arithmetic operators",
+						"Assignment operators",
+						"Comparison operators",
+						"Logical operators",
+						"Bitwise operators",
+						"Operator precedence",
+						"String concatenation"
+					]
+				}
+			]
+		},
+		{
+			"id": 3,
+			"name": "Control Flow",
+			"tasks": [
+				{
+					"name": "Conditional Statements",
+					"subtasks": [
+						"if statements",
+						"if-else statements",
+						"else-if ladder",
+						"switch statements",
+						"Ternary operator",
+						"Nested conditions"
+					]
+				},
+				{
+					"name": "Loops",
+					"subtasks": [
+						"for loop",
+						"while loop",
+						"do-while loop",
+						"enhanced for loop (for-each)",
+						"break and continue",
+						"nested loops",
+						"Infinite loops"
+					]
+				}
+			]
+		},
+		{
+			"id": 4,
+			"name": "Arrays & Strings",
+			"tasks": [
+				{
+					"name": "Arrays",
+					"subtasks": [
+						"Array declaration",
+						"Array initialization",
+						"Multi-dimensional arrays",
+						"Array operations",
+						"Array methods",
+						"Arrays class utilities",
+						"Array lists"
+					]
+				},
+				{
+					"name": "String Handling",
+					"subtasks": [
+						"String creation",
+						"String methods",
+						"StringBuilder",
+						"StringBuffer",
+						"String comparison",
+						"String formatting",
+						"Regular expressions"
+					]
+				}
+			]
+		},
+		{
+			"id": 5,
+			"name": "Object-Oriented Programming",
+			"tasks": [
+				{
+					"name": "Classes and Objects",
+					"subtasks": [
+						"Class definition",
+						"Object creation",
+						"Constructors",
+						"Instance variables",
+						"Class variables",
+						"Methods",
+						"Access modifiers",
+						"this keyword",
+						"Static members"
+					]
+				},
+				{
+					"name": "Inheritance",
+					"subtasks": [
+						"Extending classes",
+						"super keyword",
+						"Method overriding",
+						"Types of inheritance",
+						"Abstract classes",
+						"final keyword",
+						"Object class"
+					]
+				},
+				{
+					"name": "Polymorphism",
+					"subtasks": [
+						"Method overloading",
+						"Method overriding",
+						"Dynamic method dispatch",
+						"Interface implementation",
+						"Multiple interfaces",
+						"Type casting objects"
+					]
+				},
+				{
+					"name": "Encapsulation",
+					"subtasks": [
+						"Access modifiers",
+						"Getters and setters",
+						"Package structure",
+						"Java beans",
+						"Data hiding"
+					]
+				}
+			]
+		},
+		{
+			"id": 6,
+			"name": "Exception Handling",
+			"tasks": [
+				{
+					"name": "Exception Basics",
+					"subtasks": [
+						"try-catch blocks",
+						"multiple catch blocks",
+						"finally block",
+						"throw keyword",
+						"throws clause",
+						"Exception hierarchy",
+						"Custom exceptions"
+					]
+				},
+				{
+					"name": "Exception Types",
+					"subtasks": [
+						"Checked exceptions",
+						"Unchecked exceptions",
+						"Error class",
+						"Runtime exceptions",
+						"Common exceptions"
+					]
+				}
+			]
+		},
+		{
+			"id": 7,
+			"name": "Collections Framework",
+			"tasks": [
+				{
+					"name": "Collection Interfaces",
+					"subtasks": [
+						"List interface",
+						"Set interface",
+						"Queue interface",
+						"Map interface",
+						"Iterator interface",
+						"Collection hierarchy"
+					]
+				},
+				{
+					"name": "Collection Classes",
+					"subtasks": [
+						"ArrayList",
+						"LinkedList",
+						"HashSet",
+						"TreeSet",
+						"HashMap",
+						"TreeMap",
+						"PriorityQueue"
+					]
+				},
+				{
+					"name": "Generics",
+					"subtasks": [
+						"Generic classes",
+						"Generic methods",
+						"Type parameters",
+						"Bounded types",
+						"Wildcard types",
+						"Type erasure"
+					]
+				}
+			]
+		},
+		{
+			"id": 8,
+			"name": "File Handling & I/O",
+			"tasks": [
+				{
+					"name": "File Operations",
+					"subtasks": [
+						"File class",
+						"FileInputStream",
+						"FileOutputStream",
+						"FileReader",
+						"FileWriter",
+						"BufferedReader",
+						"BufferedWriter"
+					]
+				},
+				{
+					"name": "Advanced I/O",
+					"subtasks": [
+						"Scanner class",
+						"PrintWriter",
+						"Serialization",
+						"Deserialization",
+						"Properties files",
+						"NIO package"
+					]
+				}
+			]
+		},
+		{
+			"id": 9,
+			"name": "Essential APIs",
+			"tasks": [
+				{
+					"name": "Date and Time API",
+					"subtasks": [
+						"LocalDate",
+						"LocalTime",
+						"LocalDateTime",
+						"ZonedDateTime",
+						"Period",
+						"Duration",
+						"Date formatting"
+					]
+				},
+				{
+					"name": "Utility Classes",
+					"subtasks": [
+						"Arrays",
+						"Collections",
+						"Objects",
+						"Math",
+						"Random",
+						"System",
+						"Runtime"
+					]
+				}
+			]
+		},
+		{
+			"id": 10,
+			"name": "Multithreading",
+			"tasks": [
+				{
+					"name": "Thread Basics",
+					"subtasks": [
+						"Creating threads",
+						"Thread lifecycle",
+						"Thread priorities",
+						"Thread synchronization",
+						"Thread states",
+						"Thread groups"
+					]
+				},
+				{
+					"name": "Concurrency",
+					"subtasks": [
+						"Runnable interface",
+						"synchronized keyword",
+						"volatile keyword",
+						"wait and notify",
+						"Thread pools",
+						"Executor framework"
+					]
+				}
+			]
+		}
+	]
+}
