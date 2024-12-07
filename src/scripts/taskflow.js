@@ -1,4 +1,4 @@
-function initializeTaskFlow(jsonFilePath = '../data/tracks/beginfront.json') {
+export function initializeTaskFlow(jsonFilePath = '../data/tracks/beginfront.json') {
     fetch(jsonFilePath)
         .then(response => response.json())
         .then(data => {
@@ -86,7 +86,7 @@ function initializeTaskFlow(jsonFilePath = '../data/tracks/beginfront.json') {
         });
 }
 
-function saveSubtaskProgress(projectName, moduleId, moduleIndex, taskIndex, subtaskIndex, isChecked) {
+export function saveSubtaskProgress(projectName, moduleId, moduleIndex, taskIndex, subtaskIndex, isChecked) {
     // Retrieve existing projects progress
     const projectsProgress = JSON.parse(localStorage.getItem('projects') || '[]');
 
@@ -123,7 +123,7 @@ function saveSubtaskProgress(projectName, moduleId, moduleIndex, taskIndex, subt
 }
 
 // Optional: Function to check if all subtasks in a task are completed
-function updateTaskStatus(moduleId, taskIndex) {
+export function updateTaskStatus(moduleId, taskIndex) {
     const taskElement = document.getElementById(`task-${moduleId}-${taskIndex}`);
     const checkboxes = taskElement.querySelectorAll('.subtask-checkbox');
     const taskStatusSpan = taskElement.querySelector('.task-status');

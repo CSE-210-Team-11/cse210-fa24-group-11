@@ -1,4 +1,4 @@
-function toggleSubtasks(id) {
+export function toggleSubtasks(id) {
     const subtaskList = document.getElementById(id);
     if (subtaskList.classList.contains("hidden")) {
       subtaskList.classList.remove("hidden");
@@ -7,7 +7,7 @@ function toggleSubtasks(id) {
     }
   }
 
-  function addTask() {
+  export function addTask() {
     const taskList = document.getElementById("tasks");
     const newTaskIndex = taskList.children.length + 1;
   

@@ -5,7 +5,7 @@ const taskColors = [
     '#ff5722', '#3f51b5', '#009688', '#ff9800', '#e91e63'
 ];
 
-function renderProgressCircles(subtasks) {
+export function renderProgressCircles(subtasks) {
     const svg = document.querySelector('.progress-rings');
     svg.innerHTML = '';
 
