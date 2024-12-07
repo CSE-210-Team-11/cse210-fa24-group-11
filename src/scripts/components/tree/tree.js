@@ -14,13 +14,13 @@ const two = new Two({
 
 const angMin = 0.3;
 const angMax = 0.8;
-const lengMin = 0.6;
-const lengMax = 0.7;
+const lengMin = 0.7;
+const lengMax = 0.8;
 const widthMin = 0.7;
 const widthMax = 0.8;
 const maxDepth = 6;
-const trunkMin = two.width / 50;
-const trunkMax = trunkMin + 20;
+const trunkMin = two.width / 20;
+const trunkMax = trunkMin + 10;
 // const maxBranches = 300;
 const leafRadius = 6; // Much larger leaf size
 const leafVariation = 0.3; // Adds some size variation to leaves
@@ -38,22 +38,19 @@ let growthFrac = 0;
 
 // const baseLeaf = two.makeSprite(leafTexture, 0, 0);
 
-export function makeLeaf(x, y, dir, size) {
-	const actualSize = size * (1 + randFloat(-leafVariation, leafVariation));
-	const leaf = two.makeCircle(x, y, actualSize);
+export function renderLeaf(x, y, dir, size, rotation) {
+	const leaf = two.makeCircle(x, y, size);
 	leaf.fill = "green";
 	leaf.noStroke();
-	leaf.rotation = dir + Math.PI / 2 + randFloat(-1, 1); // Add slight random rotation
+	leaf.rotation = dir + Math.PI / 2 + rotation // Add slight random rotation
 	leafCount++;
-	return leaf;
 }
 
 /**
  * Draws the tree on the canvas
  * @param {string} seed - The seed for the random function
- * @param {number} grow - The fractional growth
  */
-export function drawTree(seed, grow) {
+export function drawTree(seed) {
 	branchCount = 0;
 	reseed(seed);
 	const maxTrunk = randInt(trunkMin, trunkMax);
@@ -62,10 +59,9 @@ export function drawTree(seed, grow) {
 		two.width / 2,
 		two.height,
 		-Math.PI / 2,
-		two.height / (maxDepth + 1),
+		two.height / (maxDepth - 1),
 		maxTrunk,
 		0,
-		grow
 	);
 }
 
@@ -93,21 +89,21 @@ export function renderBranch(x, y, endX, endY, width) {
  * @param {number} leng - The length of the branch
  * @param {number} width - The width of the branch
  * @param {number} depth - The depth of the branch
- * @param {number} growth - The growth proportion of the branch
  */
-export function makeBranches(x, y, dir, leng, width, depth, growth) {
+export function makeBranches(x, y, dir, leng, width, depth) {
 	branchCount++;
 
 	// Limit bounds of treeGrowVal to 0.1 and 1, square the result
-	const treeGrowVal = (growth > 1 ? 1 : growth < 0.1 ? 0 : growth) ** 2;
+	const treeGrowVal = (Math.log10(growthFrac) + 1) > 0 ? Math.log10(growthFrac) + 1 : 0;
 
 	const endX = x + Math.cos(dir) * leng * treeGrowVal;
 	const endY = y + Math.sin(dir) * leng * treeGrowVal;
 
-	const lengFactor = depth < 2 ? 1 : randFloat(lengMin, lengMax);
-	const widthFactor = randFloat(widthMin, widthMax) * treeGrowVal ** 2;
+	const lengFactor = depth < 1 ? 1 : randFloat(lengMin, lengMax);
+	const widthFactor = randFloat(widthMin, widthMax) * growthFrac ** 2;
 
-	renderBranch(x, y, endX, endY, width * widthFactor);
+	if (width > 1.0)
+		renderBranch(x, y, endX, endY, width * widthFactor);
 
 	if (depth < maxDepth) {
 
@@ -118,7 +114,6 @@ export function makeBranches(x, y, dir, leng, width, depth, growth) {
 			leng * lengFactor,
 			width * widthFactor,
 			depth + 1,
-			treeGrowVal * 0.8
 		);
 
 		makeBranches(
@@ -128,7 +123,6 @@ export function makeBranches(x, y, dir, leng, width, depth, growth) {
 			leng * lengFactor,
 			width * widthFactor,
 			depth + 1,
-			treeGrowVal * 0.8
 		);
 
 		if (randInt()) {
@@ -139,13 +133,15 @@ export function makeBranches(x, y, dir, leng, width, depth, growth) {
 				leng * lengFactor,
 				width * widthFactor,
 				depth + 1,
-				treeGrowVal * 0.8
 			);
 		}
 	}
 
-	if (depth > maxDepth - 3 && growth == 1) {
-		makeLeaf(endX, endY, dir, leafRadius);
+	// Rand calls must be outside render call, since they must happen in every iteration whether or not we render
+	const size = leafRadius * (1 + randFloat(-leafVariation, leafVariation));
+	const rotation = randFloat(-1, 1);
+	if (depth > maxDepth - 3 && growthFrac >= 1) {
+		renderLeaf(endX, endY, dir, size, rotation);
 	}
 }
 
@@ -155,7 +151,7 @@ two.play();
 
 export function update() {
 	two.clear();
-	drawTree(treeSeed, growthFrac);
+	drawTree(treeSeed);
 }
 
 // Optional: Uncomment if you want to use this function
@@ -164,14 +160,16 @@ export function update() {
 //     }
 // }
 
-window.addEventListener("click", () => {
+canvas.addEventListener("click", () => {
 	console.log("click!");
 	console.log("branchCount: ", branchCount);
-	// treeSeed = ((Math.random() * 10000) | 0).toString();
-	if (growthFrac < 1) {
-		growthFrac += 0.1;
-	}
-	// console.log("new seed: ", treeSeed);
+	treeSeed = ((Math.random() * 10000) | 0).toString();
+	// if (growthFrac < 1) {
+	// 	growthFrac += 0.01;
+	// }
+	growthFrac = 1;
+	console.log(growthFrac)
+	console.log("seed: ", treeSeed);
 });
 
 // Export branchCount to access it in tests
