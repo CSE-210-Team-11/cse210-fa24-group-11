@@ -17,21 +17,12 @@ export async function loadProjects() {
 
     // Render stored projects from local storage
     storedProjects.forEach((project) => {
+        // Calculate module completion
         const totalModules = project.modules.length;
-        const completedModules = project.modules.filter((module) => module.completed).length;
+        const completedModules = calculateCompletedModules(project);
 
-        const totalTasks = project.modules.reduce(
-            (count, module) => count + (module.tasks ? module.tasks.length : 0),
-            0
-        );
-        const completedTasks = project.modules.reduce(
-            (count, module) =>
-                count + (module.tasks ? module.tasks.filter((task) => task.completed).length : 0),
-            0
-        );
-
-        // curFile = project.file;
-        // console.log(project);
+        // Calculate task and subtask completion
+        const { totalTasks, completedTasks } = calculateTaskCompletion(project);
 
         const projectCard = `
             <div class="project-card">
@@ -49,6 +40,46 @@ export async function loadProjects() {
 
         projectContainer.insertAdjacentHTML('beforeend', projectCard);
     });
+}
+
+// Helper function to calculate completed modules
+function calculateCompletedModules(project) {
+    if (!project.modules) return 0;
+
+    return project.modules.filter(module => {
+        // Check if all tasks in the module are completed
+        if (!module.tasks) return false;
+        
+        return module.tasks.every(task => {
+            // Check if all subtasks are completed
+            if (!task.subtasks) return false;
+            return task.subtasks.every(subtask => subtask === true);
+        });
+    }).length;
+}
+
+// Helper function to calculate task completion
+function calculateTaskCompletion(project) {
+    let totalTasks = 0;
+    let completedTasks = 0;
+
+    if (!project.modules) return { totalTasks: 0, completedTasks: 0 };
+
+    project.modules.forEach(module => {
+        if (!module.tasks) return;
+
+        module.tasks.forEach(task => {
+            if (!task.subtasks) return;
+
+            totalTasks++;
+            // A task is considered complete if ALL of its subtasks are completed
+            if (task.subtasks.every(subtask => subtask === true)) {
+                completedTasks++;
+            }
+        });
+    });
+
+    return { totalTasks, completedTasks };
 }
 
 document.addEventListener('DOMContentLoaded', () => {
