@@ -1,7 +1,7 @@
 import Two from "../../../../node_modules/two.js/build/two.module.js";
 import { randFloat, randInt, reseed } from "../../../utils/seededRandom.js";
 
-let canvas = document.getElementById("treeCanvas");
+const canvas = document.getElementById("treeCanvas");
 
 // Make an instance of Two and place it on the page.
 const two = new Two({
@@ -32,7 +32,7 @@ let treeSeed = ((Math.random() * 10000) | 0).toString();
 let branchCount = 0;
 let leafCount = 0;
 let maxTrunk = 0;
-let growthFactor;
+let growthFactor = 0;
 // const done = 0;
 // const leaves = two.makeGroup();
 // const branches = two.makeGroup();
@@ -57,7 +57,7 @@ export function drawTree(seed, growthFactor) {
 	branchCount = 0;
 	reseed(seed);
 	maxTrunk = randInt(trunkMin, trunkMax);
-	let square = two.makeRectangle(two.width / 2, two.height / 2, two.width, two.height)
+	const square = two.makeRectangle(two.width / 2, two.height / 2, two.width, two.height)
 	makeBranches(
 		two.width / 2,
 		two.height,
@@ -65,6 +65,7 @@ export function drawTree(seed, growthFactor) {
 		two.height / (maxDepth + 2),
 		maxTrunk,
 		0,
+		growthFactor
 	);
 }
 
@@ -97,18 +98,18 @@ export function makeBranches(x, y, dir, leng, width, depth, growth) {
 	branchCount++;
 
 	// Limit bounds of treeGrowVal to 0.1 and 1, square the result
-	const treeGrowVal = (growthFactor > 1 ? 1 : growthFactor < 0.1 ? 0.1 : growthFactor) ** 2;
+	const treeGrowVal = (growth > 1 ? 1 : growth < 0.1 ? 0 : growth) ** 2;
 
 	const endX = x + Math.cos(dir) * leng * treeGrowVal;
 	const endY = y + Math.sin(dir) * leng * treeGrowVal;
 
-	renderBranch(x, y, endX, endY, width);
-
 	const lengFactor = depth < 2 ? 1 : randFloat(lengMin, lengMax);
 	const widthFactor = randFloat(widthMin, widthMax) * treeGrowVal;
 
+	renderBranch(x, y, endX, endY, width);
+
+
 	if (depth < maxDepth) {
-		growthFactor -= 0.2;
 
 		makeBranches(
 			endX,
@@ -117,6 +118,7 @@ export function makeBranches(x, y, dir, leng, width, depth, growth) {
 			leng * lengFactor,
 			width * widthFactor,
 			depth + 1,
+			growth - 0.2
 		);
 
 		makeBranches(
@@ -126,6 +128,7 @@ export function makeBranches(x, y, dir, leng, width, depth, growth) {
 			leng * lengFactor,
 			width * widthFactor,
 			depth + 1,
+			growth - 0.2
 		);
 
 		if (randInt()) {
@@ -136,13 +139,12 @@ export function makeBranches(x, y, dir, leng, width, depth, growth) {
 				leng * lengFactor,
 				width * widthFactor,
 				depth + 1,
+				growth - 0.2
 			);
 		}
-
-		growthFactor += 0.2;
 	}
 
-	if (depth > maxDepth - 3) {
+	if (depth > maxDepth - 3 && growth == 1) {
 		makeLeaf(endX, endY, dir, leafSize);
 	}
 }
@@ -165,9 +167,9 @@ export function update() {
 window.addEventListener("click", () => {
 	console.log("click!");
 	console.log("branchCount: ", branchCount);
-	treeSeed = ((Math.random() * 10000) | 0).toString();
-	growthFactor = 0.1;
-	console.log("new seed: ", treeSeed);
+	// treeSeed = ((Math.random() * 10000) | 0).toString();
+	growthFactor += 0.1;
+	// console.log("new seed: ", treeSeed);
 });
 
 // Export branchCount to access it in tests

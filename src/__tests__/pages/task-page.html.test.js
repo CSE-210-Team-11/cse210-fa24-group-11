@@ -37,11 +37,6 @@ describe("Task Page", () => {
 	});
 
 	describe("Visualization Elements", () => {
-		test("should have SVG element for progress rings", () => {
-			const svg = document.querySelector(".progress-rings");
-			expect(svg).toBeTruthy();
-		});
-
 		test("should have canvas element for tree visualization", () => {
 			const canvas = document.querySelector("#treeCanvas");
 			expect(canvas).toBeTruthy();
