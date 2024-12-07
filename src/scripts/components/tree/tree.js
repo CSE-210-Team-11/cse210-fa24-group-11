@@ -1,12 +1,14 @@
-import Two from "../../node_modules/two.js/build/two.module.js";
-import { randFloat, randInt, reseed } from "../utils/seededRandom.js";
+import Two from "../../../../node_modules/two.js/build/two.module.js";
+import { randFloat, randInt, reseed } from "../../../utils/seededRandom.js";
+
+let canvas = document.getElementById("treeCanvas");
 
 // Make an instance of Two and place it on the page.
 const two = new Two({
 	type: Two.Types.canvas,
-	fullscreen: true,
+	domElement: canvas,
 	autostart: true,
-}).appendTo(document.body);
+})
 
 // const leafTexture = two.makeTexture("./tree/leaf.png");
 
@@ -56,7 +58,7 @@ export function drawTree(seed) {
 	treeGrow += 0.02;
 	reseed(seed);
 	maxTrunk = randInt(trunkMin, trunkMax);
-
+	let square = two.makeRectangle(two.width / 2, two.height / 2, two.width, two.height)
 	makeBranches(
 		two.width / 2,
 		two.height,
@@ -95,12 +97,13 @@ export function renderBranch(x, y, endX, endY, width) {
 export function makeBranches(x, y, dir, leng, width, depth) {
 	branchCount++;
 
+	// Limit bounds of treeGrowVal to 0.1 and 1, square the result
 	const treeGrowVal = (treeGrow > 1 ? 1 : treeGrow < 0.1 ? 0.1 : treeGrow) ** 2;
 
 	const endX = x + Math.cos(dir) * leng * treeGrowVal;
 	const endY = y + Math.sin(dir) * leng * treeGrowVal;
 
-	renderBranch(x, y, endX, endY, width);
+	renderBranch(x, y, endX, endY, width * treeGrowVal);
 
 	const lengFactor = depth < 2 ? 1 : randFloat(lengMin, lengMax);
 
