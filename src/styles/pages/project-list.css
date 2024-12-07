@@ -1,6 +1,6 @@
 body {
 	font-family: Arial, sans-serif;
-	background-color: black;
+	background-color: #E7F5E9;
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -26,8 +26,9 @@ body {
 #create-project-btn {
 	border-radius: 5px;
 	padding: 10px;
-	border: 1px solid blanchedalmond;
-	background-color: blanchedalmond;
+	border: 2px solid #0f1b2e;
+	background-color: #0f1b2e;
+	color: #E7F5E9;
 	font-weight: bold;
 	cursor: pointer;
 	margin-bottom: 1rem; /* Adds spacing below the button */
@@ -38,8 +39,10 @@ body {
 	margin: 1rem 5rem;
 	padding: 1rem;
 	border-radius: 5px;
-	background-color: blanchedalmond;
-	color: black;
+	border: 2px solid #0f1b2e;
+	background-color: #0f1b2e;
+	color: #E7F5E9;
+	width: 75%;
 }
 
 .project-card-buttons-list {
@@ -47,12 +50,13 @@ body {
 }
 
 .project-card-button {
-	background-color: black;
-	color: blanchedalmond;
+	padding: 10px;
 	border-radius: 5px;
-	border: 1px solid blanchedalmond;
+	margin: 10px;
+	border: 2px solid #0f1b2e;
+	background-color: #E7F5E9;
+	color: #0f1b2e;
 	cursor: pointer;
-	padding: 1rem;
 }
 
 .streak-btn {
