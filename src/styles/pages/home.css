@@ -8,8 +8,8 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background-color: black;
-	color: blanchedalmond;
+	background-color: #E7F5E9;
+	color: #0f1b2e;
 	height: 100vh;
 	width: 100%;
 }
@@ -22,9 +22,9 @@ button {
 	padding: 10px;
 	border-radius: 5px;
 	margin: 10px;
-	border: 2px solid blanchedalmond;
-	background-color: blanchedalmond;
-	color: black;
+	border: 2px solid #0f1b2e;
+	background-color: #E7F5E9;
+	color: #0f1b2e;
 	cursor: pointer;
 }
 
