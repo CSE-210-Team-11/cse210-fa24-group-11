@@ -156,3 +156,7 @@ h3 {
 	display: inline-block; /* Keep task title and checkmark inline */
 	margin: 0;
 }
+
+#treeCanvas {
+    vertical-align: middle;
+}
