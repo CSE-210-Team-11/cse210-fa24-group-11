@@ -31,19 +31,28 @@ const widthTwig = 5;
 let treeSeed = ((Math.random() * 10000) | 0).toString();
 let branchCount = 0;
 let leafCount = 0;
-let growthFrac = 0;
+let growthFrac = 1;
 // const done = 0;
 // const leaves = two.makeGroup();
 // const branches = two.makeGroup();
 
 // const baseLeaf = two.makeSprite(leafTexture, 0, 0);
 
+/**
+ * Renders a circular leaf on the tree
+ * @param {number} x - The x position of the leaf
+ * @param {number} y - The y position of the leaf
+ * @param {number} dir - The initial direction of the rotation
+ * @param {number} size - The size of the leaf
+ * @param {number} rotation - The radian value of rotation to add
+ */
 export function renderLeaf(x, y, dir, size, rotation) {
 	const leaf = two.makeCircle(x, y, size);
 	leaf.fill = "green";
 	leaf.noStroke();
 	leaf.rotation = dir + Math.PI / 2 + rotation // Add slight random rotation
 	leafCount++;
+	return leaf;
 }
 
 /**
@@ -173,4 +182,4 @@ canvas.addEventListener("click", () => {
 });
 
 // Export branchCount to access it in tests
-export { branchCount, leafCount, two, maxDepth };
+export { branchCount, leafCount, two, maxDepth, canvas};

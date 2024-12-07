@@ -15,7 +15,7 @@ jest.mock("../../../utils/seededRandom.js", () => ({
 }));
 
 // Setup DOM environment
-document.body.innerHTML = '<div id="draw-shapes"></div>';
+document.body.innerHTML = '<div id="draw-shapes"><canvas id="treeCanvas"></canvas></div>';
 
 // Initialize Two.js dimensions
 beforeAll(() => {
@@ -36,8 +36,8 @@ describe("Leaf Generation", () => {
 		expect(treeModule.leafCount).toBe(0);
 	});
 
-	test("makeLeaf creates leaf with correct properties", () => {
-		const leaf = treeModule.makeLeaf(100, 100, Math.PI / 2, 0.1);
+	test("renderLeaf creates leaf with correct properties", () => {
+		const leaf = treeModule.renderLeaf(100, 100, Math.PI / 2, 0.1, 0);
 
 		expect(leaf.fill).toBe("green");
 		expect(typeof leaf.rotation).toBe("number");
@@ -45,10 +45,10 @@ describe("Leaf Generation", () => {
 	});
 
 	test("call makeLeaf several times to create more leaves", () => {
-		const leaf = treeModule.makeLeaf(100, 100, Math.PI / 2, 0.1);
-		treeModule.makeLeaf(100, 100, Math.PI / 2, 0.1);
-		treeModule.makeLeaf(100, 100, Math.PI / 2, 0.1);
-		treeModule.makeLeaf(100, 100, Math.PI / 2, 0.1);
+		const leaf = treeModule.renderLeaf(100, 100, Math.PI / 2, 0.1);
+		treeModule.renderLeaf(100, 100, Math.PI / 2, 0.1);
+		treeModule.renderLeaf(100, 100, Math.PI / 2, 0.1);
+		treeModule.renderLeaf(100, 100, Math.PI / 2, 0.1);
 
 		expect(leaf.fill).toBe("green");
 		expect(typeof leaf.rotation).toBe("number");
