@@ -116,5 +116,5 @@ describe("TaskFlow", () => {
 			const stored = JSON.parse(localStorage.getItem("projects"));
 			expect(stored[0].modules[0].tasks[0].subtasks[0]).toBe(false);
 		});
-	});
+	})
 });
