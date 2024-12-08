@@ -16,7 +16,6 @@ export function initializeTaskFlow(
 			const projectsProgress = JSON.parse(
 				localStorage.getItem("projects") || "[]",
 			);
-			console.log("projectsProgress", projectsProgress);
 			const projectProgress = projectsProgress.find(
 				(p) => p.name === data.name,
 			);
