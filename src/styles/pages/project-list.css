@@ -1,12 +1,40 @@
 body {
 	font-family: Arial, sans-serif;
-	background-color: #e7f5e9;
+	background-color: #F5F5F5;
 	margin: 0;
 	padding: 0;
 	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+.navbar {
+	height: 40px;
+	background-color: #001F3F;
+	border: 2px solid #001F3F;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.link-style{
+	color: #F5F5F5;
+	text-decoration: none;
+	font-size: 24px;
+	padding-right: 20px;
+}
+
+.link-style:hover {
+	color: #F5F5F5;
+}
+
+.project-content{
+	display: flex;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: calc(100vh - 40px);
 }
 
 .project-list {
@@ -26,9 +54,9 @@ body {
 #create-project-btn {
 	border-radius: 5px;
 	padding: 10px;
-	border: 2px solid #0f1b2e;
-	background-color: #0f1b2e;
-	color: #e7f5e9;
+	border: 2px solid #001F3F;
+	background-color: #001F3F;
+	color: #F3F3E0;
 	font-weight: bold;
 	cursor: pointer;
 	margin-bottom: 1rem; /* Adds spacing below the button */
@@ -39,9 +67,9 @@ body {
 	margin: 1rem 5rem 1rem 5rem;
 	padding: 1rem;
 	border-radius: 5px;
-	border: 2px solid #0f1b2e;
-	background-color: #0f1b2e;
-	color: #e7f5e9;
+	border: 2px solid #001F3F;
+	background-color: #001F3F;
+	color: #F3F3E0;
 	width: 90%;
 }
 
@@ -54,9 +82,9 @@ body {
 	border-radius: 5px;
 	margin: 2px;
 	width: 22%;
-	border: 2px solid #0f1b2e;
-	background-color: #e7f5e9;
-	color: #0f1b2e;
+	border: 2px solid #001F3F;
+	background-color: #F3F3E0;
+	color: #001F3F;
 	cursor: pointer;
 }
 
@@ -76,8 +104,8 @@ body {
 }
 
 .streak-btn.clicked {
-	background-color: #4caf50;
-	color: white;
+	background-color: #001F3F;
+	color: #F3F3E0;
 }
 
 .streak-btn:hover {
@@ -90,7 +118,7 @@ body {
 
 .last-checkin {
 	font-size: 14px;
-	color: #555;
+	color: #F3F3E0;
 	margin: 10px 0;
 }
 
@@ -108,35 +136,36 @@ body {
 }
 
 .popup {
-	background-color: #fff;
+	background-color: #001F3F;
 	padding: 20px;
 	border-radius: 8px;
 	width: 300px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 6px #001F3F;
 }
 
 .popup h2 {
 	margin: 0 0 20px;
 	font-size: 20px;
-	color: #333;
+	color: #F3F3E0;
 }
 
 .popup form {
 	display: flex;
 	flex-direction: column;
+	background-color: #001F3F;
 }
 
 .popup form label {
 	margin-bottom: 10px;
 	font-size: 14px;
-	color: #333;
+	color: #F3F3E0;
 }
 
 .popup form select {
 	margin-bottom: 20px;
 	padding: 8px;
 	font-size: 14px;
-	border: 1px solid #ccc;
+	border: 1px solid #001F3F;
 	border-radius: 4px;
 }
 
@@ -150,12 +179,12 @@ body {
 }
 
 .popup form button[type="submit"] {
-	background-color: #4caf50;
-	color: white;
+	background-color: #EAD8B1;
+	color: #001F3F;
 }
 
 .popup form button[type="button"] {
-	background-color: #f44336;
+	background-color: #F96E2A;
 	color: white;
 	margin-top: 10px;
 }
