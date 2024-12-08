@@ -8,25 +8,56 @@ var binft = function (r) {
     }
     
     function n(r) {
-        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-            var l = document.createElement("span");
+        var n = document.createDocumentFragment();
+        var i;
+        var l;
+    
+        for (i = 0; r > i; i++) {
+            l = document.createElement("span");
             l.textContent = e();
-            l.style.color = t();
-            n.appendChild(l)
+            n.appendChild(l);
         }
-        return n
+    
+        return n;
     }
+    
     
     function i() {
         var t = o[c.skillI];
-        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward"));
+        if (c.step) {
+            c.step--;
+        } else {
+            c.step = g;
+            if (c.prefixP < l.length) {
+                if (c.prefixP >= 0) {
+                    c.text += l[c.prefixP];
+                }
+                c.prefixP++;
+            } else if (c.direction === "forward") {
+                if (c.skillP < t.length) {
+                    c.text += t[c.skillP];
+                    c.skillP++;
+                } else if (c.delay) {
+                    c.delay--;
+                } else {
+                    c.direction = "backward";
+                    c.delay = a;
+                }
+            } else if (c.skillP > 0) {
+                c.text = c.text.slice(0, -1);
+                c.skillP--;
+            } else {
+                c.skillI = (c.skillI + 1) % o.length;
+                c.direction = "forward";
+            }
+        }
         r.textContent = c.text;
         r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP)));
         setTimeout(i, d)
     }
     
-    var l = "",
-    o = [
+    var l = "";
+    var o = [
         "Never gonna give you up, but this page is gone :(",
         "Never gonna let you down, but this page let us down :(",
         "You know the rules, and so do I - this page doesn't exist :(",
@@ -34,12 +65,12 @@ var binft = function (r) {
         "You wouldn't get this from any other site :("
     ].map(function (r) {
         return r + ""
-    }),
-    a = 2,
-    g = 1,
-    s = 5,
-    d = 75,
-    b = [
+    });
+    var a = 2;
+    var g = 1;
+    var s = 5;
+    var d = 75;
+    var b = [
         "rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", 
         "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", 
         "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", 
@@ -47,8 +78,8 @@ var binft = function (r) {
         "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", 
         "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", 
         "rgb(76,110,219)", "rgb(96,84,200)"
-    ],
-    c = {
+    ];
+    var c = {
         text: "",
         prefixP: -s,
         skillI: 0,
