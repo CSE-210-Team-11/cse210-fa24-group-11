@@ -136,12 +136,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	async function loadProjectNames() {
 		try {
 			const files = await getTrackFiles();
+			console.log(files)
 			projectNameSelect.innerHTML = ""; // Clear existing options
 
 			for (const file of files) {
 				const option = document.createElement("option");
-				option.value = file;
-				option.textContent = file; // Display the file name in the dropdown
+				option.value = file.filename;  // Use the filename as the value
+				option.textContent = file.displayName; // Use the display name for showing in dropdown
 				projectNameSelect.appendChild(option);
 			}
 		} catch (error) {
@@ -151,14 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Open the project creation pop-up
 	createProjectButton.addEventListener("click", async () => {
-		console.log("Create Project button clicked!");
 		await loadProjectNames(); // Load project names dynamically
 		popupContainer.classList.remove("hidden"); // Show the pop-up
 	});
 
 	// Close the project creation pop-up
 	popupCloseButton.addEventListener("click", () => {
-		console.log("Cancel button clicked!");
 		popupContainer.classList.add("hidden"); // Hide the pop-up
 	});
 
