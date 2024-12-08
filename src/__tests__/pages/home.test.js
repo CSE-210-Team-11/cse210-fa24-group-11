@@ -29,7 +29,6 @@ describe("Home Page", () => {
 	test("renders the buttons with correct text", () => {
 		const buttons = document.querySelectorAll("button");
 		expect(buttons.length).toBe(1);
-
 		// expect(buttons[0].textContent).toContain("Tasks Pending");
 		// expect(buttons[1].textContent).toContain("Day Streak");
 		expect(buttons[0].textContent).toContain("Projects");
