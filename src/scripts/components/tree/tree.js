@@ -8,7 +8,7 @@ const two = new Two({
 	type: Two.Types.canvas,
 	domElement: canvas,
 	autostart: true,
-})
+});
 
 // const leafTexture = two.makeTexture("./tree/leaf.png");
 
@@ -28,10 +28,10 @@ const leafVariation = 0.3; // Adds some size variation to leaves
 const lenTwig = 9;
 const widthTwig = 5;
 
-let treeSeed = ((Math.random() * 10000) | 0).toString();
+const treeSeed = ((Math.random() * 10000) | 0).toString();
 let branchCount = 0;
 let leafCount = 0;
-let growthFrac = 1;
+const growthFrac = 1;
 // const done = 0;
 // const leaves = two.makeGroup();
 // const branches = two.makeGroup();
@@ -50,7 +50,7 @@ export function renderLeaf(x, y, dir, size, rotation) {
 	const leaf = two.makeCircle(x, y, size);
 	leaf.fill = "green";
 	leaf.noStroke();
-	leaf.rotation = dir + Math.PI / 2 + rotation // Add slight random rotation
+	leaf.rotation = dir + Math.PI / 2 + rotation; // Add slight random rotation
 	leafCount++;
 	return leaf;
 }
@@ -63,7 +63,12 @@ export function drawTree(seed) {
 	branchCount = 0;
 	reseed(seed);
 	const maxTrunk = randInt(trunkMin, trunkMax);
-	const square = two.makeRectangle(two.width / 2, two.height / 2, two.width, two.height)
+	const square = two.makeRectangle(
+		two.width / 2,
+		two.height / 2,
+		two.width,
+		two.height,
+	);
 	makeBranches(
 		two.width / 2,
 		two.height,
@@ -103,7 +108,8 @@ export function makeBranches(x, y, dir, leng, width, depth) {
 	branchCount++;
 
 	// Limit bounds of treeGrowVal to 0.1 and 1, square the result
-	const treeGrowVal = (Math.log10(growthFrac) + 1) > 0 ? Math.log10(growthFrac) + 1 : 0;
+	const treeGrowVal =
+		Math.log10(growthFrac) + 1 > 0 ? Math.log10(growthFrac) + 1 : 0;
 
 	const endX = x + Math.cos(dir) * leng * treeGrowVal;
 	const endY = y + Math.sin(dir) * leng * treeGrowVal;
@@ -111,11 +117,9 @@ export function makeBranches(x, y, dir, leng, width, depth) {
 	const lengFactor = depth < 1 ? 1 : randFloat(lengMin, lengMax);
 	const widthFactor = randFloat(widthMin, widthMax) * growthFrac ** 2;
 
-	if (width > 1.0)
-		renderBranch(x, y, endX, endY, width * widthFactor);
+	if (width > 1.0) renderBranch(x, y, endX, endY, width * widthFactor);
 
 	if (depth < maxDepth) {
-
 		makeBranches(
 			endX,
 			endY,
@@ -182,4 +186,4 @@ export function update() {
 // });
 
 // Export branchCount to access it in tests
-export { branchCount, leafCount, two, maxDepth, canvas};
+export { branchCount, leafCount, two, maxDepth, canvas };

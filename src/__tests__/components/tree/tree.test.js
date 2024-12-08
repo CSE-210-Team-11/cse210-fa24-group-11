@@ -15,7 +15,8 @@ jest.mock("../../../utils/seededRandom.js", () => ({
 }));
 
 // Setup DOM environment
-document.body.innerHTML = '<div id="draw-shapes"><canvas id="treeCanvas" width="500" height="500"></canvas></div>';
+document.body.innerHTML =
+	'<div id="draw-shapes"><canvas id="treeCanvas" width="500" height="500"></canvas></div>';
 
 // Initialize Two.js dimensions
 beforeAll(() => {
