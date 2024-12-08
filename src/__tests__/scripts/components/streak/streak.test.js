@@ -138,4 +138,108 @@ describe("Streak", () => {
 			expect(localStorage.getItem("streak")).toBe("3");
 		});
 	});
+
+	describe("Streak CSS Classes", () => {
+		beforeEach(() => {
+		  document.body.innerHTML = `
+			<button id="streak-btn">Streak: 0</button>
+			<div id="last-checkin">Last check-in: Never</div>
+		  `;
+		  localStorage.clear();
+		  jest.useFakeTimers();
+		  jest.setSystemTime(new Date("2024-01-15T12:00:00Z"));
+		});
+	  
+		afterEach(() => {
+		  document.body.innerHTML = "";
+		  localStorage.clear();
+		  jest.clearAllMocks();
+		  jest.useRealTimers();
+		});
+	  
+		it("should add 'clicked' class and remove 'default' class when streak > 0", () => {
+		  // Set initial state
+		  const streakBtn = document.getElementById("streak-btn");
+		  streakBtn.classList.add("default");
+		  
+		  // Set up previous day check-in to ensure streak increases
+		  const yesterday = new Date("2024-01-14T12:00:00Z");
+		  localStorage.setItem("streak", "0");
+		  localStorage.setItem("lastCheckin", yesterday.toISOString());
+	  
+		  // Re-import module and trigger click
+		  jest.resetModules();
+		  require("../../../../scripts/components/streak/streak");
+		  streakBtn.click();
+	  
+		  // Verify CSS classes
+		  expect(streakBtn.classList.contains("clicked")).toBe(true);
+		  expect(streakBtn.classList.contains("default")).toBe(false);
+		});
+	  });
+	  
+	  describe("Streak Increment Logic", () => {
+		beforeEach(() => {
+		  document.body.innerHTML = `
+			<button id="streak-btn">Streak: 0</button>
+			<div id="last-checkin">Last check-in: Never</div>
+		  `;
+		  localStorage.clear();
+		  jest.useFakeTimers();
+		  jest.setSystemTime(new Date("2024-01-15T12:00:00Z"));
+		});
+	  
+		afterEach(() => {
+		  document.body.innerHTML = "";
+		  localStorage.clear();
+		  jest.clearAllMocks();
+		  jest.useRealTimers();
+		});
+	  
+		it("should increment streak when checking in one day after last check-in", () => {
+		  // Set up yesterday's check-in
+		  const yesterday = new Date("2024-01-14T12:00:00Z");
+		  localStorage.setItem("streak", "5"); // Starting with streak of 5
+		  localStorage.setItem("lastCheckin", yesterday.toISOString());
+	  
+		  // Re-import module and trigger click
+		  jest.resetModules();
+		  require("../../../../scripts/components/streak/streak");
+		  const streakBtn = document.getElementById("streak-btn");
+		  
+		  // Get initial streak value
+		  const initialStreak = Number.parseInt(localStorage.getItem("streak"));
+		  
+		  // Click the button
+		  streakBtn.click();
+		  
+		  // Verify streak increased by exactly 1
+		  const newStreak = Number.parseInt(localStorage.getItem("streak"));
+		  expect(newStreak).toBe(initialStreak + 1);
+		  expect(streakBtn.textContent).toBe(`Streak: ${initialStreak + 1}`);
+		});
+	  
+		it("should only increment streak once per day", () => {
+		  // Set up yesterday's check-in
+		  const yesterday = new Date("2024-01-14T12:00:00Z");
+		  localStorage.setItem("streak", "5");
+		  localStorage.setItem("lastCheckin", yesterday.toISOString());
+	  
+		  // Re-import module
+		  jest.resetModules();
+		  require("../../../../scripts/components/streak/streak");
+		  const streakBtn = document.getElementById("streak-btn");
+		  
+		  // First click
+		  streakBtn.click();
+		  const firstClickStreak = Number.parseInt(localStorage.getItem("streak"));
+		  
+		  // Second click on same day
+		  streakBtn.click();
+		  const secondClickStreak = Number.parseInt(localStorage.getItem("streak"));
+		  
+		  // Verify streak only increased once
+		  expect(secondClickStreak).toBe(firstClickStreak);
+		});
+	  });
 });
