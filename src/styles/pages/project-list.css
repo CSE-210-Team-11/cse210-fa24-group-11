@@ -1,12 +1,49 @@
+@import "../index.css";
+
 body {
 	font-family: Arial, sans-serif;
-	background-color: #e7f5e9;
+	background-color: var(--light-color);
 	margin: 0;
 	padding: 0;
 	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.logo {
+	height: 40px;
+	width: 40px;
+	padding-right: 20px;
+}
+
+.navbar {
+	height: 40px;
+	background-color: var(--navbar-color);
+	border: 2px solid var(--navbar-color);
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	/* justify-content: space-between; */
+	width: 100%;
+}
+
+.link-style {
+	color: var(--light-color);
+	text-decoration: none;
+	font-size: 24px;
+	padding-right: 20px;
+}
+
+.link-style:hover {
+	color: var(--light-color);
+}
+
+.project-content {
+	display: flex;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: calc(100vh - 40px);
 }
 
 .project-list {
@@ -26,9 +63,9 @@ body {
 #create-project-btn {
 	border-radius: 5px;
 	padding: 10px;
-	border: 2px solid #0f1b2e;
-	background-color: #0f1b2e;
-	color: #e7f5e9;
+	border: 2px solid var(--dark-color);
+	background-color: var(--dark-color);
+	color: var(--light-color);
 	font-weight: bold;
 	cursor: pointer;
 	margin-bottom: 1rem; /* Adds spacing below the button */
@@ -36,13 +73,13 @@ body {
 
 .project-card {
 	height: 5rem;
-	margin: 1rem 5rem;
+	margin: 1rem 5rem 1rem 5rem;
 	padding: 1rem;
 	border-radius: 5px;
-	border: 2px solid #0f1b2e;
-	background-color: #0f1b2e;
-	color: #e7f5e9;
-	width: 75%;
+	border: 2px solid var(--dark-color);
+	background-color: var(--dark-color);
+	color: var(--light-color);
+	width: 90%;
 }
 
 .project-card-buttons-list {
@@ -52,10 +89,11 @@ body {
 .project-card-button {
 	padding: 10px;
 	border-radius: 5px;
-	margin: 10px;
-	border: 2px solid #0f1b2e;
-	background-color: #e7f5e9;
-	color: #0f1b2e;
+	margin: 2px;
+	width: 22%;
+	border: 2px solid var(--dark-color);
+	background-color: var(--light-color);
+	color: var(--dark-color);
 	cursor: pointer;
 }
 
@@ -75,8 +113,8 @@ body {
 }
 
 .streak-btn.clicked {
-	background-color: #4caf50;
-	color: white;
+	background-color: var(--dark-color);
+	color: var(--light-color);
 }
 
 .streak-btn:hover {
@@ -89,7 +127,7 @@ body {
 
 .last-checkin {
 	font-size: 14px;
-	color: #555;
+	color: var(--light-color);
 	margin: 10px 0;
 }
 
@@ -107,35 +145,36 @@ body {
 }
 
 .popup {
-	background-color: #fff;
+	background-color: var(--dark-color);
 	padding: 20px;
 	border-radius: 8px;
 	width: 300px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 6px var(--dark-color);
 }
 
 .popup h2 {
 	margin: 0 0 20px;
 	font-size: 20px;
-	color: #333;
+	color: #f3f3e0;
 }
 
 .popup form {
 	display: flex;
 	flex-direction: column;
+	background-color: var(--dark-color);
 }
 
 .popup form label {
 	margin-bottom: 10px;
 	font-size: 14px;
-	color: #333;
+	color: #f3f3e0;
 }
 
 .popup form select {
 	margin-bottom: 20px;
 	padding: 8px;
 	font-size: 14px;
-	border: 1px solid #ccc;
+	border: 1px solid var(--dark-color);
 	border-radius: 4px;
 }
 
@@ -149,12 +188,12 @@ body {
 }
 
 .popup form button[type="submit"] {
-	background-color: #4caf50;
-	color: white;
+	background-color: #ead8b1;
+	color: var(--dark-color);
 }
 
 .popup form button[type="button"] {
-	background-color: #f44336;
+	background-color: #f96e2a;
 	color: white;
 	margin-top: 10px;
 }

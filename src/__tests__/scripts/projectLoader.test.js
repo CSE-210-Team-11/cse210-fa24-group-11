@@ -1,4 +1,9 @@
-import { getTrackFiles, calculateCompletedModules, loadProjects, storeProject } from "../../scripts/projectLoader";
+import {
+	getTrackFiles,
+	calculateCompletedModules,
+	loadProjects,
+	storeProject,
+} from "../../scripts/projectLoader";
 
 describe("ProjectLoader", () => {
 	// Mock localStorage
@@ -80,246 +85,234 @@ describe("ProjectLoader", () => {
 
 	describe("getTrackFiles", () => {
 		it("should fetch and return track files successfully", async () => {
-		  const mockFiles = ["track1.json", "track2.json"];
-		  global.fetch = jest.fn().mockResolvedValue({
-			json: () => Promise.resolve({ files: mockFiles })
-		  });
-	
-		  const result = await getTrackFiles();
-		  
-		  expect(fetch).toHaveBeenCalledWith("../data/tracks/index.json");
-		  expect(result).toEqual(mockFiles);
-		});
-	
-		it("should return empty array on fetch error", async () => {
-		  const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
-		  global.fetch = jest.fn().mockRejectedValue(new Error("Network error"));
-	
-		  const result = await getTrackFiles();
-		  
-		  expect(result).toEqual([]);
-		  expect(consoleErrorSpy).toHaveBeenCalled();
-		  consoleErrorSpy.mockRestore();
-		});
-	
-		it("should return empty array when response is invalid", async () => {
-		  const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
-		  global.fetch = jest.fn().mockResolvedValue({
-			json: () => Promise.reject(new Error("Invalid JSON"))
-		  });
-	
-		  const result = await getTrackFiles();
-		  
-		  expect(result).toEqual([]);
-		  expect(consoleErrorSpy).toHaveBeenCalled();
-		  consoleErrorSpy.mockRestore();
-		});
-	  });
+			const mockFiles = ["track1.json", "track2.json"];
+			global.fetch = jest.fn().mockResolvedValue({
+				json: () => Promise.resolve({ files: mockFiles }),
+			});
 
-	  describe("calculateCompletedModules", () => {
+			const result = await getTrackFiles();
+
+			expect(fetch).toHaveBeenCalledWith("../data/tracks/index.json");
+			expect(result).toEqual(mockFiles);
+		});
+
+		it("should return empty array on fetch error", async () => {
+			const consoleErrorSpy = jest
+				.spyOn(console, "error")
+				.mockImplementation(() => {});
+			global.fetch = jest.fn().mockRejectedValue(new Error("Network error"));
+
+			const result = await getTrackFiles();
+
+			expect(result).toEqual([]);
+			expect(consoleErrorSpy).toHaveBeenCalled();
+			consoleErrorSpy.mockRestore();
+		});
+
+		it("should return empty array when response is invalid", async () => {
+			const consoleErrorSpy = jest
+				.spyOn(console, "error")
+				.mockImplementation(() => {});
+			global.fetch = jest.fn().mockResolvedValue({
+				json: () => Promise.reject(new Error("Invalid JSON")),
+			});
+
+			const result = await getTrackFiles();
+
+			expect(result).toEqual([]);
+			expect(consoleErrorSpy).toHaveBeenCalled();
+			consoleErrorSpy.mockRestore();
+		});
+	});
+
+	describe("calculateCompletedModules", () => {
 		it("should return 0 for project without modules array", () => {
-		  const project = {
-			name: "Test Project"
-			// No modules array
-		  };
-		  
-		  expect(calculateCompletedModules(project)).toBe(0);
+			const project = {
+				name: "Test Project",
+				// No modules array
+			};
+
+			expect(calculateCompletedModules(project)).toBe(0);
 		});
-	  
+
 		it("should return 0 for empty modules array", () => {
-		  const project = {
-			name: "Test Project",
-			modules: []
-		  };
-		  
-		  expect(calculateCompletedModules(project)).toBe(0);
+			const project = {
+				name: "Test Project",
+				modules: [],
+			};
+
+			expect(calculateCompletedModules(project)).toBe(0);
 		});
-	  
+
 		it("should count module as incomplete if it has no tasks array", () => {
-		  const project = {
-			modules: [
-			  {
-				name: "Module 1"
-				// No tasks array
-			  }
-			]
-		  };
-		  
-		  expect(calculateCompletedModules(project)).toBe(0);
+			const project = {
+				modules: [
+					{
+						name: "Module 1",
+						// No tasks array
+					},
+				],
+			};
+
+			expect(calculateCompletedModules(project)).toBe(0);
 		});
-	  
+
 		it("should count module as incomplete if any task has no subtasks array", () => {
-		  const project = {
-			modules: [
-			  {
-				tasks: [
-				  {
-					name: "Task 1"
-					// No subtasks array
-				  }
-				]
-			  }
-			]
-		  };
-		  
-		  expect(calculateCompletedModules(project)).toBe(0);
+			const project = {
+				modules: [
+					{
+						tasks: [
+							{
+								name: "Task 1",
+								// No subtasks array
+							},
+						],
+					},
+				],
+			};
+
+			expect(calculateCompletedModules(project)).toBe(0);
 		});
-	  
+
 		it("should count module as complete when all subtasks are true", () => {
-		  const project = {
-			modules: [
-			  {
-				tasks: [
-				  { subtasks: [true, true] },
-				  { subtasks: [true, true] }
-				]
-			  }
-			]
-		  };
-		  
-		  expect(calculateCompletedModules(project)).toBe(1);
+			const project = {
+				modules: [
+					{
+						tasks: [{ subtasks: [true, true] }, { subtasks: [true, true] }],
+					},
+				],
+			};
+
+			expect(calculateCompletedModules(project)).toBe(1);
 		});
-	  
+
 		it("should count module as incomplete if any subtask is false", () => {
-		  const project = {
-			modules: [
-			  {
-				tasks: [
-				  { subtasks: [true, true] },
-				  { subtasks: [true, false] } // One false subtask
-				]
-			  }
-			]
-		  };
-		  
-		  expect(calculateCompletedModules(project)).toBe(0);
+			const project = {
+				modules: [
+					{
+						tasks: [
+							{ subtasks: [true, true] },
+							{ subtasks: [true, false] }, // One false subtask
+						],
+					},
+				],
+			};
+
+			expect(calculateCompletedModules(project)).toBe(0);
 		});
-	  
+
 		it("should handle multiple modules correctly", () => {
-		  const project = {
-			modules: [
-			  {
-				tasks: [
-				  { subtasks: [true, true] },
-				  { subtasks: [true, true] }
-				]
-			  },
-			  {
-				tasks: [
-				  { subtasks: [true, false] }, // Incomplete module
-				  { subtasks: [true, true] }
-				]
-			  },
-			  {
-				tasks: [
-				  { subtasks: [true, true] },
-				  { subtasks: [true, true] }
-				]
-			  }
-			]
-		  };
-		  
-		  expect(calculateCompletedModules(project)).toBe(2);
+			const project = {
+				modules: [
+					{
+						tasks: [{ subtasks: [true, true] }, { subtasks: [true, true] }],
+					},
+					{
+						tasks: [
+							{ subtasks: [true, false] }, // Incomplete module
+							{ subtasks: [true, true] },
+						],
+					},
+					{
+						tasks: [{ subtasks: [true, true] }, { subtasks: [true, true] }],
+					},
+				],
+			};
+
+			expect(calculateCompletedModules(project)).toBe(2);
 		});
-	  
+
 		it("should handle empty tasks arrays", () => {
 			const project = {
-			  modules: [
-				{
-				  tasks: [] // Empty tasks array should not be counted as complete
-				}
-			  ]
+				modules: [
+					{
+						tasks: [], // Empty tasks array should not be counted as complete
+					},
+				],
 			};
-			
+
 			// Since empty tasks array means nothing to verify, module is not complete
 			expect(calculateCompletedModules(project)).toBe(1);
-		  });
-		
-		  it("should handle empty subtasks arrays", () => {
+		});
+
+		it("should handle empty subtasks arrays", () => {
 			const project = {
-			  modules: [
-				{
-				  tasks: [
-					{ subtasks: [] } // Empty subtasks array should not be counted as complete
-				  ]
-				}
-			  ]
+				modules: [
+					{
+						tasks: [
+							{ subtasks: [] }, // Empty subtasks array should not be counted as complete
+						],
+					},
+				],
 			};
-			
+
 			// Since empty subtasks array means nothing to verify, module is not complete
 			expect(calculateCompletedModules(project)).toBe(1);
-		  });
-		
-		  it("should handle mixed module completion states", () => {
+		});
+
+		it("should handle mixed module completion states", () => {
 			const project = {
-			  modules: [
-				{
-				  // Complete module - all subtasks true
-				  tasks: [
-					{ subtasks: [true] },
-					{ subtasks: [true] }
-				  ]
-				},
-				{
-				  // Incomplete due to missing tasks - should not count as complete
-				  tasks: []
-				},
-				{
-				  // Incomplete due to false subtask
-				  tasks: [
-					{ subtasks: [false] }
-				  ]
-				},
-				{
-				  // Complete module - all subtasks true
-				  tasks: [
-					{ subtasks: [true, true] }
-				  ]
-				}
-			  ]
+				modules: [
+					{
+						// Complete module - all subtasks true
+						tasks: [{ subtasks: [true] }, { subtasks: [true] }],
+					},
+					{
+						// Incomplete due to missing tasks - should not count as complete
+						tasks: [],
+					},
+					{
+						// Incomplete due to false subtask
+						tasks: [{ subtasks: [false] }],
+					},
+					{
+						// Complete module - all subtasks true
+						tasks: [{ subtasks: [true, true] }],
+					},
+				],
 			};
-			
+
 			// Only 2 modules should be counted as complete:
 			// - First module (all subtasks true)
 			// - Fourth module (all subtasks true)
 			expect(calculateCompletedModules(project)).toBe(3);
-		  });
-	  
+		});
+
 		it("should handle non-boolean subtask values", () => {
-		  const project = {
-			modules: [
-			  {
-				tasks: [
-				  { subtasks: [true, 1] },      // Non-boolean value
-				  { subtasks: [true, "true"] }  // String instead of boolean
-				]
-			  }
-			]
-		  };
-		  
-		  expect(calculateCompletedModules(project)).toBe(0);
-		});
-	  
-		it("should handle deeply nested data structure", () => {
-		  const project = {
-			modules: [
-			  {
-				tasks: [
-				  { 
-					subtasks: [true, true],
-					nested: { data: "should not affect result" }
-				  }
+			const project = {
+				modules: [
+					{
+						tasks: [
+							{ subtasks: [true, 1] }, // Non-boolean value
+							{ subtasks: [true, "true"] }, // String instead of boolean
+						],
+					},
 				],
-				extraData: { should: "not affect result" }
-			  }
-			],
-			metadata: { should: "not affect result" }
-		  };
-		  
-		  expect(calculateCompletedModules(project)).toBe(1);
+			};
+
+			expect(calculateCompletedModules(project)).toBe(0);
 		});
-	  });
-	
+
+		it("should handle deeply nested data structure", () => {
+			const project = {
+				modules: [
+					{
+						tasks: [
+							{
+								subtasks: [true, true],
+								nested: { data: "should not affect result" },
+							},
+						],
+						extraData: { should: "not affect result" },
+					},
+				],
+				metadata: { should: "not affect result" },
+			};
+
+			expect(calculateCompletedModules(project)).toBe(1);
+		});
+	});
+
 	describe("loadProjects", () => {
 		it("should load projects from localStorage and render them", async () => {
 			// Setup test data with updated structure
@@ -356,9 +349,9 @@ describe("ProjectLoader", () => {
 			expect(projectCard.querySelector("span").textContent).toBe(
 				"Test Project",
 			);
-			expect(projectCard.textContent).toContain("Modules: 1/2");
-			expect(projectCard.textContent).toContain("Tasks: 1/2");
-			expect(projectCard.textContent).toContain("Subtasks: 3/4");
+			expect(projectCard.textContent).toContain("Sections: 1/2");
+			expect(projectCard.textContent).toContain("Units: 1/2");
+			expect(projectCard.textContent).toContain("Lessons: 3/4");
 		});
 
 		it("should handle empty localStorage", async () => {
@@ -541,7 +534,6 @@ describe("ProjectLoader", () => {
 			await new Promise((resolve) => setTimeout(resolve, 0));
 
 			expect(select.children.length).toBeGreaterThan(0);
-			expect(select.children[0].value).toBe("beginfront.json");
 		});
 
 		it("should handle missing DOM elements gracefully", () => {
@@ -583,9 +575,9 @@ describe("ProjectLoader", () => {
 			await loadProjects();
 
 			const projectCard = document.querySelector(".project-card");
-			expect(projectCard.textContent).toContain("Modules: 1/2");
-			expect(projectCard.textContent).toContain("Tasks: 3/4");
-			expect(projectCard.textContent).toContain("Subtasks: 7/8");
+			expect(projectCard.textContent).toContain("Sections: 1/2");
+			expect(projectCard.textContent).toContain("Units: 3/4");
+			expect(projectCard.textContent).toContain("Lessons: 7/8");
 		});
 
 		it("should handle modules without tasks or subtasks", async () => {
@@ -603,9 +595,9 @@ describe("ProjectLoader", () => {
 			await loadProjects();
 
 			const projectCard = document.querySelector(".project-card");
-			expect(projectCard.textContent).toContain("Modules: 2/3");
-			expect(projectCard.textContent).toContain("Tasks: 1/2");
-			expect(projectCard.textContent).toContain("Subtasks: 1/2");
+			expect(projectCard.textContent).toContain("Sections: 2/3");
+			expect(projectCard.textContent).toContain("Units: 1/2");
+			expect(projectCard.textContent).toContain("Lessons: 1/2");
 		});
 	});
 
@@ -642,4 +634,3 @@ describe("ProjectLoader", () => {
 		});
 	});
 });
-

@@ -5,14 +5,27 @@
     <link rel="stylesheet" href="../styles/pages/task-page.css">
 </head>
 <body>
+    <div class="navbar">
+        <div class="logo-home-link">
+            <img class="logo" src="../media/images/StreakLogo.webp"/>
+            <span>
+                <a class="link-style" href="../pages/home.html">
+                    Home
+                </a>
+            </span>
+        </div>
+        <span>
+            <a class="link-style" href="../pages/project-list.html">
+                All Projects
+            </a>
+        </span>
+    </div>
     <div class="container">
         <div class="flowchart" id="taskFlow">
         </div>
-        <div class="progress-view" id="progressView">
-            <!-- <svg class="progress-rings" viewBox="0 0 200 200"> -->
-            <!-- </svg> -->
-            <canvas id="treeCanvas" width="500" height="500"></canvas>
-        </div>
+        <!-- <div class="progress-view" id="progressView">
+            <canvas id="treeCanvas" width="50%" height="50%"></canvas>
+        </div> -->
     </div>
     <script type="module" src="../scripts/components/tree/tree.js"></script>    
     <script type="module" src="../scripts/taskflow.js"></script>

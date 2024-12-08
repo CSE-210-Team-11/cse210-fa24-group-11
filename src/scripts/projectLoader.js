@@ -29,9 +29,9 @@ export async function loadProjects() {
             <div class="project-card">
                 <span>${project.name}</span>
                 <div class="project-card-buttons-list">
-                    <button class="project-card-button">Modules: ${completedModules}/${totalModules}</button>
-                    <button class="project-card-button">Tasks: ${completedTasks}/${totalTasks}</button>
-                    <button class="project-card-button">Subtasks: ${completedSubtasks}/${totalSubtasks}</button>
+                    <button class="project-card-button">Sections: ${completedModules}/${totalModules}</button>
+                    <button class="project-card-button">Units: ${completedTasks}/${totalTasks}</button>
+                    <button class="project-card-button">Lessons: ${completedSubtasks}/${totalSubtasks}</button>
                     <button class="project-card-button" 
                             onclick="window.location.href='task-page.html?file=${encodeURIComponent(project.file)}'">
                         Start Project <i class="fa-solid fa-arrow-right"></i>
@@ -136,12 +136,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	async function loadProjectNames() {
 		try {
 			const files = await getTrackFiles();
+			console.log(files);
 			projectNameSelect.innerHTML = ""; // Clear existing options
 
 			for (const file of files) {
 				const option = document.createElement("option");
-				option.value = file;
-				option.textContent = file; // Display the file name in the dropdown
+				option.value = file.filename; // Use the filename as the value
+				option.textContent = file.displayName; // Use the display name for showing in dropdown
 				projectNameSelect.appendChild(option);
 			}
 		} catch (error) {
@@ -151,14 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Open the project creation pop-up
 	createProjectButton.addEventListener("click", async () => {
-		console.log("Create Project button clicked!");
 		await loadProjectNames(); // Load project names dynamically
 		popupContainer.classList.remove("hidden"); // Show the pop-up
 	});
 
 	// Close the project creation pop-up
 	popupCloseButton.addEventListener("click", () => {
-		console.log("Cancel button clicked!");
 		popupContainer.classList.add("hidden"); // Hide the pop-up
 	});
 
@@ -200,3 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Initial load of projects
 	loadProjects();
 });
+export function getProjectCount() {
+	const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
+	return storedProjects.length;
+}

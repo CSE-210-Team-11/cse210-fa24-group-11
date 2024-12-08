@@ -1,11 +1,12 @@
 {
-	"name": "Java Beginner's Learning Path",
+	"name": "Java For Everybody",
 	"modules": [
 		{
 			"id": 1,
 			"name": "Getting Started with Java",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Development Environment Setup",
 					"subtasks": [
 						"Install JDK (Java Development Kit)",
@@ -17,6 +18,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "First Java Program",
 					"subtasks": [
 						"Writing Hello World program",
@@ -34,6 +36,7 @@
 			"name": "Java Fundamentals",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Variables & Data Types",
 					"subtasks": [
 						"Primitive data types (int, double, boolean, etc.)",
@@ -46,6 +49,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Operators",
 					"subtasks": [
 						"Arithmetic operators",
@@ -64,6 +68,7 @@
 			"name": "Control Flow",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Conditional Statements",
 					"subtasks": [
 						"if statements",
@@ -75,6 +80,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Loops",
 					"subtasks": [
 						"for loop",
@@ -93,6 +99,7 @@
 			"name": "Arrays & Strings",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Arrays",
 					"subtasks": [
 						"Array declaration",
@@ -105,6 +112,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "String Handling",
 					"subtasks": [
 						"String creation",
@@ -123,6 +131,7 @@
 			"name": "Object-Oriented Programming",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Classes and Objects",
 					"subtasks": [
 						"Class definition",
@@ -137,6 +146,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Inheritance",
 					"subtasks": [
 						"Extending classes",
@@ -149,6 +159,7 @@
 					]
 				},
 				{
+					"taskId": 3,
 					"name": "Polymorphism",
 					"subtasks": [
 						"Method overloading",
@@ -160,6 +171,7 @@
 					]
 				},
 				{
+					"taskId": 4,
 					"name": "Encapsulation",
 					"subtasks": [
 						"Access modifiers",
@@ -176,6 +188,7 @@
 			"name": "Exception Handling",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Exception Basics",
 					"subtasks": [
 						"try-catch blocks",
@@ -188,6 +201,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Exception Types",
 					"subtasks": [
 						"Checked exceptions",
@@ -204,6 +218,7 @@
 			"name": "Collections Framework",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Collection Interfaces",
 					"subtasks": [
 						"List interface",
@@ -215,6 +230,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Collection Classes",
 					"subtasks": [
 						"ArrayList",
@@ -227,6 +243,7 @@
 					]
 				},
 				{
+					"taskId": 3,
 					"name": "Generics",
 					"subtasks": [
 						"Generic classes",
@@ -244,6 +261,7 @@
 			"name": "File Handling & I/O",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "File Operations",
 					"subtasks": [
 						"File class",
@@ -256,6 +274,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Advanced I/O",
 					"subtasks": [
 						"Scanner class",
@@ -273,6 +292,7 @@
 			"name": "Essential APIs",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Date and Time API",
 					"subtasks": [
 						"LocalDate",
@@ -285,6 +305,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Utility Classes",
 					"subtasks": [
 						"Arrays",
@@ -303,6 +324,7 @@
 			"name": "Multithreading",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Thread Basics",
 					"subtasks": [
 						"Creating threads",
@@ -314,6 +336,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Concurrency",
 					"subtasks": [
 						"Runnable interface",

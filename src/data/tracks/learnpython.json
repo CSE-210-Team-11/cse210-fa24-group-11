@@ -1,11 +1,13 @@
 {
-	"name": "Python Beginner's Learning Path",
+	"name": "Python For Everybody",
 	"modules": [
 		{
 			"id": 1,
 			"name": "Getting Started",
+			"description": "Learn to install an IDE and the basic syntax.",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Python Installation & Setup",
 					"subtasks": [
 						"Install Python",
@@ -17,6 +19,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "First Steps",
 					"subtasks": [
 						"Hello World program",
@@ -32,8 +35,10 @@
 		{
 			"id": 2,
 			"name": "Python Basics",
+			"description": "Learn about variables and basic math operations.",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Variables & Data Types",
 					"subtasks": [
 						"Numbers (int, float)",
@@ -48,6 +53,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Basic Operations",
 					"subtasks": [
 						"Arithmetic operators",
@@ -66,6 +72,7 @@
 			"name": "Control Flow",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Conditional Statements",
 					"subtasks": [
 						"if statements",
@@ -77,6 +84,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Loops",
 					"subtasks": [
 						"for loops",
@@ -96,6 +104,7 @@
 			"name": "Functions",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Function Basics",
 					"subtasks": [
 						"Function definition",
@@ -110,6 +119,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Built-in Functions",
 					"subtasks": [
 						"map()",
@@ -128,6 +138,7 @@
 			"name": "Data Structures",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Lists in Depth",
 					"subtasks": [
 						"List creation and access",
@@ -140,6 +151,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Dictionaries in Depth",
 					"subtasks": [
 						"Dictionary creation",
@@ -151,6 +163,7 @@
 					]
 				},
 				{
+					"taskId": 3,
 					"name": "Advanced Collections",
 					"subtasks": [
 						"Counter",
@@ -168,6 +181,7 @@
 			"name": "Object-Oriented Programming",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Classes and Objects",
 					"subtasks": [
 						"Class definition",
@@ -182,6 +196,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "OOP Concepts",
 					"subtasks": [
 						"Inheritance",
@@ -201,6 +216,7 @@
 			"name": "File Handling & Exceptions",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "File Operations",
 					"subtasks": [
 						"Opening/closing files",
@@ -214,6 +230,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Exception Handling",
 					"subtasks": [
 						"Try-except blocks",
@@ -233,6 +250,7 @@
 			"name": "Modules & Packages",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Module Basics",
 					"subtasks": [
 						"Import statements",
@@ -245,6 +263,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Essential Libraries",
 					"subtasks": [
 						"datetime",
@@ -264,6 +283,7 @@
 			"name": "Python Standard Library",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "String Processing",
 					"subtasks": [
 						"String methods",
@@ -274,6 +294,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Data Processing",
 					"subtasks": [
 						"CSV module",
@@ -290,6 +311,7 @@
 			"name": "Advanced Topics",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Decorators",
 					"subtasks": [
 						"Function decorators",
@@ -300,6 +322,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Generators",
 					"subtasks": [
 						"Generator functions",
@@ -310,6 +333,7 @@
 					]
 				},
 				{
+					"taskId": 3,
 					"name": "Context Managers",
 					"subtasks": [
 						"with statement",
