@@ -124,53 +124,35 @@ describe("TaskFlow", () => {
 	});
 
 	describe("updateTaskStatus", () => {
-		beforeEach(() => {
-			// Set up the DOM structure we need
-			document.body.innerHTML = `
-				<div id="taskFlow">
-					<div class="task" id="task-1-0">
-						<div class="subtask-inner-div">
-							<input type="checkbox" class="subtask-checkbox" id="subtask-1-0-0" />
-						</div>
-						<div class="subtask-inner-div">
-							<input type="checkbox" class="subtask-checkbox" id="subtask-1-0-1" />
-						</div>
-					</div>
-				</div>
-			`;
-		});
-
 		it("should show completion status when all subtasks are checked", async () => {
-			const taskElement = document.getElementById("task-1-0");
-			// Create and append the taskStatusSpan element
-			const taskStatusSpan = document.createElement("span");
-			taskStatusSpan.className = "task-status";
-			taskElement.appendChild(taskStatusSpan);
+			await initializeTaskFlow();
+			await new Promise((resolve) => setTimeout(resolve, 0));
 
-			const checkboxes = taskElement.querySelectorAll(".subtask-checkbox");
+			const checkboxes = document.querySelectorAll(".subtask-checkbox");
 			for (const checkbox of checkboxes) {
 				checkbox.checked = true;
 			}
 
 			updateTaskStatus(1, 0);
 
-			expect(taskStatusSpan.style.display).toBe("inline");
+			const taskStatus = document.querySelector(".task-status");
+			expect(taskStatus.style.display).toBe("inline");
 		});
 
 		it("should hide completion status when not all subtasks are checked", async () => {
-			const taskElement = document.getElementById("task-1-0");
-			// Create and append the taskStatusSpan element
-			const taskStatusSpan = document.createElement("span");
-			taskStatusSpan.className = "task-status";
-			taskElement.appendChild(taskStatusSpan);
+			await initializeTaskFlow();
+			await new Promise((resolve) => setTimeout(resolve, 0));
 
-			const checkboxes = Array.from(taskElement.querySelectorAll(".subtask-checkbox"));
+			const checkboxes = Array.from(
+				document.querySelectorAll(".subtask-checkbox"),
+			);
 			checkboxes[0].checked = true;
 			checkboxes[1].checked = false;
 
 			updateTaskStatus(1, 0);
 
-			expect(taskStatusSpan.style.display).toBe("none");
+			const taskStatus = document.querySelector(".task-status");
+			expect(taskStatus.style.display).toBe("none");
 		});
 	});
 });

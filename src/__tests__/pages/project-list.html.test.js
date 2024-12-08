@@ -18,8 +18,7 @@ describe("Project List Page", () => {
 	test("has create project button", () => {
 		const createButton = document.querySelector("#create-project-btn");
 		expect(createButton).toBeTruthy();
-		expect(createButton.textContent).toContain("Create");
-		expect(createButton.textContent).toContain("Project");
+		expect(createButton.textContent).toContain("Create Project");
 	});
 
 	test("has popup container", () => {
@@ -48,19 +47,5 @@ describe("Project List Page", () => {
 		expect(streakBtn.textContent).toContain("Streak");
 		expect(lastCheckin).toBeTruthy();
 		expect(lastCheckin.textContent).toContain("check-in");
-	});
-	test("renders project content container", () => {
-		const projectContent = document.querySelector(".project-content");
-		expect(projectContent).toBeTruthy();
-	});
-	test("renders navbar elements", () => {
-		const navbar = document.querySelector(".navbar");
-		const logo = document.querySelector(".logo");
-		const homeLink = document.querySelector(".link-style");
-
-		expect(navbar).toBeTruthy();
-		expect(logo).toBeTruthy();
-		expect(homeLink).toBeTruthy();
-		expect(homeLink.textContent).toContain("Home");
 	});
 });

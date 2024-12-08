@@ -1,24 +1,9 @@
 {
 	"files": [
-		{
-			"filename": "learnpython.json",
-			"displayName": "Learn Python"
-		},
-		{
-			"filename": "learnc++.json",
-			"displayName": "Learn C++"
-		},
-		{
-			"filename": "beginfront.json",
-			"displayName": "Frontend Development"
-		},
-		{
-			"filename": "genAI.json",
-			"displayName": "Generative AI"
-		},
-		{
-			"filename": "learnjava.json",
-			"displayName": "Learn Java"
-		}
+		"learnpython.json",
+		"learnc++.json",
+		"beginfront.json",
+		"genAI.json",
+		"learnjava.json"
 	]
 }

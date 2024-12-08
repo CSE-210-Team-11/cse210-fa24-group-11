@@ -1,12 +1,11 @@
 {
-	"name": "Web Applications For Everybody",
+	"name": "Front-End Development Learning Path",
 	"modules": [
 		{
 			"id": 1,
 			"name": "Web Development Fundamentals",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "Development Environment Setup",
 					"subtasks": [
 						"Code editor setup (VS Code)",
@@ -18,7 +17,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "Web Fundamentals",
 					"subtasks": [
 						"How the internet works",
@@ -36,7 +34,6 @@
 			"name": "HTML",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "HTML Basics",
 					"subtasks": [
 						"HTML document structure",
@@ -50,7 +47,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "HTML Advanced",
 					"subtasks": [
 						"Meta tags",
@@ -70,7 +66,6 @@
 			"name": "CSS",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "CSS Fundamentals",
 					"subtasks": [
 						"CSS selectors",
@@ -84,7 +79,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "CSS Layout",
 					"subtasks": [
 						"Flexbox",
@@ -98,7 +92,6 @@
 					]
 				},
 				{
-					"taskId": 3,
 					"name": "CSS Advanced",
 					"subtasks": [
 						"CSS animations",
@@ -118,7 +111,6 @@
 			"name": "JavaScript Basics",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "JavaScript Fundamentals",
 					"subtasks": [
 						"Variables and data types",
@@ -132,7 +124,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "DOM Manipulation",
 					"subtasks": [
 						"DOM tree structure",
@@ -152,7 +143,6 @@
 			"name": "JavaScript Advanced",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "Advanced Concepts",
 					"subtasks": [
 						"Closures",
@@ -166,7 +156,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "Browser APIs",
 					"subtasks": [
 						"LocalStorage/SessionStorage",
@@ -186,7 +175,6 @@
 			"name": "Frontend Tools",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "Build Tools",
 					"subtasks": [
 						"Package managers (npm/yarn)",
@@ -200,7 +188,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "Version Control",
 					"subtasks": [
 						"Git basics",
@@ -219,7 +206,6 @@
 			"name": "Frontend Frameworks",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "React Basics",
 					"subtasks": [
 						"Components",
@@ -233,7 +219,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "State Management",
 					"subtasks": [
 						"Context API",
@@ -252,7 +237,6 @@
 			"name": "API Integration",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "REST APIs",
 					"subtasks": [
 						"HTTP methods",
@@ -266,7 +250,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "Data Handling",
 					"subtasks": [
 						"JSON parsing",
@@ -286,7 +269,6 @@
 			"name": "Testing",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "Testing Basics",
 					"subtasks": [
 						"Unit testing",
@@ -300,7 +282,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "Performance Testing",
 					"subtasks": [
 						"Lighthouse",
@@ -319,7 +300,6 @@
 			"name": "Deployment & Performance",
 			"tasks": [
 				{
-					"taskId": 1,
 					"name": "Deployment",
 					"subtasks": [
 						"Build optimization",
@@ -332,7 +312,6 @@
 					]
 				},
 				{
-					"taskId": 2,
 					"name": "Performance Optimization",
 					"subtasks": [
 						"Code splitting",

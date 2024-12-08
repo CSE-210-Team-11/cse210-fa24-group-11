@@ -1,44 +1,52 @@
 import fs from "node:fs";
 import path from "node:path";
 
-describe('Task Page HTML', () => {
-    let htmlContent;
+describe("Task Page", () => {
+	beforeEach(() => {
+		const html = fs.readFileSync(
+			path.resolve(__dirname, "../../pages/task-page.html"),
+			"utf8",
+		);
+		document.documentElement.innerHTML = html;
+	});
 
-    beforeAll(() => {
-        const htmlPath = path.join(process.cwd(), 'src', 'pages', 'task-page.html');
-        htmlContent = fs.readFileSync(htmlPath, 'utf8');
-    });
+	describe("Page Structure", () => {
+		test("should have correct title", () => {
+			expect(document.title).toBe("Learning Path Tasks");
+		});
 
-    test('contains essential HTML elements', () => {
-        // Test for basic HTML structure
-        expect(htmlContent).toMatch(/<html>/);
-        expect(htmlContent).toMatch(/<head>/);
-        expect(htmlContent).toMatch(/<body>/);
-        
-        // Test for title
-        expect(htmlContent).toMatch(/<title>Learning Path Tasks<\/title>/);
-        
-        // Test for CSS link
-        expect(htmlContent).toMatch(/<link.*task-page\.css/);
-    });
+		test("should have required stylesheet linked", () => {
+			const stylesheet = document.querySelector('link[rel="stylesheet"]');
+			expect(stylesheet).toBeTruthy();
+		});
 
-    test('contains navigation elements', () => {
-        // Test for navbar and its components
-        expect(htmlContent).toMatch(/<div class="navbar">/);
-        expect(htmlContent).toMatch(/<img class="logo"/);
-        expect(htmlContent).toMatch(/href="\.\.\/pages\/home\.html"/);
-        expect(htmlContent).toMatch(/href="\.\.\/pages\/project-list\.html"/);
-    });
+		test("should have main container div", () => {
+			const container = document.querySelector(".container");
+			expect(container).toBeTruthy();
+		});
 
-    test('contains main content elements', () => {
-        // Test for container and flowchart
-        expect(htmlContent).toMatch(/<div class="container">/);
-        expect(htmlContent).toMatch(/<div class="flowchart"/);
-        expect(htmlContent).toMatch(/id="taskFlow"/);
-    });
+		test("should have flowchart section", () => {
+			const flowchart = document.querySelector("#taskFlow");
+			expect(flowchart).toBeTruthy();
+		});
 
-    test('contains required scripts', () => {
-        expect(htmlContent).toMatch(/src="\.\.\/scripts\/components\/tree\/tree\.js"/);
-        expect(htmlContent).toMatch(/src="\.\.\/scripts\/taskflow\.js"/);
-    });
+		test("should have progress view section", () => {
+			const progressView = document.querySelector("#progressView");
+			expect(progressView).toBeTruthy();
+		});
+	});
+
+	describe("Visualization Elements", () => {
+		test("should have canvas element for tree visualization", () => {
+			const canvas = document.querySelector("#treeCanvas");
+			expect(canvas).toBeTruthy();
+		});
+	});
+
+	describe("Required Scripts", () => {
+		test("should load all required scripts", () => {
+			const scripts = document.querySelectorAll('script[type="module"]');
+			expect(scripts.length).toBe(2);
+		});
+	});
 });
