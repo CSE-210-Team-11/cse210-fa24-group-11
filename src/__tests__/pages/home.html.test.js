@@ -41,15 +41,14 @@ describe("Home Page", () => {
 		// Check if info-div exists
 		const infoDiv = document.querySelector(".info-div");
 		expect(infoDiv).toBeTruthy();
-	
+
 		// Check if streak-div exists
 		const streakDiv = document.querySelector(".streak-div");
 		expect(streakDiv).toBeTruthy();
-	
+
 		// Check if project count span exists with correct initial value
 		const projectCount = document.getElementById("project-count");
 		expect(projectCount).toBeTruthy();
 		expect(projectCount.textContent).toBe("0");
 	});
-	
 });
