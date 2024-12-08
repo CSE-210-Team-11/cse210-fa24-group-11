@@ -37,9 +37,9 @@ describe('Helper Function Tests', () => {
     test('Fragment generator (n) creates a document fragment with spans', () => {
         const fragment = helpers.n(5);
         expect(fragment.childNodes.length).toBe(5);
-        for (const node of fragment.childNodes) {
+        fragment.childNodes.forEach(node => {
             expect(node.tagName).toBe('SPAN');
-        }        
+        });
     });
 });
 
