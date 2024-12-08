@@ -1,3 +1,5 @@
+@import '../index.css';
+
 body {
 	margin: 0;
 	padding: 0;
@@ -11,8 +13,8 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background-color: #F5F5F5;
-	color: #001F3F;
+	background-color: var(--light-color);
+	color: var(--dark-color);
 	height: 100vh;
 	width: 100%;
 }
@@ -30,9 +32,9 @@ h1 {
 	padding: 10px;
 	border-radius: 5px;
 	margin: 10px;
-	border: 2px solid #001F3F;
-	background-color: #F5F5F5;
-	color: #001F3F;
+	border: 2px solid var(--dark-color);
+	background-color: var(--light-color);
+	color: var(--dark-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -58,8 +60,8 @@ h1 {
 	padding: 10px;
 	border-radius: 5px;
 	margin: 10px;
-	border: 2px solid #001F3F;
-	background-color: #001F3F;
+	border: 2px solid var(--dark-color);
+	background-color: var(--dark-color);
 	color: #E7F5E9;
 	cursor: pointer;
 }
