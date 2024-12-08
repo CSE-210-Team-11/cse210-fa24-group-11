@@ -1,4 +1,4 @@
-@import '../index.css';
+@import "../index.css";
 
 body {
 	padding: 0;
@@ -7,7 +7,7 @@ body {
 	overflow: hidden;
 }
 
-.logo{
+.logo {
 	height: 40px;
 	width: 40px;
 	padding-right: 20px;
@@ -30,7 +30,7 @@ body {
 	width: 100%;
 }
 
-.link-style{
+.link-style {
 	color: var(--light-color);
 	text-decoration: none;
 	font-size: 24px;
@@ -65,7 +65,6 @@ body {
 	border: 2px solid var(--dark-color);
 	display: flex;
 	justify-content: center;
-
 }
 
 .unit {
@@ -76,7 +75,7 @@ body {
 	width: 100%;
 }
 
-.task{
+.task {
 	color: var(--light-color);
 	width: 75%;
 	margin: 15px;
@@ -88,18 +87,18 @@ body {
 	font-weight: 600;
 }
 
-.task p{
+.task p {
 	font-size: 16px;
 	font-weight: 400;
 }
 
-.subtask-inner-div{
+.subtask-inner-div {
 	border-radius: 20px;
 	width: 50%;
 	height: 100px;
 	background-color: var(--navbar-color);
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 	margin: 10px auto;
 	color: var(--light-color);
 	font-size: 24px;
@@ -111,7 +110,7 @@ input[type="checkbox"] {
 	/* Remove default appearance */
 	-webkit-appearance: none;
 	appearance: none;
-	
+
 	/* Style the checkbox */
 	width: 24px;
 	height: 24px;
@@ -121,20 +120,20 @@ input[type="checkbox"] {
 	cursor: pointer;
 	position: relative;
 	margin: 0;
-	
+
 	/* Ensure proper vertical alignment */
 	vertical-align: middle;
-  }
-  
-  /* Checked state */
-  input[type="checkbox"]:checked {
+}
+
+/* Checked state */
+input[type="checkbox"]:checked {
 	background-color: var(--light-color);
 	border-color: var(--light-color);
-  }
-  
-  /* Create checkmark using pseudo-element */
-  input[type="checkbox"]:checked::after {
-	content: '';
+}
+
+/* Create checkmark using pseudo-element */
+input[type="checkbox"]:checked::after {
+	content: "";
 	position: absolute;
 	left: 7px;
 	top: 2px;
@@ -143,7 +142,7 @@ input[type="checkbox"] {
 	border: solid var(--dark-color);
 	border-width: 0 2px 2px 0;
 	transform: rotate(45deg);
-  }
+}
 
 .checkbox-label {
 	margin-left: 20px;
@@ -210,10 +209,10 @@ input[type="checkbox"] {
 	vertical-align: middle; /* Align the checkmark vertically with the text */
 /* } */
 /* h3 { */
-	/* display: inline-block; Keep task title and checkmark inline */
-	/* margin: 0; */
+/* display: inline-block; Keep task title and checkmark inline */
+/* margin: 0; */
 /* } */
 
 /* #treeCanvas { */
-	/* vertical-align: middle; */
-/* } */ 
+/* vertical-align: middle; */
+/* } */
