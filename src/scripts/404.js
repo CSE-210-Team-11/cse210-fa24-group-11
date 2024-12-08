@@ -64,7 +64,7 @@ var binft = function (r) {
         "A 404 error's what I'm thinking of :(",
         "You wouldn't get this from any other site :("
     ].map(function (r) {
-        return r + ""
+        return r
     });
     var a = 2;
     var g = 1;
