@@ -225,10 +225,8 @@ function calculatePercentageOfCompletedTasks() {
 	if (totalTasks === 0) {
 		return 0;
 	}
-
-	// Calculate percentage of completed tasks
-	const percentage = (completedTasks / totalTasks) * 100;
-	return percentage.toFixed(2); // Round to two decimal places
+	const percentage = (completedTasks / totalTasks);
+	return percentage.toFixed(4); 
 }
 
 
