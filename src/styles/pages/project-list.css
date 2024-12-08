@@ -36,13 +36,13 @@ body {
 
 .project-card {
 	height: 5rem;
-	margin: 1rem 5rem;
+	margin: 1rem 5rem 1rem 5rem;
 	padding: 1rem;
 	border-radius: 5px;
 	border: 2px solid #0f1b2e;
 	background-color: #0f1b2e;
 	color: #e7f5e9;
-	width: 75%;
+	width: 90%;
 }
 
 .project-card-buttons-list {
@@ -52,7 +52,8 @@ body {
 .project-card-button {
 	padding: 10px;
 	border-radius: 5px;
-	margin: 10px;
+	margin: 2px;
+	width: 22%;
 	border: 2px solid #0f1b2e;
 	background-color: #e7f5e9;
 	color: #0f1b2e;

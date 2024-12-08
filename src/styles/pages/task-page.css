@@ -1,78 +1,146 @@
-.container {
+body {
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.navbar {
+	height: 40px;
+	background-color: #1a1410;
+	border: 2px solid #251104;
+	padding: 10px;
 	display: flex;
-	padding: 20px;
-	max-width: 50%;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.link-style{
+	color: #fae9d7;
+	text-decoration: none;
+	font-size: 24px;
+	padding-right: 20px;
+}
+
+.link-style:hover {
+	color: #e9d7aa;
+}
+
+.container {
+	width: 50%;
+	background-color: #251104;
+	overflow-y: scroll;
+	height: calc(100vh - 20px);
 }
 
 .flowchart {
 	width: 100%;
+	background-color: #543a28;
 }
 
-h1 {
-	color: #2a9d8f;
-	margin-bottom: 30px;
-	padding: 15px;
-	border: 2px solid #2a9d8f;
-	border-radius: 8px;
-	text-align: center;
-	background-color: #e8f8f5;
-	font-family: "Arial", sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 1px;
+.project {
+	display: flex;
+	justify-content: center;
+	color: #fae9d7;
 }
 
 .project-heading {
-	font-size: 1.5em;
-	font-weight: bold;
-	margin: 25px 0 15px 0;
-	color: #264653;
-	padding: 10px;
-	border: 2px solid #264653;
-	border-radius: 6px;
-	position: relative;
-	background-color: #f0f4f8;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+	color: #fae9d7;
+	background-color: #251104;
+	border: 2px solid #251104;
+	display: flex;
+	justify-content: center;
+
 }
 
-.task h3 {
-	color: #457b9d;
-	margin: 15px 0 10px 0;
+.unit {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.task{
+	color: #fae9d7;
+	width: 75%;
+	margin: 15px;
 	padding: 8px;
-	border: 2px solid #457b9d;
+	border: 2px solid #251104;
 	border-radius: 6px;
-	background-color: #edf6f9;
+	background-color: #251104;
 	font-family: "Helvetica", sans-serif;
 	font-weight: 600;
 }
 
-.subtask {
-	margin: 10px 0;
-	padding: 8px;
-	color: #2b2d42;
-	background-color: #fef9ef;
-	border: 1px solid #e76f51;
-	border-radius: 4px;
-	position: relative;
-	font-family: "Segoe UI", sans-serif;
-	font-size: 0.95em;
-	transition: background-color 0.2s;
+.task p{
+	font-size: 16px;
+	font-weight: 400;
 }
 
-.subtask:hover {
-	background-color: #ffe8d6;
+.subtask-inner-div{
+	border-radius: 20px;
+	width: 50%;
+	height: 100px;
+	background-color: #fae9d7;
+    display: flex;
+    align-items: center;
+	margin: 10px auto;
+	color: #251104;
+	font-size: 24px;
+	padding: 20px;
 }
+
+/* Target the native checkbox */
+input[type="checkbox"] {
+	/* Remove default appearance */
+	-webkit-appearance: none;
+	appearance: none;
+	
+	/* Style the checkbox */
+	width: 24px;
+	height: 24px;
+	border: 2px solid #251104;
+	border-radius: 4px;
+	background-color: #251104;
+	cursor: pointer;
+	position: relative;
+	margin: 0;
+	
+	/* Ensure proper vertical alignment */
+	vertical-align: middle;
+  }
+  
+  /* Checked state */
+  input[type="checkbox"]:checked {
+	background-color: #251104;
+	border-color: #251104;
+  }
+  
+  /* Create checkmark using pseudo-element */
+  input[type="checkbox"]:checked::after {
+	content: '';
+	position: absolute;
+	left: 7px;
+	top: 2px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+  }
+
+.checkbox-label {
+	margin-left: 20px;
+}
+/* 
 .container {
 	display: flex;
 	gap: 20px;
 }
 
-.flowchart {
-	width: 50%;
-}
-
 .progress-view {
-	width: 50%;
-	position: fixed;
 	right: 0;
 	top: 50%;
 	padding: 20px;
@@ -90,24 +158,7 @@ h1 {
 	transition: stroke-dashoffset 0.3s;
 }
 
-.project-heading {
-	width: 100%;
-	text-align: left;
-	cursor: pointer;
-	background: none;
-	border: 2px solid #264653;
-	font-size: 1.5em;
-	font-weight: bold;
-	transition: background-color 0.3s;
-}
-
-.project-heading:hover {
-	background-color: #f0f4f8;
-}
-/* Add these styles to make the circle visible and button interactive */
-
 .progress-view {
-	width: 50%;
 	position: fixed;
 	right: 0;
 	top: 50%;
@@ -131,14 +182,6 @@ h1 {
 	stroke-linecap: round;
 }
 
-.project-heading {
-	width: 100%;
-	text-align: left;
-	cursor: pointer;
-	padding: 15px;
-	transition: all 0.3s ease;
-}
-
 .project-heading.active {
 	background-color: #2a9d8f;
 	color: white;
@@ -151,12 +194,12 @@ h1 {
 	font-size: 20px;
 	margin-left: 10px;
 	vertical-align: middle; /* Align the checkmark vertically with the text */
-}
-h3 {
-	display: inline-block; /* Keep task title and checkmark inline */
-	margin: 0;
-}
+/* } */
+/* h3 { */
+	/* display: inline-block; Keep task title and checkmark inline */
+	/* margin: 0; */
+/* } */
 
-#treeCanvas {
-	vertical-align: middle;
-}
+/* #treeCanvas { */
+	/* vertical-align: middle; */
+/* } */ 
