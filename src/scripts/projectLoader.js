@@ -24,6 +24,7 @@ export async function loadProjects() {
 		// Calculate task and subtask completion
 		const { totalTasks, completedTasks, totalSubtasks, completedSubtasks } =
 			calculateTaskCompletion(project);
+			// console.log("totalTasks", project)
 
 		const projectCard = `
             <div class="project-card">

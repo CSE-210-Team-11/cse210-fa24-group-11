@@ -13,6 +13,7 @@ export function initializeTaskFlow(
 			const projectsProgress = JSON.parse(
 				localStorage.getItem("projects") || "[]",
 			);
+			console.log("projectsProgress", projectsProgress);
 			const projectProgress = projectsProgress.find(
 				(p) => p.name === data.name,
 			);
@@ -150,7 +151,7 @@ export function saveSubtaskProgress(
 	localStorage.setItem("projects", JSON.stringify(projectsProgress));
 }
 
-// Optional: Function to check if all subtasks in a task are completed
+// Function to check if all subtasks in a task are completed
 export function updateTaskStatus(moduleId, taskIndex) {
 	const taskElement = document.getElementById(`task-${moduleId}-${taskIndex}`);
 	const checkboxes = taskElement.querySelectorAll(".subtask-checkbox");
@@ -159,8 +160,63 @@ export function updateTaskStatus(moduleId, taskIndex) {
 	const allChecked = Array.from(checkboxes).every(
 		(checkbox) => checkbox.checked,
 	);
+
 	taskStatusSpan.style.display = allChecked ? "inline" : "none";
+
+	if (allChecked) {
+		console.log(`All subtasks for Task ${taskIndex} in Module ${moduleId} are completed.`);
+
+		// show the percentage of completed tasks
+		const percentage = calculatePercentageOfCompletedTasks();
+		console.log("Percentage of completed tasks:", percentage);
+	}
 }
+
+// Calculate the percentage of completed tasks
+function calculatePercentageOfCompletedTasks() {
+	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
+
+	if (projectsProgress.length === 0) {
+		return 0;
+	}
+
+	// Initialize counters for total and completed tasks
+	let totalTasks = 0;
+	let completedTasks = 0;
+
+	// Iterate over all project progress
+	projectsProgress.forEach((project) => {
+		if (project.modules) {
+			project.modules.forEach((module) => {
+				if (module.tasks) {
+					module.tasks.forEach((task) => {
+						totalTasks++; // Count this task
+
+						// Check if all subtasks are completed
+						if (
+							task.subtasks &&
+							task.subtasks.length > 0 &&
+							task.subtasks.every((subtask) => subtask === true)
+						) {
+							completedTasks++;
+						}
+					});
+				}
+			});
+		}
+	});
+
+	// Avoid division by zero
+	if (totalTasks === 0) {
+		return 0;
+	}
+
+	// Calculate percentage of completed tasks
+	const percentage = (completedTasks / totalTasks) * 100;
+	return percentage.toFixed(2); // Round to two decimal places
+}
+
+
 
 // Event listener to initialize task flow based on URL parameter
 document.addEventListener("DOMContentLoaded", () => {
