@@ -95,6 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 if (typeof module !== 'undefined' && module.exports) {
+    const i = 1;
+    const c = 1;
+    const l = 1;
     module.exports = {
         binft,
         helpers: {
