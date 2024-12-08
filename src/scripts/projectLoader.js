@@ -200,3 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Initial load of projects
 	loadProjects();
 });
+export function getProjectCount() {
+    const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
+    return storedProjects.length;
+}
