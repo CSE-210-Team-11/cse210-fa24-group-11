@@ -169,17 +169,17 @@ export function update() {
 //     }
 // }
 
-canvas.addEventListener("click", () => {
-	console.log("click!");
-	console.log("branchCount: ", branchCount);
-	treeSeed = ((Math.random() * 10000) | 0).toString();
-	// if (growthFrac < 1) {
-	// 	growthFrac += 0.01;
-	// }
-	growthFrac = 1;
-	console.log(growthFrac)
-	console.log("seed: ", treeSeed);
-});
+// canvas.addEventListener("click", () => {
+// 	console.log("click!");
+// 	console.log("branchCount: ", branchCount);
+// 	treeSeed = ((Math.random() * 10000) | 0).toString();
+// 	// if (growthFrac < 1) {
+// 	// 	growthFrac += 0.01;
+// 	// }
+// 	growthFrac = 1;
+// 	console.log(growthFrac)
+// 	console.log("seed: ", treeSeed);
+// });
 
 // Export branchCount to access it in tests
 export { branchCount, leafCount, two, maxDepth, canvas};
