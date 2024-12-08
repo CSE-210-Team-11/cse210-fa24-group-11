@@ -634,4 +634,3 @@ describe("ProjectLoader", () => {
 		});
 	});
 });
-
