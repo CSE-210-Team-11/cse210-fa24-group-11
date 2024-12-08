@@ -31,7 +31,7 @@ const widthTwig = 5;
 const treeSeed = ((Math.random() * 10000) | 0).toString();
 let branchCount = 0;
 let leafCount = 0;
-const growthFrac = 1;
+let growthFrac = 1;
 // const done = 0;
 // const leaves = two.makeGroup();
 // const branches = two.makeGroup();
@@ -165,6 +165,7 @@ two.play();
 export function update() {
 	two.clear();
 	drawTree(treeSeed);
+	console.log("update called");
 }
 
 // Optional: Uncomment if you want to use this function
@@ -186,4 +187,4 @@ export function update() {
 // });
 
 // Export branchCount to access it in tests
-export { branchCount, leafCount, two, maxDepth, canvas };
+export { branchCount, leafCount, two, maxDepth, canvas, growthFrac};
