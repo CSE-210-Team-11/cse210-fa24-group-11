@@ -1,6 +1,6 @@
 body {
 	font-family: Arial, sans-serif;
-	background-color: #e7f5e9;
+	background-color: var(--main-bg-color);
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -26,9 +26,9 @@ body {
 #create-project-btn {
 	border-radius: 5px;
 	padding: 10px;
-	border: 2px solid #0f1b2e;
-	background-color: #0f1b2e;
-	color: #e7f5e9;
+	border: 2px solid var(--accent-color);
+	background-color: var(--accent-color);
+	color: var(--main-bg-color);
 	font-weight: bold;
 	cursor: pointer;
 	margin-bottom: 1rem; /* Adds spacing below the button */
@@ -39,9 +39,9 @@ body {
 	margin: 1rem 5rem;
 	padding: 1rem;
 	border-radius: 5px;
-	border: 2px solid #0f1b2e;
-	background-color: #0f1b2e;
-	color: #e7f5e9;
+	border: 2px solid var(--accent-color);
+	background-color: var(--accent-color);
+	color: var(--main-bg-color);
 	width: 75%;
 }
 
@@ -53,9 +53,9 @@ body {
 	padding: 10px;
 	border-radius: 5px;
 	margin: 10px;
-	border: 2px solid #0f1b2e;
-	background-color: #e7f5e9;
-	color: #0f1b2e;
+	border: 2px solid var(--accent-color);
+	background-color: var(--main-bg-color);
+	color: var(--accent-color);
 	cursor: pointer;
 }
 
