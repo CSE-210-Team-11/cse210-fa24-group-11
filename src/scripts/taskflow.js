@@ -1,3 +1,5 @@
+// import { growthFrac, update } from './components/tree/tree.js';
+
 export function initializeTaskFlow(
 	jsonFilePath = "../data/tracks/beginfront.json",
 ) {
@@ -165,10 +167,12 @@ export function updateTaskStatus(moduleId, taskIndex) {
 
 	if (allChecked) {
 		console.log(`All subtasks for Task ${taskIndex} in Module ${moduleId} are completed.`);
-
+		
 		// show the percentage of completed tasks
 		const percentage = calculatePercentageOfCompletedTasks();
 		console.log("Percentage of completed tasks:", percentage);
+		// growthFrac = percentage;
+		// update();
 	}
 }
 
@@ -210,10 +214,8 @@ function calculatePercentageOfCompletedTasks() {
 	if (totalTasks === 0) {
 		return 0;
 	}
-
-	// Calculate percentage of completed tasks
-	const percentage = (completedTasks / totalTasks) * 100;
-	return percentage.toFixed(2); // Round to two decimal places
+	const percentage = (completedTasks / totalTasks);
+	return percentage.toFixed(4); 
 }
 
 
