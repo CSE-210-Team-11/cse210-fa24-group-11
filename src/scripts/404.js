@@ -64,3 +64,28 @@ var binft = function (r) {
 document.addEventListener('DOMContentLoaded', function() {
     binft(document.getElementById('binft'));
 });
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        binft,
+        helpers: {
+            t: () => b[Math.floor(Math.random() * b.length)],
+            e: () => String.fromCharCode(94 * Math.random() + 33),
+            n: function (r) {
+                const fragment = document.createDocumentFragment();
+                for (let i = 0; i < r; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = this.e();
+                    span.style.color = this.t();
+                    fragment.appendChild(span);
+                }
+                return fragment;
+            },
+        },
+        animation: {
+            i,
+            c,
+            l,
+        },
+    };
+}
