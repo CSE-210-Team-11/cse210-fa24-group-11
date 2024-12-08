@@ -1,4 +1,4 @@
-// import { growthFrac, update } from './components/tree/tree.js';
+import { update } from './components/tree/tree.js';
 
 export function initializeTaskFlow(
 	jsonFilePath = "../data/tracks/beginfront.json",
@@ -6,6 +6,7 @@ export function initializeTaskFlow(
 	fetch(jsonFilePath)
 		.then((response) => response.json())
 		.then((data) => {
+
 			const taskFlow = document.getElementById("taskFlow");
 			taskFlow.innerHTML = ""; // Clear previous content
 			// trackTitle
@@ -77,6 +78,7 @@ export function initializeTaskFlow(
 
 			// Add event listeners to all checkboxes after the HTML is inserted
 			attachCheckboxListeners();
+			updateDisplays(data.name);
 		})
 		.catch((error) => {
 			console.error("Error loading data:", error);
@@ -103,8 +105,7 @@ function attachCheckboxListeners() {
 				event.target.checked,
 			);
 
-			// Update the task status (checkmark)
-			updateTaskStatus(moduleId, taskIndex);
+			updateDisplays(project);
 		});
 	}
 }
@@ -153,72 +154,38 @@ export function saveSubtaskProgress(
 	localStorage.setItem("projects", JSON.stringify(projectsProgress));
 }
 
-// Function to check if all subtasks in a task are completed
-export function updateTaskStatus(moduleId, taskIndex) {
-	const taskElement = document.getElementById(`task-${moduleId}-${taskIndex}`);
-	const checkboxes = taskElement.querySelectorAll(".subtask-checkbox");
-	const taskStatusSpan = taskElement.querySelector(".task-status");
-
-	const allChecked = Array.from(checkboxes).every(
-		(checkbox) => checkbox.checked,
-	);
-
-	taskStatusSpan.style.display = allChecked ? "inline" : "none";
-
-	if (allChecked) {
-		console.log(`All subtasks for Task ${taskIndex} in Module ${moduleId} are completed.`);
-		
-		// show the percentage of completed tasks
-		const percentage = calculatePercentageOfCompletedTasks();
-		console.log("Percentage of completed tasks:", percentage);
-		// growthFrac = percentage;
-		// update();
-	}
-}
-
-// Calculate the percentage of completed tasks
-function calculatePercentageOfCompletedTasks() {
+function updateDisplays(projectName) {
+	// Retrieve existing projects progress
 	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
 
-	if (projectsProgress.length === 0) {
-		return 0;
-	}
-
-	// Initialize counters for total and completed tasks
-	let totalTasks = 0;
-	let completedTasks = 0;
-
-	// Iterate over all project progress
-	projectsProgress.forEach((project) => {
-		if (project.modules) {
-			project.modules.forEach((module) => {
-				if (module.tasks) {
-					module.tasks.forEach((task) => {
-						totalTasks++; // Count this task
-
-						// Check if all subtasks are completed
-						if (
-							task.subtasks &&
-							task.subtasks.length > 0 &&
-							task.subtasks.every((subtask) => subtask === true)
-						) {
-							completedTasks++;
+	// Find or create project progress
+	let project = projectsProgress.find((p) => p.name === projectName);
+	let totalSubtasks = 0;
+	let completedSubtasks = 0;
+	if (project && project.modules) {
+		console.log("Modules length: " + project.modules.length);
+		for (const module of project.modules) {
+			if (module.tasks) {
+				for (const task of module.tasks) {
+					if (task.subtasks && task.subtasks.length > 0) {
+						for (const subtask of task.subtasks) {
+							if (subtask == true) {
+								completedSubtasks++;
+							}
+							totalSubtasks++;
 						}
-					});
+					}
 				}
-			});
+			}
 		}
-	});
-
-	// Avoid division by zero
-	if (totalTasks === 0) {
-		return 0;
 	}
-	const percentage = (completedTasks / totalTasks);
-	return percentage.toFixed(4); 
+
+	if (totalSubtasks != 0) {
+		let completion = completedSubtasks / totalSubtasks;
+		console.log("Completion: " + completion);
+		update(completion);
+	}
 }
-
-
 
 // Event listener to initialize task flow based on URL parameter
 document.addEventListener("DOMContentLoaded", () => {

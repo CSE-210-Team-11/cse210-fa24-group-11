@@ -10,8 +10,6 @@ const two = new Two({
 	autostart: true,
 });
 
-// const leafTexture = two.makeTexture("./tree/leaf.png");
-
 const angMin = 0.3;
 const angMax = 0.8;
 const lengMin = 0.7;
@@ -31,12 +29,7 @@ const widthTwig = 5;
 const treeSeed = ((Math.random() * 10000) | 0).toString();
 let branchCount = 0;
 let leafCount = 0;
-let growthFrac = 1;
-// const done = 0;
-// const leaves = two.makeGroup();
-// const branches = two.makeGroup();
-
-// const baseLeaf = two.makeSprite(leafTexture, 0, 0);
+let growthFrac = 0;
 
 /**
  * Renders a circular leaf on the tree
@@ -159,13 +152,14 @@ export function makeBranches(x, y, dir, leng, width, depth) {
 }
 
 // Don’t forget to tell two to draw everything to the screen
-two.bind("update", update);
-two.play();
+// two.bind("update", update);
+// two.play();
 
-export function update() {
+export function update(completion) {
+	growthFrac = completion;
 	two.clear();
 	drawTree(treeSeed);
-	console.log("update called");
+	two.update();
 }
 
 // Optional: Uncomment if you want to use this function
@@ -187,4 +181,4 @@ export function update() {
 // });
 
 // Export branchCount to access it in tests
-export { branchCount, leafCount, two, maxDepth, canvas, growthFrac};
+export { branchCount, leafCount, two, maxDepth, canvas, growthFrac };
