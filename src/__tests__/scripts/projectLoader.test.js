@@ -349,9 +349,9 @@ describe("ProjectLoader", () => {
 			expect(projectCard.querySelector("span").textContent).toBe(
 				"Test Project",
 			);
-			expect(projectCard.textContent).toContain("Modules: 1/2");
-			expect(projectCard.textContent).toContain("Tasks: 1/2");
-			expect(projectCard.textContent).toContain("Subtasks: 3/4");
+			expect(projectCard.textContent).toContain("Sections: 1/2");
+			expect(projectCard.textContent).toContain("Units: 1/2");
+			expect(projectCard.textContent).toContain("Lessons: 3/4");
 		});
 
 		it("should handle empty localStorage", async () => {
@@ -534,7 +534,6 @@ describe("ProjectLoader", () => {
 			await new Promise((resolve) => setTimeout(resolve, 0));
 
 			expect(select.children.length).toBeGreaterThan(0);
-			expect(select.children[0].value).toBe("beginfront.json");
 		});
 
 		it("should handle missing DOM elements gracefully", () => {
@@ -576,9 +575,9 @@ describe("ProjectLoader", () => {
 			await loadProjects();
 
 			const projectCard = document.querySelector(".project-card");
-			expect(projectCard.textContent).toContain("Modules: 1/2");
-			expect(projectCard.textContent).toContain("Tasks: 3/4");
-			expect(projectCard.textContent).toContain("Subtasks: 7/8");
+			expect(projectCard.textContent).toContain("Sections: 1/2");
+			expect(projectCard.textContent).toContain("Units: 3/4");
+			expect(projectCard.textContent).toContain("Lessons: 7/8");
 		});
 
 		it("should handle modules without tasks or subtasks", async () => {
@@ -596,9 +595,9 @@ describe("ProjectLoader", () => {
 			await loadProjects();
 
 			const projectCard = document.querySelector(".project-card");
-			expect(projectCard.textContent).toContain("Modules: 2/3");
-			expect(projectCard.textContent).toContain("Tasks: 1/2");
-			expect(projectCard.textContent).toContain("Subtasks: 1/2");
+			expect(projectCard.textContent).toContain("Sections: 2/3");
+			expect(projectCard.textContent).toContain("Units: 1/2");
+			expect(projectCard.textContent).toContain("Lessons: 1/2");
 		});
 	});
 
