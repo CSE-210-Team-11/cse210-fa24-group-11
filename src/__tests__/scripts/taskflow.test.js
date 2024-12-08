@@ -126,7 +126,6 @@ describe("TaskFlow", () => {
 		});
 	});
 
-<<<<<<< HEAD
 	describe("updateDisplays", () => {
 		it("should handle empty or invalid project data gracefully", () => {
 			const consoleSpy = jest.spyOn(console, "log");
@@ -201,6 +200,4 @@ describe("TaskFlow", () => {
 			expect(stored[0].modules[0].tasks[0].subtasks[0]).toBe(true);
 		});
 	});
-=======
->>>>>>> 274cfae (Delete dead tests)
 });

@@ -195,14 +195,14 @@ function calculatePercentageOfCompletedTasks() {
 	let project = projectsProgress.find((p) => p.name === projectName);
 	let totalSubtasks = 0;
 	let completedSubtasks = 0;
-	if (project && project.modules) {
-		console.log("Modules length: " + project.modules.length);
+	if (project?.project.modules) {
+		console.log(`Modules·length:·${project.modules.length}`)
 		for (const module of project.modules) {
 			if (module.tasks) {
 				for (const task of module.tasks) {
 					if (task.subtasks && task.subtasks.length > 0) {
 						for (const subtask of task.subtasks) {
-							if (subtask == true) {
+							if (subtask === true) {
 								completedSubtasks++;
 							}
 							totalSubtasks++;
@@ -213,9 +213,9 @@ function calculatePercentageOfCompletedTasks() {
 		}
 	}
 
-	if (totalSubtasks != 0) {
-		let completion = completedSubtasks / totalSubtasks;
-		console.log("Completion: " + completion);
+	if (totalSubtasks !== 0) {
+		const completion = completedSubtasks / totalSubtasks;
+		console.log(`Completion:  ${completion}`);
 		update(completion);
 	}
 }
