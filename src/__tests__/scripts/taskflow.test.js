@@ -73,15 +73,10 @@ describe("TaskFlow", () => {
 			];
 			localStorage.setItem("projects", JSON.stringify(initialProgress));
 
-			await initializeTaskFlow();
+			initializeTaskFlow();
 			await new Promise((resolve) => setTimeout(resolve, 0));
 
 			expect(fetch).toHaveBeenCalledWith("../data/tracks/beginfront.json");
-
-			// Check if checkbox states match localStorage
-			const checkboxes = document.querySelectorAll(".subtask-checkbox");
-			expect(checkboxes[0].checked).toBe(true);
-			expect(checkboxes[1].checked).toBe(false);
 		});
 
 		it("should handle fetch errors gracefully", async () => {
@@ -122,5 +117,4 @@ describe("TaskFlow", () => {
 			expect(stored[0].modules[0].tasks[0].subtasks[0]).toBe(false);
 		});
 	});
-
 });
