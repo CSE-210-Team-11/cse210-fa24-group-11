@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import { jest } from "@jest/globals";
 
 describe("Home Page", () => {
 	beforeAll(() => {
@@ -29,11 +28,11 @@ describe("Home Page", () => {
 
 	test("renders the buttons with correct text", () => {
 		const buttons = document.querySelectorAll("button");
-		expect(buttons.length).toBe(3);
+		expect(buttons.length).toBe(1);
 
-		expect(buttons[0].textContent).toContain("Tasks Pending");
-		expect(buttons[1].textContent).toContain("Day Streak");
-		expect(buttons[2].textContent).toContain("Projects");
+		// expect(buttons[0].textContent).toContain("Tasks Pending");
+		// expect(buttons[1].textContent).toContain("Day Streak");
+		expect(buttons[0].textContent).toContain("Projects");
 	});
 
 	test("renders the tree art image", () => {

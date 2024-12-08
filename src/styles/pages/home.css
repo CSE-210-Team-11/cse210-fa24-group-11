@@ -1,7 +1,10 @@
 body {
 	margin: 0;
 	padding: 0;
+	font-family: "Noto Sans", sans-serif;
+	font-optical-sizing: auto;
 }
+
 
 .greeting-div {
 	display: flex;
@@ -18,14 +21,22 @@ h1 {
 	margin: 2px;
 }
 
-button {
+.info-div{
+	display: flex;
+	flex-direction: row;
+}
+
+.streak-div{
 	padding: 10px;
 	border-radius: 5px;
 	margin: 10px;
 	border: 2px solid #0f1b2e;
 	background-color: #e7f5e9;
 	color: #0f1b2e;
-	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: small;
 }
 
 .tree-art {
@@ -41,4 +52,14 @@ button {
 
 .author {
 	float: right;
+}
+
+.go-to-projects-button{
+	padding: 10px;
+	border-radius: 5px;
+	margin: 10px;
+	border: 2px solid #0f1b2e;
+	background-color: #0f1b2e;
+	color: #E7F5E9;
+	cursor: pointer;
 }

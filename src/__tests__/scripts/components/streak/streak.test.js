@@ -4,9 +4,6 @@ document.body.innerHTML = `
     <div id="last-checkin">Last check-in: Never</div>
 `;
 
-// Now import the module after DOM is ready
-const streak = require("../../../../scripts/components/streak/streak");
-
 describe("Streak", () => {
 	beforeEach(() => {
 		document.body.innerHTML = `

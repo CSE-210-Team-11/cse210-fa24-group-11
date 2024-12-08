@@ -1,4 +1,4 @@
-async function getTrackFiles() {
+export async function getTrackFiles() {
 	try {
 		const response = await fetch("../data/tracks/index.json");
 		const data = await response.json();
@@ -45,7 +45,7 @@ export async function loadProjects() {
 }
 
 // Helper function to calculate completed modules
-function calculateCompletedModules(project) {
+export function calculateCompletedModules(project) {
 	if (!project.modules) return 0;
 
 	return project.modules.filter((module) => {
@@ -180,13 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 
 				// Save the project in local storage
-				// const storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
-				// storedProjects.push({
-				//     name: projectData.name,
-				//     modules: projectData.modules,
-				//     file: projectData.file,
-				// });
-				// localStorage.setItem('projects', JSON.stringify(storedProjects));
 				storeProject(projectData);
 
 				alert(`Project "${projectData.name}" created successfully!`);
