@@ -48,4 +48,19 @@ describe("Project List Page", () => {
 		expect(lastCheckin).toBeTruthy();
 		expect(lastCheckin.textContent).toContain("check-in");
 	});
+	test("renders project content container", () => {
+		const projectContent = document.querySelector(".project-content");
+		expect(projectContent).toBeTruthy();
+	});
+	test("renders navbar elements", () => {
+		const navbar = document.querySelector(".navbar");
+		const logo = document.querySelector(".logo");
+		const homeLink = document.querySelector(".link-style");
+		
+		expect(navbar).toBeTruthy();
+		expect(logo).toBeTruthy();
+		expect(homeLink).toBeTruthy();
+		expect(homeLink.textContent).toContain("Home");
+	});
+	
 });
