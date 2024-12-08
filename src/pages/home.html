@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
     <link rel="stylesheet" href="../styles/pages/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     
@@ -12,24 +15,25 @@
         <h1 class="greeting">Welcome, Angry Atishay!</h1>
         
         <div id="quote-container">
-            <h2><em>Quote of the day:</em></h2>  
-
-            <p><em id="quote-text"></em></p>
-                <span class="author">
-                    <em id="quote-author"></em>
-                </span>
+            <p><em id="quote-text"></em>...</p>
+            <span class="author">
+                <em id="quote-author"></em>
+            </span>
         </div>
-            
-        
-        <div>
-            <button>
+        <div class="info-div">
+            <div class="streak-div">
                 <strong>0 Tasks Pending</strong>
-            </button>
-            <button>
-                <strong>0 Day Streak</strong>
-            </button>
-            <button onclick="window.location.href='project-list.html'">
-                <strong>Go To Projects</strong>
+            </div>
+            <div class="streak-div">
+                <span id="icon-container" class="streak-svg"></span>
+                <strong id="display-streak">0</strong>
+                <strong>&nbsp; Day Streak</strong>
+            </div>
+            <button class="go-to-projects-button" onclick="window.location.href='project-list.html'">
+                <strong>
+                    Go To Projects
+                    <i class="fa-solid fa-arrow-right"></i>
+                </strong>
             </button>
         </div>
     </div>
@@ -38,5 +42,14 @@
         import { updateQuote } from '../scripts/quotesmanager.js';
         updateQuote();
     </script>
+    <script type="module">
+        import { displayStreak } from '../scripts/components/streak/displayStreak.js';
+
+        // Call displayStreak after the DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            displayStreak();
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a94787b9e0.js" crossorigin="anonymous"></script>
 </body>
 </html>
