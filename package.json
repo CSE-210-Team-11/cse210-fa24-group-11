@@ -15,8 +15,8 @@
         "check": "npx @biomejs/biome check --write src"
     },
     "devDependencies": {
-        "@babel/core": "^7.24.0",
-        "@babel/preset-env": "^7.24.0",
+        "@babel/core": "^7.26.0",
+        "@babel/preset-env": "^7.26.0",
         "@biomejs/biome": "1.9.4",
         "babel-jest": "^29.7.0",
         "jest": "^29.7.0",
@@ -24,6 +24,7 @@
         "jest-environment-jsdom": "^29.7.0"
     },
     "dependencies": {
+        "jsdom": "^25.0.1",
         "madr": "^4.0.0",
         "two.js": "^0.8.14"
     }
