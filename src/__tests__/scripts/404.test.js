@@ -56,10 +56,11 @@ describe('Helper Function Comprehensive Tests', () => {
         
         expect(color).toMatch(/^rgb\(\d{1,3},\d{1,3},\d{1,3}\)$/);
         expect(rgbParts.length).toBe(3);
-        rgbParts.forEach(part => {
+        for (const part of rgbParts) {
             expect(part).toBeGreaterThanOrEqual(0);
             expect(part).toBeLessThanOrEqual(255);
-        });
+        }
+        
     });
 
     test('Random character generator (e) returns a valid ASCII character', () => {
@@ -76,10 +77,10 @@ describe('Helper Function Comprehensive Tests', () => {
         const fragment = helpers.n(fragmentSize);
         
         expect(fragment.childNodes.length).toBe(fragmentSize);
-        fragment.childNodes.forEach(node => {
+        for (const node of fragment.childNodes) {
             expect(node.tagName).toBe('SPAN');
             expect(node.textContent).toMatch(/^[\x21-\x7e]$/);
-        });
+        }        
     });
 });
 
