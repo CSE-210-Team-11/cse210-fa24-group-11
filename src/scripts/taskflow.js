@@ -20,17 +20,16 @@ export function initializeTaskFlow(
 				<div class="project">
 					<h1>${data.name}</h1>
 				</div>
-			`
+			`;
 			// Render modules and tasks
 			for (const [moduleIndex, module] of data.modules.entries()) {
-
 				// Create module button
 				fullHTML += `
 					<div class="project-heading"}>
 						<h2>Section ${module.id}: ${module.name}</h2>
 					</div>
 					<div class="unit">
-				`
+				`;
 
 				// Render tasks
 				for (const [taskIndex, task] of module.tasks.entries()) {
@@ -39,13 +38,15 @@ export function initializeTaskFlow(
 							<h3>Unit ${task.taskId}</h3>
 							<p>${task.name}</p>
 						</div>
-					`
+					`;
 					// Task title & Subtask list
-                    for (const [subtaskIndex, subtask] of task.subtasks.entries()) {
-                        const isChecked = projectProgress?.modules?.[moduleIndex]?.tasks?.[taskIndex]?.subtasks?.[subtaskIndex] === true;
-                        const subtaskId = `subtask-${module.id}-${taskIndex}-${subtaskIndex}`;
-                        
-                        fullHTML += `
+					for (const [subtaskIndex, subtask] of task.subtasks.entries()) {
+						const isChecked =
+							projectProgress?.modules?.[moduleIndex]?.tasks?.[taskIndex]
+								?.subtasks?.[subtaskIndex] === true;
+						const subtaskId = `subtask-${module.id}-${taskIndex}-${subtaskIndex}`;
+
+						fullHTML += `
 								<div class="subtask-inner-div">
 									<input 
 										type="checkbox" 
@@ -56,7 +57,7 @@ export function initializeTaskFlow(
 										data-module-index="${moduleIndex}"
 										data-task-index="${taskIndex}"
 										data-subtask-index="${subtaskIndex}"
-										${isChecked ? 'checked' : ''}
+										${isChecked ? "checked" : ""}
 									/>
 									<p class="checkbox-label">
 										<label for="${subtaskId}">
@@ -65,14 +66,14 @@ export function initializeTaskFlow(
 									</p>
 								</div>
                         `;
-                    }
+					}
 				}
-				fullHTML += `</div>`
+				fullHTML += "</div>";
 			}
-			taskFlow.innerHTML = fullHTML
+			taskFlow.innerHTML = fullHTML;
 
 			// Add event listeners to all checkboxes after the HTML is inserted
-            attachCheckboxListeners();
+			attachCheckboxListeners();
 		})
 		.catch((error) => {
 			console.error("Error loading data:", error);
@@ -83,25 +84,26 @@ export function initializeTaskFlow(
 
 // New function to attach event listeners to checkboxes
 function attachCheckboxListeners() {
-    const checkboxes = document.querySelectorAll('.subtask-checkbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', (event) => {
-            const { project, moduleId, moduleIndex, taskIndex, subtaskIndex } = event.target.dataset;
-            
-            // Save progress to localStorage
-            saveSubtaskProgress(
-                project,
-                moduleId,
-                parseInt(moduleIndex),
-                parseInt(taskIndex),
-                parseInt(subtaskIndex),
-                event.target.checked
-            );
+	const checkboxes = document.querySelectorAll(".subtask-checkbox");
+	for (const checkbox of checkboxes) {
+		checkbox.addEventListener("change", (event) => {
+			const { project, moduleId, moduleIndex, taskIndex, subtaskIndex } =
+				event.target.dataset;
 
-            // Update the task status (checkmark)
-            updateTaskStatus(moduleId, taskIndex);
-        });
-    });
+			// Save progress to localStorage
+			saveSubtaskProgress(
+				project,
+				moduleId,
+				Number.parseInt(moduleIndex),
+				Number.parseInt(taskIndex),
+				Number.parseInt(subtaskIndex),
+				event.target.checked,
+			);
+
+			// Update the task status (checkmark)
+			updateTaskStatus(moduleId, taskIndex);
+		});
+	}
 }
 
 export function saveSubtaskProgress(

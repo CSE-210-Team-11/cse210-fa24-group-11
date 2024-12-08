@@ -136,12 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	async function loadProjectNames() {
 		try {
 			const files = await getTrackFiles();
-			console.log(files)
+			console.log(files);
 			projectNameSelect.innerHTML = ""; // Clear existing options
 
 			for (const file of files) {
 				const option = document.createElement("option");
-				option.value = file.filename;  // Use the filename as the value
+				option.value = file.filename; // Use the filename as the value
 				option.textContent = file.displayName; // Use the display name for showing in dropdown
 				projectNameSelect.appendChild(option);
 			}
@@ -200,6 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	loadProjects();
 });
 export function getProjectCount() {
-    const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
-    return storedProjects.length;
+	const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
+	return storedProjects.length;
 }

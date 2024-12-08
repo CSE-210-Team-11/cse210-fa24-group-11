@@ -1,4 +1,4 @@
-@import '../index.css';
+@import "../index.css";
 
 body {
 	font-family: Arial, sans-serif;
@@ -10,7 +10,7 @@ body {
 	height: 100vh;
 }
 
-.logo{
+.logo {
 	height: 40px;
 	width: 40px;
 	padding-right: 20px;
@@ -27,7 +27,7 @@ body {
 	width: 100%;
 }
 
-.link-style{
+.link-style {
 	color: var(--light-color);
 	text-decoration: none;
 	font-size: 24px;
@@ -38,7 +38,7 @@ body {
 	color: var(--light-color);
 }
 
-.project-content{
+.project-content {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -155,7 +155,7 @@ body {
 .popup h2 {
 	margin: 0 0 20px;
 	font-size: 20px;
-	color: #F3F3E0;
+	color: #f3f3e0;
 }
 
 .popup form {
@@ -167,7 +167,7 @@ body {
 .popup form label {
 	margin-bottom: 10px;
 	font-size: 14px;
-	color: #F3F3E0;
+	color: #f3f3e0;
 }
 
 .popup form select {
@@ -188,12 +188,12 @@ body {
 }
 
 .popup form button[type="submit"] {
-	background-color: #EAD8B1;
+	background-color: #ead8b1;
 	color: var(--dark-color);
 }
 
 .popup form button[type="button"] {
-	background-color: #F96E2A;
+	background-color: #f96e2a;
 	color: white;
 	margin-top: 10px;
 }
