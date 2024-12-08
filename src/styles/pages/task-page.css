@@ -7,8 +7,8 @@ body {
 
 .navbar {
 	height: 40px;
-	background-color: #1a1410;
-	border: 2px solid #251104;
+	background-color: #001F3F;
+	border: 2px solid #001F3F;
 	padding: 10px;
 	display: flex;
 	align-items: center;
@@ -17,38 +17,38 @@ body {
 }
 
 .link-style{
-	color: #fae9d7;
+	color: #F5F5F5;
 	text-decoration: none;
 	font-size: 24px;
 	padding-right: 20px;
 }
 
 .link-style:hover {
-	color: #e9d7aa;
+	color: #F5F5F5;
 }
 
 .container {
 	width: 50%;
-	background-color: #251104;
+	background-color: #001F3F;
 	overflow-y: scroll;
 	height: calc(100vh - 20px);
 }
 
 .flowchart {
 	width: 100%;
-	background-color: #543a28;
+	background-color: #F5F5F5;
 }
 
 .project {
 	display: flex;
 	justify-content: center;
-	color: #fae9d7;
+	color: #001F3F;
 }
 
 .project-heading {
-	color: #fae9d7;
-	background-color: #251104;
-	border: 2px solid #251104;
+	color: #F5F5F5;
+	background-color: #001F3F;
+	border: 2px solid #001F3F;
 	display: flex;
 	justify-content: center;
 
@@ -63,13 +63,13 @@ body {
 }
 
 .task{
-	color: #fae9d7;
+	color: #F5F5F5;
 	width: 75%;
 	margin: 15px;
 	padding: 8px;
-	border: 2px solid #251104;
+	border: 2px solid #001F3F;
 	border-radius: 6px;
-	background-color: #251104;
+	background-color: #001F3F;
 	font-family: "Helvetica", sans-serif;
 	font-weight: 600;
 }
@@ -83,11 +83,11 @@ body {
 	border-radius: 20px;
 	width: 50%;
 	height: 100px;
-	background-color: #fae9d7;
+	background-color: #161D6F;
     display: flex;
     align-items: center;
 	margin: 10px auto;
-	color: #251104;
+	color: #F5F5F5;
 	font-size: 24px;
 	padding: 20px;
 }
@@ -101,9 +101,9 @@ input[type="checkbox"] {
 	/* Style the checkbox */
 	width: 24px;
 	height: 24px;
-	border: 2px solid #251104;
+	border: 2px solid #F5F5F5;
 	border-radius: 4px;
-	background-color: #251104;
+	background-color: #F5F5F5;
 	cursor: pointer;
 	position: relative;
 	margin: 0;
@@ -114,8 +114,8 @@ input[type="checkbox"] {
   
   /* Checked state */
   input[type="checkbox"]:checked {
-	background-color: #251104;
-	border-color: #251104;
+	background-color: #F5F5F5;
+	border-color: #F5F5F5;
   }
   
   /* Create checkmark using pseudo-element */
@@ -126,7 +126,7 @@ input[type="checkbox"] {
 	top: 2px;
 	width: 5px;
 	height: 10px;
-	border: solid white;
+	border: solid #001F3F;
 	border-width: 0 2px 2px 0;
 	transform: rotate(45deg);
   }

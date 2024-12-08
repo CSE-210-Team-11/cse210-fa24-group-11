@@ -11,8 +11,8 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background-color: #e7f5e9;
-	color: #0f1b2e;
+	background-color: #F5F5F5;
+	color: #001F3F;
 	height: 100vh;
 	width: 100%;
 }
@@ -30,9 +30,9 @@ h1 {
 	padding: 10px;
 	border-radius: 5px;
 	margin: 10px;
-	border: 2px solid #0f1b2e;
-	background-color: #e7f5e9;
-	color: #0f1b2e;
+	border: 2px solid #001F3F;
+	background-color: #F5F5F5;
+	color: #001F3F;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -58,8 +58,8 @@ h1 {
 	padding: 10px;
 	border-radius: 5px;
 	margin: 10px;
-	border: 2px solid #0f1b2e;
-	background-color: #0f1b2e;
+	border: 2px solid #001F3F;
+	background-color: #001F3F;
 	color: #E7F5E9;
 	cursor: pointer;
 }
