@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
     <link rel="stylesheet" href="../styles/pages/home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     
@@ -50,14 +48,15 @@
             displayStreak();
         });
     </script>
-    <script src="https://kit.fontawesome.com/a94787b9e0.js" crossorigin="anonymous"></script>
-    <script type="module">
-        import { getProjectCount } from '../scripts/projectLoader.js';
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const countElement = document.getElementById('project-count');
-            countElement.textContent = getProjectCount();
-        });
-    </script>
+  
+  <link rel="stylesheet" href="../assets/icons/all.min.css">
+<script type="module">
+    import { getProjectCount } from '../scripts/projectLoader.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const countElement = document.getElementById('project-count');
+        countElement.textContent = getProjectCount();
+    });
+</script>
 </body>
 </html>
