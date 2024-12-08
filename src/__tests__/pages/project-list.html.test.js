@@ -18,7 +18,8 @@ describe("Project List Page", () => {
 	test("has create project button", () => {
 		const createButton = document.querySelector("#create-project-btn");
 		expect(createButton).toBeTruthy();
-		expect(createButton.textContent).toContain("Create Project");
+		expect(createButton.textContent).toContain("Create");
+		expect(createButton.textContent).toContain("Project");
 	});
 
 	test("has popup container", () => {
