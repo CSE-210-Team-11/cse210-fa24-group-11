@@ -57,7 +57,6 @@ describe("Project List Page", () => {
 		const navbar = document.querySelector(".navbar");
 		const logo = document.querySelector(".logo");
 		const homeLink = document.querySelector(".link-style");
-
 		expect(navbar).toBeTruthy();
 		expect(logo).toBeTruthy();
 		expect(homeLink).toBeTruthy();
