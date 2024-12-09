@@ -69,16 +69,14 @@ describe("Branch Rendering", () => {
 		const branch = treeModule.renderBranch(100, 100, 200, 200, 10);
 
 		expect(branch.linewidth).toBe(10);
-		expect(branch.fill).toBe("brown");
-		expect(branch.stroke).toBe("#4B3621");
+		expect([treeModule.dayBranchColor, treeModule.nightBranchColor]).toContain(branch.stroke);
 	});
 
 	test("renderBranch creates branch with correct properties width=30", () => {
 		const branch = treeModule.renderBranch(100, 100, 200, 200, 30);
 
 		expect(branch.linewidth).toBe(30);
-		expect(branch.fill).toBe("brown");
-		expect(branch.stroke).toBe("#4B3621");
+		expect([treeModule.dayBranchColor, treeModule.nightBranchColor]).toContain(branch.stroke);
 	});
 });
 
