@@ -38,8 +38,7 @@ export function initializeTaskFlow(
 				for (const [taskIndex, task] of module.tasks.entries()) {
 					fullHTML += `
 						<div class="task" id='task-${module.id}-${taskIndex}'>
-							<h3>Unit ${task.taskId}</h3>
-							<p>${task.name}</p>
+							<h3>Unit ${task.taskId}: ${task.name}</h3>
 						</div>
 					`;
 					// Task title & Subtask list
