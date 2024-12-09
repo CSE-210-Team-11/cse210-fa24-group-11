@@ -81,8 +81,9 @@ export function initializeTaskFlow(
 		})
 		.catch((error) => {
 			console.error("Error loading data:", error);
-			document.getElementById("taskFlow").innerHTML =
-				"Error loading data. Check console for details.";
+			window.location.href = "../pages/404.html"
+			// document.getElementById("taskFlow").innerHTML =
+			// 	"Error loading data. Check console for details.";
 		});
 }
 

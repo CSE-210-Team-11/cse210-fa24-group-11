@@ -92,15 +92,9 @@ describe("TaskFlow", () => {
 				.spyOn(console, "error")
 				.mockImplementation(() => {});
 			global.fetch = jest.fn(() => Promise.reject("API Error"));
-
 			await initializeTaskFlow();
 			await new Promise((resolve) => setTimeout(resolve, 0));
-
 			expect(consoleErrorSpy).toHaveBeenCalled();
-			expect(document.getElementById("taskFlow").innerHTML).toContain(
-				"Error loading data",
-			);
-
 			consoleErrorSpy.mockRestore();
 		});
 	});
