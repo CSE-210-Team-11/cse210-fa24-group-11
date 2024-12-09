@@ -24,12 +24,13 @@ function updateUI() {
 
 streakBtn.addEventListener("click", () => {
 	const today = new Date().setHours(0, 0, 0, 0);
+	const millisecondsPerDay = 1000 * 60 * 60 * 24;
 
 	if (!lastCheckin) {
 		streak = 1;
 	} else {
 		const lastDate = new Date(lastCheckin).setHours(0, 0, 0, 0);
-		const diff = (today - lastDate) / (1000 * 60 * 60 * 24);
+		const diff = (today - lastDate) / (millisecondsPerDay);
 
 		if (diff === 1) {
 			streak++;
