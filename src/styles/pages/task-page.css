@@ -13,12 +13,6 @@ body {
 	padding-right: 20px;
 }
 
-.logo-home-link {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
 .navbar {
 	height: 40px;
 	background-color: var(--navbar-color);
@@ -72,10 +66,7 @@ body {
 }
 
 .unit {
-	display: flex;
-	justify-content: center;
 	flex-direction: column;
-	align-items: center;
 	width: 100%;
 }
 
@@ -104,13 +95,9 @@ body {
 	padding: 20px;
 }
 
-/* Target the native checkbox */
 input[type="checkbox"] {
-	/* Remove default appearance */
 	-webkit-appearance: none;
 	appearance: none;
-
-	/* Style the checkbox */
 	width: 24px;
 	height: 24px;
 	border: 2px solid var(--light-color);
@@ -119,18 +106,14 @@ input[type="checkbox"] {
 	cursor: pointer;
 	position: relative;
 	margin: 0;
-
-	/* Ensure proper vertical alignment */
 	vertical-align: middle;
 }
 
-/* Checked state */
 input[type="checkbox"]:checked {
 	background-color: var(--light-color);
 	border-color: var(--light-color);
 }
 
-/* Create checkmark using pseudo-element */
 input[type="checkbox"]:checked::after {
 	content: "";
 	position: absolute;

@@ -9,9 +9,6 @@ body {
 
 
 .greeting-div {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: column;
 	background-color: var(--light-color);
 	color: var(--dark-color);
@@ -35,9 +32,6 @@ h1 {
 	border: none;
 	background-color: transparent;
 	color: #0f1b2e;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	font-size: small;
 }
 

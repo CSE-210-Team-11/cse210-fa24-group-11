@@ -8,9 +8,6 @@
     position: relative;
     height: 100vh;
     background: linear-gradient(to right, #111111, #1a1a1a, #0a0a0a);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     overflow: hidden;
 }

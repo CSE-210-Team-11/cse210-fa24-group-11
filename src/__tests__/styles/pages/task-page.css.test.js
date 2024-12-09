@@ -23,8 +23,4 @@ describe('Task Page CSS', () => {
         expect(cssContent).toMatch(/\.logo\s*\{/);
         expect(cssContent).toMatch(/\.link-style\s*\{/);
     });
-
-    test('contains logo-home-link class', () => {
-        expect(cssContent).toMatch(/\.logo-home-link\s*\{/);
-    });
 });

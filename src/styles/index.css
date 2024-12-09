@@ -3,3 +3,9 @@
 	--light-color: #f5f5f5;
 	--navbar-color: #344356;
 }
+
+.flexbox-display {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
