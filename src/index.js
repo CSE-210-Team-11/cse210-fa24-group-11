@@ -1,2 +1,1 @@
-console.log("Hello World!");
-alert("Hello World!");
+window.location.href = 'pages/home.html';

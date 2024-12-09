@@ -31,21 +31,39 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Add environment and dependencies setup
+      
+      # Add new steps for directory preparation
+      - name: Create dist directory
+        run: mkdir -p dist
+      
+      - name: Copy src files to dist
+        run: cp -r src/* dist/
+      
+      - name: Copy package files to dist
+        run: |
+          cp package.json dist/
+          cp package-lock.json dist/ || true
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: './dist/package.json'
+      
       - name: Install dependencies
+        working-directory: ./dist
         run: npm install
+      
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Change to upload entire repository include installed dependencies
-          path: './'
+          # Change path to dist directory
+          path: './dist'
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
