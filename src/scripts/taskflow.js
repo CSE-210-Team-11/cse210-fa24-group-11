@@ -186,39 +186,6 @@ export function updateDisplays(projectName) {
 	}
 }
 
-// Calculate the percentage of completed tasks
-function calculatePercentageOfCompletedTasks() {
-	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
-
-	// Find or create project progress
-	let project = projectsProgress.find((p) => p.name === projectName);
-	let totalSubtasks = 0;
-	let completedSubtasks = 0;
-	if (project?.project.modules) {
-		console.log(`Modules·length:·${project.modules.length}`)
-		for (const module of project.modules) {
-			if (module.tasks) {
-				for (const task of module.tasks) {
-					if (task.subtasks && task.subtasks.length > 0) {
-						for (const subtask of task.subtasks) {
-							if (subtask === true) {
-								completedSubtasks++;
-							}
-							totalSubtasks++;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	if (totalSubtasks !== 0) {
-		const completion = completedSubtasks / totalSubtasks;
-		console.log(`Completion:  ${completion}`);
-		update(completion);
-	}
-}
-
 // Event listener to initialize task flow based on URL parameter
 document.addEventListener("DOMContentLoaded", () => {
 	const params = new URLSearchParams(window.location.search);
