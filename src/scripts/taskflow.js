@@ -87,7 +87,7 @@ export function initializeTaskFlow(
 }
 
 // New function to attach event listeners to checkboxes
-function attachCheckboxListeners() {
+export function attachCheckboxListeners() {
 	const checkboxes = document.querySelectorAll(".subtask-checkbox");
 	for (const checkbox of checkboxes) {
 		checkbox.addEventListener("change", (event) => {
@@ -153,7 +153,7 @@ export function saveSubtaskProgress(
 	localStorage.setItem("projects", JSON.stringify(projectsProgress));
 }
 
-function updateDisplays(projectName) {
+export function updateDisplays(projectName) {
 	// Retrieve existing projects progress
 	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
 
