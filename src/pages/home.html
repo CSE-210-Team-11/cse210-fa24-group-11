@@ -5,33 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
     
-    <!--stylesheet-->
+    <!--stylesheet for page -->
     <link rel="stylesheet" href="../styles/pages/home.css">
+    <!-- Font import -->
     <link rel="stylesheet" href="../assets/icons/all.min.css">
     
-    
-    <!-- scripts -->
+    <!-- JS section -->
     <script type="module" src="../scripts/quotesmanager.js" defer></script>
     <script type="module" src="../scripts/components/streak/displayStreak.js" defer></script>
     <script type="module" src="../scripts/projectLoader.js" defer></script>
 </head>
 <body>
     <main class="greeting-div">
+        <!-- Greeting -->
         <h1 class="greeting">Welcome, Angry Atishay!</h1>
         
         <section id="quote-container">
+            <!-- quote text box -->
             <p><em id="quote-text"></em>...</p>
             <span class="author">
+                <!-- author box -->
                 <em id="quote-author"></em>
             </span>
         </section>
 
         <section class="info-div">
             <div class="streak-div">
+                <!-- Count the number of projects made by user -->
                 <strong>Projects Count: <span id="project-count">0</span></strong>
             </div>
             <div class="streak-div">
                 <span id="icon-container" class="streak-svg"></span>
+                <!-- Display streak as per local storage -->
                 <strong id="display-streak">0</strong>
                 <strong>&nbsp; Day Streak</strong>
             </div>
@@ -47,6 +52,7 @@
         </section>
     </main>
 
+    <!-- tree art -->
     <img 
         src="../media/images/tree-art.svg" 
         alt="Forest scene" 
@@ -54,17 +60,17 @@
     >
 
     <script>
-        
+        // Wait for the DOM to loading
         document.addEventListener('DOMContentLoaded', () => {
-            
+            // import quote js
             import('../scripts/quotesmanager.js')
                 .then(module => module.updateQuote());
 
-            
+            // import streak value from local storage
             import('../scripts/components/streak/displayStreak.js')
                 .then(module => module.displayStreak());
 
-            
+            // load project count
             import('../scripts/projectLoader.js')
                 .then(module => {
                     const countElement = document.getElementById('project-count');
