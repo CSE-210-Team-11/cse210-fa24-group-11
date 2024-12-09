@@ -37,7 +37,7 @@ jobs:
         run: mkdir -p dist
       
       - name: Copy src files to dist
-        run: cp -r src/* dist/
+        run: cp -r src/ dist/
       
       - name: Copy package files to dist
         run: |
@@ -50,6 +50,10 @@ jobs:
           node-version: '20'
           cache: 'npm'
           cache-dependency-path: './dist/package.json'
+      
+      - name: Create redirect index.html
+        run: |
+          echo '<meta http-equiv="refresh" content="0; url=src/index.html">' > dist/index.html
       
       - name: Install dependencies
         working-directory: ./dist
