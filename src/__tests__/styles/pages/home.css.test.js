@@ -17,10 +17,10 @@ describe("home.css", () => {
 		document.head.removeChild(styleSheet);
 	});
 
-	test("greeting-div should use flexbox", () => {
+	test("greeting-div should use a block alignment", () => {
 		document.body.innerHTML = '<div class="greeting-div"></div>';
 		const greetingDiv = document.querySelector(".greeting-div");
 		const styles = window.getComputedStyle(greetingDiv);
-		expect(styles.display).toBe("flex");
+		expect(styles.display).toBe("block");
 	});
 });
