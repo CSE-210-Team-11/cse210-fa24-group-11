@@ -31,7 +31,7 @@ export function initializeTaskFlow(
 					<div class="project-heading"}>
 						<h2>Section ${module.id}: ${module.name}</h2>
 					</div>
-					<div class="unit">
+					<div class="unit flexbox-display">
 				`;
 
 				// Render tasks
