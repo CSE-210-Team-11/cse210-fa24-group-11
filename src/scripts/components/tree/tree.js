@@ -36,14 +36,14 @@ const dayTexture = two.makeTexture("../scripts/components/tree/media/day.jpg");
 const nightTexture = two.makeTexture("../scripts/components/tree/media/night.jpg");
 const grassTexture = two.makeTexture("../scripts/components/tree/media/grass.png");
 const grassNightTexture = two.makeTexture("../scripts/components/tree/media/grass_night.png");
-const dayTrunkColor = "#4B3621";
-const nightTrunkColor = "#5b4b32";
+const dayBranchColor = "#4b3621";
+const nightBranchColor = "#5b4b32";
 
 /**
  * Calculates whether it is day or night based on the current timestamp
  * @returns {string} - "day" or "night"
  */
-function getTimeOfDay() {
+export function getTimeOfDay() {
 	const date = new Date();
 	const hour = date.getHours();
 	if (hour > dayStart && hour < nightStart) {
@@ -109,7 +109,7 @@ export function renderBranch(x, y, endX, endY, width) {
 	const branch = two.makeLine(x, y, endX, endY);
 	const timeOfDay = getTimeOfDay();
 	branch.linewidth = width;
-	branch.stroke = (timeOfDay === "day") ? dayTrunkColor : nightTrunkColor;
+	branch.stroke = (timeOfDay === "day") ? dayBranchColor : nightBranchColor;
 	return branch;
 }
 
@@ -191,4 +191,4 @@ export function update(completion) {
 }
 
 // Export branchCount to access it in tests
-export { branchCount, leafCount, two, maxDepth, canvas, growthFrac };
+export { branchCount, leafCount, two, maxDepth, canvas, growthFrac, dayBranchColor, nightBranchColor };
