@@ -44,7 +44,7 @@ body {
 .container {
 	background-color: var(--dark-color);
 	overflow-y: scroll;
-	height: calc(100vh - 20px);
+	height: calc(100vh - 63px);
 	display: flex;
 	flex-direction: row;
 }
@@ -52,7 +52,7 @@ body {
 .flowchart {
 	width: 100%;
 	background-color: var(--light-color);
-	height: calc(100vh - 20px);
+	height: calc(100vh - 63px);
 	overflow-y: scroll;
 }
 
