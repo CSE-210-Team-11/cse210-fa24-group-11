@@ -8,6 +8,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
+	overflow-x: hidden;
 }
 
 .logo {
@@ -23,7 +24,6 @@ body {
 	padding: 10px;
 	display: flex;
 	align-items: center;
-	/* justify-content: space-between; */
 	width: 100%;
 }
 
@@ -49,10 +49,11 @@ body {
 .project-list {
 	width: 50%;
 	overflow-y: scroll;
+	overflow-x: hidden;
 	display: flex;
-	flex-direction: column; /* Ensures vertical alignment */
-	gap: 1rem; /* Adds spacing between buttons */
-	align-items: center; /* Centers the buttons horizontally */
+	flex-direction: column; 
+	gap: 1rem; 
+	align-items: center;
 }
 
 .streak-wrapper {
@@ -68,7 +69,7 @@ body {
 	color: var(--light-color);
 	font-weight: bold;
 	cursor: pointer;
-	margin-bottom: 1rem; /* Adds spacing below the button */
+	margin-bottom: 1rem;
 }
 
 .project-card {
