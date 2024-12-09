@@ -32,8 +32,8 @@ h1 {
 	padding: 10px;
 	border-radius: 5px;
 	margin: 10px;
-	border: 2px solid #0f1b2e;
-	background-color: #e7f5e9;
+	border: none;
+	background-color: transparent;
 	color: #0f1b2e;
 	display: flex;
 	align-items: center;
