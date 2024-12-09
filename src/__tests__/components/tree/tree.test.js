@@ -225,6 +225,18 @@ describe("timeOfDay Tests", () => {
 		expect(["day", "night"]).toContain(time);
 	});
 
+	test("getTimeOfDay returns day during day hours", () => {
+		// Mock Date to return 3 AM
+		const mockDate = new Date('2024-01-01T10:00:00');
+		jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
+		
+		const time = treeModule.getTimeOfDay();
+		expect(time).toBe("day");
+		
+		// Clean up
+		jest.restoreAllMocks();
+	});
+
 	test("getTimeOfDay returns night during night hours", () => {
 		// Mock Date to return 3 AM
 		const mockDate = new Date('2024-01-01T03:00:00');
