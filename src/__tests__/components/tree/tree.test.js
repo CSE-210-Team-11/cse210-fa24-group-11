@@ -1,4 +1,4 @@
-import { jest } from "@jest/globals";
+import { expect, jest } from "@jest/globals";
 import * as treeModule from "../../../scripts/components/tree/tree.js";
 
 // Mock seededRandom.js
@@ -218,5 +218,12 @@ describe("update Tests", () => {
 		const maxPossibleBranches = 3 ** (treeModule.maxDepth + 1);
 		expect(treeModule.branchCount).toBeGreaterThan(0);
 		expect(treeModule.branchCount).toBeLessThan(maxPossibleBranches);
+	});
+});
+
+describe("timeOfDay Tests", () => {
+	test("getTimeOfDay should return 'day' or 'night'", () => {
+		const time = treeModule.getTimeOfDay();
+		expect(["day", "night"]).toContain(time);
 	});
 });

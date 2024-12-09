@@ -17,19 +17,41 @@ const lengMax = 0.8;
 const widthMin = 0.7;
 const widthMax = 0.8;
 const maxDepth = 6;
-const trunkMin = two.width / 20;
-const trunkMax = trunkMin + 10;
+const trunkMinWidth = two.width / 20;
+const trunkMaxWidth = trunkMinWidth + 10;
+const trunkLength = two.height / (maxDepth - 1.4);
 // const maxBranches = 300;
 const leafRadius = 6; // Much larger leaf size
 const leafVariation = 0.3; // Adds some size variation to leaves
 
-const lenTwig = 9;
-const widthTwig = 5;
+const dayStart = 6;
+const nightStart = 20;
 
 const treeSeed = ((Math.random() * 10000) | 0).toString();
 let branchCount = 0;
 let leafCount = 0;
 let growthFrac = 0;
+
+const dayTexture = two.makeTexture("../scripts/components/tree/media/day.jpg");
+const nightTexture = two.makeTexture("../scripts/components/tree/media/night.jpg");
+const grassTexture = two.makeTexture("../scripts/components/tree/media/grass.png");
+const grassNightTexture = two.makeTexture("../scripts/components/tree/media/grass_night.png");
+const dayTrunkColor = "#4B3621";
+const nightTrunkColor = "#5b4b32";
+
+/**
+ * Calculates whether it is day or night based on the current timestamp
+ * @returns {string} - "day" or "night"
+ */
+function getTimeOfDay() {
+	const date = new Date();
+	const hour = date.getHours();
+	if (hour > dayStart && hour < nightStart) {
+		return "day";
+	}
+	
+	return "night";
+}
 
 /**
  * Renders a circular leaf on the tree
@@ -55,21 +77,24 @@ export function renderLeaf(x, y, dir, size, rotation) {
 export function drawTree(seed) {
 	branchCount = 0;
 	reseed(seed);
-	const maxTrunk = randInt(trunkMin, trunkMax);
-	const square = two.makeRectangle(
+	const maxTrunk = randInt(trunkMinWidth, trunkMaxWidth);
+	const timeOfDay = getTimeOfDay();
+	const background = two.makeSprite(
+		(timeOfDay === "day") ? dayTexture : nightTexture,
 		two.width / 2,
 		two.height / 2,
-		two.width,
-		two.height,
 	);
+	background.scale = (timeOfDay === "day") ? 1 : 0.5;
 	makeBranches(
 		two.width / 2,
 		two.height,
 		-Math.PI / 2,
-		two.height / (maxDepth - 1),
+		trunkLength,
 		maxTrunk,
 		0,
 	);
+	const grass = two.makeSprite(timeOfDay === "day" ? grassTexture: grassNightTexture, two.width / 2, two.height - two.height / 4);
+	grass.scale = 0.4;
 }
 
 /**
@@ -82,9 +107,9 @@ export function drawTree(seed) {
  */
 export function renderBranch(x, y, endX, endY, width) {
 	const branch = two.makeLine(x, y, endX, endY);
+	const timeOfDay = getTimeOfDay();
 	branch.linewidth = width;
-	branch.fill = "brown";
-	branch.stroke = "#4B3621";
+	branch.stroke = (timeOfDay === "day") ? dayTrunkColor : nightTrunkColor;
 	return branch;
 }
 
@@ -100,15 +125,14 @@ export function renderBranch(x, y, endX, endY, width) {
 export function makeBranches(x, y, dir, leng, width, depth) {
 	branchCount++;
 
-	// Limit bounds of treeGrowVal to 0.1 and 1, square the result
-	const treeGrowVal =
-		Math.log10(growthFrac) + 1 > 0 ? Math.log10(growthFrac) + 1 : 0;
+	// The adjusted tree growth curve. Linear, with values tuned for tree appearance.
+	const treeGrowVal = 0.5 * growthFrac + 0.5;
 
 	const endX = x + Math.cos(dir) * leng * treeGrowVal;
 	const endY = y + Math.sin(dir) * leng * treeGrowVal;
 
 	const lengFactor = depth < 1 ? 1 : randFloat(lengMin, lengMax);
-	const widthFactor = randFloat(widthMin, widthMax) * growthFrac ** 2;
+	const widthFactor = randFloat(widthMin, widthMax) * treeGrowVal;
 
 	if (width > 1.0) renderBranch(x, y, endX, endY, width * widthFactor);
 
@@ -155,30 +179,16 @@ export function makeBranches(x, y, dir, leng, width, depth) {
 // two.bind("update", update);
 // two.play();
 
+/**
+ * Updates the tree display
+ * @param {number} completion - A number between 0 and 1 representing the completion percentage
+ */
 export function update(completion) {
 	growthFrac = completion;
 	two.clear();
 	drawTree(treeSeed);
 	two.update();
 }
-
-// Optional: Uncomment if you want to use this function
-// function moveLeaves() {
-//     for (leaf in leaves) {
-//     }
-// }
-
-// canvas.addEventListener("click", () => {
-// 	console.log("click!");
-// 	console.log("branchCount: ", branchCount);
-// 	treeSeed = ((Math.random() * 10000) | 0).toString();
-// 	// if (growthFrac < 1) {
-// 	// 	growthFrac += 0.01;
-// 	// }
-// 	growthFrac = 1;
-// 	console.log(growthFrac)
-// 	console.log("seed: ", treeSeed);
-// });
 
 // Export branchCount to access it in tests
 export { branchCount, leafCount, two, maxDepth, canvas, growthFrac };
