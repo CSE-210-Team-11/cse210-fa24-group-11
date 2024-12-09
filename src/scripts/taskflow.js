@@ -161,7 +161,7 @@ function updateDisplays(projectName) {
 	const project = projectsProgress.find((p) => p.name === projectName);
 	let totalSubtasks = 0;
 	let completedSubtasks = 0;
-	if (project?.project.modules) {
+	if (project.modules) {
 		console.log(`Modules·length:·${project.modules.length}`)
 		for (const module of project.modules) {
 			if (module.tasks) {
