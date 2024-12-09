@@ -4,59 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
-    <link rel="stylesheet" href="../styles/pages/home.css">
     
+    <!--stylesheet-->
+    <link rel="stylesheet" href="../styles/pages/home.css">
+    <link rel="stylesheet" href="../assets/icons/all.min.css">
+    
+    
+    <!-- scripts -->
+    <script type="module" src="../scripts/quotesmanager.js" defer></script>
+    <script type="module" src="../scripts/components/streak/displayStreak.js" defer></script>
+    <script type="module" src="../scripts/projectLoader.js" defer></script>
 </head>
 <body>
-    
-    <div class="greeting-div">
+    <main class="greeting-div">
         <h1 class="greeting">Welcome, Angry Atishay!</h1>
         
-        <div id="quote-container">
+        <section id="quote-container">
             <p><em id="quote-text"></em>...</p>
             <span class="author">
                 <em id="quote-author"></em>
             </span>
-        </div>
-        <div class="info-div">
+        </section>
+
+        <section class="info-div">
             <div class="streak-div">
-                <strong>Your projects: <span id="project-count">0</span></strong>
+                <strong>Projects Count: <span id="project-count">0</span></strong>
             </div>
             <div class="streak-div">
                 <span id="icon-container" class="streak-svg"></span>
                 <strong id="display-streak">0</strong>
                 <strong>&nbsp; Day Streak</strong>
             </div>
-            <button class="go-to-projects-button" onclick="window.location.href='project-list.html'">
+            <button 
+                class="go-to-projects-button" 
+                onclick="window.location.href='project-list.html'"
+            >
                 <strong>
                     Go To Projects
                     <i class="fa-solid fa-arrow-right"></i>
                 </strong>
             </button>
-        </div>
-    </div>
-    <img src="../media/images/tree-art.svg" alt="Forest scene" class="tree-art">
-    <script type="module">
-        import { updateQuote } from '../scripts/quotesmanager.js';
-        updateQuote();
-    </script>
-    <script type="module">
-        import { displayStreak } from '../scripts/components/streak/displayStreak.js';
+        </section>
+    </main>
 
-        // Call displayStreak after the DOM is loaded
+    <img 
+        src="../media/images/tree-art.svg" 
+        alt="Forest scene" 
+        class="tree-art"
+    >
+
+    <script>
+        
         document.addEventListener('DOMContentLoaded', () => {
-            displayStreak();
+            
+            import('../scripts/quotesmanager.js')
+                .then(module => module.updateQuote());
+
+            
+            import('../scripts/components/streak/displayStreak.js')
+                .then(module => module.displayStreak());
+
+            
+            import('../scripts/projectLoader.js')
+                .then(module => {
+                    const countElement = document.getElementById('project-count');
+                    countElement.textContent = module.getProjectCount();
+                });
         });
     </script>
-  
-  <link rel="stylesheet" href="../assets/icons/all.min.css">
-<script type="module">
-    import { getProjectCount } from '../scripts/projectLoader.js';
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        const countElement = document.getElementById('project-count');
-        countElement.textContent = getProjectCount();
-    });
-</script>
 </body>
 </html>
