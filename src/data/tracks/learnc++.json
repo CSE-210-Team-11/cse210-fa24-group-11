@@ -6,6 +6,7 @@
 			"name": "Getting Started",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Development Environment Setup",
 					"subtasks": [
 						"Install C++ compiler (GCC/G++)",
@@ -15,6 +16,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "First Program",
 					"subtasks": [
 						"Write Hello World program",
@@ -30,6 +32,7 @@
 			"name": "Basic Syntax",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Variables and Data Types",
 					"subtasks": [
 						"Integer types (int, short, long)",
@@ -41,6 +44,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Operators",
 					"subtasks": [
 						"Arithmetic operators (+, -, *, /, %)",
@@ -57,6 +61,7 @@
 			"name": "Control Flow",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Conditional Statements",
 					"subtasks": [
 						"if statements",
@@ -67,6 +72,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Loops",
 					"subtasks": [
 						"for loop",
@@ -84,6 +90,7 @@
 			"name": "Functions",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Function Basics",
 					"subtasks": [
 						"Function declaration",
@@ -95,6 +102,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Parameter Passing",
 					"subtasks": [
 						"Pass by value",
@@ -110,6 +118,7 @@
 			"name": "Arrays and Strings",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Arrays",
 					"subtasks": [
 						"Array declaration",
@@ -120,6 +129,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Strings",
 					"subtasks": [
 						"C-style strings",
@@ -136,6 +146,7 @@
 			"name": "Pointers & References",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Pointers",
 					"subtasks": [
 						"Pointer declaration",
@@ -147,6 +158,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "References",
 					"subtasks": [
 						"Reference declaration",
@@ -162,6 +174,7 @@
 			"name": "Object-Oriented Programming",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Classes and Objects",
 					"subtasks": [
 						"Class definition",
@@ -173,6 +186,7 @@
 					]
 				},
 				{
+					"taskId": 2,
 					"name": "Inheritance",
 					"subtasks": [
 						"Base and derived classes",
@@ -183,6 +197,7 @@
 					]
 				},
 				{
+					"taskId": 3,
 					"name": "Polymorphism",
 					"subtasks": [
 						"Function overloading",
@@ -198,10 +213,12 @@
 			"name": "Standard Template Library (STL)",
 			"tasks": [
 				{
+					"taskId": 1,
 					"name": "Containers",
 					"subtasks": ["Vector", "List", "Map", "Set", "Stack", "Queue"]
 				},
 				{
+					"taskId": 2,
 					"name": "Iterators",
 					"subtasks": [
 						"Iterator types",
@@ -210,6 +227,7 @@
 					]
 				},
 				{
+					"taskId": 3,
 					"name": "Algorithms",
 					"subtasks": [
 						"Sorting algorithms",
