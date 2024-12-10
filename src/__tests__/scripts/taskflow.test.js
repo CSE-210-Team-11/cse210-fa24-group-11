@@ -1,4 +1,6 @@
 // Mock the circlevisualisation module
+import { initializeFromURL } from "../../scripts/taskflow.js"
+
 jest.mock("../../scripts/circlevisualisation.js", () => ({
 	renderProgressCircles: jest.fn(),
 }));
@@ -200,4 +202,17 @@ describe("TaskFlow", () => {
 			expect(stored[0].modules[0].tasks[0].subtasks[0]).toBe(true);
 		});
 	});
+
+	describe("initializeFromURL", () => {
+		it("should return correct file path", () => {
+		  // Test with custom file
+		  delete window.location;
+		  window.location = { search: "?file=customfile" };
+		  expect(initializeFromURL()).toBe('../data/tracks/customfile');
+	  
+		  // Test default case
+		  window.location = { search: "" };
+		  expect(initializeFromURL()).toBe('../data/tracks/beginfront');
+		});
+	  });
 });
