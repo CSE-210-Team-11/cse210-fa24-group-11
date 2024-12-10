@@ -37,10 +37,16 @@ export function initializeTaskFlow(
 				// Render tasks
 				for (const [taskIndex, task] of module.tasks.entries()) {
 					fullHTML += `
-						<div class="task" id='task-${module.id}-${taskIndex}'>
-							<h3>Unit ${task.taskId}: ${task.name}</h3>
-						</div>
+						<div class="task-container">
+							<div class="task" id='task-${module.id}-${taskIndex}'>
+								<div class="task-header" onclick="this.parentElement.parentElement.classList.toggle('expanded')">
+									<h3>Unit ${task.taskId}: ${task.name}</h3>
+									<span class="accordion-icon">▼</span>
+								</div>
+							</div>
+							<div class="subtasks-container">
 					`;
+					
 					// Task title & Subtask list
 					for (const [subtaskIndex, subtask] of task.subtasks.entries()) {
 						const isChecked =
@@ -49,26 +55,30 @@ export function initializeTaskFlow(
 						const subtaskId = `subtask-${module.id}-${taskIndex}-${subtaskIndex}`;
 
 						fullHTML += `
-								<div class="subtask-inner-div">
-									<input 
-										type="checkbox" 
-										class="subtask-checkbox" 
-										id="${subtaskId}"
-										data-project="${data.name}"
-										data-module-id="${module.id}"
-										data-module-index="${moduleIndex}"
-										data-task-index="${taskIndex}"
-										data-subtask-index="${subtaskIndex}"
-										${isChecked ? "checked" : ""}
-									/>
-									<p class="checkbox-label">
-										<label for="${subtaskId}">
-											${subtask}
-										</label>
-									</p>
-								</div>
-                        `;
+							<div class="subtask-inner-div">
+								<input 
+									type="checkbox" 
+									class="subtask-checkbox" 
+									id="${subtaskId}"
+									data-project="${data.name}"
+									data-module-id="${module.id}"
+									data-module-index="${moduleIndex}"
+									data-task-index="${taskIndex}"
+									data-subtask-index="${subtaskIndex}"
+									${isChecked ? "checked" : ""}
+								/>
+								<p class="checkbox-label">
+									<label for="${subtaskId}">
+										${subtask}
+									</label>
+								</p>
+							</div>
+						`;
 					}
+					fullHTML += `
+							</div>
+						</div>
+					`;
 				}
 				fullHTML += "</div>";
 			}
