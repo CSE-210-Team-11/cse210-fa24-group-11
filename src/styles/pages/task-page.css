@@ -149,3 +149,37 @@ input[type="checkbox"]:checked::after {
 	text-align: center;
     color: var(--light-color);
 }
+
+.task-container {
+	border: 1px solid #ddd;
+	margin-bottom: 8px;
+	border-radius: 4px;
+}
+
+.task-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	background-color: #f5f5f5;
+}
+
+.task-header:hover {
+	background-color: #ebebeb;
+}
+
+.accordion-icon {
+	transition: transform 0.3s ease;
+}
+
+.subtasks-container {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease-out;
+}
+
+.task-container.expanded .subtasks-container {
+	max-height: 1000px; /* Adjust this value based on the content */
+}
