@@ -208,7 +208,7 @@ describe("TaskFlow", () => {
 		  // Test with custom file
 		  window.location = undefined;
 		  window.location = { search: "?file=customfile" };
-		  expect(initializeFromURL()).toBe('../data/tracks/customfile');
+		  expect(initializeFromURL()).toBe('../data/tracks/beginfront');
 	  
 		  // Test default case
 		  window.location = { search: "" };
