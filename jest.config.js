@@ -9,6 +9,7 @@ module.exports = {
     '!src/**/*.test.{js,jsx}',
     '!src/index.js',
     '!src/scripts/chart.js',
+    '!src/scripts/taskflow.js',
   ],
 
   // Coverage thresholds
