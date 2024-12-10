@@ -186,10 +186,15 @@ export function updateDisplays(projectName) {
 }
 
 // Event listener to initialize task flow based on URL parameter
-document.addEventListener("DOMContentLoaded", () => {
-	const params = new URLSearchParams(window.location.search);
-	const fileParam = params.get("file") || "beginfront";
-	const filePath = `../data/tracks/${fileParam}`;
 
-	initializeTaskFlow(filePath);
+export function initializeFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const fileParam = params.get("file") || "beginfront";
+    const filePath = `../data/tracks/${fileParam}`;
+    return filePath;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const filePath = initializeFromURL();
+    initializeTaskFlow(filePath);
 });
