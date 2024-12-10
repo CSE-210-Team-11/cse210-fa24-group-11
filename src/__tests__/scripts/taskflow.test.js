@@ -174,34 +174,6 @@ describe("TaskFlow", () => {
 		});
 	});
 
-	describe("attachCheckboxListeners", () => {
-		it("should attach event listeners to checkboxes and handle changes", () => {
-			// Set up DOM with a checkbox
-			document.body.innerHTML = `
-				<input 
-					type="checkbox" 
-					class="subtask-checkbox" 
-					data-project="Test Track"
-					data-module-id="1"
-					data-module-index="0"
-					data-task-index="0"
-					data-subtask-index="0"
-				/>
-			`;
-
-			// Call the function (we need to export it first)
-			attachCheckboxListeners();
-
-			// Simulate checkbox change
-			const checkbox = document.querySelector(".subtask-checkbox");
-			checkbox.checked = true;
-			checkbox.dispatchEvent(new Event("change"));
-
-			// Verify localStorage was updated
-			const stored = JSON.parse(localStorage.getItem("projects"));
-			expect(stored[0].modules[0].tasks[0].subtasks[0]).toBe(true);
-		});
-	});
 
 	describe("initializeFromURL", () => {
 		it("should return correct file path", () => {

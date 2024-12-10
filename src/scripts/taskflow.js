@@ -194,7 +194,7 @@ export function updateTaskStatus() {
 	const percentageTasks = calculatePercentageOfCompletedTasks() * 100;
 	const percentageModules = calculatePercentageOfCompletedModules() * 100;
 	const percentageSubtasks = calculatePercentageOfCompletedSubtask() * 100;
-	console.log(`Percentage: ` + percentageTasks + " " + percentageModules + " " + percentageSubtasks);
+	// console.log(`Percentage: ` + percentageTasks + " " + percentageModules + " " + percentageSubtasks);
 	if (percentageTasks !== lastPercentageTasks) {
 		updateTaskChart(percentageTasks);
 		lastPercentageTasks = percentageTasks;
@@ -225,13 +225,13 @@ function calculatePercentageOfCompletedTasks() {
 	let completedTasks = 0;
 
 	// Iterate over all project progress
-	projectsProgress.forEach((project) => {
+	for (const project of projectsProgress) {
 		if (project.modules) {
-			project.modules.forEach((module) => {
+			for (const module of project.modules) {
 				if (module.tasks) {
-					module.tasks.forEach((task) => {
+					for (const task of module.tasks) {
 						totalTasks++; // Count this task
-
+	
 						// Check if all subtasks are completed
 						if (
 							task.subtasks &&
@@ -240,11 +240,12 @@ function calculatePercentageOfCompletedTasks() {
 						) {
 							completedTasks++;
 						}
-					});
+					}
 				}
-			});
+			}
 		}
-	});
+	}
+	
 
 	// Avoid division by zero
 	if (totalTasks === 0) {
@@ -266,31 +267,31 @@ function calculatePercentageOfCompletedModules() {
 	let completedModules = 0;
 
 	// Iterate over all project progress
-	projectsProgress.forEach((project) => {
+	for (const project of projectsProgress) {
 		if (project.modules) {
-			project.modules.forEach((module) => {
+			for (const module of project.modules) {
 				totalModules++; // Count this module
 				let flag = true;
 				if (module.tasks) {
-					module.tasks.forEach((task) => {
+					for (const task of module.tasks) {
 						if (
 							task.subtasks &&
 							task.subtasks.length > 0 &&
 							task.subtasks.every((subtask) => subtask === true)
 						) {
-						}
-						else {
+							// No change needed here, as the condition is checked
+						} else {
 							flag = false;
 						}
-					});
+					}
 				}
 				if (flag) {
 					completedModules++;
 				}
-			});
+			}
 		}
-	});
-
+	}
+	
 	// Avoid division by zero
 	if (totalModules === 0) {
 		return 0;
@@ -307,28 +308,33 @@ function calculatePercentageOfCompletedSubtask() {
 	}
 
 	// Initialize counters for total and completed tasks
+
+
+
+	
 	let totalSubtasks = 0;
 	let completedSubtasks = 0;
 
 	// Iterate over all project progress
-	projectsProgress.forEach((project) => {
+	for (const project of projectsProgress) {
 		if (project.modules) {
-			project.modules.forEach((module) => {
+			for (const module of project.modules) {
 				if (module.tasks) {
-					module.tasks.forEach((task) => {
+					for (const task of module.tasks) {
 						if (task.subtasks) {
-							task.subtasks.forEach((subtask) => {
-								totalSubtasks++; // Count this task
+							for (const subtask of task.subtasks) {
+								totalSubtasks++; // Count this subtask
 								if (subtask === true) {
 									completedSubtasks++;
 								}
-							});
+							}
 						}
-					});
+					}
 				}
-			});
+			}
 		}
-	});
+	}
+	
 
 	// Avoid division by zero
 	if (totalSubtasks === 0) {
@@ -359,9 +365,7 @@ function createDonutChart(canvasId, completedPercentage, colors) {
             plugins: {
                 tooltip: {
                     callbacks: {
-                        label: function (context) {
-                            return `${context.label}: ${context.formattedValue}%`;
-                        }
+						label: (context) => `${context.label}: ${context.formattedValue}%`
                     }
                 }
             }
@@ -369,31 +373,6 @@ function createDonutChart(canvasId, completedPercentage, colors) {
     });
 }
 
-// Update charts function to match your existing updateTaskStatus
-function updateProgressCharts(taskPercentage, modulePercentage, subtaskPercentage) {
-	// Destroy existing charts if they exist
-	const chartIds = ['taskProgressChart', 'subtaskProgressChart', 'moduleProgressChart'];
-	chartIds.forEach(id => {
-		const existingChart = Chart.getChart(id);
-		if (existingChart) {
-			existingChart.destroy();
-		}
-	});
-
-	// Create new charts
-	createDonutChart('taskProgressChart', taskPercentage, {
-		completed: 'rgba(75, 192, 192, 0.8)',
-		remaining: 'rgba(220, 220, 220, 0.5)'
-	});
-	createDonutChart('subtaskProgressChart', subtaskPercentage, {
-		completed: 'rgba(255, 99, 132, 0.8)', 
-		remaining: 'rgba(220, 220, 220, 0.5)'
-	});
-	createDonutChart('moduleProgressChart', modulePercentage, {
-		completed: 'rgba(54, 162, 235, 0.8)', 
-		remaining: 'rgba(220, 220, 220, 0.5)'
-	});
-}
 
 function updateTaskChart(taskPercentage) {
 	const id = 'taskProgressChart';
