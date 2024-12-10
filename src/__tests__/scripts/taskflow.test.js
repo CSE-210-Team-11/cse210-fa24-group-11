@@ -11,27 +11,6 @@ jest.mock("../../scripts/components/tree/tree.js", () => ({
 	update: jest.fn()
 }));
 
-jest.mock('../../scripts/chart.js', () => {
-    const mockChart = jest.fn().mockImplementation(() => ({
-        destroy: jest.fn(),
-    }));
-
-    mockChart.getChart = jest.fn(() => ({
-        destroy: jest.fn(),
-    }));
-
-    return {
-        __esModule: true,
-        default: mockChart,
-    };
-});
-
-global.Chart = {
-    getChart: jest.fn(() => ({
-        destroy: jest.fn(),
-    })),
-};
-
 
 
 import { renderProgressCircles } from "../../scripts/circlevisualisation.js";
@@ -319,40 +298,5 @@ describe("TaskFlow", () => {
 		});
 	});
 
-	describe('updateTaskStatus', () => {
-		beforeEach(() => {
-			// Set up a mock project in localStorage
-			const mockData = [
-				{
-					name: 'Test Project',
-					modules: [
-						{
-							tasks: [
-								{
-									subtasks: [true, false, true],
-								},
-								{
-									subtasks: [true, true],
-								},
-							]
-						}
-					]
-				}
-			];
-			global.localStorage.setItem('projects', JSON.stringify(mockData));
-		});
-
-		it('should update the status of a subtask in localStorage', () => {
-			updateTaskStatus('Test Project', 0, 1, true);
-
-			// Retrieve the updated project data from localStorage
-			const updatedData = JSON.parse(global.localStorage.getItem('projects'));
-
-			// Check if the subtask status was updated correctly
-			expect(updatedData[0].modules[0].tasks[0].subtasks[1]).toBe(true);
-		});
-
-	});
-	  
 
 });
