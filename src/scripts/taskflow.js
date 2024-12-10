@@ -191,6 +191,8 @@ export function updateTaskStatus(moduleId, taskIndex) {
 	// console.log("Percentage of completed tasks:", percentage);
 	const percentageModules = calculatePercentageOfCompletedModules();
 	console.log("Percentage of completed modules:", percentageModules);
+	const percentageSubtasks = calculatePercentageOfCompletedSubtask();
+	console.log("Percentage of completed subtasks:", percentageSubtasks);
 
 }
 
@@ -281,6 +283,44 @@ function calculatePercentageOfCompletedModules() {
 	return completedModules / totalModules;
 }
 
+function calculatePercentageOfCompletedSubtask() {
+	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
+
+	if (projectsProgress.length === 0) {
+		return 0;
+	}
+
+	// Initialize counters for total and completed tasks
+	let totalSubtasks = 0;
+	let completedSubtasks = 0;
+
+	// Iterate over all project progress
+	projectsProgress.forEach((project) => {
+		if (project.modules) {
+			project.modules.forEach((module) => {
+				if (module.tasks) {
+					module.tasks.forEach((task) => {
+						if (task.subtasks) {
+							task.subtasks.forEach((subtask) => {
+								totalSubtasks++; // Count this task
+								if (subtask === true) {
+									completedSubtasks++;
+								}
+							});
+						}
+					});
+				}
+			});
+		}
+	});
+
+	// Avoid division by zero
+	if (totalSubtasks === 0) {
+		return 0;
+	}
+
+	return completedSubtasks / totalSubtasks;
+}
 
 // Event listener to initialize task flow based on URL parameter
 
