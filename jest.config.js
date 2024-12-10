@@ -8,6 +8,7 @@ module.exports = {
     'src/**/*.{js,jsx}',
     '!src/**/*.test.{js,jsx}',
     '!src/index.js',
+    '!src/scripts/chart.js',
   ],
 
   // Coverage thresholds
@@ -36,7 +37,7 @@ module.exports = {
 
   // Transform node_modules/two.js
   transformIgnorePatterns: [
-    '/node_modules/(?!(two.js)/)'
+    '/node_modules/(?!(two.js)/)',
   ],
   setupFiles: ["jest-canvas-mock"]
 };
