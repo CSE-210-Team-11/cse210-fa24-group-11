@@ -1,4 +1,4 @@
-import { getTrackFiles, calculateCompletedModules, loadProjects, storeProject } from "../../scripts/projectLoader";
+import { getTrackFiles, calculateCompletedModules, loadProjects, storeProject, getProjectCount } from "../../scripts/projectLoader";
 
 describe("ProjectLoader", () => {
 	// Mock localStorage
@@ -607,6 +607,39 @@ describe("ProjectLoader", () => {
 			expect(projectCard.textContent).toContain("Lessons: 1/2");
 		});
 	});
+
+	describe("getProjectCount", () => {
+		let localStorageMock;
+	  
+		beforeEach(() => {
+		  // Setup localStorage mock
+		  localStorageMock = {
+			getItem: jest.fn(),
+			setItem: jest.fn(),
+			clear: jest.fn()
+		  };
+		  Object.defineProperty(window, 'localStorage', { value: localStorageMock });
+		});
+	  
+		it("should return 0 when no projects exist", () => {
+		  // Mock localStorage.getItem to return null (no projects)
+		  localStorageMock.getItem.mockReturnValue(null);
+		  
+		  expect(getProjectCount()).toBe(0);
+		});
+	  
+		it("should return correct number of projects when projects exist", () => {
+		  // Mock localStorage.getItem to return array with 2 projects
+		  const mockProjects = [
+			{ name: "Project 1" },
+			{ name: "Project 2" }
+		  ];
+		  localStorageMock.getItem.mockReturnValue(JSON.stringify(mockProjects));
+		  
+		  expect(getProjectCount()).toBe(2);
+		});
+	  });
+
 
 	describe("Project Storage", () => {
 		beforeEach(() => {
