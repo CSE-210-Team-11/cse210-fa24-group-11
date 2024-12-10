@@ -10,10 +10,7 @@
 - Demonstrated significant workflow improvements compared to the warmup phase, reducing bottlenecks.  
 - Conducted targeted technical research, enabling quick identification of optimal solutions for critical blockers.  
 - Introduced and implemented the **Architectural Decision Record (ADR)** process to document key architectural decisions systematically.  
-- **Key Metrics:**
-  - **13 Pull Requests (PRs)** merged into the main branch.  
-  - **9 issues** resolved successfully.  
-  - **38 commits** delivered across the team.
+
 
 ---
 

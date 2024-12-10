@@ -26,10 +26,6 @@
 - **GitHub Workflow**  
   - Established efficient task tracking and issue resolution, ensuring smooth collaboration.  
 
-- **Key Metrics**  
-  - **20 PRs merged**  
-  - **15 issues resolved**  
-  - **45 commits delivered**  
 
 ---
 

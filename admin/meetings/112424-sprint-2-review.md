@@ -28,10 +28,6 @@
  **ADR Process**  
 - Introduced an **Architecture Decision Record (ADR)** process to document and align architectural decisions.  
 
- **Key Metrics**  
-- **13 PRs merged**  
-- **9 issues resolved**  
-- **38 commits delivered**  
 
 ---
 
