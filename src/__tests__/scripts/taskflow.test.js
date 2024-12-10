@@ -206,7 +206,7 @@ describe("TaskFlow", () => {
 	describe("initializeFromURL", () => {
 		it("should return correct file path", () => {
 		  // Test with custom file
-		  delete window.location;
+		  window.location = undefined;
 		  window.location = { search: "?file=customfile" };
 		  expect(initializeFromURL()).toBe('../data/tracks/customfile');
 	  
