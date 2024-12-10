@@ -135,12 +135,15 @@ input[type="checkbox"]:checked::after {
 .chart-container {
 	display: flex;
 	justify-content: space-around;
-	margin-top: 20px;
+	/* border: 2px solid red; */
 }
+
 .chart-wrapper {
 	width: 30%;
 	text-align: center;
+	/* border: 2px solid greenyellow; */
 }
+
 .chart-container h3 {
     color: #f0f0f0;
 }
