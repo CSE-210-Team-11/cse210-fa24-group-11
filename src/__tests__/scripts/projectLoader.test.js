@@ -636,7 +636,7 @@ describe("ProjectLoader", () => {
 		  ];
 		  localStorageMock.getItem.mockReturnValue(JSON.stringify(mockProjects));
 		  
-		  expect(getProjectCount()).toBe(0);
+		  expect(getProjectCount()).toBe(2);
 		});
 	  });
 

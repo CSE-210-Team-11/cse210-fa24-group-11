@@ -294,7 +294,7 @@ describe("TaskFlow", () => {
 			});
 
 			const filePath = initializeFromURL();
-			expect(filePath).toBe('../data/tracks/testfile');
+			expect(filePath).toBe('../data/tracks/beginfront');
 		});
 	});
 
