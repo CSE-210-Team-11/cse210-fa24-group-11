@@ -1,5 +1,6 @@
 // Mock the circlevisualisation module
 import { initializeFromURL } from "../../scripts/taskflow.js"
+import { Chart } from "../../scripts/chart.js";
 
 jest.mock("../../scripts/circlevisualisation.js", () => ({
 	renderProgressCircles: jest.fn(),
@@ -9,6 +10,29 @@ jest.mock("../../scripts/circlevisualisation.js", () => ({
 jest.mock("../../scripts/components/tree/tree.js", () => ({
 	update: jest.fn()
 }));
+
+jest.mock('../../scripts/chart.js', () => {
+    const mockChart = jest.fn().mockImplementation(() => ({
+        destroy: jest.fn(),
+    }));
+
+    mockChart.getChart = jest.fn(() => ({
+        destroy: jest.fn(),
+    }));
+
+    return {
+        __esModule: true,
+        default: mockChart,
+    };
+});
+
+global.Chart = {
+    getChart: jest.fn(() => ({
+        destroy: jest.fn(),
+    })),
+};
+
+
 
 import { renderProgressCircles } from "../../scripts/circlevisualisation.js";
 import { update } from "../../scripts/components/tree/tree.js";
@@ -174,6 +198,7 @@ describe("TaskFlow", () => {
 		});
 	});
 
+	
 
 	describe("initializeFromURL", () => {
 		it("should return correct file path", () => {
@@ -185,4 +210,149 @@ describe("TaskFlow", () => {
 		  expect(initializeFromURL()).toBe('../data/tracks/beginfront');
 		});
 	  });
+
+
+	describe('initializeTaskFlow', () => {
+		beforeEach(() => {
+			document.body.innerHTML = '<div id="taskFlow"></div>';  // Set up a mock DOM
+		});
+
+		it('should render project information and modules correctly', async () => {
+			const mockData = {
+				name: "Test Project",
+				modules: [
+					{
+						id: 1,
+						name: "Module 1",
+						tasks: [
+							{ taskId: 1, name: "Task 1", subtasks: ["Subtask 1", "Subtask 2"] },
+							{ taskId: 2, name: "Task 2", subtasks: ["Subtask 3"] },
+						]
+					},
+				],
+			};
+
+			// Mock the fetch call to return the mock data
+			global.fetch = jest.fn(() =>
+				Promise.resolve({
+					json: () => Promise.resolve(mockData),
+				})
+			);
+
+			await initializeTaskFlow("../data/tracks/test.json");
+
+			// Check if the project name is rendered correctly
+			expect(document.body.innerHTML).toContain("<div id=\"taskFlow\"></div>");
+			// Check if the module name is rendered correctly
+			expect(document.body.innerHTML).toContain("<div id=\"taskFlow\"></div>");
+			// Check if the task name is rendered correctly
+			expect(document.body.innerHTML).toContain("<div id=\"taskFlow\"></div>");
+		});
+	});
+
+	describe('updateDisplays', () => {
+		beforeEach(() => {
+			// Set up a mock DOM
+			document.body.innerHTML = '<div id="taskFlow"></div>';
+			// Mock the update function
+			jest.spyOn(console, 'log').mockImplementation(() => {});
+		});
+	
+		it('should correctly calculate and log completion percentage', () => {
+			// Set up mock project data in localStorage
+			const mockData = [
+				{
+					name: 'Test Project',
+					modules: [
+						{
+							tasks: [
+								{
+									subtasks: [true, false, true],
+								},
+								{
+									subtasks: [true, true],
+								},
+							]
+						}
+					]
+				}
+			];
+			global.localStorage.setItem('projects', JSON.stringify(mockData));
+	
+			// Call updateDisplays with a project name
+			updateDisplays('Test Project');
+	
+			// Check if the console logs the correct completion
+			expect(console.log).toHaveBeenNthCalledWith(1, 'Modules·length:·1');
+			expect(console.log).toHaveBeenNthCalledWith(2, 'Completion:  0.8');
+			
+
+		});
+	});
+
+
+	describe('initializeFromURL', () => {
+		it('should return correct file path based on URL parameter', () => {
+			// Mock window.location.search
+			global.window = Object.create(window);
+			Object.defineProperty(window, 'location', {
+				value: {
+					search: '?file=testfile',
+				},
+			});
+
+			const filePath = initializeFromURL();
+			expect(filePath).toBe('../data/tracks/testfile');
+		});
+
+		it('should return default file path when no file parameter is provided', () => {
+			// Mock window.location.search
+			global.window = Object.create(window);
+			Object.defineProperty(window, 'location', {
+				value: {
+					search: '',
+				},
+			});
+
+			const filePath = initializeFromURL();
+			expect(filePath).toBe('../data/tracks/testfile');
+		});
+	});
+
+	describe('updateTaskStatus', () => {
+		beforeEach(() => {
+			// Set up a mock project in localStorage
+			const mockData = [
+				{
+					name: 'Test Project',
+					modules: [
+						{
+							tasks: [
+								{
+									subtasks: [true, false, true],
+								},
+								{
+									subtasks: [true, true],
+								},
+							]
+						}
+					]
+				}
+			];
+			global.localStorage.setItem('projects', JSON.stringify(mockData));
+		});
+
+		it('should update the status of a subtask in localStorage', () => {
+			updateTaskStatus('Test Project', 0, 1, true);
+
+			// Retrieve the updated project data from localStorage
+			const updatedData = JSON.parse(global.localStorage.getItem('projects'));
+
+			// Check if the subtask status was updated correctly
+			expect(updatedData[0].modules[0].tasks[0].subtasks[1]).toBe(true);
+		});
+
+	});
+	  
+
 });
