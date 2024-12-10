@@ -131,3 +131,16 @@ input[type="checkbox"]:checked::after {
 	font-size: 16px;
 	font-weight: 600;
 }
+
+#chartsContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#chartsContainer canvas {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+}

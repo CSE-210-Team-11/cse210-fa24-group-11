@@ -187,12 +187,11 @@ export function updateDisplays(projectName) {
 
 export function updateTaskStatus(moduleId, taskIndex) {
 
-	// const percentage = calculatePercentageOfCompletedTasks();
-	// console.log("Percentage of completed tasks:", percentage);
+	const percentageTasks = calculatePercentageOfCompletedTasks();
 	const percentageModules = calculatePercentageOfCompletedModules();
-	console.log("Percentage of completed modules:", percentageModules);
 	const percentageSubtasks = calculatePercentageOfCompletedSubtask();
-	console.log("Percentage of completed subtasks:", percentageSubtasks);
+	console.log(`Percentage: ` + percentageTasks + " " + percentageModules + " " + percentageSubtasks);
+	updateProgressCharts(percentageTasks, percentageModules, percentageSubtasks);
 
 }
 
@@ -235,7 +234,7 @@ function calculatePercentageOfCompletedTasks() {
 		return 0;
 	}
 	const percentage = (completedTasks / totalTasks);
-	return percentage.toFixed(4); 
+	return percentage.toFixed(4);
 }
 
 function calculatePercentageOfCompletedModules() {
@@ -321,6 +320,55 @@ function calculatePercentageOfCompletedSubtask() {
 
 	return completedSubtasks / totalSubtasks;
 }
+
+function createDonutChart(canvasId, completedPercentage) {
+	const ctx = document.getElementById(canvasId).getContext('2d');
+	return new Chart(ctx, {
+		type: 'doughnut',
+		data: {
+			labels: ['Completed', 'Remaining'],
+			datasets: [{
+				data: [completedPercentage, 100 - completedPercentage],
+				backgroundColor: [
+					'rgba(75, 192, 192, 0.8)',  // Completed color
+					'rgba(220, 220, 220, 0.5)' // Remaining color
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			responsive: true,
+			cutout: '70%',
+			plugins: {
+				tooltip: {
+					callbacks: {
+						label: function (context) {
+							return `${context.label}: ${context.formattedValue}%`;
+						}
+					}
+				}
+			}
+		}
+	});
+}
+
+// Update charts function to match your existing updateTaskStatus
+function updateProgressCharts(taskPercentage, modulePercentage, subtaskPercentage) {
+	// Destroy existing charts if they exist
+	const chartIds = ['taskProgressChart', 'subtaskProgressChart', 'moduleProgressChart'];
+	chartIds.forEach(id => {
+		const existingChart = Chart.getChart(id);
+		if (existingChart) {
+			existingChart.destroy();
+		}
+	});
+
+	// Create new charts
+	createDonutChart('taskProgressChart', taskPercentage);
+	createDonutChart('subtaskProgressChart', subtaskPercentage);
+	createDonutChart('moduleProgressChart', modulePercentage);
+}
+
 
 // Event listener to initialize task flow based on URL parameter
 
