@@ -132,15 +132,15 @@ input[type="checkbox"]:checked::after {
 	font-weight: 600;
 }
 
-#chartsContainer {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
+.chart-container {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20px;
 }
-
-#chartsContainer canvas {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
+.chart-wrapper {
+	width: 30%;
+	text-align: center;
+}
+.chart-container h3 {
+    color: #f0f0f0;
 }
