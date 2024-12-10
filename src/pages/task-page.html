@@ -25,10 +25,24 @@
         </div>
         <div class="progress-view" id="progressView">
             <canvas id="treeCanvas" width="50%" height="50%"></canvas>
+            <div class="chart-container">
+                <div class="chart-wrapper">
+                    <canvas id="taskProgressChart"></canvas>
+                    <h3>Task Progress</h3>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="subtaskProgressChart"></canvas>
+                    <h3>Subtask Progress</h3>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="moduleProgressChart"></canvas>
+                    <h3>Module Progress</h3>
+                </div>
+            </div>
         </div>
     </div>
     <script type="module" src="../scripts/components/tree/tree.js"></script>    
     <script type="module" src="../scripts/taskflow.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
