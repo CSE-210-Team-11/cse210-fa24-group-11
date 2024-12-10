@@ -102,7 +102,7 @@ export function attachCheckboxListeners() {
 				Number.parseInt(subtaskIndex),
 				event.target.checked,
 			);
-			updateTaskStatus(moduleIndex, taskIndex);
+			updateTaskStatus();
 			updateDisplays(project);
 		});
 	}
@@ -185,14 +185,31 @@ export function updateDisplays(projectName) {
 	}
 }
 
-export function updateTaskStatus(moduleId, taskIndex) {
+let lastPercentageTasks = -1;
+let lastPercentageModules = -1;
+let lastPercentageSubtasks = -1;
+
+export function updateTaskStatus() {
 
 	const percentageTasks = calculatePercentageOfCompletedTasks();
 	const percentageModules = calculatePercentageOfCompletedModules();
 	const percentageSubtasks = calculatePercentageOfCompletedSubtask();
 	console.log(`Percentage: ` + percentageTasks + " " + percentageModules + " " + percentageSubtasks);
-	updateProgressCharts(percentageTasks, percentageModules, percentageSubtasks);
-
+	if (percentageTasks !== lastPercentageTasks) {
+		updateTaskChart(percentageTasks);
+		lastPercentageTasks = percentageTasks;
+		console.log("Task chart updated");
+	}
+	if (percentageModules !== lastPercentageModules) {
+		updateModuleChart(percentageModules);
+		lastPercentageModules = percentageModules;
+		console.log("Module chart updated");
+	}
+	if (percentageSubtasks !== lastPercentageSubtasks) {
+		updateSubtaskChart(percentageSubtasks);
+		lastPercentageSubtasks = percentageSubtasks;
+		console.log("Subtask chart updated");
+	}
 }
 
 // Calculate the percentage of completed tasks
@@ -321,35 +338,35 @@ function calculatePercentageOfCompletedSubtask() {
 	return completedSubtasks / totalSubtasks;
 }
 
-function createDonutChart(canvasId, completedPercentage) {
-	const ctx = document.getElementById(canvasId).getContext('2d');
-	return new Chart(ctx, {
-		type: 'doughnut',
-		data: {
-			labels: ['Completed', 'Remaining'],
-			datasets: [{
-				data: [completedPercentage, 100 - completedPercentage],
-				backgroundColor: [
-					'rgba(75, 192, 192, 0.8)',  // Completed color
-					'rgba(220, 220, 220, 0.5)' // Remaining color
-				],
-				borderWidth: 1
-			}]
-		},
-		options: {
-			responsive: true,
-			cutout: '70%',
-			plugins: {
-				tooltip: {
-					callbacks: {
-						label: function (context) {
-							return `${context.label}: ${context.formattedValue}%`;
-						}
-					}
-				}
-			}
-		}
-	});
+function createDonutChart(canvasId, completedPercentage, colors) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    return new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Completed', 'Remaining'],
+            datasets: [{
+                data: [completedPercentage, 100 - completedPercentage],
+                backgroundColor: [
+                    colors.completed, 
+                    colors.remaining  
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            cutout: '70%',
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return `${context.label}: ${context.formattedValue}%`;
+                        }
+                    }
+                }
+            }
+        }
+    });
 }
 
 // Update charts function to match your existing updateTaskStatus
@@ -364,11 +381,56 @@ function updateProgressCharts(taskPercentage, modulePercentage, subtaskPercentag
 	});
 
 	// Create new charts
-	createDonutChart('taskProgressChart', taskPercentage);
-	createDonutChart('subtaskProgressChart', subtaskPercentage);
-	createDonutChart('moduleProgressChart', modulePercentage);
+	createDonutChart('taskProgressChart', taskPercentage, {
+		completed: 'rgba(75, 192, 192, 0.8)',
+		remaining: 'rgba(220, 220, 220, 0.5)'
+	});
+	createDonutChart('subtaskProgressChart', subtaskPercentage, {
+		completed: 'rgba(255, 99, 132, 0.8)', 
+		remaining: 'rgba(220, 220, 220, 0.5)'
+	});
+	createDonutChart('moduleProgressChart', modulePercentage, {
+		completed: 'rgba(54, 162, 235, 0.8)', 
+		remaining: 'rgba(220, 220, 220, 0.5)'
+	});
 }
 
+function updateTaskChart(taskPercentage) {
+	const id = 'taskProgressChart';
+	const existingChart = Chart.getChart(id);
+	if (existingChart) {
+		existingChart.destroy();
+	}
+	createDonutChart('taskProgressChart', taskPercentage, {
+		completed: 'rgba(75, 192, 192, 0.8)',
+		remaining: 'rgba(220, 220, 220, 0.5)'
+	});
+
+}
+
+function updateModuleChart(modulePercentage) {
+	const id = 'moduleProgressChart';
+	const existingChart = Chart.getChart(id);
+	if (existingChart) {
+		existingChart.destroy();
+	}
+	createDonutChart('moduleProgressChart', modulePercentage, {
+		completed: 'rgba(54, 162, 235, 0.8)',
+		remaining: 'rgba(220, 220, 220, 0.5)'
+	});
+}
+
+function updateSubtaskChart(subtaskPercentage) {
+	const id = 'subtaskProgressChart';
+	const existingChart = Chart.getChart(id);
+	if (existingChart) {
+		existingChart.destroy();
+	}
+	createDonutChart('subtaskProgressChart', subtaskPercentage, {
+		completed: 'rgba(255, 99, 132, 0.8)',
+		remaining: 'rgba(220, 220, 220, 0.5)'
+	});
+}
 
 // Event listener to initialize task flow based on URL parameter
 
@@ -382,4 +444,5 @@ export function initializeFromURL() {
 document.addEventListener("DOMContentLoaded", () => {
     const filePath = initializeFromURL();
     initializeTaskFlow(filePath);
+	updateTaskStatus();
 });
