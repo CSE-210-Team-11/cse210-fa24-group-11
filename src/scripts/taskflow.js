@@ -191,9 +191,9 @@ let lastPercentageSubtasks = -1;
 
 export function updateTaskStatus() {
 
-	const percentageTasks = calculatePercentageOfCompletedTasks();
-	const percentageModules = calculatePercentageOfCompletedModules();
-	const percentageSubtasks = calculatePercentageOfCompletedSubtask();
+	const percentageTasks = calculatePercentageOfCompletedTasks() * 100;
+	const percentageModules = calculatePercentageOfCompletedModules() * 100;
+	const percentageSubtasks = calculatePercentageOfCompletedSubtask() * 100;
 	console.log(`Percentage: ` + percentageTasks + " " + percentageModules + " " + percentageSubtasks);
 	if (percentageTasks !== lastPercentageTasks) {
 		updateTaskChart(percentageTasks);
