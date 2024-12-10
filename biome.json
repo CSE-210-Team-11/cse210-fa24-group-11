@@ -1,0 +1,13 @@
+{
+    "files": {
+      "ignore": [
+        "src/scripts/chart.js"
+      ]
+    },
+    "linter": {
+      "rules": {
+        "correctness": {
+        }
+      }
+    }
+  }
