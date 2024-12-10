@@ -24,7 +24,6 @@ export async function loadProjects() {
 		// Calculate task and subtask completion
 		const { totalTasks, completedTasks, totalSubtasks, completedSubtasks } =
 			calculateTaskCompletion(project);
-			// console.log("totalTasks", project)
 
 		const projectCard = `
             <div class="project-card">
@@ -137,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	async function loadProjectNames() {
 		try {
 			const files = await getTrackFiles();
-			console.log(files);
 			projectNameSelect.innerHTML = ""; // Clear existing options
 
 			for (const file of files) {
