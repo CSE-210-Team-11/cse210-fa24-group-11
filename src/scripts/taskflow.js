@@ -102,7 +102,7 @@ export function attachCheckboxListeners() {
 				Number.parseInt(subtaskIndex),
 				event.target.checked,
 			);
-
+			updateTaskStatus(moduleIndex, taskIndex);
 			updateDisplays(project);
 		});
 	}
@@ -184,6 +184,103 @@ export function updateDisplays(projectName) {
 		update(completion);
 	}
 }
+
+export function updateTaskStatus(moduleId, taskIndex) {
+
+	// const percentage = calculatePercentageOfCompletedTasks();
+	// console.log("Percentage of completed tasks:", percentage);
+	const percentageModules = calculatePercentageOfCompletedModules();
+	console.log("Percentage of completed modules:", percentageModules);
+
+}
+
+// Calculate the percentage of completed tasks
+function calculatePercentageOfCompletedTasks() {
+	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
+
+	if (projectsProgress.length === 0) {
+		return 0;
+	}
+
+	// Initialize counters for total and completed tasks
+	let totalTasks = 0;
+	let completedTasks = 0;
+
+	// Iterate over all project progress
+	projectsProgress.forEach((project) => {
+		if (project.modules) {
+			project.modules.forEach((module) => {
+				if (module.tasks) {
+					module.tasks.forEach((task) => {
+						totalTasks++; // Count this task
+
+						// Check if all subtasks are completed
+						if (
+							task.subtasks &&
+							task.subtasks.length > 0 &&
+							task.subtasks.every((subtask) => subtask === true)
+						) {
+							completedTasks++;
+						}
+					});
+				}
+			});
+		}
+	});
+
+	// Avoid division by zero
+	if (totalTasks === 0) {
+		return 0;
+	}
+	const percentage = (completedTasks / totalTasks);
+	return percentage.toFixed(4); 
+}
+
+function calculatePercentageOfCompletedModules() {
+	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
+
+	if (projectsProgress.length === 0) {
+		return 0;
+	}
+
+	// Initialize counters for total and completed tasks
+	let totalModules = 0;
+	let completedModules = 0;
+
+	// Iterate over all project progress
+	projectsProgress.forEach((project) => {
+		if (project.modules) {
+			project.modules.forEach((module) => {
+				totalModules++; // Count this module
+				let flag = true;
+				if (module.tasks) {
+					module.tasks.forEach((task) => {
+						if (
+							task.subtasks &&
+							task.subtasks.length > 0 &&
+							task.subtasks.every((subtask) => subtask === true)
+						) {
+						}
+						else {
+							flag = false;
+						}
+					});
+				}
+				if (flag) {
+					completedModules++;
+				}
+			});
+		}
+	});
+
+	// Avoid division by zero
+	if (totalModules === 0) {
+		return 0;
+	}
+
+	return completedModules / totalModules;
+}
+
 
 // Event listener to initialize task flow based on URL parameter
 
