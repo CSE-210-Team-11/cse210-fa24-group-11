@@ -343,7 +343,7 @@ function createDonutChart(canvasId, completedPercentage, colors) {
     return new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Completed', 'Remaining'],
+            labels: ['Completed'],
             datasets: [{
                 data: [completedPercentage, 100 - completedPercentage],
                 backgroundColor: [
