@@ -18,6 +18,11 @@ body {
 	color: green;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 .greeting-div {
 	flex-direction: column;
 	background-color: var(--page-bg-color);

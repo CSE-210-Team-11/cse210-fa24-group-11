@@ -3,6 +3,12 @@
 	--page-bg-color: #f5f5f5;
 	--navbar-color: #344356;
 	--task-color: gray;
+	--accent-color: #ffd700;
+    --text-light: #ffffff;
+    --text-dark: var(--dark-color);
+    --spacing-unit: 1rem;
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
 }
 
 .flexbox-display {
