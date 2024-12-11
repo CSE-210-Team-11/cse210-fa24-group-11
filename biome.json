@@ -1,7 +1,8 @@
 {
     "files": {
       "ignore": [
-        "src/scripts/chart.js"
+        "src/scripts/chart.js",
+        "src/scripts/404.js"
       ]
     },
     "linter": {
