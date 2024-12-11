@@ -1,3 +1,19 @@
+/**
+ * This module contains functions to load and manage projects.
+ * @module projectLoader
+ * @exports getTrackFiles
+ * @exports loadProjects
+ * @exports storeProject
+ * @exports getProjectCount
+ * @exports calculateCompletedModules
+ * @exports calculateTaskCompletion
+ * @exports getProjectCount
+*/
+
+/**
+ * This function fetches the list of track files.
+ * @returns {Promise<Array>} The list of track files.
+ */
 export async function getTrackFiles() {
 	try {
 		const response = await fetch("../data/tracks/index.json");
@@ -8,6 +24,11 @@ export async function getTrackFiles() {
 		return [];
 	}
 }
+
+/**
+ * This function loads the projects from local storage and renders them on the page.
+ * @returns {Promise<void>} A promise that resolves when the projects are loaded.
+ */
 
 export async function loadProjects() {
 	const projectContainer = document.querySelector("#project-list");
@@ -46,7 +67,11 @@ export async function loadProjects() {
 	}
 }
 
-// Helper function to calculate completed modules
+/**
+ * This function calculates the number of completed modules in a project.
+ * @param {Object} project - The project object.
+ * @returns {number} The number of completed modules.
+ */
 export function calculateCompletedModules(project) {
 	if (!project.modules) return 0;
 
@@ -62,7 +87,16 @@ export function calculateCompletedModules(project) {
 	}).length;
 }
 
-// Helper function to calculate task completion
+/**
+ * This function calculates the completion status of tasks and subtasks in a project.
+ * @param {Object} project - The project object.
+ * @returns {Object} An object containing the total and completed tasks and subtasks.
+ * @property {number} totalTasks - The total number of tasks.
+ * @property {number} completedTasks - The number of completed tasks.
+ * @property {number} totalSubtasks - The total number of subtasks.
+ * @property {number} completedSubtasks - The number of completed subtasks.
+ * 
+*/
 function calculateTaskCompletion(project) {
 	let totalTasks = 0;
 	let completedTasks = 0;
@@ -109,11 +143,23 @@ function calculateTaskCompletion(project) {
 	};
 }
 
+/**
+ * This function stores a project in local storage.
+ * @param {Object} project - The project object to store.
+ * @returns {void}
+ * 
+*/
+
 export function storeProject(project) {
 	const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
 	storedProjects.push(project);
 	localStorage.setItem("projects", JSON.stringify(storedProjects));
 }
+
+/**
+ * This function initializes the project loader.
+ * @returns {void}
+ */
 
 document.addEventListener("DOMContentLoaded", () => {
 	const createProjectButton = document.getElementById("create-project-btn");
@@ -134,7 +180,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		return;
 	}
 
-	// Load project names into the dropdown menu
+	/**
+	 * This function loads the project names dynamically.
+	 * @returns {void}
+	 * 
+	 */
 	async function loadProjectNames() {
 		try {
 			const files = await getTrackFiles();
@@ -151,7 +201,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	// Open the project creation pop-up
+	/**
+	 * This function loads the project names dynamically.
+	 * @returns {void}
+	*/
 	createProjectButton.addEventListener("click", async () => {
 		await loadProjectNames(); // Load project names dynamically
 		popupContainer.classList.remove("hidden"); // Show the pop-up
@@ -200,6 +253,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Initial load of projects
 	loadProjects();
 });
+
+/**
+ * This function returns the total number of projects.
+ * @returns {number} The total number of projects.
+ */
 
 export function getProjectCount() {
 	const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];

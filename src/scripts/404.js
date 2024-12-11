@@ -1,3 +1,21 @@
+/**
+ * @fileoverview This file contains the 404 page animation.
+ * @module 404
+ * @exports binft
+ * @exports helpers
+ * @exports animation
+ * @requires module:helpers
+ * 
+*/
+
+
+/**
+ * This function generates the 404 page animation.
+ * @param {HTMLElement} r - The element to render the animation in.
+ * @returns {void}
+ * @function binft
+ * @inner
+*/
 const binft = (r) => {
     function t() {
         return b[Math.floor(Math.random() * b.length)]

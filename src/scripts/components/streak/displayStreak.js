@@ -1,3 +1,7 @@
+/**
+ * This function displays the streak value on the page.
+ * If the streak value is not set, it will default to 0.
+ */
 export function displayStreak() {
     // Retrieve the value of "streak" from localStorage
     const streak = localStorage.getItem('streak');
