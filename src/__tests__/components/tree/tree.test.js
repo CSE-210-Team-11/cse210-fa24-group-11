@@ -224,4 +224,65 @@ describe("timeOfDay Tests", () => {
 		const time = treeModule.getTimeOfDay();
 		expect(["day", "night"]).toContain(time);
 	});
+
+	test("getTimeOfDay returns day during day hours", () => {
+		// Mock Date to return 3 AM
+		const mockDate = new Date('2024-01-01T10:00:00');
+		jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
+		
+		const time = treeModule.getTimeOfDay();
+		expect(time).toBe("day");
+		
+		// Clean up
+		jest.restoreAllMocks();
+	});
+
+	test("getTimeOfDay returns night during night hours", () => {
+		// Mock Date to return 3 AM
+		const mockDate = new Date('2024-01-01T03:00:00');
+		jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
+		
+		const time = treeModule.getTimeOfDay();
+		expect(time).toBe("night");
+		
+		// Clean up
+		jest.restoreAllMocks();
+	});
+});
+
+describe("Growth and Update Tests", () => {
+	beforeEach(() => {
+		jest.resetModules();
+		jest.clearAllMocks();
+		treeModule.branchCount = 0;
+		treeModule.leafCount = 0;
+		treeModule.two.clear();
+	});
+	test("growthFrac affects branch rendering", () => {
+		// Test partial growth
+		treeModule.update(0.5);
+		expect(treeModule.growthFrac).toBe(0.5);
+		
+		// Test full growth
+		treeModule.update(1);
+		expect(treeModule.growthFrac).toBe(1);
+	});
+});
+
+describe("Random Branch Generation", () => {
+	beforeEach(() => {
+		jest.resetModules();
+		jest.clearAllMocks();
+		treeModule.branchCount = 0;
+		treeModule.leafCount = 0;
+		treeModule.two.clear();
+	});
+	test("sometimes creates middle branch based on randInt", () => {
+		// Mock randInt to return 1 to ensure middle branch is created
+		const mockRandInt = jest.requireMock("../../../utils/seededRandom.js").randInt;
+		mockRandInt.mockReturnValueOnce(1);
+		
+		treeModule.makeBranches(100, 100, Math.PI / 2, 30, 10, 1);
+		expect(treeModule.branchCount).toBeGreaterThan(1);
+	});
 });
