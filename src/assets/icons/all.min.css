@@ -11,4 +11,7 @@ body {
         background-color: #ffffff;
         font-family: Aldhabi, sans-serif;
 }
-      
+@font-face {
+        font-family: Aldhabi, sans-serif;
+        src: url(../fonts/Aldhabi-Regular.ttf);
+}
