@@ -1,0 +1,40 @@
+/* Navbar Styles */
+.navbar {
+    height: 64px;
+    background-color: var(--navbar-color);
+    padding: 0 var(--spacing-unit);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-unit);
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+    transition: transform var(--transition-speed);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed);
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
