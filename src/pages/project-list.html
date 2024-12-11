@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
     <link rel="stylesheet" href="../styles/pages/project-list.css">
-    <link rel="stylesheet" href="../styles/components/birds.css">
 </head>
 <body>
     <div class="navbar">
@@ -16,39 +15,9 @@
             </a>
         </span>
     </div>
-    <div class="birds-wrapper">
-        <div class="bird-container bird-container--one">
-            <div class="bird bird--one"></div>
-        </div>
-        
-        <div class="bird-container bird-container--two">
-            <div class="bird bird--two"></div>
-        </div>
-        
-        <div class="bird-container bird-container--three">
-            <div class="bird bird--three"></div>
-        </div>
-        
-        <div class="bird-container bird-container--four">
-            <div class="bird bird--four"></div>
-        </div>
-    </div>
     <div class="project-content flexbox-display">
-        <div class="project-list">
-            <!-- Dynamic project cards will be inserted here -->
-        </div>
-        
-        <div class="project-list">
-            <div class="project-list">
-                <div class="streak-wrapper">
-                    <button id="create-project-btn">
-                        <strong>
-                            Create New Project +
-                        </strong>
-                    </button>
-                </div>
-            </div>
-        
+        <h1 id="project-page-title">My Projects</h1>
+        <div id="create-project-btn-container">
             <!-- Project Creation Pop-up -->
             <div id="popup-container" class="popup-container flexbox-display hidden">
                 <div class="popup">
@@ -67,7 +36,15 @@
                 <button id="streak-btn" class="streak-btn">Streak: 0</button>
                 <div id="last-checkin" class="last-checkin">Last check-in: Never</div>
             </div>
+            <button id="create-project-btn">
+                New +
+            </button>
         </div>
+
+        <div id="project-list">
+            <!-- Dynamic project cards will be inserted here -->
+        </div>
+        
     </div>
     <script src="../scripts/components/streak/streak.js"></script>
     <link rel="stylesheet" href="../assets/icons/all.min.css">

@@ -10,7 +10,7 @@ export async function getTrackFiles() {
 }
 
 export async function loadProjects() {
-	const projectContainer = document.querySelector(".project-list:first-child");
+	const projectContainer = document.querySelector("#project-list");
 	projectContainer.innerHTML = "";
 
 	const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
@@ -27,16 +27,18 @@ export async function loadProjects() {
 
 		const projectCard = `
             <div class="project-card">
-                <span>${project.name}</span>
-                <div class="project-card-buttons-list">
-                    <button class="project-card-button">Sections: ${completedModules}/${totalModules}</button>
-                    <button class="project-card-button">Units: ${completedTasks}/${totalTasks}</button>
-                    <button class="project-card-button">Lessons: ${completedSubtasks}/${totalSubtasks}</button>
-                    <button class="project-card-button" 
-                            onclick="window.location.href='task-page.html?file=${encodeURIComponent(project.file)}'">
-                        Start Project <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
+				<span class="project-card-title">${project.name}</span>
+				<div class="project-card-status-button">
+					<div class="project-card-status">
+						<span class="project-card-status-item">Sections: ${completedModules}/${totalModules}</span>
+						<span class="project-card-status-item">Units: ${completedTasks}/${totalTasks}</span>
+						<span class="project-card-status-item">Lessons: ${completedSubtasks}/${totalSubtasks}</span>
+					</div>
+					<button class="project-card-button" 
+						onclick="window.location.href='task-page.html?file=${encodeURIComponent(project.file)}'">
+						Start Project <i class="fa-solid fa-arrow-right"></i>
+					</button>
+				</div>
             </div>
         `;
 
