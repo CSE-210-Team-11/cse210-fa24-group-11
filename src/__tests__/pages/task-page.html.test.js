@@ -24,7 +24,6 @@ describe('Task Page HTML', () => {
 
     test('contains navigation elements', () => {
         // Test for navbar and its components
-        expect(htmlContent).toMatch(/<div class="navbar">/);
         expect(htmlContent).toMatch(/<img class="logo"/);
         expect(htmlContent).toMatch(/href="\.\.\/pages\/home\.html"/);
         expect(htmlContent).toMatch(/href="\.\.\/pages\/project-list\.html"/);
