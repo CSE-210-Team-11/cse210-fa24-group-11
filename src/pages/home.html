@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../styles/pages/home.css">
     <link rel="stylesheet" href="../assets/icons/all.min.css">
     
-    
     <!-- scripts -->
     <script type="module" src="../scripts/quotesmanager.js" defer></script>
     <script type="module" src="../scripts/components/streak/displayStreak.js" defer></script>
@@ -17,7 +16,8 @@
 </head>
 <body>
     <main class="greeting-div flexbox-display">
-        <h1 class="greeting">Welcome, Angry Atishay!</h1>
+        <img id="homepage-logo" src="../media/images/streak_logo.png" alt="Streek Logo">
+        <h1 class="greeting">Welcome to S<span id="title-highlight">tree</span>k</h1>
         
         <section id="quote-container">
             <p><em id="quote-text"></em>...</p>
@@ -28,7 +28,7 @@
 
         <section class="info-div">
             <div class="streak-div flexbox-display">
-                <strong>Projects Count: <span id="project-count">0</span></strong>
+                <strong>Project Count: <span id="project-count">0</span></strong>
             </div>
             <div class="streak-div flexbox-display">
                 <span id="icon-container" class="streak-svg"></span>
