@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Page Not Found</title>
-    <link rel="stylesheet" href="../styles/pages/404.css">
+    <script>
+        // Get the repository name from the URL for GitHub Pages
+        const basePath = window.location.pathname.split('/')[1];
+        document.write(`<base href="/${basePath}/">`);
+    </script>
+    <link rel="stylesheet" href="src/styles/pages/404.css">
 </head>
 <body>
     <header class="g-banner flexbox-display np-banner post-pattern-circuitBoard" data-theme="default">
@@ -14,14 +19,14 @@
                 <div id="binft"></div>
             </h3>
             <div class="image-container">
-                <img src="../media/images/profile.gif" alt="Rick Roll" class="rick-roll">
+                <img src="src/media/images/profile.gif" alt="Rick Roll" class="rick-roll">
             </div>
             <span class="subheading">Sorry! Page Not Found.</span>
-            <button onclick="window.location.href='home.html'" class="home-button">
+            <button onclick="window.location.href='src/pages/home.html'" class="home-button">
                 <strong>Back to Homepage</strong>
             </button>
         </div>
     </header>
-    <script src="../scripts/404.js"></script>
+    <script src="src/scripts/404.js"></script>
 </body>
 </html>
