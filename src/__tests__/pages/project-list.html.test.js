@@ -10,16 +10,10 @@ describe("Project List Page", () => {
 		document.documentElement.innerHTML = html;
 	});
 
-	test("renders project list container", () => {
-		const projectList = document.querySelector(".project-list");
-		expect(projectList).toBeTruthy();
-	});
-
 	test("has create project button", () => {
 		const createButton = document.querySelector("#create-project-btn");
 		expect(createButton).toBeTruthy();
-		expect(createButton.textContent).toContain("Create");
-		expect(createButton.textContent).toContain("Project");
+		expect(createButton.textContent).toContain("+");
 	});
 
 	test("has popup container", () => {

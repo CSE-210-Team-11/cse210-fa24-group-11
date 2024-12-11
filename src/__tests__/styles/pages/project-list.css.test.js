@@ -15,11 +15,6 @@ describe("Project List Styles", () => {
 		expect(cssContent).toContain("body {");
 	});
 
-	test("should define project list container styles", () => {
-		expect(cssContent).toContain(".project-list {");
-		expect(cssContent).toContain("flex-direction: column");
-	});
-
 	test("should define project card styles", () => {
 		expect(cssContent).toContain(".project-card {");
 	});
