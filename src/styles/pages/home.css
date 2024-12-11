@@ -28,6 +28,7 @@ body {
 
 h1 {
 	margin: 2px;
+	font-family: "Noto Sans", sans-serif;
 }
 
 .info-div{
@@ -43,6 +44,7 @@ h1 {
 	background-color: transparent;
 	color: #0f1b2e;
 	font-size: small;
+	font-family: "Noto Sans", sans-serif;
 }
 
 .tree-art {
@@ -68,6 +70,7 @@ h1 {
 	background-color: #0f1b2e;
 	color: #E7F5E9;
 	cursor: pointer;
+	font-family: "Noto Sans", sans-serif;
 }
 @font-face {
 	font-family: "Noto Sans";
