@@ -7,10 +7,20 @@ body {
 	font-optical-sizing: auto;
 }
 
+#homepage-logo {
+	align-self: center;
+	border: 1px black;
+	width: 15em;
+	height: 15em;
+}
+
+#title-highlight {
+	color: green;
+}
 
 .greeting-div {
 	flex-direction: column;
-	background-color: var(--light-color);
+	background-color: var(--page-bg-color);
 	color: var(--dark-color);
 	height: 100vh;
 	width: 100%;
