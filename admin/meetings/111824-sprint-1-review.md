@@ -2,7 +2,7 @@
 
 - Monday, 10:00 P.M PST
 - November 18, 2024
-- Attendance: Yuke, Kanaad, Shaobo, Delaware, Daniel, Leonard, Atishay
+- Attendance: Yuke, Kanaad, Shaobo, Delaware, Yuyang, Leonard, Atishay
 
 ### Technical Highlights
 * Successfully established CI/CD pipeline leveraging Github Actions and Node.JS.
@@ -22,3 +22,5 @@
   - Maintained clear communication channels
   - Established robust documentation practices
   - Implemented effective meeting cadence with detailed notes ensuring alignment across the team
+
+### What to keep
