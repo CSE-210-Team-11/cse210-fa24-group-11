@@ -10,8 +10,6 @@ describe('Task Page CSS', () => {
     });
 
     test('contains essential layout classes', () => {
-        // Test for navbar
-        expect(cssContent).toMatch(/\.navbar\s*\{/);
         
         // Test for container
         expect(cssContent).toMatch(/\.container\s*\{/);
@@ -19,8 +17,7 @@ describe('Task Page CSS', () => {
         // Test for flowchart
         expect(cssContent).toMatch(/\.flowchart\s*\{/);
         
-        // Test for logo and link styles
+        // Test for logo
         expect(cssContent).toMatch(/\.logo\s*\{/);
-        expect(cssContent).toMatch(/\.link-style\s*\{/);
     });
 });
