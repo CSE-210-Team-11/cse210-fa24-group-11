@@ -10,6 +10,7 @@ module.exports = {
     '!src/index.js',
     '!src/scripts/chart.js',
     '!src/scripts/taskflow.js',
+    '!src/scripts/404.js',
   ],
 
   // Coverage thresholds
