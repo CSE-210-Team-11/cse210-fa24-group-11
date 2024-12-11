@@ -151,6 +151,10 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.text-highlight {
+    color: green;
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
