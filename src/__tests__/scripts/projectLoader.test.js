@@ -18,7 +18,7 @@ describe("ProjectLoader", () => {
 	beforeEach(() => {
 		// Setup DOM
 		document.body.innerHTML = `
-            <div class="project-list"></div>
+            <div id="project-list"></div>
             <button id="create-project-btn">Create Project</button>
             <div id="popup-container" class="hidden">
                 <button id="popup-close">Close</button>
@@ -506,7 +506,7 @@ describe("ProjectLoader", () => {
 				.mockImplementation(() => {});
 
 			// Create a new project container for this test
-			document.body.innerHTML = '<div class="project-list"></div>';
+			document.body.innerHTML = '<div id="project-list"></div>';
 
 			// Set up localStorage with invalid data
 			localStorage.setItem("projects", "invalid json");
