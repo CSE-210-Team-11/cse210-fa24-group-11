@@ -6,7 +6,7 @@ Sprint 4 marked a significant milestone in the project's development, characteri
 ## Sprint Snapshot
 - **Period**: December 2 - December 8, 2024
 - **Duration**: 7 days
-- **Team Participation**: SirKanaad26, Leonard Zhang, Earth34r, commcheck396, y1kooo777, jain-atishay
+- **Team Participation**: Kanaad, Shaobo, Delaware, Atishay, Leonard and Y1ko
 
 ## Key Metrics
 
