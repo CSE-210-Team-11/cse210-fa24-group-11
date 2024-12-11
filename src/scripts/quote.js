@@ -1,3 +1,16 @@
+/**
+ * This module contains an array of motivational quotes.
+ * @module motivationalQuotes
+ * @exports motivationalQuotes
+*/
+
+/**
+ * An array of motivational quotes.
+ * @type {Array.<Object>}
+ * @const
+ * @default
+ * @alias module:motivationalQuotes
+*/
 export const motivationalQuotes = [
 	{
 		text: "The only way to do great work is to love what you do",

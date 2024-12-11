@@ -1,5 +1,11 @@
 import { update } from './components/tree/tree.js';
 
+
+/**
+ * Initializes the task flow based on the provided JSON file path
+ * @param {string} jsonFilePath - The path to the JSON file to load
+ * @returns {void}
+ */
 export function initializeTaskFlow(
 	jsonFilePath = "../data/tracks/beginfront.json",
 ) {
@@ -93,7 +99,16 @@ export function initializeTaskFlow(
 		});
 }
 
-// New function to attach event listeners to checkboxes
+/**
+ * Attaches event listeners to all subtask checkboxes
+ * @returns {void}
+ * @function attachCheckboxListeners
+ * @inner
+ * @listens change
+ * @fires saveSubtaskProgress
+ * @fires updateTaskStatus
+ * @fires updateDisplays
+ */
 export function attachCheckboxListeners() {
 	const checkboxes = document.querySelectorAll(".subtask-checkbox");
 	for (const checkbox of checkboxes) {
@@ -116,6 +131,17 @@ export function attachCheckboxListeners() {
 	}
 }
 
+/**
+ * Saves the progress of a subtask to localStorage
+ * @param {string} projectName - The name of the project
+ * @param {number} moduleId - The ID of the module
+ * @param {number} moduleIndex - The index of the module
+ * @param {number} taskIndex - The index of the task
+ * @param {number} subtaskIndex - The index of the subtask
+ * @param {boolean} isChecked - The completion status of the subtask
+ * @returns {void}
+ * @function saveSubtaskProgress
+*/
 export function saveSubtaskProgress(
 	projectName,
 	moduleId,
@@ -160,6 +186,12 @@ export function saveSubtaskProgress(
 	localStorage.setItem("projects", JSON.stringify(projectsProgress));
 }
 
+/**
+ * Updates the progress displays based on the project name
+ * @param {string} projectName - The name of the project
+ * @returns {void}
+ * @function updateDisplays
+*/
 export function updateDisplays(projectName) {
 	// Retrieve existing projects progress
 	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
@@ -197,6 +229,12 @@ let lastPercentageTasks = -1;
 let lastPercentageModules = -1;
 let lastPercentageSubtasks = -1;
 
+
+/**
+ * Updates the task status charts based on the progress
+ * @returns {void}
+ * @function updateTaskStatus
+*/
 export function updateTaskStatus() {
 
 	const percentageTasks = calculatePercentageOfCompletedTasks() * 100;
@@ -220,7 +258,11 @@ export function updateTaskStatus() {
 	}
 }
 
-// Calculate the percentage of completed tasks
+/**
+ * Calculates the percentage of completed tasks
+ * @returns {number} The percentage of completed tasks
+ * @function calculatePercentageOfCompletedTasks
+ */
 function calculatePercentageOfCompletedTasks() {
 	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
 
@@ -263,6 +305,11 @@ function calculatePercentageOfCompletedTasks() {
 	return percentage.toFixed(4);
 }
 
+/**
+ * Calculates the percentage of completed modules
+ * @returns {number} The percentage of completed modules
+ * @function calculatePercentageOfCompletedModules
+*/
 function calculatePercentageOfCompletedModules() {
 	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
 
@@ -308,6 +355,11 @@ function calculatePercentageOfCompletedModules() {
 	return completedModules / totalModules;
 }
 
+/**
+ * Calculates the percentage of completed subtasks
+ * @returns {number} The percentage of completed subtasks
+ * @function calculatePercentageOfCompletedSubtask
+*/
 function calculatePercentageOfCompletedSubtask() {
 	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
 
@@ -352,6 +404,14 @@ function calculatePercentageOfCompletedSubtask() {
 	return completedSubtasks / totalSubtasks;
 }
 
+/**
+ * Creates a donut chart using Chart.js
+ * @param {string} canvasId - The ID of the canvas element to render the chart
+ * @param {number} completedPercentage - The percentage of completed tasks
+ * @param {object} colors - The colors for the chart
+ * @returns {object} The Chart.js instance
+ * @function createDonutChart
+*/
 function createDonutChart(canvasId, completedPercentage, colors) {
     const ctx = document.getElementById(canvasId).getContext('2d');
     return new Chart(ctx, {
@@ -381,7 +441,12 @@ function createDonutChart(canvasId, completedPercentage, colors) {
     });
 }
 
-
+/**
+ * Updates the task chart with the new percentage
+ * @param {number} taskPercentage - The new percentage of completed tasks
+ * @returns {void}
+ * @function updateTaskChart
+*/
 function updateTaskChart(taskPercentage) {
 	const id = 'taskProgressChart';
 	const existingChart = Chart.getChart(id);
@@ -395,6 +460,12 @@ function updateTaskChart(taskPercentage) {
 
 }
 
+/**
+ * Updates the module chart with the new percentage
+ * @param {number} modulePercentage - The new percentage of completed modules
+ * @returns {void}
+ * @function updateModuleChart
+*/
 function updateModuleChart(modulePercentage) {
 	const id = 'moduleProgressChart';
 	const existingChart = Chart.getChart(id);
@@ -407,6 +478,12 @@ function updateModuleChart(modulePercentage) {
 	});
 }
 
+/**
+ * Updates the subtask chart with the new percentage
+ * @param {number} subtaskPercentage - The new percentage of completed subtasks
+ * @returns {void}
+ * @function updateSubtaskChart
+*/
 function updateSubtaskChart(subtaskPercentage) {
 	const id = 'subtaskProgressChart';
 	const existingChart = Chart.getChart(id);
@@ -419,8 +496,14 @@ function updateSubtaskChart(subtaskPercentage) {
 	});
 }
 
-// Event listener to initialize task flow based on URL parameter
 
+/**
+ * Initializes the task flow based on the provided JSON file path
+ * @param {string} jsonFilePath - The path to the JSON file to load
+ * @returns {void}
+ * @function initializeTaskFlow
+ * @inner
+ */
 export function initializeFromURL() {
     const params = new URLSearchParams(window.location.search);
     const fileParam = params.get("file") || "beginfront";
@@ -428,6 +511,13 @@ export function initializeFromURL() {
     return filePath;
 }
 
+/**
+ * Initializes the task flow based on the provided JSON file path
+ * @param {string} filePath - The path to the JSON file to load
+ * @returns {void}
+ * @function initializeTaskFlow
+ * @inner
+ */
 document.addEventListener("DOMContentLoaded", () => {
     const filePath = initializeFromURL();
     initializeTaskFlow(filePath);

@@ -7,6 +7,9 @@ const LAST_CHECKIN_KEY = "lastCheckin";
 let streak = Number.parseInt(localStorage.getItem(STREAK_KEY)) || 0;
 let lastCheckin = localStorage.getItem(LAST_CHECKIN_KEY);
 
+/**
+ * Updates the UI with the current streak and last check-in date.
+ */
 function updateUI() {
 	streakBtn.textContent = `Streak: ${streak}`;
 	lastCheckinEl.textContent = lastCheckin
@@ -22,6 +25,10 @@ function updateUI() {
 	}
 }
 
+/**
+ * Handles the streak button click event.
+ * Updates the streak value and last check-in date in localStorage.
+ */
 streakBtn.addEventListener("click", () => {
 	const today = new Date().setHours(0, 0, 0, 0);
 	const millisecondsPerDay = 1000 * 60 * 60 * 24;
@@ -46,4 +53,7 @@ streakBtn.addEventListener("click", () => {
 	updateUI();
 });
 
+/**
+ * Initializes the streak component.
+ */
 updateUI();
