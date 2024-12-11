@@ -25,14 +25,14 @@ body {
 }
 
 .link-style {
-	color: var(--light-color);
+	color: var(--page-bg-color);
 	text-decoration: none;
 	font-size: 24px;
 	padding-right: 20px;
 }
 
 .link-style:hover {
-	color: var(--light-color);
+	color: var(--page-bg-color);
 }
 
 .container {
@@ -45,8 +45,8 @@ body {
 
 .flowchart {
 	width: 100%;
-	background-color: var(--light-color);
-	height: calc(100vh - 63px);
+	background-color: var(--page-bg-color);
+	height: calc(100vh - 20px);
 	overflow-y: scroll;
 }
 
@@ -57,40 +57,40 @@ body {
 }
 
 .project-heading {
-	color: var(--light-color);
+	color: var(--page-bg-color);
 	background-color: var(--dark-color);
 	border: 2px solid var(--dark-color);
 	display: flex;
 	justify-content: center;
-	margin-top: 10px;
 }
 
 .unit {
 	flex-direction: column;
 	width: 100%;
+	padding-bottom: 5px;
 }
 
 .task {
-	color: var(--light-color);
-	width: 75%;
-	margin: 30px 0 10px 0;
-	padding: 0 0 0 8px;
+	color: var(--page-bg-color);
+	width: 80%;
+	padding: 2px 2px 2px 8px;
 	border: 2px solid var(--dark-color);
 	border-radius: 6px;
 	font-size: 16px;
 	background-color: var(--dark-color);
 	font-family: "Helvetica", sans-serif;
+	margin-top: 10px;
 }
 
 .subtask-inner-div {
 	border-radius: 20px;
-	width: 50%;
-	height: 25px;
+	width: 70%;
+	height: 20px;
 	background-color: var(--navbar-color);
 	display: flex;
 	align-items: center;
 	margin: 10px auto;
-	color: var(--light-color);
+	color: var(--page-bg-color);
 	font-size: 24px;
 	padding: 20px;
 }
@@ -100,9 +100,9 @@ input[type="checkbox"] {
 	appearance: none;
 	width: 24px;
 	height: 24px;
-	border: 2px solid var(--light-color);
+	border: 2px solid var(--page-bg-color);
 	border-radius: 4px;
-	background-color: var(--light-color);
+	background-color: var(--page-bg-color);
 	cursor: pointer;
 	position: relative;
 	margin: 0;
@@ -110,8 +110,8 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-	background-color: var(--light-color);
-	border-color: var(--light-color);
+	background-color: var(--page-bg-color);
+	border-color: var(--page-bg-color);
 }
 
 input[type="checkbox"]:checked::after {
@@ -127,8 +127,11 @@ input[type="checkbox"]:checked::after {
 }
 
 .checkbox-label {
+	display: block;
+	width: 100%;
+	height: 100%;
 	margin-left: 20px;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 600;
 }
 
@@ -151,18 +154,20 @@ input[type="checkbox"]:checked::after {
 }
 
 .task-container {
-	border: 1px solid #ddd;
-	margin-bottom: 8px;
-	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
 }
 
 .task-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 10px;
 	cursor: pointer;
-	background-color: #f5f5f5;
+	background-color: var(--task-color);
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .task-header:hover {
@@ -174,7 +179,7 @@ input[type="checkbox"]:checked::after {
 }
 
 .subtasks-container {
-	display: block;
+	width: 100%;
 	max-height: 0;
 	overflow: hidden;
 	transition: max-height 0.3s ease-out;

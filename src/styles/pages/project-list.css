@@ -2,7 +2,7 @@
 
 body {
 	font-family: Arial, sans-serif;
-	background-color: var(--light-color);
+	background-color: var(--page-bg-color);
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -28,14 +28,14 @@ body {
 }
 
 .link-style {
-	color: var(--light-color);
+	color: var(--page-bg-color);
 	text-decoration: none;
 	font-size: 24px;
 	padding-right: 20px;
 }
 
 .link-style:hover {
-	color: var(--light-color);
+	color: var(--page-bg-color);
 }
 
 .project-content {
@@ -63,7 +63,7 @@ body {
 	padding: 10px;
 	border: 2px solid var(--dark-color);
 	background-color: var(--dark-color);
-	color: var(--light-color);
+	color: var(--page-bg-color);
 	font-weight: bold;
 	cursor: pointer;
 	margin-bottom: 1rem;
@@ -76,7 +76,7 @@ body {
 	border-radius: 5px;
 	border: 2px solid var(--dark-color);
 	background-color: var(--dark-color);
-	color: var(--light-color);
+	color: var(--page-bg-color);
 	width: 90%;
 }
 
@@ -90,7 +90,7 @@ body {
 	margin: 2px;
 	width: 22%;
 	border: 2px solid var(--dark-color);
-	background-color: var(--light-color);
+	background-color: var(--page-bg-color);
 	color: var(--dark-color);
 	cursor: pointer;
 }
@@ -112,7 +112,7 @@ body {
 
 .streak-btn.clicked {
 	background-color: var(--dark-color);
-	color: var(--light-color);
+	color: var(--page-bg-color);
 }
 
 .streak-btn:hover {
@@ -125,7 +125,7 @@ body {
 
 .last-checkin {
 	font-size: 14px;
-	color: var(--light-color);
+	color: var(--page-bg-color);
 	margin: 10px 0;
 }
 

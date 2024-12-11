@@ -40,7 +40,7 @@ export function initializeTaskFlow(
 						<div class="task-container">
 							<div class="task" id='task-${module.id}-${taskIndex}'>
 								<div class="task-header" onclick="this.parentElement.parentElement.classList.toggle('expanded')">
-									<h3>Unit ${task.taskId}: ${task.name}</h3>
+									<h3>Unit ${taskIndex+1}: ${task.name}</h3>
 									<span class="accordion-icon">▼</span>
 								</div>
 							</div>
@@ -67,11 +67,9 @@ export function initializeTaskFlow(
 									data-subtask-index="${subtaskIndex}"
 									${isChecked ? "checked" : ""}
 								/>
-								<p class="checkbox-label">
-									<label for="${subtaskId}">
-										${subtask}
-									</label>
-								</p>
+								<label for="${subtaskId}" class="checkbox-label">
+									${subtask}
+								</label>
 							</div>
 						`;
 					}
