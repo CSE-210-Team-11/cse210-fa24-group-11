@@ -1,12 +1,8 @@
 # Continuous Integration (CI) Pipeline Status
-
 ## Overview
 This document provides the current status of the CI pipeline, detailing its functionality, components, and ongoing/planned developments. The pipeline is designed to validate pull requests (PRs) efficiently by running essential checks and tests before merging into the `main` branch.
-
 ---
-
 ## Current Status
-
 ### Functional Features
 - **Triggering Workflow**:
   - Automatically triggers on pull requests targeting the `main` branch.
@@ -14,39 +10,97 @@ This document provides the current status of the CI pipeline, detailing its func
 - **Environment Setup**:
   - Installs Node.js 20, ensuring compatibility with modern runtime features.
   - Implements npm caching to speed up dependency installation.
-
+  - Configures Node.js with latest ECMAScript features support
+  
 - **Dependency Installation**:
   - Executes `npm install` to fetch and prepare project dependencies.
+  - Verifies compatibility of installed packages
+  - Handles both production and development dependencies
 
 - **Biome Checks**:
   - Runs Biome lint and format checks separately to ensure code adheres to the project's coding standards.
-
+  - Configured with specific rule exemptions for `style/noParameterAssign` and `suspicious/noAssignInExpressions`
+  - Supports automatic code formatting and linting fixes
+  
 - **Test Execution**:
   - Executes `npm test` to validate unit and integration test cases, ensuring code correctness.
-
+  - Utilizes Jest testing framework with JSDOM environment
+  - Generates comprehensive test coverage reports
+  
 - **Error Tracking**:
   - Separates Biome checks and test execution for improved error isolation and faster debugging.
-
+  - Provides detailed error logs and coverage information
 
 ## Planned Improvements
-
 - **Enhanced Test Coverage**:
   - Expand unit tests to include edge cases and integration scenarios.
   - Implement E2E (End-to-End) testing workflows.
-
+  - Gradually reduce custom rule exemptions in Biome configuration
+  
 - **Dynamic Dependency Caching**:
   - Optimize dependency caching to better handle version updates.
-
+  - Implement automated dependency vulnerability scanning
+  
 - **Parallelization**:
   - Run Biome checks and tests in parallel to reduce execution time.
-
+  - Improve overall CI/CD pipeline performance
+  
 - **Code Coverage Thresholds**:
   - Introduce thresholds for minimum code coverage to maintain quality.
-
-- **Slack Integration**:
+  - Set initial target of 70% code coverage
+  
+- **Notification Integration**:
   - Notify developers of CI results via Slack or email for immediate feedback.
+  - Provide detailed reports on test results, coverage, and potential issues
 
+## Recommended CI Pipeline Configuration
+- **Node.js Version**:
+  - Use Node.js 20.x LTS
+  - Ensure compatibility with project's ECMAScript requirements
 
+- **Dependency Management**:
+  - Implement npm caching strategy
+  - Verify dependency installation before testing
+  - Use `npm ci` for clean, reproducible builds
+
+- **Pipeline Stages**:
+  1. Dependency Installation
+     - Run `npm install` or `npm ci`
+     - Cache dependencies to improve performance
+  
+  2. Linting
+     - Execute Biome linting checks
+     - Run `npm run lint`
+     - Prevent merging if linting errors exist
+  
+  3. Code Formatting
+     - Run Biome format checks
+     - Execute `npm run format`
+     - Ensure consistent code style
+
+  4. Unit Testing
+     - Run Jest test suite
+     - Execute `npm test`
+     - Generate coverage report
+
+  5. Coverage Validation
+     - Check minimum coverage thresholds
+     - Initial target: 70% code coverage
+     - Block merge if coverage falls below threshold
+
+- **Error Handling**:
+  - Fail pipeline on:
+    * Linting errors
+    * Test failures
+    * Coverage below threshold
+  - Provide clear, actionable feedback
+
+- **Recommended Tools**:
+  - CI/CD Platform: GitHub Actions (recommended)
+  - Linting: Biome
+  - Testing: Jest
+  - Coverage: Jest Coverage
+  - Notification: Slack/Email integrations
 
 ### Workflow Diagram
 The following flowchart illustrates the current CI pipeline structure:
