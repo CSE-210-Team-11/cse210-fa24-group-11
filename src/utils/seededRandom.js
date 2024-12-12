@@ -1,9 +1,10 @@
 let rand;
-
 /**
- * A hash function based on MurmurHash3's mixing function, developed by bryc
- * @param {string} str - The string to be hashed
- * @returns {() => number} - A function that returns a 32 bit hash value
+ * A transformation of the murmur3 hash function into a PRNG
+ * @param {String} str - The seed for the random function
+ * @returns {number} - The random number generator function
+ * @function xmur3
+ * @inner
  */
 function xmur3(str) {
 	let h = 1779033703 ^ str.length;
@@ -19,8 +20,10 @@ function xmur3(str) {
 
 /**
  * A transformation of the fmix32 finalizer from MurmurHash3 into a PRNG
- * @param {number} a - A 32 bit value used as the initial state of the PRNG
- * @returns {() => number} - The random number generator function
+ * @param {number} a - The seed for the random function
+ * @returns {number} - The random number generator function
+ * @function splitmix32
+ * @inner
  */
 function splitmix32(a) {
 	return () => {
@@ -37,6 +40,7 @@ function splitmix32(a) {
 /**
  * Reseeds the random generator
  * @param {String} seed - The seed for the random function
+ * @returns {void}
  */
 export function reseed(seed) {
 	rand = splitmix32(xmur3(seed)());
