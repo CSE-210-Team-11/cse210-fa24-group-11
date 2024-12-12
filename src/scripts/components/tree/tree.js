@@ -1,8 +1,10 @@
+import { getTimeOfDay } from "../src/utils/timeOfDay.js";
 import Two from "../../../../node_modules/two.js/build/two.module.js";
 import { randFloat, randInt, reseed } from "../../../utils/seededRandom.js";
 
-const canvas = document.getElementById("treeCanvas");
+console.log(`It is currently ${getTimeOfDay()}.`);
 
+const canvas = document.getElementById("treeCanvas");
 // Make an instance of Two and place it on the page.
 const two = new Two({
 	type: Two.Types.canvas,
@@ -24,9 +26,6 @@ const trunkLength = two.height / (maxDepth - 1.4);
 const leafRadius = 6; // Much larger leaf size
 const leafVariation = 0.3; // Adds some size variation to leaves
 
-const dayStart = 6;
-const nightStart = 20;
-
 const treeSeed = ((Math.random() * 10000) | 0).toString();
 let branchCount = 0;
 let leafCount = 0;
@@ -38,20 +37,6 @@ const grassTexture = two.makeTexture("../scripts/components/tree/media/grass.png
 const grassNightTexture = two.makeTexture("../scripts/components/tree/media/grass_night.png");
 const dayBranchColor = "#4b3621";
 const nightBranchColor = "#5b4b32";
-
-/**
- * Calculates whether it is day or night based on the current timestamp
- * @returns {string} - "day" or "night"
- */
-export function getTimeOfDay() {
-	const date = new Date();
-	const hour = date.getHours();
-	if (hour > dayStart && hour < nightStart) {
-		return "day";
-	}
-	
-	return "night";
-}
 
 /**
  * Renders a circular leaf on the tree
