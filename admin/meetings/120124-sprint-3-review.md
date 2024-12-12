@@ -6,7 +6,7 @@ During Sprint 3, the team demonstrated remarkable progress in project developmen
 ## Sprint Snapshot
 - **Period**: November 25 - December 1, 2024
 - **Duration**: 7 days
-- **Team Attendance**: Kanaad, Shaobo, Delaware, Atishay, Leonard
+- **Team Attendance**: Kanaad, Shaobo, Delaware, Atishay, Leonard, Yuke, Yuyang
 
 ## Key Metrics
 
@@ -44,6 +44,7 @@ The team significantly enhanced the project's technical foundation through:
 
 ### Visualization and User Interface
 A critical technical milestone was the comprehensive visualization research:
+- Complete first draft on Figma
 - Conducted in-depth comparative analysis of Tree vs. Circle visualization methods
 - Strategically selected Tree visualization for superior clarity and scalability
 - Initiated prototyping of the Tree Component with a focus on user experience

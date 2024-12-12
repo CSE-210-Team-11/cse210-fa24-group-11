@@ -6,7 +6,7 @@ Sprint 4 marked a significant milestone in the project's development, characteri
 ## Sprint Snapshot
 - **Period**: December 2 - December 8, 2024
 - **Duration**: 7 days
-- **Team Participation**: Kanaad, Shaobo, Delaware, Atishay, Leonard and Y1ko
+- **Team Participation**: Kanaad, Shaobo, Delaware, Atishay, Leonard, Yuyang and Y1ko
 
 ## Key Metrics
 
@@ -69,6 +69,7 @@ Each team member played a crucial role in driving project advancement:
 - **commcheck396**: Progress tracking and navigation improvements
 - **y1kooo777**: Visualization design for taskflow
 - **jain-atishay**: Cross-functional feature development and integration
+- **Xcode-wu**: Complete Second draft design and Documentation
 
 ## Challenges Navigated
 - Complex synchronization between multiple project components
