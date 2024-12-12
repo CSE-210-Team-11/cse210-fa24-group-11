@@ -69,5 +69,6 @@
     40% { transform: translateY(2vh) translateX(70vw) scale(0.6); }
     50% { transform: translateY(0vh) translateX(90vw) scale(0.6); }
     60% { transform: translateY(0vh) translateX(110vw) scale(0.6); }
-    100% { transform: translateY(0vh) translateX(110vw) scale(0.6); }
+    61% { transform: scale(0.3) translateX(-10vw); } /* Add this line to reset position */
+    100% { transform: scale(0.3) translateX(-10vw); }
 }
