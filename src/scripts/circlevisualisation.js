@@ -1,10 +1,8 @@
 // circleVisualization.js
 
 /**
- * Render progress circles for each subtask
- * 
- *
-*/
+ * Array of colors for progress circles
+ */
 
 const taskColors = [
 	"#ff69b4",
@@ -23,7 +21,6 @@ const taskColors = [
  * Render progress circles for each subtask
  * @param {Array} subtasks - Array of subtasks
  */
-
 export function renderProgressCircles(subtasks) {
 	const svg = document.querySelector(".progress-rings");
 	svg.innerHTML = "";
@@ -69,7 +66,6 @@ export function renderProgressCircles(subtasks) {
  * Update progress circles based on subtask completion
  * @param {Array} subtasks - Array of subtasks
  */ 
-
 document.addEventListener("updateProgressCircles", (e) => {
 	renderProgressCircles(e.detail.subtasks);
 });
