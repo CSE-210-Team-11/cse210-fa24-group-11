@@ -94,72 +94,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="taskColors"><span class="type-signature">(constant) </span>taskColors<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Array of colors for progress circles
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_circlevisualisation.js.html">scripts/circlevisualisation.js</a>, <a href="scripts_circlevisualisation.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -290,7 +224,7 @@
     
 
     
-    <h4 class="name" id="calculatePercentageOfCompletedModules"><span class="type-signature"></span>calculatePercentageOfCompletedModules<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="calculatePercentageOfCompletedModules"><span class="type-signature"></span>calculatePercentageOfCompletedModules<span class="signature">(projectName)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
     
@@ -307,6 +241,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>projectName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the project to calculate status for</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -342,7 +325,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_taskflow.js.html">scripts/taskflow.js</a>, <a href="scripts_taskflow.js.html#line309">line 309</a>
+        <a href="scripts_taskflow.js.html">scripts/taskflow.js</a>, <a href="scripts_taskflow.js.html#line310">line 310</a>
     </li></ul></dd>
     
 
@@ -400,7 +383,7 @@
     
 
     
-    <h4 class="name" id="calculatePercentageOfCompletedSubtask"><span class="type-signature"></span>calculatePercentageOfCompletedSubtask<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="calculatePercentageOfCompletedSubtask"><span class="type-signature"></span>calculatePercentageOfCompletedSubtask<span class="signature">(projectName)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
     
@@ -417,6 +400,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>projectName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the project to calculate status for</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -452,7 +484,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_taskflow.js.html">scripts/taskflow.js</a>, <a href="scripts_taskflow.js.html#line359">line 359</a>
+        <a href="scripts_taskflow.js.html">scripts/taskflow.js</a>, <a href="scripts_taskflow.js.html#line362">line 362</a>
     </li></ul></dd>
     
 
@@ -510,7 +542,7 @@
     
 
     
-    <h4 class="name" id="calculatePercentageOfCompletedTasks"><span class="type-signature"></span>calculatePercentageOfCompletedTasks<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="calculatePercentageOfCompletedTasks"><span class="type-signature"></span>calculatePercentageOfCompletedTasks<span class="signature">(projectName)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
     
@@ -527,6 +559,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>projectName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the project to calculate status for</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -2814,143 +2895,6 @@
     
 
     
-    <h4 class="name" id="renderProgressCircles"><span class="type-signature"></span>renderProgressCircles<span class="signature">(subtasks)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Render progress circles for each subtask
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>subtasks</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Array of subtasks</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_circlevisualisation.js.html">scripts/circlevisualisation.js</a>, <a href="scripts_circlevisualisation.js.html#line24">line 24</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="reseed"><span class="type-signature"></span>reseed<span class="signature">(seed)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -4380,7 +4324,7 @@
     
 
     
-    <h4 class="name" id="updateTaskStatus"><span class="type-signature"></span>updateTaskStatus<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="updateTaskStatus"><span class="type-signature"></span>updateTaskStatus<span class="signature">(projectName)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
     
@@ -4397,6 +4341,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>projectName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the project to update status for</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -4743,13 +4736,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-404.html">404</a></li><li><a href="module-motivationalQuotes.html">motivationalQuotes</a></li><li><a href="module-projectLoader.html">projectLoader</a></li></ul><h3>Global</h3><ul><li><a href="global.html">attachCheckboxListeners</a></li><li><a href="global.html#calculatePercentageOfCompletedModules">calculatePercentageOfCompletedModules</a></li><li><a href="global.html#calculatePercentageOfCompletedSubtask">calculatePercentageOfCompletedSubtask</a></li><li><a href="global.html#calculatePercentageOfCompletedTasks">calculatePercentageOfCompletedTasks</a></li><li><a href="global.html#createDonutChart">createDonutChart</a></li><li><a href="global.html#displayStreak">displayStreak</a></li><li><a href="global.html#drawTree">drawTree</a></li><li><a href="global.html#getDailyQuote">getDailyQuote</a></li><li><a href="global.html#getTimeOfDay">getTimeOfDay</a></li><li><a href="global.html">initializeTaskFlow</a></li><li><a href="global.html#makeBranches">makeBranches</a></li><li><a href="global.html#randFloat">randFloat</a></li><li><a href="global.html#randInt">randInt</a></li><li><a href="global.html#renderBranch">renderBranch</a></li><li><a href="global.html#renderLeaf">renderLeaf</a></li><li><a href="global.html#renderProgressCircles">renderProgressCircles</a></li><li><a href="global.html#reseed">reseed</a></li><li><a href="global.html#saveSubtaskProgress">saveSubtaskProgress</a></li><li><a href="global.html">splitmix32</a></li><li><a href="global.html#taskColors">taskColors</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateDisplays">updateDisplays</a></li><li><a href="global.html#updateModuleChart">updateModuleChart</a></li><li><a href="global.html#updateQuote">updateQuote</a></li><li><a href="global.html#updateSubtaskChart">updateSubtaskChart</a></li><li><a href="global.html#updateTaskChart">updateTaskChart</a></li><li><a href="global.html#updateTaskStatus">updateTaskStatus</a></li><li><a href="global.html#updateUI">updateUI</a></li><li><a href="global.html">xmur3</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-404.html">404</a></li><li><a href="module-motivationalQuotes.html">motivationalQuotes</a></li><li><a href="module-projectLoader.html">projectLoader</a></li></ul><h3>Global</h3><ul><li><a href="global.html">attachCheckboxListeners</a></li><li><a href="global.html#calculatePercentageOfCompletedModules">calculatePercentageOfCompletedModules</a></li><li><a href="global.html#calculatePercentageOfCompletedSubtask">calculatePercentageOfCompletedSubtask</a></li><li><a href="global.html#calculatePercentageOfCompletedTasks">calculatePercentageOfCompletedTasks</a></li><li><a href="global.html#createDonutChart">createDonutChart</a></li><li><a href="global.html#displayStreak">displayStreak</a></li><li><a href="global.html#drawTree">drawTree</a></li><li><a href="global.html#getDailyQuote">getDailyQuote</a></li><li><a href="global.html#getTimeOfDay">getTimeOfDay</a></li><li><a href="global.html">initializeTaskFlow</a></li><li><a href="global.html#makeBranches">makeBranches</a></li><li><a href="global.html#randFloat">randFloat</a></li><li><a href="global.html#randInt">randInt</a></li><li><a href="global.html#renderBranch">renderBranch</a></li><li><a href="global.html#renderLeaf">renderLeaf</a></li><li><a href="global.html#reseed">reseed</a></li><li><a href="global.html#saveSubtaskProgress">saveSubtaskProgress</a></li><li><a href="global.html">splitmix32</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateDisplays">updateDisplays</a></li><li><a href="global.html#updateModuleChart">updateModuleChart</a></li><li><a href="global.html#updateQuote">updateQuote</a></li><li><a href="global.html#updateSubtaskChart">updateSubtaskChart</a></li><li><a href="global.html#updateTaskChart">updateTaskChart</a></li><li><a href="global.html#updateTaskStatus">updateTaskStatus</a></li><li><a href="global.html#updateUI">updateUI</a></li><li><a href="global.html">xmur3</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Dec 12 2024 19:31:06 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Dec 12 2024 20:18:23 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -2,10 +2,6 @@
 import { initializeFromURL } from "../../scripts/taskflow.js"
 import { Chart } from "../../scripts/chart.js";
 
-jest.mock("../../scripts/circlevisualisation.js", () => ({
-	renderProgressCircles: jest.fn(),
-}));
-
 // Mock the tree.js module
 jest.mock("../../scripts/components/tree/tree.js", () => ({
 	update: jest.fn()
@@ -13,7 +9,6 @@ jest.mock("../../scripts/components/tree/tree.js", () => ({
 
 
 
-import { renderProgressCircles } from "../../scripts/circlevisualisation.js";
 import { update } from "../../scripts/components/tree/tree.js";
 import {
 	initializeTaskFlow,
@@ -26,9 +21,6 @@ import {
 describe("TaskFlow", () => {
 	// Setup mock DOM elements and localStorage before each test
 	beforeEach(() => {
-		// Clear mock calls
-		renderProgressCircles.mockClear();
-
 		// Clear localStorage
 		localStorage.clear();
 
