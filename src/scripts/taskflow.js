@@ -201,7 +201,7 @@ export function updateDisplays(projectName) {
 	const project = projectsProgress.find((p) => p.name === projectName);
 	let totalSubtasks = 0;
 	let completedSubtasks = 0;
-	if (project && project.modules) {
+	if (project?.modules) {
 		console.log(`Modules·length:·${project.modules.length}`)
 		for (const module of project.modules) {
 			if (module.tasks) {
@@ -280,7 +280,7 @@ function calculatePercentageOfCompletedTasks(projectName) {
 	let completedTasks = 0;
 
 	// Iterate over all project progress
-	if (project && project.modules) {
+	if (project?.modules) {
 		for (const module of project.modules) {
 			if (module.tasks) {
 				for (const task of module.tasks) {
@@ -328,7 +328,7 @@ function calculatePercentageOfCompletedModules(projectName) {
 	let completedModules = 0;
 
 	// Iterate over all project progress
-	if (project && project.modules) {
+	if (project?.modules) {
 		for (const module of project.modules) {
 			totalModules++; // Count this module
 			let flag = true;
@@ -380,7 +380,7 @@ function calculatePercentageOfCompletedSubtask(projectName) {
 	let completedSubtasks = 0;
 
 	// Iterate over all project progress
-	if (project && project.modules) {
+	if (project?.modules) {
 		for (const module of project.modules) {
 			if (module.tasks) {
 				for (const task of module.tasks) {

@@ -79,28 +79,10 @@ Make sure Node.js &gt;= v20.17.0 is installed on your system to grow your Streek
 <pre class="prettyprint source"><code>npm run fix
 </code></pre>
 <hr>
-<h3>Generating Documentation 📄</h3>
-<p>To generate the JSDoc documentation for the project, follow these steps:</p>
-<ol>
-<li>
-<p>Ensure that you have JSDoc installed globally or locally in your project. If not, install it using:</p>
-<pre class="prettyprint source lang-bash"><code>npm install -g jsdoc
-</code></pre>
-</li>
-<li>
-<p>Run the following command to generate the documentation:</p>
-<pre class="prettyprint source lang-bash"><code>jsdoc -c jsdoc.json
-</code></pre>
-</li>
-<li>
-<p>By default, the documentation will be generated in the <code>./docs</code> folder. If you'd like to specify a different folder, modify the <code>destination</code> property in the <code>jsdoc.json</code> file or use the command below to override it:</p>
-<pre class="prettyprint source lang-bash"><code>jsdoc -c jsdoc.json -d &lt;your-folder-path>
-</code></pre>
-</li>
-<li>
-<p>Open the generated documentation by navigating to the <code>index.html</code> file in the specified folder.</p>
-</li>
-</ol>
+<p>Generating Documentation 📄
+To generate the JSDoc documentation for the project, follow these steps:</p>
+<p>npm run docs</p>
+<p>Open the generated documentation by navigating to the <code>index.html</code> file in the docs/jsdoc directory.</p>
 <hr>
 <p><strong>🌳 S T R E E K 🌳</strong><br>
 <em>Each &quot;E&quot; is a branch, each &quot;K&quot; is a sprouting root—build your tree with progress, one streak at a time!</em></p></article>
@@ -114,13 +96,13 @@ Make sure Node.js &gt;= v20.17.0 is installed on your system to grow your Streek
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-404.html">404</a></li><li><a href="module-motivationalQuotes.html">motivationalQuotes</a></li><li><a href="module-projectLoader.html">projectLoader</a></li></ul><h3>Global</h3><ul><li><a href="global.html">attachCheckboxListeners</a></li><li><a href="global.html#calculatePercentageOfCompletedModules">calculatePercentageOfCompletedModules</a></li><li><a href="global.html#calculatePercentageOfCompletedSubtask">calculatePercentageOfCompletedSubtask</a></li><li><a href="global.html#calculatePercentageOfCompletedTasks">calculatePercentageOfCompletedTasks</a></li><li><a href="global.html#createDonutChart">createDonutChart</a></li><li><a href="global.html#displayStreak">displayStreak</a></li><li><a href="global.html#drawTree">drawTree</a></li><li><a href="global.html#getDailyQuote">getDailyQuote</a></li><li><a href="global.html#getTimeOfDay">getTimeOfDay</a></li><li><a href="global.html">initializeTaskFlow</a></li><li><a href="global.html#makeBranches">makeBranches</a></li><li><a href="global.html#randFloat">randFloat</a></li><li><a href="global.html#randInt">randInt</a></li><li><a href="global.html#renderBranch">renderBranch</a></li><li><a href="global.html#renderLeaf">renderLeaf</a></li><li><a href="global.html#renderProgressCircles">renderProgressCircles</a></li><li><a href="global.html#reseed">reseed</a></li><li><a href="global.html#saveSubtaskProgress">saveSubtaskProgress</a></li><li><a href="global.html">splitmix32</a></li><li><a href="global.html#taskColors">taskColors</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateDisplays">updateDisplays</a></li><li><a href="global.html#updateModuleChart">updateModuleChart</a></li><li><a href="global.html#updateQuote">updateQuote</a></li><li><a href="global.html#updateSubtaskChart">updateSubtaskChart</a></li><li><a href="global.html#updateTaskChart">updateTaskChart</a></li><li><a href="global.html#updateTaskStatus">updateTaskStatus</a></li><li><a href="global.html#updateUI">updateUI</a></li><li><a href="global.html">xmur3</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-404.html">404</a></li><li><a href="module-motivationalQuotes.html">motivationalQuotes</a></li><li><a href="module-projectLoader.html">projectLoader</a></li></ul><h3>Global</h3><ul><li><a href="global.html">attachCheckboxListeners</a></li><li><a href="global.html#calculatePercentageOfCompletedModules">calculatePercentageOfCompletedModules</a></li><li><a href="global.html#calculatePercentageOfCompletedSubtask">calculatePercentageOfCompletedSubtask</a></li><li><a href="global.html#calculatePercentageOfCompletedTasks">calculatePercentageOfCompletedTasks</a></li><li><a href="global.html#createDonutChart">createDonutChart</a></li><li><a href="global.html#displayStreak">displayStreak</a></li><li><a href="global.html#drawTree">drawTree</a></li><li><a href="global.html#getDailyQuote">getDailyQuote</a></li><li><a href="global.html#getTimeOfDay">getTimeOfDay</a></li><li><a href="global.html">initializeTaskFlow</a></li><li><a href="global.html#makeBranches">makeBranches</a></li><li><a href="global.html#randFloat">randFloat</a></li><li><a href="global.html#randInt">randInt</a></li><li><a href="global.html#renderBranch">renderBranch</a></li><li><a href="global.html#renderLeaf">renderLeaf</a></li><li><a href="global.html#reseed">reseed</a></li><li><a href="global.html#saveSubtaskProgress">saveSubtaskProgress</a></li><li><a href="global.html">splitmix32</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateDisplays">updateDisplays</a></li><li><a href="global.html#updateModuleChart">updateModuleChart</a></li><li><a href="global.html#updateQuote">updateQuote</a></li><li><a href="global.html#updateSubtaskChart">updateSubtaskChart</a></li><li><a href="global.html#updateTaskChart">updateTaskChart</a></li><li><a href="global.html#updateTaskStatus">updateTaskStatus</a></li><li><a href="global.html#updateUI">updateUI</a></li><li><a href="global.html">xmur3</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Dec 12 2024 19:31:06 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Dec 12 2024 20:18:23 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
