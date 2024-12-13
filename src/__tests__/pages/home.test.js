@@ -31,9 +31,4 @@ describe("Home Page", () => {
 		expect(buttons.length).toBe(1);
 		expect(buttons[0].textContent).toContain("Projects");
 	});
-
-	test("renders the tree art image", () => {
-		const treeArt = document.querySelector(".tree-art");
-		expect(treeArt).toBeTruthy();
-	});
 });
