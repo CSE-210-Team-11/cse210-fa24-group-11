@@ -126,7 +126,7 @@ export function attachCheckboxListeners() {
 				Number.parseInt(subtaskIndex),
 				event.target.checked,
 			);
-			updateTaskStatus();
+			updateTaskStatus(project);
 			updateDisplays(project);
 		});
 	}
@@ -201,7 +201,7 @@ export function updateDisplays(projectName) {
 	const project = projectsProgress.find((p) => p.name === projectName);
 	let totalSubtasks = 0;
 	let completedSubtasks = 0;
-	if (project.modules) {
+	if (project && project.modules) {
 		console.log(`Modules·length:·${project.modules.length}`)
 		for (const module of project.modules) {
 			if (module.tasks) {
@@ -233,15 +233,15 @@ let lastPercentageSubtasks = -1;
 
 /**
  * Updates the task status charts based on the progress
+ * @param {string} projectName - The name of the project to update status for
  * @returns {void}
  * @function updateTaskStatus
 */
-export function updateTaskStatus() {
+export function updateTaskStatus(projectName) {
 
-	const percentageTasks = calculatePercentageOfCompletedTasks() * 100;
-	const percentageModules = calculatePercentageOfCompletedModules() * 100;
-	const percentageSubtasks = calculatePercentageOfCompletedSubtask() * 100;
-	// console.log(`Percentage: ` + percentageTasks + " " + percentageModules + " " + percentageSubtasks);
+	const percentageTasks = calculatePercentageOfCompletedTasks(projectName) * 100;
+	const percentageModules = calculatePercentageOfCompletedModules(projectName) * 100;
+	const percentageSubtasks = calculatePercentageOfCompletedSubtask(projectName) * 100;
 	if (percentageTasks !== lastPercentageTasks) {
 		updateTaskChart(percentageTasks);
 		lastPercentageTasks = percentageTasks;
@@ -261,42 +261,43 @@ export function updateTaskStatus() {
 
 /**
  * Calculates the percentage of completed tasks
+ * @param {string} projectName - The name of the project to calculate status for
  * @returns {number} The percentage of completed tasks
  * @function calculatePercentageOfCompletedTasks
  */
-function calculatePercentageOfCompletedTasks() {
+function calculatePercentageOfCompletedTasks(projectName) {
 	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
 
 	if (projectsProgress.length === 0) {
 		return 0;
 	}
+	
+	// Find or create project progress
+	const project = projectsProgress.find((p) => p.name === projectName);
 
 	// Initialize counters for total and completed tasks
 	let totalTasks = 0;
 	let completedTasks = 0;
 
 	// Iterate over all project progress
-	for (const project of projectsProgress) {
-		if (project.modules) {
-			for (const module of project.modules) {
-				if (module.tasks) {
-					for (const task of module.tasks) {
-						totalTasks++; // Count this task
-	
-						// Check if all subtasks are completed
-						if (
-							task.subtasks &&
-							task.subtasks.length > 0 &&
-							task.subtasks.every((subtask) => subtask === true)
-						) {
-							completedTasks++;
-						}
+	if (project && project.modules) {
+		for (const module of project.modules) {
+			if (module.tasks) {
+				for (const task of module.tasks) {
+					totalTasks++; // Count this task
+
+					// Check if all subtasks are completed
+					if (
+						task.subtasks &&
+						task.subtasks.length > 0 &&
+						task.subtasks.every((subtask) => subtask === true)
+					) {
+						completedTasks++;
 					}
 				}
 			}
 		}
 	}
-	
 
 	// Avoid division by zero
 	if (totalTasks === 0) {
@@ -308,42 +309,44 @@ function calculatePercentageOfCompletedTasks() {
 
 /**
  * Calculates the percentage of completed modules
+ * @param {string} projectName - The name of the project to calculate status for
  * @returns {number} The percentage of completed modules
  * @function calculatePercentageOfCompletedModules
 */
-function calculatePercentageOfCompletedModules() {
+function calculatePercentageOfCompletedModules(projectName) {
 	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
 
 	if (projectsProgress.length === 0) {
 		return 0;
 	}
 
+	// Find or create project progress
+	const project = projectsProgress.find((p) => p.name === projectName);
+
 	// Initialize counters for total and completed tasks
 	let totalModules = 0;
 	let completedModules = 0;
 
 	// Iterate over all project progress
-	for (const project of projectsProgress) {
-		if (project.modules) {
-			for (const module of project.modules) {
-				totalModules++; // Count this module
-				let flag = true;
-				if (module.tasks) {
-					for (const task of module.tasks) {
-						if (
-							task.subtasks &&
-							task.subtasks.length > 0 &&
-							task.subtasks.every((subtask) => subtask === true)
-						) {
-							// No change needed here, as the condition is checked
-						} else {
-							flag = false;
-						}
+	if (project && project.modules) {
+		for (const module of project.modules) {
+			totalModules++; // Count this module
+			let flag = true;
+			if (module.tasks) {
+				for (const task of module.tasks) {
+					if (
+						task.subtasks &&
+						task.subtasks.length > 0 &&
+						task.subtasks.every((subtask) => subtask === true)
+					) {
+						// No change needed here, as the condition is checked
+					} else {
+						flag = false;
 					}
 				}
-				if (flag) {
-					completedModules++;
-				}
+			}
+			if (flag) {
+				completedModules++;
 			}
 		}
 	}
@@ -358,36 +361,34 @@ function calculatePercentageOfCompletedModules() {
 
 /**
  * Calculates the percentage of completed subtasks
+ * @param {string} projectName - The name of the project to calculate status for
  * @returns {number} The percentage of completed subtasks
  * @function calculatePercentageOfCompletedSubtask
 */
-function calculatePercentageOfCompletedSubtask() {
+function calculatePercentageOfCompletedSubtask(projectName) {
 	const projectsProgress = JSON.parse(localStorage.getItem("projects") || "[]");
 
 	if (projectsProgress.length === 0) {
 		return 0;
 	}
 
+	// Find or create project progress
+	const project = projectsProgress.find((p) => p.name === projectName);
+
 	// Initialize counters for total and completed tasks
-
-
-
-	
 	let totalSubtasks = 0;
 	let completedSubtasks = 0;
 
 	// Iterate over all project progress
-	for (const project of projectsProgress) {
-		if (project.modules) {
-			for (const module of project.modules) {
-				if (module.tasks) {
-					for (const task of module.tasks) {
-						if (task.subtasks) {
-							for (const subtask of task.subtasks) {
-								totalSubtasks++; // Count this subtask
-								if (subtask === true) {
-									completedSubtasks++;
-								}
+	if (project && project.modules) {
+		for (const module of project.modules) {
+			if (module.tasks) {
+				for (const task of module.tasks) {
+					if (task.subtasks) {
+						for (const subtask of task.subtasks) {
+							totalSubtasks++; // Count this subtask
+							if (subtask === true) {
+								completedSubtasks++;
 							}
 						}
 					}
@@ -396,7 +397,6 @@ function calculatePercentageOfCompletedSubtask() {
 		}
 	}
 	
-
 	// Avoid division by zero
 	if (totalSubtasks === 0) {
 		return 0;
