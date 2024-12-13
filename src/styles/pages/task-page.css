@@ -16,7 +16,7 @@ body {
 
 .container {
 	background-color: var(--dark-color);
-	overflow-y: scroll;
+	overflow-y: hidden;
 	height: calc(100vh - 63px);
 	display: flex;
 	flex-direction: row;
