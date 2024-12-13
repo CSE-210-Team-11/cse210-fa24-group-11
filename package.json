@@ -24,6 +24,7 @@
         "jest-environment-jsdom": "^29.7.0"
     },
     "dependencies": {
+        "jsdoc": "^4.0.4",
         "jsdom": "^25.0.1",
         "madr": "^4.0.0",
         "two.js": "^0.8.14"
