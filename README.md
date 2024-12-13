@@ -52,9 +52,9 @@ npm run fix
 
 Generating Documentation 📄
 To generate the JSDoc documentation for the project, follow these steps:
-
+```
 npm run docs
-
+```
 Open the generated documentation by navigating to the `index.html` file in the docs/jsdoc directory.
 
 ---
